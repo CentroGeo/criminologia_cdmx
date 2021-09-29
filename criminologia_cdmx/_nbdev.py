@@ -2,7 +2,9 @@
 
 __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
-index = {"get_carpetas_from_api": "00_etl.ipynb"}
+index = {"get_carpetas_from_api": "00_etl.ipynb",
+         "get_historico_carpetas": "00_etl.ipynb",
+         "agrega_ids_espaciales": "00_etl.ipynb"}
 
 modules = ["etl.py"]
 
