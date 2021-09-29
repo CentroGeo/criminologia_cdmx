@@ -7,6 +7,7 @@ import os
 import glob
 import itertools
 from pathlib import Path
+import numpy as np
 import pandas as pd
 import geopandas as gpd
 from datetime import timedelta, date, datetime
@@ -15,9 +16,16 @@ import requests
 
 # Cell
 def get_carpetas_from_api(limit=100):
-    """Baja los primeros `limit` registros en la base de Carpetas de Investigación."""
-    url = 'https://datos.cdmx.gob.mx/api/3/action/datastore_search?resource_id=48fcb848-220c-4af0-839b-4fd8ac812c0f&limit=5'
+    """Regresa un GeoDataFrame con los primeros `limit` registros de la base abierta.
+
+    """
+    url = f'https://datos.cdmx.gob.mx/api/3/action/datastore_search?resource_id=48fcb848-220c-4af0-839b-4fd8ac812c0f&limit={limit}'
     r = requests.get(url, allow_redirects=True)
     records = r.json()['result']['records']
     records = pd.DataFrame(records)
+    records.replace('NA', np.nan, inplace=True)
+    records.dropna(subset=['longitud', 'latitud'], how='any', inplace=True)
+    records = gpd.GeoDataFrame(records, geometry=gpd.points_from_xy(records.longitud, records.latitud))
+    records = records.set_crs(epsg=4326)
+    records['fecha_hechos'] = pd.to_datetime(records.fecha_hechos)
     return records
