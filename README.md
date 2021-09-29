@@ -380,3 +380,195 @@ carpetas.head()
 </div>
 
 
+
+## Agregar categorías de usuario
+
+Para clasificar los delitos de acuerdo a una categorización definida por el usuario necesitamos un archivo que relacione la columna delitos de la base de carpetas con las categorías definidas por el usuario
+
+```python
+categorias = pd.read_csv("datos/categorias_incidentes.csv")
+categorias
+```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>incidente</th>
+      <th>categoria</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>HOMICIDIO POR AHORCAMIENTO</td>
+      <td>Homicidios dolosos</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>HOMICIDIO POR ARMA BLANCA</td>
+      <td>Homicidios dolosos</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>HOMICIDIO POR ARMA DE FUEGO</td>
+      <td>Homicidios dolosos</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>HOMICIDIO POR GOLPES</td>
+      <td>Homicidios dolosos</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>HOMICIDIOS INTENCIONALES (OTROS)</td>
+      <td>Homicidios dolosos</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>73</th>
+      <td>ROBO DE VEHICULO DE SERVICIO PÚBLICO CON VIOLE...</td>
+      <td>Robo de/en vehículo</td>
+    </tr>
+    <tr>
+      <th>74</th>
+      <td>ROBO DE VEHICULO DE SERVICIO PÚBLICO SIN VIOLE...</td>
+      <td>Robo de/en vehículo</td>
+    </tr>
+    <tr>
+      <th>75</th>
+      <td>ROBO DE VEHICULO ELECTRICO MOTOPATIN</td>
+      <td>Robo de/en vehículo</td>
+    </tr>
+    <tr>
+      <th>76</th>
+      <td>OBO DE VEHICULO EN PENSION, TALLER Y AGENCIAS C/V</td>
+      <td>Robo de/en vehículo</td>
+    </tr>
+    <tr>
+      <th>77</th>
+      <td>ROBO DE VEHICULO EN PENSION, TALLER Y AGENCIAS...</td>
+      <td>Robo de/en vehículo</td>
+    </tr>
+  </tbody>
+</table>
+<p>78 rows × 2 columns</p>
+</div>
+
+
+
+Entonces podemos agregar las categorías a nuestra base
+
+```python
+carpetas = agregar_categorias_de_usuario(carpetas)
+carpetas[['delito', 'categoria']]
+```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>delito</th>
+      <th>categoria</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>AMENAZAS</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>ROBO A NEGOCIO SIN VIOLENCIA POR FARDEROS (TIE...</td>
+      <td>Robo a negocio</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>SUSTRACCIÓN DE MENORES</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>ROBO A NEGOCIO CON VIOLENCIA</td>
+      <td>Robo a negocio</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>ROBO DE VEHICULO DE SERVICIO PARTICULAR SIN VI...</td>
+      <td>Robo de/en vehículo</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>92</th>
+      <td>ROBO DE OBJETOS DEL INTERIOR DE UN VEHICULO</td>
+      <td>Robo de/en vehículo</td>
+    </tr>
+    <tr>
+      <th>93</th>
+      <td>CONTRA LA INTIMIDAD SEXUAL</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>94</th>
+      <td>VIOLENCIA FAMILIAR</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>95</th>
+      <td>VIOLACION</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>96</th>
+      <td>FRAUDE</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>97 rows × 2 columns</p>
+</div>
+
+
