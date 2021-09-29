@@ -4,19 +4,379 @@
 
 ## Instalación
 
-`pip install your_project_name`
+`pip install criminologia_cdmx`
 
-## How to use
+## Uso
 
-Fill me in please! Don't forget code examples:
+## ETL
+````Python
+from criminologia_cdmx.etl import *
+````
+
+### Bajar datos abiertos
+
+Hay dos formas de bajar los datos abiertos, la primera es usando el api que baja las primeras `limit` carpetas de la base abierta
 
 ```python
-1+1
+carpetas = get_carpetas_from_api(limit=100)
+carpetas.head()
 ```
 
 
 
 
-    2
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>_id</th>
+      <th>ao_hechos</th>
+      <th>mes_hechos</th>
+      <th>fecha_hechos</th>
+      <th>ao_inicio</th>
+      <th>mes_inicio</th>
+      <th>fecha_inicio</th>
+      <th>delito</th>
+      <th>fiscalia</th>
+      <th>agencia</th>
+      <th>...</th>
+      <th>categoria_delito</th>
+      <th>calle_hechos</th>
+      <th>calle_hechos2</th>
+      <th>colonia_hechos</th>
+      <th>alcaldia_hechos</th>
+      <th>competencia</th>
+      <th>longitud</th>
+      <th>latitud</th>
+      <th>tempo</th>
+      <th>geometry</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1024416</td>
+      <td>2020</td>
+      <td>Junio</td>
+      <td>2020-06-18 11:30:00</td>
+      <td>2020</td>
+      <td>Junio</td>
+      <td>2020-06-18T15:41:11</td>
+      <td>AMENAZAS</td>
+      <td>FISCALÍA DE INVESTIGACIÓN TERRITORIAL EN BENIT...</td>
+      <td>BJ-3</td>
+      <td>...</td>
+      <td>DELITO DE BAJO IMPACTO</td>
+      <td>MIGUEL LAURENT</td>
+      <td>NaN</td>
+      <td>LETRÁN VALLE</td>
+      <td>BENITO JUAREZ</td>
+      <td>NaN</td>
+      <td>-99.1615631604095</td>
+      <td>19.3745426161242</td>
+      <td>NaN</td>
+      <td>POINT (-99.16156 19.37454)</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1024417</td>
+      <td>2020</td>
+      <td>Junio</td>
+      <td>2020-06-13 14:00:00</td>
+      <td>2020</td>
+      <td>Junio</td>
+      <td>2020-06-18T15:42:35</td>
+      <td>SUSTRACCIÓN DE MENORES</td>
+      <td>FISCALÍA DE INVESTIGACIÓN TERRITORIAL EN IZTAC...</td>
+      <td>IZC-2</td>
+      <td>...</td>
+      <td>DELITO DE BAJO IMPACTO</td>
+      <td>TLACOTAL C</td>
+      <td>NaN</td>
+      <td>GABRIEL RAMOS MILLÁN SECCIÓN TLACOTAL</td>
+      <td>IZTACALCO</td>
+      <td>NaN</td>
+      <td>-99.105716711431</td>
+      <td>19.3953360477985</td>
+      <td>NaN</td>
+      <td>POINT (-99.10572 19.39534)</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1024418</td>
+      <td>2020</td>
+      <td>Junio</td>
+      <td>2020-06-18 14:40:00</td>
+      <td>2020</td>
+      <td>Junio</td>
+      <td>2020-06-18T15:42:41</td>
+      <td>ROBO A NEGOCIO CON VIOLENCIA</td>
+      <td>FISCALÍA DE INVESTIGACIÓN TERRITORIAL EN IZTAP...</td>
+      <td>IZP-6</td>
+      <td>...</td>
+      <td>ROBO A NEGOCIO CON VIOLENCIA</td>
+      <td>AV. DEL ARBOL</td>
+      <td>HORTENCIA</td>
+      <td>LOMAS DE SAN LORENZO</td>
+      <td>IZTAPALAPA</td>
+      <td>NaN</td>
+      <td>-99.0689250062205</td>
+      <td>19.3157102852289</td>
+      <td>NaN</td>
+      <td>POINT (-99.06893 19.31571)</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1024419</td>
+      <td>2020</td>
+      <td>Mayo</td>
+      <td>2020-05-30 12:00:00</td>
+      <td>2020</td>
+      <td>Junio</td>
+      <td>2020-06-18T15:45:31</td>
+      <td>ROBO DE VEHICULO DE SERVICIO PARTICULAR SIN VI...</td>
+      <td>FISCALÍA DE INVESTIGACIÓN TERRITORIAL EN IZTAP...</td>
+      <td>IZP-5</td>
+      <td>...</td>
+      <td>ROBO DE VEHÍCULO CON Y SIN VIOLENCIA</td>
+      <td>NAUTLA</td>
+      <td>NaN</td>
+      <td>SAN JUAN XALPA</td>
+      <td>IZTAPALAPA</td>
+      <td>NaN</td>
+      <td>-99.0847959998612</td>
+      <td>19.3354113029671</td>
+      <td>NaN</td>
+      <td>POINT (-99.08480 19.33541)</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1024420</td>
+      <td>2020</td>
+      <td>Junio</td>
+      <td>2020-06-17 05:30:00</td>
+      <td>2020</td>
+      <td>Junio</td>
+      <td>2020-06-18T15:46:08</td>
+      <td>ROBO DE ACCESORIOS DE AUTO</td>
+      <td>AGENCIA DE DENUNCIA DIGITAL</td>
+      <td>CEN-1</td>
+      <td>...</td>
+      <td>DELITO DE BAJO IMPACTO</td>
+      <td>UNION</td>
+      <td>12 DE OCTUBRE</td>
+      <td>ESCANDÓN I SECCIÓN</td>
+      <td>MIGUEL HIDALGO</td>
+      <td>NaN</td>
+      <td>-99.1753293004536</td>
+      <td>19.3993953040539</td>
+      <td>NaN</td>
+      <td>POINT (-99.17533 19.39940)</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 21 columns</p>
+</div>
+
+
+
+La segunda es bajar el histórico completo:
+
+````Python
+carpetas_todas = get_historico_carpetas()
+````
+
+## Agregar identificadores espaciales
+
+Para agregar los identificadores de colonia y cuadrante:
+
+```python
+carpetas = agrega_ids_espaciales(carpetas)
+carpetas.head()
+```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>_id</th>
+      <th>ao_hechos</th>
+      <th>mes_hechos</th>
+      <th>fecha_hechos</th>
+      <th>ao_inicio</th>
+      <th>mes_inicio</th>
+      <th>fecha_inicio</th>
+      <th>delito</th>
+      <th>fiscalia</th>
+      <th>agencia</th>
+      <th>...</th>
+      <th>colonia_hechos</th>
+      <th>alcaldia_hechos</th>
+      <th>competencia</th>
+      <th>longitud</th>
+      <th>latitud</th>
+      <th>tempo</th>
+      <th>geometry</th>
+      <th>colonia_cve</th>
+      <th>colonia_nombre</th>
+      <th>cuadrante_id</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1024416</td>
+      <td>2020</td>
+      <td>Junio</td>
+      <td>2020-06-18 11:30:00</td>
+      <td>2020</td>
+      <td>Junio</td>
+      <td>2020-06-18T15:41:11</td>
+      <td>AMENAZAS</td>
+      <td>FISCALÍA DE INVESTIGACIÓN TERRITORIAL EN BENIT...</td>
+      <td>BJ-3</td>
+      <td>...</td>
+      <td>LETRÁN VALLE</td>
+      <td>BENITO JUAREZ</td>
+      <td>NaN</td>
+      <td>-99.1615631604095</td>
+      <td>19.3745426161242</td>
+      <td>NaN</td>
+      <td>POINT (-99.16156 19.37454)</td>
+      <td>932</td>
+      <td>LETRAN VALLE</td>
+      <td>013</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>1024440</td>
+      <td>2020</td>
+      <td>Junio</td>
+      <td>2020-06-18 16:00:00</td>
+      <td>2020</td>
+      <td>Junio</td>
+      <td>2020-06-18T16:25:08</td>
+      <td>ROBO A NEGOCIO SIN VIOLENCIA POR FARDEROS (TIE...</td>
+      <td>FISCALÍA DE INVESTIGACIÓN TERRITORIAL EN BENIT...</td>
+      <td>BJ-2</td>
+      <td>...</td>
+      <td>SANTA CRUZ ATOYAC</td>
+      <td>BENITO JUAREZ</td>
+      <td>NaN</td>
+      <td>-99.1644768802292</td>
+      <td>19.3708053008306</td>
+      <td>NaN</td>
+      <td>POINT (-99.16448 19.37081)</td>
+      <td>927</td>
+      <td>STA CRUZ ATOYAC</td>
+      <td>013</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1024417</td>
+      <td>2020</td>
+      <td>Junio</td>
+      <td>2020-06-13 14:00:00</td>
+      <td>2020</td>
+      <td>Junio</td>
+      <td>2020-06-18T15:42:35</td>
+      <td>SUSTRACCIÓN DE MENORES</td>
+      <td>FISCALÍA DE INVESTIGACIÓN TERRITORIAL EN IZTAC...</td>
+      <td>IZC-2</td>
+      <td>...</td>
+      <td>GABRIEL RAMOS MILLÁN SECCIÓN TLACOTAL</td>
+      <td>IZTACALCO</td>
+      <td>NaN</td>
+      <td>-99.105716711431</td>
+      <td>19.3953360477985</td>
+      <td>NaN</td>
+      <td>POINT (-99.10572 19.39534)</td>
+      <td>898</td>
+      <td>TLACOTAL RAMOS MILLAN</td>
+      <td>025</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1024418</td>
+      <td>2020</td>
+      <td>Junio</td>
+      <td>2020-06-18 14:40:00</td>
+      <td>2020</td>
+      <td>Junio</td>
+      <td>2020-06-18T15:42:41</td>
+      <td>ROBO A NEGOCIO CON VIOLENCIA</td>
+      <td>FISCALÍA DE INVESTIGACIÓN TERRITORIAL EN IZTAP...</td>
+      <td>IZP-6</td>
+      <td>...</td>
+      <td>LOMAS DE SAN LORENZO</td>
+      <td>IZTAPALAPA</td>
+      <td>NaN</td>
+      <td>-99.0689250062205</td>
+      <td>19.3157102852289</td>
+      <td>NaN</td>
+      <td>POINT (-99.06893 19.31571)</td>
+      <td>389</td>
+      <td>SAN LORENZO TEZONCO (PBLO)</td>
+      <td>017</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1024419</td>
+      <td>2020</td>
+      <td>Mayo</td>
+      <td>2020-05-30 12:00:00</td>
+      <td>2020</td>
+      <td>Junio</td>
+      <td>2020-06-18T15:45:31</td>
+      <td>ROBO DE VEHICULO DE SERVICIO PARTICULAR SIN VI...</td>
+      <td>FISCALÍA DE INVESTIGACIÓN TERRITORIAL EN IZTAP...</td>
+      <td>IZP-5</td>
+      <td>...</td>
+      <td>SAN JUAN XALPA</td>
+      <td>IZTAPALAPA</td>
+      <td>NaN</td>
+      <td>-99.0847959998612</td>
+      <td>19.3354113029671</td>
+      <td>NaN</td>
+      <td>POINT (-99.08480 19.33541)</td>
+      <td>1413</td>
+      <td>SAN JUAN XALPA I</td>
+      <td>013</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 24 columns</p>
+</div>
 
 
