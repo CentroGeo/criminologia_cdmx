@@ -572,3 +572,28 @@ carpetas[['delito', 'categoria']]
 </div>
 
 
+
+## Patrones espacio temporales
+
+````Python
+from criminologia_cdmx.patrones_espacio_temporales import *
+````
+
+```python
+carpetas = get_carpetas_from_api(1000)
+x = carpetas.geometry.x.to_numpy()
+y = carpetas.geometry.y.to_numpy()
+params = {'bandwidth': np.linspace(0.001, 0.1, 100)}
+bw = ajusta_bandwidth_kde(x, y, params)
+xx, yy, zz = kde2D(x, y, bw, xbins=100j, ybins=100j)
+fig = plt.figure(figsize=(10,10))
+ax = plt.axes(projection='3d')
+ax.plot_surface(xx, yy, zz,cmap='viridis', edgecolor='none')
+```
+
+
+
+
+    (97, 25)
+
+
