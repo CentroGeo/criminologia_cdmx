@@ -575,9 +575,13 @@ carpetas[['delito', 'categoria']]
 
 ## Patrones espacio temporales
 
+Este módulo tiene diferentes herramientas para explorar los patrones espacio-temporales de la actividad delictiva
 ````Python
 from criminologia_cdmx.patrones_espacio_temporales import *
 ````
+
+### Estimación de densidad de kernel
+A partir de cualquier capa de incidentes se puede estimar el KDE utilizando validación cruzada para encontrar el mejor bandwidth
 
 ```python
 carpetas = get_carpetas_from_api(1000)
@@ -594,6 +598,69 @@ ax.plot_surface(xx, yy, zz,cmap='viridis', edgecolor='none')
 
 
 
-    (97, 25)
+    <mpl_toolkits.mplot3d.art3d.Poly3DCollection at 0x7fe3262c3c70>
+
+
+
+
+![png](docs/images/output_15_1.png)
+
+
+### Serie de tiempo de KDEs por categoría
+
+Para una categoría determinada se obtiene la serie de tiempo de densidades de Kernel para un periodo arbitrario, utilizando la agregación temporal determinada por el usuario.
+
+Para usar esta función no es necesario agregar los ids de unidades espaciales
+
+```python
+carpetas = get_historico_carpetas()
+carpetas = agregar_categorias_de_usuario(carpetas)
+fechas = pd.date_range(start='1/1/2017', end='1/1/2020', freq='M').to_list()
+kdes = serie_tiempo_kde_categoria(carpetas, fechas, "Homicidios dolosos", "30 days")
+```
+
+    /tmp/ipykernel_25308/253724238.py:1: DtypeWarning: Columns (15) have mixed types.Specify dtype option on import or set low_memory=False.
+      carpetas = get_historico_carpetas()
+
+
+A partir de esta serie de kdes es relatívamente fácil obtener una animación de la evolución:
+
+```python
+import matplotlib.animation as animation
+def data(t):
+    d = kdes[t]
+    ax.clear()
+    surf = ax.plot_surface(XX, YY, d[2], cmap='viridis', edgecolor='none', antialiased=False)
+    ax.set_zlim([0,50]) # set zlim to be always the same for every frame
+
+
+fig = plt.figure(figsize=(10,10))
+ax = fig.gca(projection='3d')
+XX = kdes[0][0]
+YY = kdes[0][1]
+surf = ax.plot_surface(XX, YY, kdes[0][2],cmap='viridis', edgecolor='none', antialiased=False)
+ax.set_zlim(0, 50)
+# ax.zaxis.set_major_locator(LinearLocator(10))
+# fig.colorbar(surf, shrink=0.5, aspect=10)
+# ax.set_xlabel('X nodes - Axis')
+# ax.set_ylabel('Y nodes - Axis')
+# ax.set_zlabel('Value')
+
+ani = animation.FuncAnimation(fig, data, len(kdes), interval=50, repeat=True )
+plt.show()
+```
+
+    /tmp/ipykernel_25308/3416935710.py:10: MatplotlibDeprecationWarning: Calling gca() with keyword arguments was deprecated in Matplotlib 3.4. Starting two minor releases later, gca() will take no keyword arguments. The gca() function should only be used to get the current axes, or if no axes exist, create new axes with default keyword arguments. To create a new axes with non-default arguments, use plt.axes() or plt.subplot().
+      ax = fig.gca(projection='3d')
+
+
+```python
+len(kdes)
+```
+
+
+
+
+    1
 
 

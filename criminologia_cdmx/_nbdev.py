@@ -8,7 +8,8 @@ index = {"get_carpetas_from_api": "00_etl.ipynb",
          "agregar_categorias_de_usuario": "00_etl.ipynb",
          "exporta_datos_vusualizador": "00_etl.ipynb",
          "ajusta_bandwidth_kde": "01_patrones_espacio_temporales.ipynb",
-         "kde2D": "01_patrones_espacio_temporales.ipynb"}
+         "kde2D": "01_patrones_espacio_temporales.ipynb",
+         "serie_tiempo_kde_categoria": "01_patrones_espacio_temporales.ipynb"}
 
 modules = ["etl.py",
            "patrones_espacio_temporales.py"]
