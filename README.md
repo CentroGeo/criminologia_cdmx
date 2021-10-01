@@ -573,6 +573,12 @@ carpetas[['delito', 'categoria']]
 
 
 
+## Serie de tiempo por categoría
+
+````Python
+
+````
+
 ## Patrones espacio temporales
 
 Este módulo tiene diferentes herramientas para explorar los patrones espacio-temporales de la actividad delictiva
@@ -603,7 +609,7 @@ ax.plot_surface(xx, yy, zz,cmap='viridis', edgecolor='none')
 
 
 
-![png](docs/images/output_15_1.png)
+![png](docs/images/output_16_1.png)
 
 
 ### Serie de tiempo de KDEs por categoría
@@ -646,7 +652,7 @@ ax.set_zlim(0, 50)
 # ax.set_ylabel('Y nodes - Axis')
 # ax.set_zlabel('Value')
 
-ani = animation.FuncAnimation(fig, data, len(kdes), interval=50, repeat=True )
+ani = animation.FuncAnimation(fig, data, len(kdes), interval=50, repeat=False )
 plt.show()
 ```
 
@@ -661,6 +667,6 @@ len(kdes)
 
 
 
-    1
+    36
 
 

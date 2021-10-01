@@ -334,6 +334,603 @@ relacionen las categorías del usuario con la columna delitos de la base de carp
 </div>
     {% endraw %}
 
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="serie_de_tiempo_categoria">serie_de_tiempo_categoria<a class="anchor-link" href="#serie_de_tiempo_categoria"> </a></h2>
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="serie_de_tiempo_categoria" class="doc_header"><code>serie_de_tiempo_categoria</code><a href="https://github.com/plablo09/criminologia_cdmx/tree/master/criminologia_cdmx/etl.py#L90" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>serie_de_tiempo_categoria</code>(<strong><code>carpetas</code></strong>, <strong><code>fecha_inicio</code></strong>, <strong><code>categoria</code></strong>, <strong><code>freq</code></strong>=<em><code>'M'</code></em>)</p>
+</blockquote>
+<p>Regresa una serie de tiempo con los agregados por <code>freq</code> de la <code>categoria</code>.</p>
+<p>parameters:
+carpetas: incidentes, deben traer la columna categoria
+fecha_inicio: pd.datetime fecha del inicio de la serie
+categoria: nombre de la categoría a agregar (<a href="/criminologia_cdmx/etl.html#agregar_categorias_de_usuario"><code>agregar_categorias_de_usuario</code></a>)
+freq: frecuencia de agregación (<a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#offset-aliases">https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#offset-aliases</a>)</p>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">serie</span> <span class="o">=</span> <span class="n">serie_de_tiempo_categoria</span><span class="p">(</span><span class="n">carpetas_todas</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="s1">&#39;01/01/2016&#39;</span><span class="p">),</span> <span class="s1">&#39;Robo a pasajero&#39;</span><span class="p">)</span>
+<span class="n">serie</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>fecha_hechos</th>
+      <th>Robo a pasajero</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2016-01-31</td>
+      <td>310</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2016-02-29</td>
+      <td>265</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2016-03-31</td>
+      <td>275</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2016-04-30</td>
+      <td>319</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2016-05-31</td>
+      <td>256</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>62</th>
+      <td>2021-03-31</td>
+      <td>493</td>
+    </tr>
+    <tr>
+      <th>63</th>
+      <td>2021-04-30</td>
+      <td>472</td>
+    </tr>
+    <tr>
+      <th>64</th>
+      <td>2021-05-31</td>
+      <td>500</td>
+    </tr>
+    <tr>
+      <th>65</th>
+      <td>2021-06-30</td>
+      <td>435</td>
+    </tr>
+    <tr>
+      <th>66</th>
+      <td>2021-07-31</td>
+      <td>419</td>
+    </tr>
+  </tbody>
+</table>
+<p>67 rows × 2 columns</p>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">carpetas</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>_id</th>
+      <th>ao_hechos</th>
+      <th>mes_hechos</th>
+      <th>fecha_hechos</th>
+      <th>ao_inicio</th>
+      <th>mes_inicio</th>
+      <th>fecha_inicio</th>
+      <th>delito</th>
+      <th>fiscalia</th>
+      <th>agencia</th>
+      <th>...</th>
+      <th>tempo</th>
+      <th>geometry</th>
+      <th>colonia_cve</th>
+      <th>colonia_nombre</th>
+      <th>municipio_cvegeo</th>
+      <th>cuadrante_id</th>
+      <th>categoria</th>
+      <th>lat</th>
+      <th>long</th>
+      <th>dia_hechos</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1024416</td>
+      <td>2020</td>
+      <td>Junio</td>
+      <td>2020-06-18 11:30:00</td>
+      <td>2020</td>
+      <td>Junio</td>
+      <td>2020-06-18T15:41:11</td>
+      <td>AMENAZAS</td>
+      <td>FISCALÍA DE INVESTIGACIÓN TERRITORIAL EN BENIT...</td>
+      <td>BJ-3</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>POINT (-99.16156 19.37454)</td>
+      <td>932</td>
+      <td>LETRAN VALLE</td>
+      <td>09014</td>
+      <td>013</td>
+      <td>NaN</td>
+      <td>19.374543</td>
+      <td>-99.161563</td>
+      <td>2020-06-18</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1024440</td>
+      <td>2020</td>
+      <td>Junio</td>
+      <td>2020-06-18 16:00:00</td>
+      <td>2020</td>
+      <td>Junio</td>
+      <td>2020-06-18T16:25:08</td>
+      <td>ROBO A NEGOCIO SIN VIOLENCIA POR FARDEROS (TIE...</td>
+      <td>FISCALÍA DE INVESTIGACIÓN TERRITORIAL EN BENIT...</td>
+      <td>BJ-2</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>POINT (-99.16448 19.37081)</td>
+      <td>927</td>
+      <td>STA CRUZ ATOYAC</td>
+      <td>09014</td>
+      <td>013</td>
+      <td>Robo a negocio</td>
+      <td>19.370805</td>
+      <td>-99.164477</td>
+      <td>2020-06-18</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1024417</td>
+      <td>2020</td>
+      <td>Junio</td>
+      <td>2020-06-13 14:00:00</td>
+      <td>2020</td>
+      <td>Junio</td>
+      <td>2020-06-18T15:42:35</td>
+      <td>SUSTRACCIÓN DE MENORES</td>
+      <td>FISCALÍA DE INVESTIGACIÓN TERRITORIAL EN IZTAC...</td>
+      <td>IZC-2</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>POINT (-99.10572 19.39534)</td>
+      <td>898</td>
+      <td>TLACOTAL RAMOS MILLAN</td>
+      <td>09006</td>
+      <td>025</td>
+      <td>NaN</td>
+      <td>19.395336</td>
+      <td>-99.105717</td>
+      <td>2020-06-13</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1024418</td>
+      <td>2020</td>
+      <td>Junio</td>
+      <td>2020-06-18 14:40:00</td>
+      <td>2020</td>
+      <td>Junio</td>
+      <td>2020-06-18T15:42:41</td>
+      <td>ROBO A NEGOCIO CON VIOLENCIA</td>
+      <td>FISCALÍA DE INVESTIGACIÓN TERRITORIAL EN IZTAP...</td>
+      <td>IZP-6</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>POINT (-99.06893 19.31571)</td>
+      <td>389</td>
+      <td>SAN LORENZO TEZONCO (PBLO)</td>
+      <td>09007</td>
+      <td>017</td>
+      <td>Robo a negocio</td>
+      <td>19.315710</td>
+      <td>-99.068925</td>
+      <td>2020-06-18</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1024419</td>
+      <td>2020</td>
+      <td>Mayo</td>
+      <td>2020-05-30 12:00:00</td>
+      <td>2020</td>
+      <td>Junio</td>
+      <td>2020-06-18T15:45:31</td>
+      <td>ROBO DE VEHICULO DE SERVICIO PARTICULAR SIN VI...</td>
+      <td>FISCALÍA DE INVESTIGACIÓN TERRITORIAL EN IZTAP...</td>
+      <td>IZP-5</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>POINT (-99.08480 19.33541)</td>
+      <td>1413</td>
+      <td>SAN JUAN XALPA I</td>
+      <td>09007</td>
+      <td>013</td>
+      <td>Robo de/en vehículo</td>
+      <td>19.335411</td>
+      <td>-99.084796</td>
+      <td>2020-05-30</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>92</th>
+      <td>1024509</td>
+      <td>2020</td>
+      <td>Junio</td>
+      <td>2020-06-03 06:30:00</td>
+      <td>2020</td>
+      <td>Junio</td>
+      <td>2020-06-18T18:19:43</td>
+      <td>ROBO DE OBJETOS DEL INTERIOR DE UN VEHICULO</td>
+      <td>FISCALÍA DE INVESTIGACIÓN TERRITORIAL EN IZTAP...</td>
+      <td>IZP-6</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>POINT (-99.05389 19.38622)</td>
+      <td>418</td>
+      <td>TEPALCATES I</td>
+      <td>09007</td>
+      <td>0119</td>
+      <td>Robo de/en vehículo</td>
+      <td>19.386222</td>
+      <td>-99.053885</td>
+      <td>2020-06-03</td>
+    </tr>
+    <tr>
+      <th>93</th>
+      <td>1024510</td>
+      <td>2020</td>
+      <td>Mayo</td>
+      <td>2020-05-25 18:00:00</td>
+      <td>2020</td>
+      <td>Junio</td>
+      <td>2020-06-18T18:21:58</td>
+      <td>CONTRA LA INTIMIDAD SEXUAL</td>
+      <td>FISCALÍA DE INVESTIGACIÓN TERRITORIAL EN XOCHI...</td>
+      <td>XO-2</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>POINT (-99.08073 19.25275)</td>
+      <td>1734</td>
+      <td>XICALHUACAN</td>
+      <td>09013</td>
+      <td>046</td>
+      <td>NaN</td>
+      <td>19.252751</td>
+      <td>-99.080732</td>
+      <td>2020-05-25</td>
+    </tr>
+    <tr>
+      <th>94</th>
+      <td>1024511</td>
+      <td>2020</td>
+      <td>Abril</td>
+      <td>2020-04-22 12:00:00</td>
+      <td>2020</td>
+      <td>Junio</td>
+      <td>2020-06-18T18:21:59</td>
+      <td>VIOLENCIA FAMILIAR</td>
+      <td>FISCALÍA DE INVESTIGACIÓN DE DELITOS COMETIDOS...</td>
+      <td>59</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>POINT (-99.20923 19.21245)</td>
+      <td>1702</td>
+      <td>SANTO TOMAS AJUSCO (PBLO)</td>
+      <td>09012</td>
+      <td>046</td>
+      <td>NaN</td>
+      <td>19.212447</td>
+      <td>-99.209233</td>
+      <td>2020-04-22</td>
+    </tr>
+    <tr>
+      <th>95</th>
+      <td>1024513</td>
+      <td>2020</td>
+      <td>Junio</td>
+      <td>2020-06-18 14:50:00</td>
+      <td>2020</td>
+      <td>Junio</td>
+      <td>2020-06-18T18:24:18</td>
+      <td>VIOLACION</td>
+      <td>FISCALÍA DE INVESTIGACIÓN DE DELITOS SEXUALES</td>
+      <td>FDS-6</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>POINT (-99.04474 19.31090)</td>
+      <td>1495</td>
+      <td>LA ESTACION</td>
+      <td>09011</td>
+      <td>031</td>
+      <td>NaN</td>
+      <td>19.310901</td>
+      <td>-99.044741</td>
+      <td>2020-06-18</td>
+    </tr>
+    <tr>
+      <th>96</th>
+      <td>1024514</td>
+      <td>2020</td>
+      <td>Mayo</td>
+      <td>2020-05-21 10:00:00</td>
+      <td>2020</td>
+      <td>Junio</td>
+      <td>2020-06-18T18:26:39</td>
+      <td>FRAUDE</td>
+      <td>FISCALÍA DE INVESTIGACIÓN TERRITORIAL EN VENUS...</td>
+      <td>VC-3</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>POINT (-99.10350 19.41763)</td>
+      <td>847</td>
+      <td>JARDIN BALBUENA I</td>
+      <td>09017</td>
+      <td>036</td>
+      <td>NaN</td>
+      <td>19.417634</td>
+      <td>-99.103504</td>
+      <td>2020-05-21</td>
+    </tr>
+  </tbody>
+</table>
+<p>97 rows × 29 columns</p>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">carpetas_todas</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(1212892, 27)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="s1">&#39;01/01/2016&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Timestamp(&#39;2016-01-01 00:00:00&#39;)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">c</span><span class="o">.</span><span class="n">fecha_hechos</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Timestamp(&#39;2016-01-01 00:05:00&#39;)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
 </div>
  
 
