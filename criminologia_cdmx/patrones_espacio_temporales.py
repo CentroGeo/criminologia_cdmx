@@ -58,13 +58,13 @@ def kde2D(x, y, bandwidth, xbins=100j, ybins=100j):
     return xx, yy, np.reshape(z, xx.shape)
 
 # Cell
-def serie_tiempo_kde_categoria(carpetas, fechas, categoria, offset, **kwargs):
+def serie_tiempo_kde_categoria(carpetas, fechas, categorias, offset, **kwargs):
     """Regresa una lista con los KDEs ajustados para cada intervalo definido por fechas.
 
        parameters:
        carpetas: Las carpetas de investigación (preprocesadas)
        fechas: lista de fechas con los extremos de los intervalos
-       categoria: Nombre de la categoría para calcular el KDE
+       categorias: Lista de categorías para calcular el KDE
        offset: intervalo para agregar antes de la primera fecha, p.ej: "30 days" si los intervalos son mensuales
        **kwargs: argumentos extra que se pasan a `kde2D`
     """
@@ -73,10 +73,10 @@ def serie_tiempo_kde_categoria(carpetas, fechas, categoria, offset, **kwargs):
     for i, fecha in enumerate(fechas):
         if i == 0:
             datos_intervalo = carpetas.loc[(carpetas['fecha_hechos'].between(pd.to_datetime('1/1/2017'), fecha, inclusive='left')) &
-                                           (carpetas['categoria'] == categoria)]
+                                           (carpetas['categoria'].isin(categorias))]
         else:
             datos_intervalo = carpetas.loc[(carpetas['fecha_hechos'].between(fechas[i-1], fecha, inclusive='left')) &
-                                           (carpetas['categoria'] == categoria)]
+                                           (carpetas['categoria'].isin(categorias))]
         x = datos_intervalo.geometry.x.to_numpy()
         y = datos_intervalo.geometry.y.to_numpy()
         params = {'bandwidth': np.linspace(0.001, 0.1, 100)}
