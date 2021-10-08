@@ -576,7 +576,7 @@ carpetas[['delito', 'categoria']]
 ## Serie de tiempo por categoría
 
 ````Python
-
+serie = serie_de_tiempo_categoria(carpetas_todas, pd.to_datetime('01/01/2016'), 'Robo a pasajero')
 ````
 
 ## Patrones espacio temporales
@@ -622,7 +622,7 @@ Para usar esta función no es necesario agregar los ids de unidades espaciales
 carpetas = get_historico_carpetas()
 carpetas = agregar_categorias_de_usuario(carpetas)
 fechas = pd.date_range(start='1/1/2017', end='1/1/2020', freq='M').to_list()
-kdes = serie_tiempo_kde_categoria(carpetas, fechas, "Homicidios dolosos", "30 days")
+xx, yy, kdes = serie_tiempo_kde_categoria(carpetas, fechas, ["Homicidios dolosos"], "30 days")
 ```
 
     /tmp/ipykernel_25308/253724238.py:1: DtypeWarning: Columns (15) have mixed types.Specify dtype option on import or set low_memory=False.
@@ -642,16 +642,8 @@ def data(t):
 
 fig = plt.figure(figsize=(10,10))
 ax = fig.gca(projection='3d')
-XX = kdes[0][0]
-YY = kdes[0][1]
-surf = ax.plot_surface(XX, YY, kdes[0][2],cmap='viridis', edgecolor='none', antialiased=False)
+surf = ax.plot_surface(xx, yy, kdes[0][2],cmap='viridis', edgecolor='none', antialiased=False)
 ax.set_zlim(0, 50)
-# ax.zaxis.set_major_locator(LinearLocator(10))
-# fig.colorbar(surf, shrink=0.5, aspect=10)
-# ax.set_xlabel('X nodes - Axis')
-# ax.set_ylabel('Y nodes - Axis')
-# ax.set_zlabel('Value')
-
 ani = animation.FuncAnimation(fig, data, len(kdes), interval=50, repeat=False )
 plt.show()
 ```
