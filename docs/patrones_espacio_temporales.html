@@ -59,7 +59,7 @@ nb_path: "01_patrones_espacio_temporales.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="ajusta_bandwidth_kde" class="doc_header"><code>ajusta_bandwidth_kde</code><a href="https://github.com/plablo09/criminologia_cdmx/tree/master/criminologia_cdmx/patrones_espacio_temporales.py#L15" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>ajusta_bandwidth_kde</code>(<strong><code>x</code></strong>, <strong><code>y</code></strong>, <strong><code>bandwidth_space</code></strong>, <strong><code>xbins</code></strong>=<em><code>100j</code></em>, <strong><code>ybins</code></strong>=<em><code>100j</code></em>, <strong><code>n_jobs</code></strong>=<em><code>-1</code></em>, <strong>**<code>kwargs</code></strong>)</p>
+<h4 id="ajusta_bandwidth_kde" class="doc_header"><code>ajusta_bandwidth_kde</code><a href="https://github.com/plablo09/criminologia_cdmx/tree/master/criminologia_cdmx/patrones_espacio_temporales.py#L16" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>ajusta_bandwidth_kde</code>(<strong><code>x</code></strong>, <strong><code>y</code></strong>, <strong><code>bandwidth_space</code></strong>, <strong><code>xbins</code></strong>=<em><code>100j</code></em>, <strong><code>ybins</code></strong>=<em><code>100j</code></em>, <strong><code>n_jobs</code></strong>=<em><code>-1</code></em>, <strong>**<code>kwargs</code></strong>)</p>
 </blockquote>
 <p>Regresa el valor de bandwidth con mejor log likelihood.</p>
 <p>Parametros:
@@ -165,7 +165,7 @@ xbins, ybins: complejos de numpy con el número de bins en x y y</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="kde2D" class="doc_header"><code>kde2D</code><a href="https://github.com/plablo09/criminologia_cdmx/tree/master/criminologia_cdmx/patrones_espacio_temporales.py#L36" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>kde2D</code>(<strong><code>x</code></strong>, <strong><code>y</code></strong>, <strong><code>bandwidth</code></strong>, <strong><code>xbins</code></strong>=<em><code>100j</code></em>, <strong><code>ybins</code></strong>=<em><code>100j</code></em>)</p>
+<h4 id="kde2D" class="doc_header"><code>kde2D</code><a href="https://github.com/plablo09/criminologia_cdmx/tree/master/criminologia_cdmx/patrones_espacio_temporales.py#L37" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>kde2D</code>(<strong><code>x</code></strong>, <strong><code>y</code></strong>, <strong><code>bandwidth</code></strong>, <strong><code>xbins</code></strong>=<em><code>100j</code></em>, <strong><code>ybins</code></strong>=<em><code>100j</code></em>)</p>
 </blockquote>
 <p>Regresa una matriz con la densidad de kernel para los puntos x,y.</p>
 <p>Parametros:
@@ -255,7 +255,7 @@ xbins, ybins: complejos de numpy con el número de bins en x y y</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="serie_tiempo_kde_categoria" class="doc_header"><code>serie_tiempo_kde_categoria</code><a href="https://github.com/plablo09/criminologia_cdmx/tree/master/criminologia_cdmx/patrones_espacio_temporales.py#L61" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>serie_tiempo_kde_categoria</code>(<strong><code>carpetas</code></strong>, <strong><code>fechas</code></strong>, <strong><code>categorias</code></strong>, <strong><code>offset</code></strong>, <strong><code>grid_search</code></strong>=<em><code>{'bandwidth': array([0.001     , 0.00621053, 0.01142105, 0.01663158, 0.02184211,
+<h4 id="serie_tiempo_kde_categoria" class="doc_header"><code>serie_tiempo_kde_categoria</code><a href="https://github.com/plablo09/criminologia_cdmx/tree/master/criminologia_cdmx/patrones_espacio_temporales.py#L62" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>serie_tiempo_kde_categoria</code>(<strong><code>carpetas</code></strong>, <strong><code>fechas</code></strong>, <strong><code>categorias</code></strong>, <strong><code>offset</code></strong>, <strong><code>grid_search</code></strong>=<em><code>{'bandwidth': array([0.001     , 0.00621053, 0.01142105, 0.01663158, 0.02184211,
        0.02705263, 0.03226316, 0.03747368, 0.04268421, 0.04789474,
        0.05310526, 0.05831579, 0.06352632, 0.06873684, 0.07394737,
        0.07915789, 0.08436842, 0.08957895, 0.09478947, 0.1       ])}</code></em>, <strong><code>bw</code></strong>=<em><code>None</code></em>, <strong>**<code>kwargs</code></strong>)</p>
@@ -313,7 +313,7 @@ bandwidth: Si no se especifica grid_search, se tiene que dar un valor de bandwid
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>/tmp/ipykernel_12889/2891201972.py:1: DtypeWarning: Columns (15) have mixed types.Specify dtype option on import or set low_memory=False.
+<pre>/tmp/ipykernel_25164/2891201972.py:1: DtypeWarning: Columns (15) have mixed types.Specify dtype option on import or set low_memory=False.
   carpetas = get_historico_carpetas()
 </pre>
 </div>
@@ -325,6 +325,12 @@ bandwidth: Si no se especifica grid_search, se tiene que dar un valor de bandwid
 </div>
     {% endraw %}
 
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="serie_razones_de_eventos">serie_razones_de_eventos<a class="anchor-link" href="#serie_razones_de_eventos"> </a></h2>
+</div>
+</div>
+</div>
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
@@ -336,7 +342,7 @@ bandwidth: Si no se especifica grid_search, se tiene que dar un valor de bandwid
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="serie_razones_de_eventos" class="doc_header"><code>serie_razones_de_eventos</code><a href="https://github.com/plablo09/criminologia_cdmx/tree/master/criminologia_cdmx/patrones_espacio_temporales.py#L97" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>serie_razones_de_eventos</code>(<strong><code>carpetas</code></strong>, <strong><code>fechas</code></strong>, <strong><code>categoria</code></strong>, <strong><code>offset</code></strong>, <strong>**<code>kwargs</code></strong>)</p>
+<h4 id="serie_razones_de_eventos" class="doc_header"><code>serie_razones_de_eventos</code><a href="https://github.com/plablo09/criminologia_cdmx/tree/master/criminologia_cdmx/patrones_espacio_temporales.py#L98" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>serie_razones_de_eventos</code>(<strong><code>carpetas</code></strong>, <strong><code>fechas</code></strong>, <strong><code>categoria</code></strong>, <strong><code>offset</code></strong>, <strong>**<code>kwargs</code></strong>)</p>
 </blockquote>
 <p>Regresa el mapa de razón entre una categoría con respecto a las demás.</p>
 
@@ -365,7 +371,7 @@ bandwidth: Si no se especifica grid_search, se tiene que dar un valor de bandwid
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
-<span class="n">serie_razones</span> <span class="o">=</span> <span class="n">serie_razones_de_eventos</span><span class="p">(</span><span class="n">carpetas</span><span class="p">,</span> <span class="n">fechas</span><span class="p">,</span> <span class="s2">&quot;Homicidios dolosos&quot;</span><span class="p">,</span> <span class="s2">&quot;30 days&quot;</span><span class="p">)</span>
+<span class="n">serie_razones</span> <span class="o">=</span> <span class="n">serie_razones_de_eventos</span><span class="p">(</span><span class="n">carpetas</span><span class="p">,</span> <span class="n">fechas</span><span class="p">,</span> <span class="s2">&quot;Homicidios dolosos&quot;</span><span class="p">,</span> <span class="s2">&quot;30 days&quot;</span><span class="p">,</span> <span class="n">bw</span><span class="o">=</span><span class="mf">0.001</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -378,8 +384,8 @@ bandwidth: Si no se especifica grid_search, se tiene que dar un valor de bandwid
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>CPU times: user 3min 4s, sys: 4.75 s, total: 3min 8s
-Wall time: 26min 4s
+<pre>CPU times: user 1min 57s, sys: 378 ms, total: 1min 58s
+Wall time: 1min 57s
 </pre>
 </div>
 </div>
@@ -387,12 +393,118 @@ Wall time: 26min 4s
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>/tmp/ipykernel_22181/1351864224.py:8: RuntimeWarning: divide by zero encountered in true_divide
-  serie_razones = [np.divide(e, b, out=np.zeros_like(e), where=b!=0) for e, b in zip(kde_evento, kde_base)]
-/tmp/ipykernel_22181/1351864224.py:8: RuntimeWarning: overflow encountered in true_divide
-  serie_razones = [np.divide(e, b, out=np.zeros_like(e), where=b!=0) for e, b in zip(kde_evento, kde_base)]
+<pre>/tmp/ipykernel_25164/2558243834.py:8: RuntimeWarning: overflow encountered in true_divide
+  serie_razones = [np.divide(e, b, out=np.zeros_like(e), where=b!=0) for e, b in zip(kdes_categoria, kdes_base)]
 </pre>
 </div>
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="serie_mapas_intensidad">serie_mapas_intensidad<a class="anchor-link" href="#serie_mapas_intensidad"> </a></h2>
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="serie_mapas_intensidad" class="doc_header"><code>serie_mapas_intensidad</code><a href="https://github.com/plablo09/criminologia_cdmx/tree/master/criminologia_cdmx/patrones_espacio_temporales.py#L109" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>serie_mapas_intensidad</code>(<strong><code>carpetas</code></strong>, <strong><code>fechas</code></strong>, <strong><code>categoria</code></strong>, <strong><code>offset</code></strong>, <strong>**<code>kwargs</code></strong>)</p>
+</blockquote>
+<p>Regresa los mapas de razon y las intensidades de la categoría para las <code>fechas</code> seleccionadas.</p>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="p_value_maps">p_value_maps<a class="anchor-link" href="#p_value_maps"> </a></h2>
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="p_value_maps" class="doc_header"><code>p_value_maps</code><a href="https://github.com/plablo09/criminologia_cdmx/tree/master/criminologia_cdmx/patrones_espacio_temporales.py#L118" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>p_value_maps</code>(<strong><code>razones</code></strong>)</p>
+</blockquote>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span> <span class="o">&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span> 
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([False,  True,  True])</pre>
+</div>
+
 </div>
 
 </div>

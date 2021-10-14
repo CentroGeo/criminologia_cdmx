@@ -14,7 +14,9 @@ index = {"DATA_PATH": "00_etl.ipynb",
          "ajusta_bandwidth_kde": "01_patrones_espacio_temporales.ipynb",
          "kde2D": "01_patrones_espacio_temporales.ipynb",
          "serie_tiempo_kde_categoria": "01_patrones_espacio_temporales.ipynb",
-         "serie_razones_de_eventos": "01_patrones_espacio_temporales.ipynb"}
+         "serie_razones_de_eventos": "01_patrones_espacio_temporales.ipynb",
+         "serie_mapas_intensidad": "01_patrones_espacio_temporales.ipynb",
+         "p_value_maps": "01_patrones_espacio_temporales.ipynb"}
 
 modules = ["etl.py",
            "patrones_espacio_temporales.py"]
