@@ -99,6 +99,7 @@ def serie_razones_de_eventos(carpetas, fechas, categoria, offset, **kwargs):
     """Regresa el mapa de razón entre una categoría con respecto a las demás."""
     xx, yy, kdes_categoria = serie_tiempo_kde_categoria(carpetas, fechas, [categoria], offset, **kwargs)
     categorias_todas = list(carpetas[carpetas.categoria.notnull()]['categoria'].unique())
+    categorias_todas.remove(categoria)
     xx, yy, kdes_base = serie_tiempo_kde_categoria(carpetas, fechas, categorias_todas, offset, **kwargs)
     # TODO: vectorizar esta operación np.divide(a, b, out=np.zeros_like(a), where=b!=0)
     serie_razones = [np.divide(np.round(e, 5), np.round(b, 5), out=np.zeros_like(e), where=np.round(b, 5)!=0) for e, b in zip(kdes_categoria, kdes_base)]
@@ -120,6 +121,6 @@ def p_value_maps(razones):
     for r in razones:
         comp = [b >= r for b in razones]
         comp = np.sum(comp, axis=0)
-        p = comp / len(razones) + 1
+        p = comp / (len(razones) + 1)
         p_values.append(p)
     return p_values
