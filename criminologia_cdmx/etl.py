@@ -2,7 +2,7 @@
 
 __all__ = ['DATA_PATH', 'DOWNLOADS_PATH', 'get_carpetas_from_api', 'get_historico_carpetas',
            'get_carpetas_desde_archivo', 'agrega_ids_espaciales', 'agregar_categorias_de_usuario',
-           'exporta_datos_vusualizador', 'serie_de_tiempo_categoria']
+           'exporta_datos_vusualizador', 'serie_de_tiempo_categoria', 'punto_to_hexid', 'agrega_en_hexagonos']
 
 # Cell
 import os
@@ -15,6 +15,8 @@ import geopandas as gpd
 from datetime import timedelta, date, datetime
 import seaborn as sns
 import requests
+import h3
+from shapely.geometry import Polygon
 
 # Cell
 DATA_PATH = "datos/"
@@ -119,3 +121,23 @@ def serie_de_tiempo_categoria(carpetas, fecha_inicio, categoria, freq='M'):
              .rename({0:categoria}, axis=1)
             )
     return serie
+
+# Cell
+def punto_to_hexid(punto, resolution):
+    """Regresa el hexid (h3) del punto."""
+    return h3.geo_to_h3(punto.y, punto.x, resolution)
+
+# Cell
+def agrega_en_hexagonos(puntos, resolution):
+    """Regresa un GeoDataFrame con las cuentas de puntos agregadas en hexágonos.
+
+       params:
+       puntos: GeoDataFrame: los puntos a agregar
+       resolution: int: la resolución en uber.h3
+    """
+    puntos.loc[:,'hex_id'] = puntos.loc[:,'geometry'].apply(punto_to_hexid, args=[resolution])
+    by_hex = puntos.groupby('hex_id').size().reset_index()
+    # by_hex['geometry'] = by_hex['hex_id'].apply(lambda hex_id: Polygon(h3.h3_to_geo_boundary(hex_id)))
+    by_hex['geometry'] = by_hex['hex_id'].apply(lambda hex_id: Polygon([x[::-1] for x in h3.h3_to_geo_boundary(hex_id)]))
+    by_hex = gpd.GeoDataFrame(by_hex).rename({0:'incidentes'}, axis=1).set_crs(epsg=4326)
+    return by_hex
