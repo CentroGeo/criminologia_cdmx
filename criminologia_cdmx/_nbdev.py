@@ -9,7 +9,7 @@ index = {"DATA_PATH": "00_etl.ipynb",
          "get_carpetas_desde_archivo": "00_etl.ipynb",
          "agrega_ids_espaciales": "00_etl.ipynb",
          "agregar_categorias_de_usuario": "00_etl.ipynb",
-         "exporta_datos_vusualizador": "00_etl.ipynb",
+         "exporta_datos_visualizador": "00_etl.ipynb",
          "serie_de_tiempo_categoria": "00_etl.ipynb",
          "punto_to_hexid": "00_etl.ipynb",
          "agrega_en_hexagonos": "00_etl.ipynb",
@@ -23,8 +23,8 @@ index = {"DATA_PATH": "00_etl.ipynb",
 modules = ["etl.py",
            "patrones_espacio_temporales.py"]
 
-doc_url = "https://plablo09.github.io/criminologia_cdmx/"
+doc_url = "https://pages.github.CentroGeo.com./criminologia_cdmx/criminologia_cdmx/"
 
-git_url = "https://github.com/plablo09/criminologia_cdmx/tree/master/"
+git_url = "https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/"
 
 def custom_doc_links(name): return None

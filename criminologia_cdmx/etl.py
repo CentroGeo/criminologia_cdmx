@@ -2,7 +2,7 @@
 
 __all__ = ['DATA_PATH', 'DOWNLOADS_PATH', 'get_carpetas_from_api', 'get_historico_carpetas',
            'get_carpetas_desde_archivo', 'agrega_ids_espaciales', 'agregar_categorias_de_usuario',
-           'exporta_datos_vusualizador', 'serie_de_tiempo_categoria', 'punto_to_hexid', 'agrega_en_hexagonos']
+           'exporta_datos_visualizador', 'serie_de_tiempo_categoria', 'punto_to_hexid', 'agrega_en_hexagonos']
 
 # Cell
 import os
@@ -93,7 +93,7 @@ def agregar_categorias_de_usuario(carpetas, archivo_categorias="datos/categorias
     return carpetas
 
 # Cell
-def exporta_datos_vusualizador(carpetas, archivo_resultado):
+def exporta_datos_visualizador(carpetas, archivo_resultado):
     """ Escribe en archivo_resultado un csv para consumirse en el visualizador."""
     carpetas['lat'] = carpetas.geometry.y
     carpetas['long'] = carpetas.geometry.x
