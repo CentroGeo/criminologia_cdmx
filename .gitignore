@@ -144,3 +144,7 @@ checklink/cookies.txt
 # exclude downloads folder content
 datos/descargas/*
 !datos/descargas/.gitkeep
+
+# exclude outputs folder content
+datos/salidas/*
+!datos/salidas/.gitkeep
