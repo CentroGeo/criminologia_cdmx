@@ -15,7 +15,9 @@ from criminologia_cdmx.etl import *
 
 ### Bajar datos abiertos
 
-Hay dos formas de bajar los datos abiertos, la primera es usando el api que baja las primeras `limit` carpetas de la base abierta
+Podemos bajar dos fuentes de datos: [carpetas de investigación](https://datos.cdmx.gob.mx/dataset/carpetas-de-investigacion-fgj-de-la-ciudad-de-mexico) y [víctimas en carpetas de investigación](https://datos.cdmx.gob.mx/dataset/victimas-en-carpetas-de-investigacion-fgj/resource/d543a7b1-f8cb-439f-8a5c-e56c5479eeb5).
+
+Hay dos formas de bajar los datos abiertos, la primera es usando el api que baja las primeras `limit` carpetas/víctimas de la base abierta
 
 ```python
 carpetas = get_carpetas_from_api(limit=100)
@@ -194,13 +196,198 @@ carpetas.head()
 
 
 
+```python
+victimas = get_victimas_from_api(limit=100)
+victimas.head()
+```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>_id</th>
+      <th>idCarpeta</th>
+      <th>Ano_inicio</th>
+      <th>Mes_inicio</th>
+      <th>FechaInicio</th>
+      <th>Delito</th>
+      <th>Categoria</th>
+      <th>Sexo</th>
+      <th>Edad</th>
+      <th>TipoPersona</th>
+      <th>...</th>
+      <th>FechaHecho</th>
+      <th>HoraHecho</th>
+      <th>HoraInicio</th>
+      <th>AlcaldiaHechos</th>
+      <th>ColoniaHechos</th>
+      <th>Calle_hechos</th>
+      <th>Calle_hechos2</th>
+      <th>latitud</th>
+      <th>longitud</th>
+      <th>geometry</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>8324429</td>
+      <td>2019</td>
+      <td>Enero</td>
+      <td>2019-04-01T00:00:00</td>
+      <td>FRAUDE</td>
+      <td>DELITO DE BAJO IMPACTO</td>
+      <td>Masculino</td>
+      <td>62</td>
+      <td>FISICA</td>
+      <td>...</td>
+      <td>2018-08-29</td>
+      <td>12:00:00</td>
+      <td>12:19:00</td>
+      <td>ALVARO OBREGON</td>
+      <td>GUADALUPE INN</td>
+      <td>INSUGENTES SUR</td>
+      <td>NaN</td>
+      <td>19.36125</td>
+      <td>-99.18314</td>
+      <td>POINT (-99.18314 19.36125)</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>8324430</td>
+      <td>2019</td>
+      <td>Enero</td>
+      <td>2019-04-01T00:00:00</td>
+      <td>PRODUCCIÓN, IMPRESIÓN, ENAJENACIÓN, DISTRIBUCI...</td>
+      <td>DELITO DE BAJO IMPACTO</td>
+      <td>Femenino</td>
+      <td>38</td>
+      <td>FISICA</td>
+      <td>...</td>
+      <td>2018-12-15</td>
+      <td>15:00:00</td>
+      <td>12:20:00</td>
+      <td>AZCAPOTZALCO</td>
+      <td>VICTORIA DE LAS DEMOCRACIAS</td>
+      <td>AV.  CUATLAHUAC</td>
+      <td>NaN</td>
+      <td>19.47181</td>
+      <td>-99.16458</td>
+      <td>POINT (-99.16458 19.47181)</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>8324431</td>
+      <td>2019</td>
+      <td>Enero</td>
+      <td>2019-04-01T00:00:00</td>
+      <td>ROBO A TRANSEUNTE SALIENDO DEL BANCO CON VIOLE...</td>
+      <td>ROBO A CUENTAHABIENTE SALIENDO DEL CAJERO CON ...</td>
+      <td>Masculino</td>
+      <td>42</td>
+      <td>FISICA</td>
+      <td>...</td>
+      <td>2018-12-22</td>
+      <td>15:30:00</td>
+      <td>12:23:00</td>
+      <td>COYOACAN</td>
+      <td>COPILCO UNIVERSIDAD ISSSTE</td>
+      <td>COPILCO</td>
+      <td>NaN</td>
+      <td>19.33797</td>
+      <td>-99.18611</td>
+      <td>POINT (-99.18611 19.33797)</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>8324435</td>
+      <td>2019</td>
+      <td>Enero</td>
+      <td>2019-04-01T00:00:00</td>
+      <td>ROBO DE VEHICULO DE SERVICIO PARTICULAR SIN VI...</td>
+      <td>ROBO DE VEHÍCULO CON Y SIN VIOLENCIA</td>
+      <td>Masculino</td>
+      <td>35</td>
+      <td>FISICA</td>
+      <td>...</td>
+      <td>2019-04-01</td>
+      <td>06:00:00</td>
+      <td>12:27:00</td>
+      <td>IZTACALCO</td>
+      <td>AGRÍCOLA PANTITLAN</td>
+      <td>CALLE 6</td>
+      <td>ENTRE PRIVADA DEL VALLE Y PRIVADA GONZALEZ</td>
+      <td>19.40327</td>
+      <td>-99.05983</td>
+      <td>POINT (-99.05983 19.40327)</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>8324438</td>
+      <td>2019</td>
+      <td>Enero</td>
+      <td>2019-04-01T00:00:00</td>
+      <td>ROBO DE MOTOCICLETA SIN VIOLENCIA</td>
+      <td>ROBO DE VEHÍCULO CON Y SIN VIOLENCIA</td>
+      <td>Masculino</td>
+      <td>NaN</td>
+      <td>FISICA</td>
+      <td>...</td>
+      <td>2019-03-01</td>
+      <td>20:00:00</td>
+      <td>12:35:00</td>
+      <td>IZTAPALAPA</td>
+      <td>PROGRESISTA</td>
+      <td>UNIVERSIDAD</td>
+      <td>NaN</td>
+      <td>19.3548</td>
+      <td>-99.06324</td>
+      <td>POINT (-99.06324 19.35480)</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 24 columns</p>
+</div>
+
+
+
 La segunda es bajar el histórico completo:
 
 ````Python
 carpetas_todas = get_historico_carpetas()
+victimas_todas = get_historico_victimas()
 ````
 
-## Agregar identificadores espaciales
+También es posible procesar los datos a partir de un archivo guardado en la computadora, ya sea obtenido de la página de datos abiertos o guardado con las funciones `get_historico_carpetas`/`get_historico_victimas`.
+
+````Python
+carpetas = get_carpetas_desde_archivo("path-a-los-datos")
+victimas_todas = get_victimas_desde_archivo("path-a-los-datos")
+````
+
+## Agregar identificadores espaciales (carpetas o victimas)
 
 Para agregar los identificadores de colonia y cuadrante:
 
@@ -609,7 +796,7 @@ ax.plot_surface(xx, yy, zz,cmap='viridis', edgecolor='none')
 
 
 
-![png](docs/images/output_16_1.png)
+![png](docs/images/output_18_1.png)
 
 
 ### Serie de tiempo de KDEs por categoría
