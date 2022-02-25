@@ -148,3 +148,7 @@ datos/descargas/*
 # exclude outputs folder content
 datos/salidas/*
 !datos/salidas/.gitkeep
+
+# exclude img folder content
+img/*
+!img/.gitkeep
