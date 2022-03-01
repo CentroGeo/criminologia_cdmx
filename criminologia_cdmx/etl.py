@@ -2,7 +2,7 @@
 
 __all__ = ['DATA_PATH', 'DOWNLOADS_PATH', 'get_carpetas_from_api', 'get_victimas_from_api', 'get_historico_carpetas',
            'get_historico_victimas', 'get_carpetas_desde_archivo', 'get_victimas_desde_archivo',
-           'agrega_ids_espaciales', 'agregar_categorias_de_usuario', 'exporta_datos_visualizador',
+           'agrega_ids_espaciales', 'agregar_categorias_carpetas', 'exporta_datos_visualizador',
            'serie_de_tiempo_categoria', 'punto_to_hexid', 'agrega_en_hexagonos']
 
 # Cell
@@ -117,7 +117,7 @@ def agrega_ids_espaciales(carpetas):
     return carpetas
 
 # Cell
-def agregar_categorias_de_usuario(carpetas, archivo_categorias="datos/categorias_incidentes.csv"):
+def agregar_categorias_carpetas(carpetas, archivo_categorias="datos/categorias_carpetas.csv"):
     """Agrega una columna con categorías definidas por el usuario.
 
       Las categorías tienen que venir en un csv con columnas incidente y categoria que

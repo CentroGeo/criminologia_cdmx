@@ -473,7 +473,7 @@ nb_path: "00_etl.ipynb"
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="agregar_categorias_de_usuario">agregar_categorias_de_usuario<a class="anchor-link" href="#agregar_categorias_de_usuario"> </a></h2>
+<h2 id="agregar_categorias_carpetas">agregar_categorias_carpetas<a class="anchor-link" href="#agregar_categorias_carpetas"> </a></h2>
 </div>
 </div>
 </div>
@@ -488,7 +488,7 @@ nb_path: "00_etl.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="agregar_categorias_de_usuario" class="doc_header"><code>agregar_categorias_de_usuario</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/etl.py#L120" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>agregar_categorias_de_usuario</code>(<strong><code>carpetas</code></strong>, <strong><code>archivo_categorias</code></strong>=<em><code>'datos/categorias_incidentes.csv'</code></em>)</p>
+<h4 id="agregar_categorias_carpetas" class="doc_header"><code>agregar_categorias_carpetas</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/etl.py#L120" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>agregar_categorias_carpetas</code>(<strong><code>carpetas</code></strong>, <strong><code>archivo_categorias</code></strong>=<em><code>'datos/categorias_carpetas.csv'</code></em>)</p>
 </blockquote>
 <p>Agrega una columna con categorías definidas por el usuario.</p>
 <p>Las categorías tienen que venir en un csv con columnas incidente y categoria que
@@ -518,7 +518,7 @@ relacionen las categorías del usuario con la columna delitos de la base de carp
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">carpetas</span> <span class="o">=</span> <span class="n">agregar_categorias_de_usuario</span><span class="p">(</span><span class="n">carpetas</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">carpetas</span> <span class="o">=</span> <span class="n">agregar_categorias_carpetas</span><span class="p">(</span><span class="n">carpetas</span><span class="p">)</span>
 <span class="k">assert</span> <span class="s1">&#39;categoria&#39;</span> <span class="ow">in</span> <span class="n">carpetas</span><span class="o">.</span><span class="n">columns</span>
 </pre></div>
 
@@ -607,7 +607,7 @@ relacionen las categorías del usuario con la columna delitos de la base de carp
 <p>parameters:
 carpetas: incidentes, deben traer la columna categoria
 fecha_inicio: pd.datetime fecha del inicio de la serie
-categoria: nombre de la categoría a agregar (<a href="/criminologia_cdmx/criminologia_cdmx/etl.html#agregar_categorias_de_usuario"><code>agregar_categorias_de_usuario</code></a>)
+categoria: nombre de la categoría a agregar (<code>agregar_categorias_de_usuario</code>)
 freq: frecuencia de agregación (<a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#offset-aliases">https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#offset-aliases</a>)</p>
 
 </div>
