@@ -2,8 +2,8 @@
 
 __all__ = ['DATA_PATH', 'DOWNLOADS_PATH', 'get_carpetas_from_api', 'get_victimas_from_api', 'get_historico_carpetas',
            'get_historico_victimas', 'get_carpetas_desde_archivo', 'get_victimas_desde_archivo',
-           'agrega_ids_espaciales', 'agregar_categorias_carpetas', 'exporta_datos_visualizador',
-           'serie_de_tiempo_categoria', 'punto_to_hexid', 'agrega_en_hexagonos']
+           'agrega_ids_espaciales', 'agregar_categorias_carpetas', 'agregar_categorias_victimas',
+           'exporta_datos_visualizador', 'serie_de_tiempo_categoria', 'punto_to_hexid', 'agrega_en_hexagonos']
 
 # Cell
 import os
@@ -131,6 +131,22 @@ def agregar_categorias_carpetas(carpetas, archivo_categorias="datos/categorias_c
     carpetas = (carpetas
                 .merge(categorias, left_on='delito', right_on='incidente', how='left')
                 .drop(columns='incidente'))
+    return carpetas
+
+# Cell
+def agregar_categorias_victimas(carpetas, archivo_categorias="datos/categorias_victimas.csv"):
+    """Columnas con niveles definidos por el usuario
+
+      Las categorías tienen que venir en un csv con columnas llamadas Nivel 1, Nivel 2 ...
+      que relacionen los niveles con las columnas Delito y Categoría en la base de Víctimas.
+    """
+    columnas_nivel = [c for c in carpetas.columns if 'Nivel' in c]
+    if len(columnas_nivel):
+        carpetas = carpetas.drop(columns=columnas_nivel)
+    categorias = pd.read_csv(archivo_categorias)
+    carpetas = (carpetas
+                .merge(categorias, left_on='Delito', right_on='Delito', how='left')
+                )
     return carpetas
 
 # Cell

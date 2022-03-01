@@ -668,93 +668,259 @@ categorias
 Entonces podemos agregar las categorías a nuestra base
 
 ```python
-carpetas = agregar_categorias_de_usuario(carpetas)
+carpetas = agregar_categorias_carpetas(carpetas)
 carpetas[['delito', 'categoria']]
+```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>delito</th>
+      <th>categoria</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>ALLANAMIENTO DE MORADA, DESPACHO, OFICINA O ES...</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>AMENAZAS</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>NARCOMENUDEO POSESION SIMPLE</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>ENCUBRIMIENTO</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>ROBO A TRANSEUNTE EN VIA PUBLICA SIN VIOLENCIA</td>
+      <td>Robo a transeúnte</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>90</th>
+      <td>VIOLENCIA FAMILIAR</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>91</th>
+      <td>ROBO A NEGOCIO SIN VIOLENCIA</td>
+      <td>Robo a negocio</td>
+    </tr>
+    <tr>
+      <th>92</th>
+      <td>ABUSO SEXUAL</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>93</th>
+      <td>AMENAZAS</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>94</th>
+      <td>ROBO A CASA HABITACION SIN VIOLENCIA</td>
+      <td>Robo a casa habitación</td>
+    </tr>
+  </tbody>
+</table>
+<p>95 rows × 2 columns</p>
+</div>
+
+
+
+Algo similar se puede hacer para los datos de Víctimas, en este caso el archivo de categorías es un poco diferente
+
+```python
+categorias_victimas = pd.read_csv("datos/categorias_victimas.csv")
+categorias_victimas
+```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Delito</th>
+      <th>Categoria</th>
+      <th>Cantidad</th>
+      <th>Nivel 1</th>
+      <th>Nivel 2</th>
+      <th>Nivel 3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>ABORTO</td>
+      <td>DELITO DE BAJO IMPACTO</td>
+      <td>168</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>ABUSO DE AUTORIDAD Y USO ILEGAL DE LA FUERZA P...</td>
+      <td>DELITO DE BAJO IMPACTO</td>
+      <td>5924</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>ABUSO DE CONFIANZA</td>
+      <td>DELITO DE BAJO IMPACTO</td>
+      <td>12050</td>
+      <td>Abuso de Confianza</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>ABUSO SEXUAL</td>
+      <td>DELITO DE BAJO IMPACTO</td>
+      <td>10238</td>
+      <td>Abuso Sexual</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>ACOSO SEXUAL</td>
+      <td>DELITO DE BAJO IMPACTO</td>
+      <td>2986</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>295</th>
+      <td>VIOLACION TUMULTUARIA</td>
+      <td>VIOLACIÓN</td>
+      <td>74</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>296</th>
+      <td>VIOLACION TUMULTUARIA EQUIPARADA</td>
+      <td>VIOLACIÓN</td>
+      <td>4</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>297</th>
+      <td>VIOLACION TUMULTUARIA EQUIPARADA POR CONOCIDO</td>
+      <td>VIOLACIÓN</td>
+      <td>2</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>298</th>
+      <td>VIOLACION Y ROBO DE VEHICULO</td>
+      <td>VIOLACIÓN</td>
+      <td>1</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>299</th>
+      <td>VIOLENCIA FAMILIAR</td>
+      <td>DELITO DE BAJO IMPACTO</td>
+      <td>94592</td>
+      <td>Violencia Familiar</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>300 rows × 6 columns</p>
+</div>
+
+
+
+Las columnas importantes son `Nivel 1` y `Nivel 2` (podría haber más niveles), esas definen las categorías que se van a asignar a cada fila que se una a los datos de víctimas via la columna `Delito`
+
+```python
+victimas = agregar_categorias_victimas(victimas)
+victimas[['Delito', 'Nivel 1', 'Nivel 2', 'Nivel 3']]
 ```
 
 
     ---------------------------------------------------------------------------
 
-    FileNotFoundError                         Traceback (most recent call last)
+    NameError                                 Traceback (most recent call last)
 
-    /tmp/ipykernel_20820/2797494386.py in <module>
-    ----> 1 carpetas = agregar_categorias_de_usuario(carpetas)
-          2 carpetas[['delito', 'categoria']]
-
-
-    ~/git/criminologia_cdmx/criminologia_cdmx/etl.py in agregar_categorias_de_usuario(carpetas, archivo_categorias)
-        128     if 'incidente' in carpetas.columns:
-        129         carpetas = carpetas.drop(columns='incidente')
-    --> 130     categorias = pd.read_csv(archivo_categorias)
-        131     carpetas = (carpetas
-        132                 .merge(categorias, left_on='delito', right_on='incidente', how='left')
+    /tmp/ipykernel_20820/738531245.py in <module>
+    ----> 1 victimas = agregar_categorias_victimas(victimas)
+          2 victimas[['Delito', 'Nivel 1', 'Nivel 2', 'Nivel 3']]
 
 
-    ~/miniconda3/envs/criminologia/lib/python3.9/site-packages/pandas/util/_decorators.py in wrapper(*args, **kwargs)
-        309                     stacklevel=stacklevel,
-        310                 )
-    --> 311             return func(*args, **kwargs)
-        312 
-        313         return wrapper
-
-
-    ~/miniconda3/envs/criminologia/lib/python3.9/site-packages/pandas/io/parsers/readers.py in read_csv(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, squeeze, prefix, mangle_dupe_cols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, encoding_errors, dialect, error_bad_lines, warn_bad_lines, on_bad_lines, delim_whitespace, low_memory, memory_map, float_precision, storage_options)
-        584     kwds.update(kwds_defaults)
-        585 
-    --> 586     return _read(filepath_or_buffer, kwds)
-        587 
-        588 
-
-
-    ~/miniconda3/envs/criminologia/lib/python3.9/site-packages/pandas/io/parsers/readers.py in _read(filepath_or_buffer, kwds)
-        480 
-        481     # Create the parser.
-    --> 482     parser = TextFileReader(filepath_or_buffer, **kwds)
-        483 
-        484     if chunksize or iterator:
-
-
-    ~/miniconda3/envs/criminologia/lib/python3.9/site-packages/pandas/io/parsers/readers.py in __init__(self, f, engine, **kwds)
-        809             self.options["has_index_names"] = kwds["has_index_names"]
-        810 
-    --> 811         self._engine = self._make_engine(self.engine)
-        812 
-        813     def close(self):
-
-
-    ~/miniconda3/envs/criminologia/lib/python3.9/site-packages/pandas/io/parsers/readers.py in _make_engine(self, engine)
-       1038             )
-       1039         # error: Too many arguments for "ParserBase"
-    -> 1040         return mapping[engine](self.f, **self.options)  # type: ignore[call-arg]
-       1041 
-       1042     def _failover_to_python(self):
-
-
-    ~/miniconda3/envs/criminologia/lib/python3.9/site-packages/pandas/io/parsers/c_parser_wrapper.py in __init__(self, src, **kwds)
-         49 
-         50         # open handles
-    ---> 51         self._open_handles(src, kwds)
-         52         assert self.handles is not None
-         53 
-
-
-    ~/miniconda3/envs/criminologia/lib/python3.9/site-packages/pandas/io/parsers/base_parser.py in _open_handles(self, src, kwds)
-        220         Let the readers open IOHandles after they are done with their potential raises.
-        221         """
-    --> 222         self.handles = get_handle(
-        223             src,
-        224             "r",
-
-
-    ~/miniconda3/envs/criminologia/lib/python3.9/site-packages/pandas/io/common.py in get_handle(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)
-        700         if ioargs.encoding and "b" not in ioargs.mode:
-        701             # Encoding
-    --> 702             handle = open(
-        703                 handle,
-        704                 ioargs.mode,
-
-
-    FileNotFoundError: [Errno 2] No such file or directory: 'datos/categorias_incidentes.csv'
+    NameError: name 'agregar_categorias_victimas' is not defined
 
 
 ## Serie de tiempo por categoría
@@ -793,7 +959,7 @@ ax.plot_surface(xx, yy, zz,cmap='viridis', edgecolor='none')
 
 
 
-![png](docs/images/output_18_1.png)
+![png](docs/images/output_22_1.png)
 
 
 ### Serie de tiempo de KDEs por categoría
