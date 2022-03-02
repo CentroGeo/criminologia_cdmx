@@ -1206,7 +1206,7 @@ exporta_datos_visualizador(carpetas, "datos/salidas/carpetas.csv", tipo='carpeta
 exporta_datos_visualizador(victimas, "datos/salidas/victimas.csv", tipo='victimas')
 ```
 
-## Serie de tiempo por categoría
+### Serie de tiempo por categoría
 
 ````Python
 serie = serie_de_tiempo_categoria(carpetas_todas, pd.to_datetime('01/01/2016'), 'Robo a pasajero')
@@ -1285,13 +1285,37 @@ plt.show()
       ax = fig.gca(projection='3d')
 
 
+### Agregar en hexágonos
+
+Se puede agregar los datos de carpetas/victimas en hexágonos de Uber H3 usando la función `agrega_en_hexagonos` y pasándole los datos y el nivel de escala. Por ejemplo, para agregar los datos en el nivel 8
+
 ```python
-len(kdes)
+carpetas_hex = agrega_en_hexagonos(carpetas, 8)
+victimas_hex = agrega_en_hexagonos(victimas, 8)
+fig, (ax0, ax1) = plt.subplots(1, 2, figsize=(18, 18))
+ax0 = (carpetas_hex
+       .to_crs(epsg=3857)
+       .plot('incidentes', 
+             ax=ax0, 
+             legend=True,
+             cmap='inferno',
+             legend_kwds={'shrink': 0.3},))
+ax0.set_title("Carpetas de Investigación")
+ax0.set_axis_off()
+ctx.add_basemap(ax0, source=ctx.providers.CartoDB.DarkMatterNoLabels)
+ax1 = (victimas_hex
+       .to_crs(epsg=3857)
+       .plot('incidentes', 
+             ax=ax1, 
+             legend=True,
+             cmap='inferno',
+             legend_kwds={'shrink': 0.3}))
+ax1.set_title("Víctimas en Carpetas de Investigación en 2020")
+ax1.set_axis_off()
+ctx.add_basemap(ax1, source=ctx.providers.CartoDB.DarkMatterNoLabels)
+plt.tight_layout()
 ```
 
 
-
-
-    36
-
+![png](docs/images/output_31_0.png)
 
