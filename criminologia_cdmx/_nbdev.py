@@ -4,6 +4,7 @@ __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
 index = {"DATA_PATH": "00_etl.ipynb",
          "DOWNLOADS_PATH": "00_etl.ipynb",
+         "procesa_registros": "00_etl.ipynb",
          "get_carpetas_from_api": "00_etl.ipynb",
          "get_victimas_from_api": "00_etl.ipynb",
          "get_historico_carpetas": "00_etl.ipynb",
