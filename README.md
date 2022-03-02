@@ -71,123 +71,123 @@ carpetas.head()
   <tbody>
     <tr>
       <th>0</th>
-      <td>1039248</td>
-      <td>2020</td>
-      <td>Junio</td>
-      <td>2020-06-21 22:00:00</td>
-      <td>2020</td>
-      <td>Julio</td>
-      <td>2020-07-18T19:29:55</td>
-      <td>ALLANAMIENTO DE MORADA, DESPACHO, OFICINA O ES...</td>
-      <td>FISCALÍA DE INVESTIGACIÓN TERRITORIAL EN TLALPAN</td>
-      <td>TLP-1</td>
+      <td>1</td>
+      <td>2016</td>
+      <td>Enero</td>
+      <td>2016-01-31 22:16:00</td>
+      <td>2016</td>
+      <td>Febrero</td>
+      <td>2016-02-01T00:25:44</td>
+      <td>DAÑO EN PROPIEDAD AJENA INTENCIONAL</td>
+      <td>INVESTIGACIÓN EN BENITO JUÁREZ</td>
+      <td>BJ-2</td>
       <td>...</td>
       <td>DELITO DE BAJO IMPACTO</td>
-      <td>LA ESCONDIDA</td>
+      <td>CALZ. DE TLALPAN</td>
+      <td>LAGO PTE.</td>
+      <td>AMÉRICAS UNIDAS</td>
+      <td>BENITO JUAREZ</td>
       <td>NaN</td>
-      <td>SAN NICOLÁS 2</td>
-      <td>TLALPAN</td>
+      <td>-99.1402149999999</td>
+      <td>19.3803149998337</td>
       <td>NaN</td>
-      <td>-99.2391510445674</td>
-      <td>19.2695562888315</td>
-      <td>NaN</td>
-      <td>POINT (-99.23915 19.26956)</td>
+      <td>POINT (-99.14021 19.38031)</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>1039249</td>
-      <td>2020</td>
-      <td>Julio</td>
-      <td>2020-07-18 12:00:00</td>
-      <td>2020</td>
-      <td>Julio</td>
-      <td>2020-07-18T19:33:02</td>
-      <td>AMENAZAS</td>
-      <td>FISCALÍA DE INVESTIGACIÓN TERRITORIAL EN ALVAR...</td>
-      <td>AO-4</td>
+      <td>2</td>
+      <td>2016</td>
+      <td>Enero</td>
+      <td>2016-01-31 20:50:00</td>
+      <td>2016</td>
+      <td>Febrero</td>
+      <td>2016-02-01T00:52:37</td>
+      <td>ROBO DE VEHICULO DE SERVICIO PARTICULAR CON VI...</td>
+      <td>INVESTIGACIÓN PARA LA ATENCIÓN DEL DELITO DE R...</td>
+      <td>ORIENTEII</td>
       <td>...</td>
-      <td>DELITO DE BAJO IMPACTO</td>
-      <td>AVENIDA TAMAULIPAS</td>
-      <td>WICHITAS</td>
-      <td>SANTA LUCIA</td>
-      <td>ALVARO OBREGON</td>
+      <td>ROBO DE VEHÍCULO CON Y SIN VIOLENCIA</td>
+      <td>SUR 25 A</td>
+      <td>GRANJEROS</td>
+      <td>LOS CIPRESES</td>
+      <td>IZTAPALAPA</td>
       <td>NaN</td>
-      <td>-99.2591274258199</td>
-      <td>19.3568162329655</td>
+      <td>-99.1084029999999</td>
+      <td>19.3528589998337</td>
       <td>NaN</td>
-      <td>POINT (-99.25913 19.35682)</td>
+      <td>POINT (-99.10840 19.35286)</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>1039250</td>
-      <td>2020</td>
-      <td>Julio</td>
-      <td>2020-07-18 19:15:00</td>
-      <td>2020</td>
-      <td>Julio</td>
-      <td>2020-07-18T19:34:06</td>
+      <td>3</td>
+      <td>2016</td>
+      <td>Febrero</td>
+      <td>2016-02-01 00:30:00</td>
+      <td>2016</td>
+      <td>Febrero</td>
+      <td>2016-02-01T01:33:26</td>
       <td>NARCOMENUDEO POSESION SIMPLE</td>
-      <td>FISCALÍA DE INVESTIGACIÓN TERRITORIAL EN IZTAP...</td>
-      <td>IZP-8</td>
+      <td>INVESTIGACIÓN PARA LA ATENCIÓN DE NIÑOS, NIÑAS...</td>
+      <td>57</td>
       <td>...</td>
       <td>DELITO DE BAJO IMPACTO</td>
-      <td>AVENIDA DEL ARBOL</td>
-      <td>FLOR DE EJIDO</td>
-      <td>LOMAS DE SAN LORENZO</td>
+      <td>BATALLONES ROJOS</td>
+      <td>NaN</td>
+      <td>UNIDAD VICENTE GUERRERO</td>
       <td>IZTAPALAPA</td>
       <td>NaN</td>
-      <td>-99.065551739753</td>
-      <td>19.315777636718</td>
+      <td>-99.061321</td>
+      <td>19.3564509998336</td>
       <td>NaN</td>
-      <td>POINT (-99.06555 19.31578)</td>
+      <td>POINT (-99.06132 19.35645)</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>1039251</td>
-      <td>2020</td>
-      <td>Julio</td>
-      <td>2020-07-18 17:28:00</td>
-      <td>2020</td>
-      <td>Julio</td>
-      <td>2020-07-18T19:37:23</td>
-      <td>ENCUBRIMIENTO</td>
-      <td>FISCALÍA DE INVESTIGACIÓN ESTRATÉGICA DEL DELI...</td>
-      <td>ORIENTEII</td>
-      <td>...</td>
-      <td>DELITO DE BAJO IMPACTO</td>
-      <td>AVENIDA 5 DE MAYO</td>
-      <td>SE DEJA EN COLONIA NO SE ENCONTRO CALLE</td>
-      <td>EJERCITO DE ORIENTE ZONA PEÑON</td>
-      <td>IZTAPALAPA</td>
-      <td>NaN</td>
-      <td>-99.0261139000916</td>
-      <td>19.3676830025799</td>
-      <td>NaN</td>
-      <td>POINT (-99.02611 19.36768)</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>1039253</td>
-      <td>2020</td>
-      <td>Julio</td>
-      <td>2020-07-17 06:40:00</td>
-      <td>2020</td>
-      <td>Julio</td>
-      <td>2020-07-18T19:43:05</td>
-      <td>ROBO A TRANSEUNTE EN VIA PUBLICA SIN VIOLENCIA</td>
-      <td>AGENCIA DE DENUNCIA DIGITAL</td>
-      <td>CEN-1</td>
+      <td>4</td>
+      <td>2016</td>
+      <td>Enero</td>
+      <td>2016-01-31 22:00:00</td>
+      <td>2016</td>
+      <td>Febrero</td>
+      <td>2016-02-01T02:09:11</td>
+      <td>ROBO A TRANSEUNTE EN VIA PUBLICA CON VIOLENCIA</td>
+      <td>INVESTIGACIÓN EN IZTAPALAPA</td>
+      <td>IZP-6</td>
       <td>...</td>
       <td>ROBO A TRANSEUNTE EN VÍA PÚBLICA CON Y SIN VIO...</td>
-      <td>AV SAN ANTONIO ABAD</td>
+      <td>GERANIO</td>
+      <td>GAVILLEROS</td>
+      <td>EMILIANO ZAPATA</td>
+      <td>IZTAPALAPA</td>
       <td>NaN</td>
-      <td>ASTURIAS</td>
-      <td>CUAUHTEMOC</td>
+      <td>-98.9763790000001</td>
+      <td>19.3316329998333</td>
       <td>NaN</td>
-      <td>-99.135937388168</td>
-      <td>19.4035833346192</td>
+      <td>POINT (-98.97638 19.33163)</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>2015</td>
+      <td>Diciembre</td>
+      <td>2015-12-25 12:00:00</td>
+      <td>2016</td>
+      <td>Febrero</td>
+      <td>2016-02-01T02:16:49</td>
+      <td>DENUNCIA DE HECHOS</td>
+      <td>INVESTIGACIÓN EN BENITO JUÁREZ</td>
+      <td>BJ-1</td>
+      <td>...</td>
+      <td>HECHO NO DELICTIVO</td>
+      <td>SAN FRANCISCO</td>
+      <td>AVENIDA COLONIA DEL VALLE</td>
+      <td>DEL VALLE CENTRO</td>
+      <td>BENITO JUAREZ</td>
       <td>NaN</td>
-      <td>POINT (-99.13594 19.40358)</td>
+      <td>-99.1721889999999</td>
+      <td>19.387113999834</td>
+      <td>NaN</td>
+      <td>POINT (-99.17219 19.38711)</td>
     </tr>
   </tbody>
 </table>
@@ -387,7 +387,7 @@ carpetas = get_carpetas_desde_archivo("path-a-los-datos")
 victimas_todas = get_victimas_desde_archivo("path-a-los-datos")
 ````
 
-## Agregar identificadores espaciales (carpetas o victimas)
+### Agregar identificadores espaciales (carpetas o victimas)
 
 Para agregar los identificadores de colonia y cuadrante:
 
@@ -428,7 +428,6 @@ carpetas.head()
       <th>fiscalia</th>
       <th>agencia</th>
       <th>...</th>
-      <th>colonia_hechos</th>
       <th>alcaldia_hechos</th>
       <th>competencia</th>
       <th>longitud</th>
@@ -437,138 +436,316 @@ carpetas.head()
       <th>geometry</th>
       <th>colonia_cve</th>
       <th>colonia_nombre</th>
+      <th>municipio_cvegeo</th>
       <th>cuadrante_id</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>1024416</td>
-      <td>2020</td>
-      <td>Junio</td>
-      <td>2020-06-18 11:30:00</td>
-      <td>2020</td>
-      <td>Junio</td>
-      <td>2020-06-18T15:41:11</td>
-      <td>AMENAZAS</td>
-      <td>FISCALÍA DE INVESTIGACIÓN TERRITORIAL EN BENIT...</td>
-      <td>BJ-3</td>
-      <td>...</td>
-      <td>LETRÁN VALLE</td>
-      <td>BENITO JUAREZ</td>
-      <td>NaN</td>
-      <td>-99.1615631604095</td>
-      <td>19.3745426161242</td>
-      <td>NaN</td>
-      <td>POINT (-99.16156 19.37454)</td>
-      <td>932</td>
-      <td>LETRAN VALLE</td>
-      <td>013</td>
-    </tr>
-    <tr>
-      <th>25</th>
-      <td>1024440</td>
-      <td>2020</td>
-      <td>Junio</td>
-      <td>2020-06-18 16:00:00</td>
-      <td>2020</td>
-      <td>Junio</td>
-      <td>2020-06-18T16:25:08</td>
-      <td>ROBO A NEGOCIO SIN VIOLENCIA POR FARDEROS (TIE...</td>
-      <td>FISCALÍA DE INVESTIGACIÓN TERRITORIAL EN BENIT...</td>
+      <td>1</td>
+      <td>2016</td>
+      <td>Enero</td>
+      <td>2016-01-31 22:16:00</td>
+      <td>2016</td>
+      <td>Febrero</td>
+      <td>2016-02-01T00:25:44</td>
+      <td>DAÑO EN PROPIEDAD AJENA INTENCIONAL</td>
+      <td>INVESTIGACIÓN EN BENITO JUÁREZ</td>
       <td>BJ-2</td>
       <td>...</td>
-      <td>SANTA CRUZ ATOYAC</td>
       <td>BENITO JUAREZ</td>
       <td>NaN</td>
-      <td>-99.1644768802292</td>
-      <td>19.3708053008306</td>
+      <td>-99.1402149999999</td>
+      <td>19.3803149998337</td>
       <td>NaN</td>
-      <td>POINT (-99.16448 19.37081)</td>
-      <td>927</td>
-      <td>STA CRUZ ATOYAC</td>
-      <td>013</td>
+      <td>POINT (-99.14021 19.38031)</td>
+      <td>948</td>
+      <td>AMERICAS UNIDAS-DEL LAGO</td>
+      <td>09014</td>
+      <td>016</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>1024417</td>
-      <td>2020</td>
-      <td>Junio</td>
-      <td>2020-06-13 14:00:00</td>
-      <td>2020</td>
-      <td>Junio</td>
-      <td>2020-06-18T15:42:35</td>
-      <td>SUSTRACCIÓN DE MENORES</td>
-      <td>FISCALÍA DE INVESTIGACIÓN TERRITORIAL EN IZTAC...</td>
-      <td>IZC-2</td>
+      <td>2</td>
+      <td>2016</td>
+      <td>Enero</td>
+      <td>2016-01-31 20:50:00</td>
+      <td>2016</td>
+      <td>Febrero</td>
+      <td>2016-02-01T00:52:37</td>
+      <td>ROBO DE VEHICULO DE SERVICIO PARTICULAR CON VI...</td>
+      <td>INVESTIGACIÓN PARA LA ATENCIÓN DEL DELITO DE R...</td>
+      <td>ORIENTEII</td>
       <td>...</td>
-      <td>GABRIEL RAMOS MILLÁN SECCIÓN TLACOTAL</td>
-      <td>IZTACALCO</td>
+      <td>IZTAPALAPA</td>
       <td>NaN</td>
-      <td>-99.105716711431</td>
-      <td>19.3953360477985</td>
+      <td>-99.1084029999999</td>
+      <td>19.3528589998337</td>
       <td>NaN</td>
-      <td>POINT (-99.10572 19.39534)</td>
-      <td>898</td>
-      <td>TLACOTAL RAMOS MILLAN</td>
-      <td>025</td>
+      <td>POINT (-99.10840 19.35286)</td>
+      <td>1303</td>
+      <td>LOS CIPRESES</td>
+      <td>09007</td>
+      <td>0111</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>1024418</td>
-      <td>2020</td>
-      <td>Junio</td>
-      <td>2020-06-18 14:40:00</td>
-      <td>2020</td>
-      <td>Junio</td>
-      <td>2020-06-18T15:42:41</td>
-      <td>ROBO A NEGOCIO CON VIOLENCIA</td>
-      <td>FISCALÍA DE INVESTIGACIÓN TERRITORIAL EN IZTAP...</td>
-      <td>IZP-6</td>
+      <td>3</td>
+      <td>2016</td>
+      <td>Febrero</td>
+      <td>2016-02-01 00:30:00</td>
+      <td>2016</td>
+      <td>Febrero</td>
+      <td>2016-02-01T01:33:26</td>
+      <td>NARCOMENUDEO POSESION SIMPLE</td>
+      <td>INVESTIGACIÓN PARA LA ATENCIÓN DE NIÑOS, NIÑAS...</td>
+      <td>57</td>
       <td>...</td>
-      <td>LOMAS DE SAN LORENZO</td>
       <td>IZTAPALAPA</td>
       <td>NaN</td>
-      <td>-99.0689250062205</td>
-      <td>19.3157102852289</td>
+      <td>-99.061321</td>
+      <td>19.3564509998336</td>
       <td>NaN</td>
-      <td>POINT (-99.06893 19.31571)</td>
-      <td>389</td>
-      <td>SAN LORENZO TEZONCO (PBLO)</td>
-      <td>017</td>
+      <td>POINT (-99.06132 19.35645)</td>
+      <td>1373</td>
+      <td>VICENTE GUERRERO-SUPER MANZANA 7 (U HAB)</td>
+      <td>09007</td>
+      <td>0116</td>
+    </tr>
+    <tr>
+      <th>83</th>
+      <td>83</td>
+      <td>2016</td>
+      <td>Febrero</td>
+      <td>2016-02-01 15:30:00</td>
+      <td>2016</td>
+      <td>Febrero</td>
+      <td>2016-02-01T17:48:29</td>
+      <td>ROBO A NEGOCIO SIN VIOLENCIA</td>
+      <td>INVESTIGACIÓN EN IZTAPALAPA</td>
+      <td>IZP-4</td>
+      <td>...</td>
+      <td>IZTAPALAPA</td>
+      <td>NaN</td>
+      <td>-99.067653</td>
+      <td>19.3531039998337</td>
+      <td>NaN</td>
+      <td>POINT (-99.06765 19.35310)</td>
+      <td>1364</td>
+      <td>PROGRESISTA</td>
+      <td>09007</td>
+      <td>0116</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>1024419</td>
-      <td>2020</td>
-      <td>Mayo</td>
-      <td>2020-05-30 12:00:00</td>
-      <td>2020</td>
-      <td>Junio</td>
-      <td>2020-06-18T15:45:31</td>
-      <td>ROBO DE VEHICULO DE SERVICIO PARTICULAR SIN VI...</td>
-      <td>FISCALÍA DE INVESTIGACIÓN TERRITORIAL EN IZTAP...</td>
-      <td>IZP-5</td>
+      <td>4</td>
+      <td>2016</td>
+      <td>Enero</td>
+      <td>2016-01-31 22:00:00</td>
+      <td>2016</td>
+      <td>Febrero</td>
+      <td>2016-02-01T02:09:11</td>
+      <td>ROBO A TRANSEUNTE EN VIA PUBLICA CON VIOLENCIA</td>
+      <td>INVESTIGACIÓN EN IZTAPALAPA</td>
+      <td>IZP-6</td>
       <td>...</td>
-      <td>SAN JUAN XALPA</td>
       <td>IZTAPALAPA</td>
       <td>NaN</td>
-      <td>-99.0847959998612</td>
-      <td>19.3354113029671</td>
+      <td>-98.9763790000001</td>
+      <td>19.3316329998333</td>
       <td>NaN</td>
-      <td>POINT (-99.08480 19.33541)</td>
-      <td>1413</td>
-      <td>SAN JUAN XALPA I</td>
-      <td>013</td>
+      <td>POINT (-98.97638 19.33163)</td>
+      <td>1806</td>
+      <td>CAMPESTRE POTRERO</td>
+      <td>09007</td>
+      <td>0116</td>
     </tr>
   </tbody>
 </table>
-<p>5 rows × 24 columns</p>
+<p>5 rows × 25 columns</p>
 </div>
 
 
 
-## Agregar categorías de usuario
+```python
+victimas = agrega_ids_espaciales(victimas)
+victimas.head()
+```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>_id</th>
+      <th>idCarpeta</th>
+      <th>Ano_inicio</th>
+      <th>Mes_inicio</th>
+      <th>FechaInicio</th>
+      <th>Delito</th>
+      <th>Categoria</th>
+      <th>Sexo</th>
+      <th>Edad</th>
+      <th>TipoPersona</th>
+      <th>...</th>
+      <th>ColoniaHechos</th>
+      <th>Calle_hechos</th>
+      <th>Calle_hechos2</th>
+      <th>latitud</th>
+      <th>longitud</th>
+      <th>geometry</th>
+      <th>colonia_cve</th>
+      <th>colonia_nombre</th>
+      <th>municipio_cvegeo</th>
+      <th>cuadrante_id</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>8324429</td>
+      <td>2019</td>
+      <td>Enero</td>
+      <td>2019-04-01T00:00:00</td>
+      <td>FRAUDE</td>
+      <td>DELITO DE BAJO IMPACTO</td>
+      <td>Masculino</td>
+      <td>62</td>
+      <td>FISICA</td>
+      <td>...</td>
+      <td>GUADALUPE INN</td>
+      <td>INSUGENTES SUR</td>
+      <td>NaN</td>
+      <td>19.36125</td>
+      <td>-99.18314</td>
+      <td>POINT (-99.18314 19.36125)</td>
+      <td>263</td>
+      <td>GUADALUPE INN</td>
+      <td>09010</td>
+      <td>012</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>8324430</td>
+      <td>2019</td>
+      <td>Enero</td>
+      <td>2019-04-01T00:00:00</td>
+      <td>PRODUCCIÓN, IMPRESIÓN, ENAJENACIÓN, DISTRIBUCI...</td>
+      <td>DELITO DE BAJO IMPACTO</td>
+      <td>Femenino</td>
+      <td>38</td>
+      <td>FISICA</td>
+      <td>...</td>
+      <td>VICTORIA DE LAS DEMOCRACIAS</td>
+      <td>AV.  CUATLAHUAC</td>
+      <td>NaN</td>
+      <td>19.47181</td>
+      <td>-99.16458</td>
+      <td>POINT (-99.16458 19.47181)</td>
+      <td>683</td>
+      <td>VICTORIA DE LAS DEMOCRACIAS</td>
+      <td>09002</td>
+      <td>026</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>8324431</td>
+      <td>2019</td>
+      <td>Enero</td>
+      <td>2019-04-01T00:00:00</td>
+      <td>ROBO A TRANSEUNTE SALIENDO DEL BANCO CON VIOLE...</td>
+      <td>ROBO A CUENTAHABIENTE SALIENDO DEL CAJERO CON ...</td>
+      <td>Masculino</td>
+      <td>42</td>
+      <td>FISICA</td>
+      <td>...</td>
+      <td>COPILCO UNIVERSIDAD ISSSTE</td>
+      <td>COPILCO</td>
+      <td>NaN</td>
+      <td>19.33797</td>
+      <td>-99.18611</td>
+      <td>POINT (-99.18611 19.33797)</td>
+      <td>328</td>
+      <td>COPILCO EL BAJO</td>
+      <td>09003</td>
+      <td>0213</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>8324435</td>
+      <td>2019</td>
+      <td>Enero</td>
+      <td>2019-04-01T00:00:00</td>
+      <td>ROBO DE VEHICULO DE SERVICIO PARTICULAR SIN VI...</td>
+      <td>ROBO DE VEHÍCULO CON Y SIN VIOLENCIA</td>
+      <td>Masculino</td>
+      <td>35</td>
+      <td>FISICA</td>
+      <td>...</td>
+      <td>AGRÍCOLA PANTITLAN</td>
+      <td>CALLE 6</td>
+      <td>ENTRE PRIVADA DEL VALLE Y PRIVADA GONZALEZ</td>
+      <td>19.40327</td>
+      <td>-99.05983</td>
+      <td>POINT (-99.05983 19.40327)</td>
+      <td>227</td>
+      <td>PANTITLAN V</td>
+      <td>09006</td>
+      <td>026</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>8324438</td>
+      <td>2019</td>
+      <td>Enero</td>
+      <td>2019-04-01T00:00:00</td>
+      <td>ROBO DE MOTOCICLETA SIN VIOLENCIA</td>
+      <td>ROBO DE VEHÍCULO CON Y SIN VIOLENCIA</td>
+      <td>Masculino</td>
+      <td>NaN</td>
+      <td>FISICA</td>
+      <td>...</td>
+      <td>PROGRESISTA</td>
+      <td>UNIVERSIDAD</td>
+      <td>NaN</td>
+      <td>19.3548</td>
+      <td>-99.06324</td>
+      <td>POINT (-99.06324 19.35480)</td>
+      <td>1366</td>
+      <td>LAS AMERICAS (U HAB)</td>
+      <td>09007</td>
+      <td>0116</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 28 columns</p>
+</div>
+
+
+
+### Agregar categorías de usuario
 
 Para clasificar las carpetas de investigación de acuerdo a una categorización definida por el usuario necesitamos un archivo que relacione la columna delitos de la base de carpetas con las categorías definidas por el usuario
 
@@ -700,13 +877,13 @@ carpetas[['delito', 'categoria']]
   <tbody>
     <tr>
       <th>0</th>
-      <td>ALLANAMIENTO DE MORADA, DESPACHO, OFICINA O ES...</td>
+      <td>DAÑO EN PROPIEDAD AJENA INTENCIONAL</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>AMENAZAS</td>
-      <td>NaN</td>
+      <td>ROBO DE VEHICULO DE SERVICIO PARTICULAR CON VI...</td>
+      <td>Robo de/en vehículo</td>
     </tr>
     <tr>
       <th>2</th>
@@ -715,12 +892,12 @@ carpetas[['delito', 'categoria']]
     </tr>
     <tr>
       <th>3</th>
-      <td>ENCUBRIMIENTO</td>
-      <td>NaN</td>
+      <td>ROBO A NEGOCIO SIN VIOLENCIA</td>
+      <td>Robo a negocio</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>ROBO A TRANSEUNTE EN VIA PUBLICA SIN VIOLENCIA</td>
+      <td>ROBO A TRANSEUNTE EN VIA PUBLICA CON VIOLENCIA</td>
       <td>Robo a transeúnte</td>
     </tr>
     <tr>
@@ -730,28 +907,28 @@ carpetas[['delito', 'categoria']]
     </tr>
     <tr>
       <th>90</th>
-      <td>VIOLENCIA FAMILIAR</td>
+      <td>USO DE DOCUMENTO FALSO</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>91</th>
-      <td>ROBO A NEGOCIO SIN VIOLENCIA</td>
-      <td>Robo a negocio</td>
+      <td>ROBO A TRANSEUNTE EN VIA PUBLICA CON VIOLENCIA</td>
+      <td>Robo a transeúnte</td>
     </tr>
     <tr>
       <th>92</th>
-      <td>ABUSO SEXUAL</td>
-      <td>NaN</td>
+      <td>ROBO A TRANSEUNTE EN VIA PUBLICA CON VIOLENCIA</td>
+      <td>Robo a transeúnte</td>
     </tr>
     <tr>
       <th>93</th>
-      <td>AMENAZAS</td>
+      <td>FRAUDE</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>94</th>
-      <td>ROBO A CASA HABITACION SIN VIOLENCIA</td>
-      <td>Robo a casa habitación</td>
+      <td>DAÑO EN PROPIEDAD AJENA INTENCIONAL</td>
+      <td>NaN</td>
     </tr>
   </tbody>
 </table>
@@ -911,17 +1088,123 @@ victimas[['Delito', 'Nivel 1', 'Nivel 2', 'Nivel 3']]
 ```
 
 
-    ---------------------------------------------------------------------------
-
-    NameError                                 Traceback (most recent call last)
-
-    /tmp/ipykernel_20820/738531245.py in <module>
-    ----> 1 victimas = agregar_categorias_victimas(victimas)
-          2 victimas[['Delito', 'Nivel 1', 'Nivel 2', 'Nivel 3']]
 
 
-    NameError: name 'agregar_categorias_victimas' is not defined
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Delito</th>
+      <th>Nivel 1</th>
+      <th>Nivel 2</th>
+      <th>Nivel 3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>FRAUDE</td>
+      <td>Fraude</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>PRODUCCIÓN, IMPRESIÓN, ENAJENACIÓN, DISTRIBUCI...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>ROBO A TRANSEUNTE SALIENDO DEL BANCO CON VIOLE...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>ROBO DE VEHICULO DE SERVICIO PARTICULAR SIN VI...</td>
+      <td>Robo de Vehículo de Servicio Particular</td>
+      <td>Sin Violencia</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>ROBO DE MOTOCICLETA SIN VIOLENCIA</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>90</th>
+      <td>ROBO DE VEHICULO DE SERVICIO PARTICULAR CON VI...</td>
+      <td>Robo de Vehículo de Servicio Particular</td>
+      <td>Con Violencia</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>91</th>
+      <td>ABUSO DE CONFIANZA</td>
+      <td>Abuso de Confianza</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>92</th>
+      <td>ROBO DE VEHICULO DE SERVICIO PARTICULAR SIN VI...</td>
+      <td>Robo de Vehículo de Servicio Particular</td>
+      <td>Sin Violencia</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>93</th>
+      <td>ROBO A TRANSEUNTE EN VIA PUBLICA CON VIOLENCIA</td>
+      <td>Robo a Transeúnte en Vía Pública</td>
+      <td>Con Violencia</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>94</th>
+      <td>ROBO DE OBJETOS</td>
+      <td>Robo de Objetos</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>95 rows × 4 columns</p>
+</div>
+
+
+
+### Exportar datos para el visualizador
+
+```python
+exporta_datos_visualizador(carpetas, "datos/salidas/carpetas.csv", tipo='carpetas')
+exporta_datos_visualizador(victimas, "datos/salidas/victimas.csv", tipo='victimas')
+```
 
 ## Serie de tiempo por categoría
 
@@ -959,7 +1242,7 @@ ax.plot_surface(xx, yy, zz,cmap='viridis', edgecolor='none')
 
 
 
-![png](docs/images/output_22_1.png)
+![png](docs/images/output_25_1.png)
 
 
 ### Serie de tiempo de KDEs por categoría

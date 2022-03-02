@@ -146,16 +146,27 @@ def agregar_categorias_victimas(carpetas, archivo_categorias="datos/categorias_v
     categorias = pd.read_csv(archivo_categorias)
     carpetas = (carpetas
                 .merge(categorias, left_on='Delito', right_on='Delito', how='left')
+                .drop(columns='Categoria_y')
+                .rename({'Categoria_x': 'Categoria'}, axis=1)
                 )
     return carpetas
 
 # Cell
-def exporta_datos_visualizador(carpetas, archivo_resultado):
-    """ Escribe en archivo_resultado un csv para consumirse en el visualizador."""
+def exporta_datos_visualizador(carpetas, archivo_resultado, tipo='victimas'):
+    """ Escribe en archivo_resultado un csv para consumirse en el visualizador.
+
+        La opción tipo=victimas/carpetas controla si los datos de entrada son carpetas o victimas.
+    """
+    if tipo == 'carpetas':
+        columnas = ['fecha_hechos', 'delito', 'categoria', 'municipio_cvegeo',
+                    'colonia_cve', 'cuadrante_id', 'categoria', 'lat', 'long']
+    elif tipo == 'victimas':
+        columnas_nivel = [c for c in carpetas.columns if 'Nivel' in c]
+        columnas = ['FechaHecho', 'Delito', 'Categoria', 'municipio_cvegeo',
+                    'colonia_cve', 'cuadrante_id', 'lat', 'long'] + columnas_nivel
     carpetas['lat'] = carpetas.geometry.y
     carpetas['long'] = carpetas.geometry.x
-    carpetas = carpetas[['fecha_hechos', 'delito', 'categoria', 'municipio_cvegeo', 'colonia_cve',
-                         'cuadrante_id', 'categoria', 'lat', 'long']]
+    carpetas = carpetas[columnas]
     carpetas.to_csv(archivo_resultado)
 
 # Cell
