@@ -212,19 +212,20 @@ def serie_tiempo_categorias_unidades(datos, fecha_inicio, tipo='victimas',
         freq: frecuencia de agregación (https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#offset-aliases)
         categorias: lista de las categorías para agregar. Las columnas deben existir en la base
     """
-    dummies = pd.get_dummies(carpetas)
-    carpetas = carpetas.drop(columns=categorias)
-    carpetas = pd.concat([carpetas, dummies], axis=1)
-
-    carpetas = carpetas.loc[carpetas.fecha_hechos >= fecha_inicio]
-    carpetas = carpetas.loc[carpetas.categoria == categoria]
-    serie = (carpetas
-             .set_index('fecha_hechos')[['categoria']]
-             .resample(freq)
-             .size()
-             .reset_index()
-             .rename({0:categoria}, axis=1)
-            )
+    dummies = pd.get_dummies(datos[categorias])
+    datos = datos.loc[datos.fecha_hechos >= fecha_inicio]
+    datos = pd.concat([datos, dummies], axis=1)
+    if geografia == 'colonias':
+        id_vars = ['colonia_nombre', 'colonia_cve']
+    elif geografia == 'cuadrantes':
+        id_vars = ['cuadrante_id']
+    else:
+        return #RAISE!!!!!
+    serie = (datos[['fecha_hechos', *id_vars, *list(dummies.columns)]]
+             .set_index('fecha_hechos')
+             .groupby([pd.Grouper(freq="M"), *id_vars])
+             .sum())
+    serie = serie.reset_index().melt(id_vars=['fecha_hechos', *id_vars])
     return serie
 
 # Cell

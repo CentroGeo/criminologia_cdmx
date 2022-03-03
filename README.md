@@ -1212,6 +1212,12 @@ exporta_datos_visualizador(victimas, "datos/salidas/victimas.csv", tipo='victima
 serie = serie_de_tiempo_categoria(carpetas_todas, pd.to_datetime('01/01/2016'), 'Robo a pasajero')
 ````
 
+### Serie de tiempo por geografía y categoría
+````Python
+serie = serie_tiempo_categorias_unidades(victimas, pd.to_datetime('01/01/2019'))
+
+````
+
 ## Patrones espacio temporales
 
 Este módulo tiene diferentes herramientas para explorar los patrones espacio-temporales de la actividad delictiva
@@ -1242,7 +1248,7 @@ ax.plot_surface(xx, yy, zz,cmap='viridis', edgecolor='none')
 
 
 
-![png](docs/images/output_25_1.png)
+![png](docs/images/output_26_1.png)
 
 
 ### Serie de tiempo de KDEs por categoría
@@ -1317,5 +1323,5 @@ plt.tight_layout()
 ```
 
 
-![png](docs/images/output_31_0.png)
+![png](docs/images/output_32_0.png)
 
