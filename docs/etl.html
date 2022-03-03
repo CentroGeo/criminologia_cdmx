@@ -841,6 +841,52 @@ freq: frecuencia de agregación (<a href="https://pandas.pydata.org/pandas-docs/
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="serie_tiempo_categorias_unidades">serie_tiempo_categorias_unidades<a class="anchor-link" href="#serie_tiempo_categorias_unidades"> </a></h2>
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="serie_tiempo_categorias_unidades" class="doc_header"><code>serie_tiempo_categorias_unidades</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/etl.py#L201" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>serie_tiempo_categorias_unidades</code>(<strong><code>datos</code></strong>, <strong><code>fecha_inicio</code></strong>, <strong><code>tipo</code></strong>=<em><code>'victimas'</code></em>, <strong><code>geografia</code></strong>=<em><code>'colonias'</code></em>, <strong><code>freq</code></strong>=<em><code>'W'</code></em>, <strong><code>categorias</code></strong>=<em><code>['Nivel 1']</code></em>)</p>
+</blockquote>
+<p>Regresa una serie de tiempo con los agregados por <code>freq</code> para categorias y
+la geografía especificada.</p>
+<p>parameters:
+datos: víctimas/carpetas, deben tener agregadas las categorías de usuario
+fecha_inicio: pd.datetime fecha del inicio de la serie
+tipo: carpetas/victimas
+geografia: 'colonias/cuadrantes'
+freq: frecuencia de agregación (<a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#offset-aliases">https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#offset-aliases</a>)
+categorias: lista de las categorías para agregar. Las columnas deben existir en la base</p>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="punto_to_hexid">punto_to_hexid<a class="anchor-link" href="#punto_to_hexid"> </a></h2>
 </div>
 </div>
@@ -856,7 +902,7 @@ freq: frecuencia de agregación (<a href="https://pandas.pydata.org/pandas-docs/
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="punto_to_hexid" class="doc_header"><code>punto_to_hexid</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/etl.py#L201" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>punto_to_hexid</code>(<strong><code>punto</code></strong>, <strong><code>resolution</code></strong>)</p>
+<h4 id="punto_to_hexid" class="doc_header"><code>punto_to_hexid</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/etl.py#L231" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>punto_to_hexid</code>(<strong><code>punto</code></strong>, <strong><code>resolution</code></strong>)</p>
 </blockquote>
 <p>Regresa el hexid (h3) del punto.</p>
 
@@ -894,7 +940,7 @@ freq: frecuencia de agregación (<a href="https://pandas.pydata.org/pandas-docs/
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="agrega_en_hexagonos" class="doc_header"><code>agrega_en_hexagonos</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/etl.py#L206" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>agrega_en_hexagonos</code>(<strong><code>puntos</code></strong>, <strong><code>resolution</code></strong>)</p>
+<h4 id="agrega_en_hexagonos" class="doc_header"><code>agrega_en_hexagonos</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/etl.py#L236" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>agrega_en_hexagonos</code>(<strong><code>puntos</code></strong>, <strong><code>resolution</code></strong>)</p>
 </blockquote>
 <p>Regresa un GeoDataFrame con las cuentas de puntos agregadas en hexágonos.</p>
 <p>params:

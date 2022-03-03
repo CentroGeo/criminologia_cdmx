@@ -3,8 +3,8 @@
 __all__ = ['DATA_PATH', 'DOWNLOADS_PATH', 'procesa_registros', 'get_carpetas_from_api', 'get_victimas_from_api',
            'get_historico_carpetas', 'get_historico_victimas', 'get_carpetas_desde_archivo',
            'get_victimas_desde_archivo', 'agrega_ids_espaciales', 'agregar_categorias_carpetas',
-           'agregar_categorias_victimas', 'exporta_datos_visualizador', 'serie_de_tiempo_categoria', 'punto_to_hexid',
-           'agrega_en_hexagonos']
+           'agregar_categorias_victimas', 'exporta_datos_visualizador', 'serie_de_tiempo_categoria',
+           'serie_tiempo_categorias_unidades', 'punto_to_hexid', 'agrega_en_hexagonos']
 
 # Cell
 import os
@@ -41,7 +41,7 @@ def get_carpetas_from_api(limit=100):
     records = r.json()['result']['records']
     records = pd.DataFrame(records)
     records = procesa_registros(records)
-    records['fecha_hechos'] = pd.to_datetime(records.fecha_hechos)
+    records['fecha_hechos'] = pd.to_datetime(records.fecha_hechos, dayfirst=True)
     return records
 
 # Cell
@@ -52,7 +52,7 @@ def get_victimas_from_api(limit=100):
     records = r.json()['result']['records']
     records = pd.DataFrame(records)
     records = procesa_registros(records)
-    records['FechaHecho'] = pd.to_datetime(records.FechaHecho)
+    records['FechaHecho'] = pd.to_datetime(records.FechaHecho, dayfirst=True)
     records = records.rename({'FechaHecho':'fecha_hechos',
                               'Delito': 'delito',
                               'Categoria': 'categoria'}, axis=1)
@@ -67,7 +67,7 @@ def get_historico_carpetas():
     open(archivo, 'wb').write(r.content)
     records = pd.read_csv(archivo)
     records = procesa_registros(records)
-    records['fecha_hechos'] = pd.to_datetime(records.fecha_hechos)
+    records['fecha_hechos'] = pd.to_datetime(records.fecha_hechos, dayfirst=True)
     return records
 
 # Cell
@@ -79,7 +79,7 @@ def get_historico_victimas():
     open(archivo, 'wb').write(r.content)
     records = pd.read_csv(archivo)
     records = procesa_registros(records)
-    records['FechaHecho'] = pd.to_datetime(records.FechaHecho)
+    records['FechaHecho'] = pd.to_datetime(records.FechaHecho, dayfirst=True)
     records = records.rename({'FechaHecho':'fecha_hechos',
                               'Delito': 'delito',
                               'Categoria': 'categoria'}, axis=1)
@@ -90,7 +90,7 @@ def get_carpetas_desde_archivo(archivo):
     """Regresa un GeoDataFrame con los registros leídos de un archivo"""
     records = pd.read_csv(archivo)
     records = procesa_registros(records)
-    records['fecha_hechos'] = pd.to_datetime(records.fecha_hechos)
+    records['fecha_hechos'] = pd.to_datetime(records.fecha_hechos, dayfirst=True)
     return records
 
 # Cell
@@ -98,7 +98,7 @@ def get_victimas_desde_archivo(archivo):
     """Regresa un GeoDataFrame con los registros leídos de un archivo"""
     records = pd.read_csv(archivo)
     records = procesa_registros(records)
-    records['FechaHecho'] = pd.to_datetime(records.FechaHecho)
+    records['FechaHecho'] = pd.to_datetime(records.FechaHecho, dayfirst=True)
     records = records.rename({'FechaHecho':'fecha_hechos',
                               'Delito': 'delito',
                               'Categoria': 'categoria'}, axis=1)
@@ -186,6 +186,36 @@ def serie_de_tiempo_categoria(carpetas, fecha_inicio, categoria, freq='M'):
         categoria: nombre de la categoría a agregar (`agregar_categorias_de_usuario`)
         freq: frecuencia de agregación (https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#offset-aliases)
     """
+    carpetas = carpetas.loc[carpetas.fecha_hechos >= fecha_inicio]
+    carpetas = carpetas.loc[carpetas.categoria == categoria]
+    serie = (carpetas
+             .set_index('fecha_hechos')[['categoria']]
+             .resample(freq)
+             .size()
+             .reset_index()
+             .rename({0:categoria}, axis=1)
+            )
+    return serie
+
+# Cell
+def serie_tiempo_categorias_unidades(datos, fecha_inicio, tipo='victimas',
+                                     geografia='colonias',freq='W',
+                                     categorias=['Nivel 1']):
+    """ Regresa una serie de tiempo con los agregados por `freq` para categorias y
+        la geografía especificada.
+
+        parameters:
+        datos: víctimas/carpetas, deben tener agregadas las categorías de usuario
+        fecha_inicio: pd.datetime fecha del inicio de la serie
+        tipo: carpetas/victimas
+        geografia: 'colonias/cuadrantes'
+        freq: frecuencia de agregación (https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#offset-aliases)
+        categorias: lista de las categorías para agregar. Las columnas deben existir en la base
+    """
+    dummies = pd.get_dummies(carpetas)
+    carpetas = carpetas.drop(columns=categorias)
+    carpetas = pd.concat([carpetas, dummies], axis=1)
+
     carpetas = carpetas.loc[carpetas.fecha_hechos >= fecha_inicio]
     carpetas = carpetas.loc[carpetas.categoria == categoria]
     serie = (carpetas
