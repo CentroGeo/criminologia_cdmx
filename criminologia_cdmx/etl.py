@@ -159,7 +159,9 @@ def agregar_categorias_victimas(carpetas, archivo_categorias="datos/categorias_v
     return carpetas
 
 # Cell
-def exporta_datos_visualizador(carpetas, archivo_resultado, tipo='victimas'):
+def exporta_datos_visualizador(carpetas, archivo_resultado,
+                               fecha_inicio=pd.to_datetime('01/01/2019'),
+                               tipo='victimas'):
     """ Escribe en archivo_resultado un csv para consumirse en el visualizador.
 
         La opción tipo=victimas/carpetas controla si los datos de entrada son carpetas o victimas.

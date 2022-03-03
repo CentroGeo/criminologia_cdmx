@@ -1215,7 +1215,6 @@ serie = serie_de_tiempo_categoria(carpetas_todas, pd.to_datetime('01/01/2016'), 
 ### Serie de tiempo por geografía y categoría
 ````Python
 serie = serie_tiempo_categorias_unidades(victimas, pd.to_datetime('01/01/2019'))
-
 ````
 
 ## Patrones espacio temporales
