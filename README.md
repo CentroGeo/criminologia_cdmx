@@ -71,123 +71,123 @@ carpetas.head()
   <tbody>
     <tr>
       <th>0</th>
-      <td>1</td>
-      <td>2016</td>
-      <td>Enero</td>
-      <td>2016-01-31 22:16:00</td>
-      <td>2016</td>
-      <td>Febrero</td>
-      <td>2016-02-01T00:25:44</td>
-      <td>DAÑO EN PROPIEDAD AJENA INTENCIONAL</td>
-      <td>INVESTIGACIÓN EN BENITO JUÁREZ</td>
-      <td>BJ-2</td>
+      <td>751816</td>
+      <td>2019</td>
+      <td>Octubre</td>
+      <td>2019-10-07 14:00:00</td>
+      <td>2019</td>
+      <td>Octubre</td>
+      <td>2019-10-07T21:45:16</td>
+      <td>PRODUCCIÓN, IMPRESIÓN, ENAJENACIÓN, DISTRIBUCI...</td>
+      <td>INVESTIGACIÓN EN COYOACÁN</td>
+      <td>COY-1</td>
       <td>...</td>
       <td>DELITO DE BAJO IMPACTO</td>
-      <td>CALZ. DE TLALPAN</td>
-      <td>LAGO PTE.</td>
-      <td>AMÉRICAS UNIDAS</td>
-      <td>BENITO JUAREZ</td>
+      <td>MIGUEL ANGEL DE QUEVEDO</td>
       <td>NaN</td>
-      <td>-99.1402149999999</td>
-      <td>19.3803149998337</td>
+      <td>ROMERO DE TERREROS</td>
+      <td>COYOACAN</td>
       <td>NaN</td>
-      <td>POINT (-99.14021 19.38031)</td>
+      <td>-99.17525</td>
+      <td>19.34586</td>
+      <td>NaN</td>
+      <td>POINT (-99.17525 19.34586)</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>2</td>
-      <td>2016</td>
-      <td>Enero</td>
-      <td>2016-01-31 20:50:00</td>
-      <td>2016</td>
-      <td>Febrero</td>
-      <td>2016-02-01T00:52:37</td>
-      <td>ROBO DE VEHICULO DE SERVICIO PARTICULAR CON VI...</td>
-      <td>INVESTIGACIÓN PARA LA ATENCIÓN DEL DELITO DE R...</td>
-      <td>ORIENTEII</td>
+      <td>751817</td>
+      <td>2019</td>
+      <td>Octubre</td>
+      <td>2019-10-07 14:00:00</td>
+      <td>2019</td>
+      <td>Octubre</td>
+      <td>2019-10-07T21:46:30</td>
+      <td>DAÑO EN PROPIEDAD AJENA CULPOSA POR TRÁNSITO V...</td>
+      <td>INVESTIGACIÓN EN ÁLVARO OBREGÓN</td>
+      <td>AO-4</td>
       <td>...</td>
-      <td>ROBO DE VEHÍCULO CON Y SIN VIOLENCIA</td>
-      <td>SUR 25 A</td>
-      <td>GRANJEROS</td>
-      <td>LOS CIPRESES</td>
-      <td>IZTAPALAPA</td>
+      <td>DELITO DE BAJO IMPACTO</td>
+      <td>AVENIDA PERIFERICO SUR</td>
+      <td>CALZADA LAS AGUILAS</td>
+      <td>LOS ALPES</td>
+      <td>ALVARO OBREGON</td>
       <td>NaN</td>
-      <td>-99.1084029999999</td>
-      <td>19.3528589998337</td>
+      <td>-99.19513</td>
+      <td>19.35819</td>
       <td>NaN</td>
-      <td>POINT (-99.10840 19.35286)</td>
+      <td>POINT (-99.19513 19.35819)</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>3</td>
-      <td>2016</td>
-      <td>Febrero</td>
-      <td>2016-02-01 00:30:00</td>
-      <td>2016</td>
-      <td>Febrero</td>
-      <td>2016-02-01T01:33:26</td>
-      <td>NARCOMENUDEO POSESION SIMPLE</td>
-      <td>INVESTIGACIÓN PARA LA ATENCIÓN DE NIÑOS, NIÑAS...</td>
-      <td>57</td>
-      <td>...</td>
-      <td>DELITO DE BAJO IMPACTO</td>
-      <td>BATALLONES ROJOS</td>
-      <td>NaN</td>
-      <td>UNIDAD VICENTE GUERRERO</td>
-      <td>IZTAPALAPA</td>
-      <td>NaN</td>
-      <td>-99.061321</td>
-      <td>19.3564509998336</td>
-      <td>NaN</td>
-      <td>POINT (-99.06132 19.35645)</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>4</td>
-      <td>2016</td>
-      <td>Enero</td>
-      <td>2016-01-31 22:00:00</td>
-      <td>2016</td>
-      <td>Febrero</td>
-      <td>2016-02-01T02:09:11</td>
-      <td>ROBO A TRANSEUNTE EN VIA PUBLICA CON VIOLENCIA</td>
+      <td>751818</td>
+      <td>2019</td>
+      <td>Octubre</td>
+      <td>2019-10-06 23:30:00</td>
+      <td>2019</td>
+      <td>Octubre</td>
+      <td>2019-10-07T21:49:20</td>
+      <td>ROBO A TRANSEUNTE CONDUCTOR DE TAXI PUBLICO Y ...</td>
       <td>INVESTIGACIÓN EN IZTAPALAPA</td>
       <td>IZP-6</td>
       <td>...</td>
-      <td>ROBO A TRANSEUNTE EN VÍA PÚBLICA CON Y SIN VIO...</td>
-      <td>GERANIO</td>
-      <td>GAVILLEROS</td>
-      <td>EMILIANO ZAPATA</td>
+      <td>DELITO DE BAJO IMPACTO</td>
+      <td>AV. TELECOMUNICACIONES</td>
+      <td>AV. GENERAL ANTONIO LEON LOYOLA (AMBAS SON PAR...</td>
+      <td>UNIDAD EJÉRCITO CONSTITUCIONALISTA</td>
       <td>IZTAPALAPA</td>
       <td>NaN</td>
-      <td>-98.9763790000001</td>
-      <td>19.3316329998333</td>
+      <td>-99.04765</td>
+      <td>19.38716</td>
       <td>NaN</td>
-      <td>POINT (-98.97638 19.33163)</td>
+      <td>POINT (-99.04765 19.38716)</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>751819</td>
+      <td>2019</td>
+      <td>Septiembre</td>
+      <td>2019-09-14 12:00:00</td>
+      <td>2019</td>
+      <td>Octubre</td>
+      <td>2019-10-07T21:57:48</td>
+      <td>FRAUDE</td>
+      <td>INVESTIGACIÓN EN BENITO JUÁREZ</td>
+      <td>BJ-3</td>
+      <td>...</td>
+      <td>DELITO DE BAJO IMPACTO</td>
+      <td>EUGENIA</td>
+      <td>NaN</td>
+      <td>NARVARTE</td>
+      <td>BENITO JUAREZ</td>
+      <td>NaN</td>
+      <td>-99.16102</td>
+      <td>19.38601</td>
+      <td>NaN</td>
+      <td>POINT (-99.16102 19.38601)</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>5</td>
-      <td>2015</td>
-      <td>Diciembre</td>
-      <td>2015-12-25 12:00:00</td>
-      <td>2016</td>
-      <td>Febrero</td>
-      <td>2016-02-01T02:16:49</td>
-      <td>DENUNCIA DE HECHOS</td>
-      <td>INVESTIGACIÓN EN BENITO JUÁREZ</td>
-      <td>BJ-1</td>
+      <td>751820</td>
+      <td>2019</td>
+      <td>Agosto</td>
+      <td>2019-08-13 13:00:00</td>
+      <td>2019</td>
+      <td>Octubre</td>
+      <td>2019-10-07T21:59:40</td>
+      <td>VIOLENCIA FAMILIAR</td>
+      <td>JUZGADOS FAMILIARES</td>
+      <td>CJM-TLP</td>
       <td>...</td>
-      <td>HECHO NO DELICTIVO</td>
-      <td>SAN FRANCISCO</td>
-      <td>AVENIDA COLONIA DEL VALLE</td>
-      <td>DEL VALLE CENTRO</td>
-      <td>BENITO JUAREZ</td>
+      <td>DELITO DE BAJO IMPACTO</td>
+      <td>AVENIDA GUSTAVO DIAZ ORDAZ</td>
       <td>NaN</td>
-      <td>-99.1721889999999</td>
-      <td>19.387113999834</td>
+      <td>AMPLIACIÓN JALALPA</td>
+      <td>ALVARO OBREGON</td>
       <td>NaN</td>
-      <td>POINT (-99.17219 19.38711)</td>
+      <td>-99.23382</td>
+      <td>19.37586</td>
+      <td>NaN</td>
+      <td>POINT (-99.23382 19.37586)</td>
     </tr>
   </tbody>
 </table>
@@ -227,13 +227,13 @@ victimas.head()
       <th>Ano_inicio</th>
       <th>Mes_inicio</th>
       <th>FechaInicio</th>
-      <th>Delito</th>
-      <th>Categoria</th>
+      <th>delito</th>
+      <th>categoria</th>
       <th>Sexo</th>
       <th>Edad</th>
       <th>TipoPersona</th>
       <th>...</th>
-      <th>FechaHecho</th>
+      <th>fecha_hechos</th>
       <th>HoraHecho</th>
       <th>HoraInicio</th>
       <th>AlcaldiaHechos</th>
@@ -248,123 +248,123 @@ victimas.head()
   <tbody>
     <tr>
       <th>0</th>
-      <td>1</td>
-      <td>8324429</td>
-      <td>2019</td>
-      <td>Enero</td>
-      <td>2019-04-01T00:00:00</td>
-      <td>FRAUDE</td>
-      <td>DELITO DE BAJO IMPACTO</td>
+      <td>595358</td>
+      <td>8960172</td>
+      <td>2021</td>
+      <td>Junio</td>
+      <td>2021-06-26T00:00:00</td>
+      <td>ROBO DE VEHICULO DE SERVICIO PARTICULAR CON VI...</td>
+      <td>ROBO DE VEHÍCULO CON Y SIN VIOLENCIA</td>
       <td>Masculino</td>
-      <td>62</td>
+      <td>25</td>
       <td>FISICA</td>
       <td>...</td>
-      <td>2018-08-29</td>
-      <td>12:00:00</td>
-      <td>12:19:00</td>
+      <td>2021-06-26</td>
+      <td>19:10:00</td>
+      <td>22:17:00</td>
       <td>ALVARO OBREGON</td>
-      <td>GUADALUPE INN</td>
-      <td>INSUGENTES SUR</td>
+      <td>PUERTA GRANDE</td>
+      <td>AVENIDA CENTENARIO   CASI ESQUINA CON LA CALLE...</td>
       <td>NaN</td>
-      <td>19.36125</td>
-      <td>-99.18314</td>
-      <td>POINT (-99.18314 19.36125)</td>
+      <td>19.3571148543388</td>
+      <td>-99.2289503701792</td>
+      <td>POINT (-99.22895 19.35711)</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>2</td>
-      <td>8324430</td>
-      <td>2019</td>
-      <td>Enero</td>
-      <td>2019-04-01T00:00:00</td>
-      <td>PRODUCCIÓN, IMPRESIÓN, ENAJENACIÓN, DISTRIBUCI...</td>
-      <td>DELITO DE BAJO IMPACTO</td>
-      <td>Femenino</td>
-      <td>38</td>
-      <td>FISICA</td>
-      <td>...</td>
-      <td>2018-12-15</td>
-      <td>15:00:00</td>
-      <td>12:20:00</td>
-      <td>AZCAPOTZALCO</td>
-      <td>VICTORIA DE LAS DEMOCRACIAS</td>
-      <td>AV.  CUATLAHUAC</td>
+      <td>595359</td>
+      <td>8960173</td>
+      <td>2021</td>
+      <td>Junio</td>
+      <td>2021-06-26T00:00:00</td>
+      <td>ROBO A TRANSPORTISTA Y VEHICULO PESADO CON VIO...</td>
+      <td>ROBO A TRANSPORTISTA CON Y SIN VIOLENCIA</td>
       <td>NaN</td>
-      <td>19.47181</td>
-      <td>-99.16458</td>
-      <td>POINT (-99.16458 19.47181)</td>
+      <td>NaN</td>
+      <td>MORAL</td>
+      <td>...</td>
+      <td>2021-06-25</td>
+      <td>23:30:00</td>
+      <td>22:17:00</td>
+      <td>AZCAPOTZALCO</td>
+      <td>INDUSTRIAL VALLEJO</td>
+      <td>AVENIDA CEYLAN</td>
+      <td>ENTRE CERRADA CEYLAN</td>
+      <td>19.4938324187342</td>
+      <td>-99.1699397596072</td>
+      <td>POINT (-99.16994 19.49383)</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>3</td>
-      <td>8324431</td>
-      <td>2019</td>
-      <td>Enero</td>
-      <td>2019-04-01T00:00:00</td>
-      <td>ROBO A TRANSEUNTE SALIENDO DEL BANCO CON VIOLE...</td>
-      <td>ROBO A CUENTAHABIENTE SALIENDO DEL CAJERO CON ...</td>
-      <td>Masculino</td>
-      <td>42</td>
-      <td>FISICA</td>
-      <td>...</td>
-      <td>2018-12-22</td>
-      <td>15:30:00</td>
-      <td>12:23:00</td>
-      <td>COYOACAN</td>
-      <td>COPILCO UNIVERSIDAD ISSSTE</td>
-      <td>COPILCO</td>
+      <td>595360</td>
+      <td>8960173</td>
+      <td>2021</td>
+      <td>Junio</td>
+      <td>2021-06-26T00:00:00</td>
+      <td>ROBO A TRANSPORTISTA Y VEHICULO PESADO CON VIO...</td>
+      <td>ROBO A TRANSPORTISTA CON Y SIN VIOLENCIA</td>
       <td>NaN</td>
-      <td>19.33797</td>
-      <td>-99.18611</td>
-      <td>POINT (-99.18611 19.33797)</td>
+      <td>NaN</td>
+      <td>MORAL</td>
+      <td>...</td>
+      <td>2021-06-25</td>
+      <td>23:30:00</td>
+      <td>22:17:00</td>
+      <td>AZCAPOTZALCO</td>
+      <td>INDUSTRIAL VALLEJO</td>
+      <td>AVENIDA CEYLAN</td>
+      <td>ENTRE CERRADA CEYLAN</td>
+      <td>19.4938324187342</td>
+      <td>-99.1699397596072</td>
+      <td>POINT (-99.16994 19.49383)</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>4</td>
-      <td>8324435</td>
-      <td>2019</td>
-      <td>Enero</td>
-      <td>2019-04-01T00:00:00</td>
-      <td>ROBO DE VEHICULO DE SERVICIO PARTICULAR SIN VI...</td>
-      <td>ROBO DE VEHÍCULO CON Y SIN VIOLENCIA</td>
-      <td>Masculino</td>
-      <td>35</td>
-      <td>FISICA</td>
+      <td>595361</td>
+      <td>8960175</td>
+      <td>2021</td>
+      <td>Junio</td>
+      <td>2021-06-26T00:00:00</td>
+      <td>ROBO A NEGOCIO SIN VIOLENCIA POR FARDEROS (TIE...</td>
+      <td>DELITO DE BAJO IMPACTO</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>MORAL</td>
       <td>...</td>
-      <td>2019-04-01</td>
-      <td>06:00:00</td>
-      <td>12:27:00</td>
-      <td>IZTACALCO</td>
-      <td>AGRÍCOLA PANTITLAN</td>
-      <td>CALLE 6</td>
-      <td>ENTRE PRIVADA DEL VALLE Y PRIVADA GONZALEZ</td>
-      <td>19.40327</td>
-      <td>-99.05983</td>
-      <td>POINT (-99.05983 19.40327)</td>
+      <td>2021-06-26</td>
+      <td>21:20:00</td>
+      <td>22:21:00</td>
+      <td>IZTAPALAPA</td>
+      <td>GUADALUPE DEL MORAL</td>
+      <td>AVENIDA JAVIER ROJO GOMEZ</td>
+      <td>NaN</td>
+      <td>19.3681183577951</td>
+      <td>-99.0814492098267</td>
+      <td>POINT (-99.08145 19.36812)</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>5</td>
-      <td>8324438</td>
-      <td>2019</td>
-      <td>Enero</td>
-      <td>2019-04-01T00:00:00</td>
-      <td>ROBO DE MOTOCICLETA SIN VIOLENCIA</td>
-      <td>ROBO DE VEHÍCULO CON Y SIN VIOLENCIA</td>
+      <td>595362</td>
+      <td>8960176</td>
+      <td>2021</td>
+      <td>Junio</td>
+      <td>2021-06-26T00:00:00</td>
+      <td>FRAUDE</td>
+      <td>DELITO DE BAJO IMPACTO</td>
       <td>Masculino</td>
-      <td>NaN</td>
+      <td>37</td>
       <td>FISICA</td>
       <td>...</td>
-      <td>2019-03-01</td>
-      <td>20:00:00</td>
-      <td>12:35:00</td>
-      <td>IZTAPALAPA</td>
-      <td>PROGRESISTA</td>
-      <td>UNIVERSIDAD</td>
-      <td>NaN</td>
-      <td>19.3548</td>
-      <td>-99.06324</td>
-      <td>POINT (-99.06324 19.35480)</td>
+      <td>2021-06-26</td>
+      <td>08:27:00</td>
+      <td>22:31:00</td>
+      <td>BENITO JUAREZ</td>
+      <td>NAPOLES</td>
+      <td>ARIZONA</td>
+      <td>PENSILVANIA</td>
+      <td>19.3927810885787</td>
+      <td>-99.1806440001974</td>
+      <td>POINT (-99.18064 19.39278)</td>
     </tr>
   </tbody>
 </table>
@@ -443,123 +443,123 @@ carpetas.head()
   <tbody>
     <tr>
       <th>0</th>
-      <td>1</td>
-      <td>2016</td>
-      <td>Enero</td>
-      <td>2016-01-31 22:16:00</td>
-      <td>2016</td>
-      <td>Febrero</td>
-      <td>2016-02-01T00:25:44</td>
-      <td>DAÑO EN PROPIEDAD AJENA INTENCIONAL</td>
-      <td>INVESTIGACIÓN EN BENITO JUÁREZ</td>
-      <td>BJ-2</td>
+      <td>751816</td>
+      <td>2019</td>
+      <td>Octubre</td>
+      <td>2019-10-07 14:00:00</td>
+      <td>2019</td>
+      <td>Octubre</td>
+      <td>2019-10-07T21:45:16</td>
+      <td>PRODUCCIÓN, IMPRESIÓN, ENAJENACIÓN, DISTRIBUCI...</td>
+      <td>INVESTIGACIÓN EN COYOACÁN</td>
+      <td>COY-1</td>
       <td>...</td>
-      <td>BENITO JUAREZ</td>
+      <td>COYOACAN</td>
       <td>NaN</td>
-      <td>-99.1402149999999</td>
-      <td>19.3803149998337</td>
+      <td>-99.17525</td>
+      <td>19.34586</td>
       <td>NaN</td>
-      <td>POINT (-99.14021 19.38031)</td>
-      <td>948</td>
-      <td>AMERICAS UNIDAS-DEL LAGO</td>
-      <td>09014</td>
-      <td>016</td>
+      <td>POINT (-99.17525 19.34586)</td>
+      <td>1149</td>
+      <td>ROMERO DE TERREROS (FRACC)</td>
+      <td>09003</td>
+      <td>023</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>2</td>
-      <td>2016</td>
-      <td>Enero</td>
-      <td>2016-01-31 20:50:00</td>
-      <td>2016</td>
-      <td>Febrero</td>
-      <td>2016-02-01T00:52:37</td>
-      <td>ROBO DE VEHICULO DE SERVICIO PARTICULAR CON VI...</td>
-      <td>INVESTIGACIÓN PARA LA ATENCIÓN DEL DELITO DE R...</td>
-      <td>ORIENTEII</td>
+      <td>751817</td>
+      <td>2019</td>
+      <td>Octubre</td>
+      <td>2019-10-07 14:00:00</td>
+      <td>2019</td>
+      <td>Octubre</td>
+      <td>2019-10-07T21:46:30</td>
+      <td>DAÑO EN PROPIEDAD AJENA CULPOSA POR TRÁNSITO V...</td>
+      <td>INVESTIGACIÓN EN ÁLVARO OBREGÓN</td>
+      <td>AO-4</td>
       <td>...</td>
-      <td>IZTAPALAPA</td>
+      <td>ALVARO OBREGON</td>
       <td>NaN</td>
-      <td>-99.1084029999999</td>
-      <td>19.3528589998337</td>
+      <td>-99.19513</td>
+      <td>19.35819</td>
       <td>NaN</td>
-      <td>POINT (-99.10840 19.35286)</td>
-      <td>1303</td>
-      <td>LOS CIPRESES</td>
-      <td>09007</td>
-      <td>0111</td>
+      <td>POINT (-99.19513 19.35819)</td>
+      <td>264</td>
+      <td>ALPES</td>
+      <td>09010</td>
+      <td>015</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>3</td>
-      <td>2016</td>
-      <td>Febrero</td>
-      <td>2016-02-01 00:30:00</td>
-      <td>2016</td>
-      <td>Febrero</td>
-      <td>2016-02-01T01:33:26</td>
-      <td>NARCOMENUDEO POSESION SIMPLE</td>
-      <td>INVESTIGACIÓN PARA LA ATENCIÓN DE NIÑOS, NIÑAS...</td>
-      <td>57</td>
-      <td>...</td>
-      <td>IZTAPALAPA</td>
-      <td>NaN</td>
-      <td>-99.061321</td>
-      <td>19.3564509998336</td>
-      <td>NaN</td>
-      <td>POINT (-99.06132 19.35645)</td>
-      <td>1373</td>
-      <td>VICENTE GUERRERO-SUPER MANZANA 7 (U HAB)</td>
-      <td>09007</td>
-      <td>0116</td>
-    </tr>
-    <tr>
-      <th>83</th>
-      <td>83</td>
-      <td>2016</td>
-      <td>Febrero</td>
-      <td>2016-02-01 15:30:00</td>
-      <td>2016</td>
-      <td>Febrero</td>
-      <td>2016-02-01T17:48:29</td>
-      <td>ROBO A NEGOCIO SIN VIOLENCIA</td>
-      <td>INVESTIGACIÓN EN IZTAPALAPA</td>
-      <td>IZP-4</td>
-      <td>...</td>
-      <td>IZTAPALAPA</td>
-      <td>NaN</td>
-      <td>-99.067653</td>
-      <td>19.3531039998337</td>
-      <td>NaN</td>
-      <td>POINT (-99.06765 19.35310)</td>
-      <td>1364</td>
-      <td>PROGRESISTA</td>
-      <td>09007</td>
-      <td>0116</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>4</td>
-      <td>2016</td>
-      <td>Enero</td>
-      <td>2016-01-31 22:00:00</td>
-      <td>2016</td>
-      <td>Febrero</td>
-      <td>2016-02-01T02:09:11</td>
-      <td>ROBO A TRANSEUNTE EN VIA PUBLICA CON VIOLENCIA</td>
+      <td>751818</td>
+      <td>2019</td>
+      <td>Octubre</td>
+      <td>2019-10-06 23:30:00</td>
+      <td>2019</td>
+      <td>Octubre</td>
+      <td>2019-10-07T21:49:20</td>
+      <td>ROBO A TRANSEUNTE CONDUCTOR DE TAXI PUBLICO Y ...</td>
       <td>INVESTIGACIÓN EN IZTAPALAPA</td>
       <td>IZP-6</td>
       <td>...</td>
       <td>IZTAPALAPA</td>
       <td>NaN</td>
-      <td>-98.9763790000001</td>
-      <td>19.3316329998333</td>
+      <td>-99.04765</td>
+      <td>19.38716</td>
       <td>NaN</td>
-      <td>POINT (-98.97638 19.33163)</td>
-      <td>1806</td>
-      <td>CAMPESTRE POTRERO</td>
+      <td>POINT (-99.04765 19.38716)</td>
+      <td>1269</td>
+      <td>EJTO CONSTITUCIONALISTA, SUPERMANZANA I ( U HAB)</td>
       <td>09007</td>
-      <td>0116</td>
+      <td>0119</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>751819</td>
+      <td>2019</td>
+      <td>Septiembre</td>
+      <td>2019-09-14 12:00:00</td>
+      <td>2019</td>
+      <td>Octubre</td>
+      <td>2019-10-07T21:57:48</td>
+      <td>FRAUDE</td>
+      <td>INVESTIGACIÓN EN BENITO JUÁREZ</td>
+      <td>BJ-3</td>
+      <td>...</td>
+      <td>BENITO JUAREZ</td>
+      <td>NaN</td>
+      <td>-99.16102</td>
+      <td>19.38601</td>
+      <td>NaN</td>
+      <td>POINT (-99.16102 19.38601)</td>
+      <td>936</td>
+      <td>NARVARTE V</td>
+      <td>09014</td>
+      <td>0111</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>751820</td>
+      <td>2019</td>
+      <td>Agosto</td>
+      <td>2019-08-13 13:00:00</td>
+      <td>2019</td>
+      <td>Octubre</td>
+      <td>2019-10-07T21:59:40</td>
+      <td>VIOLENCIA FAMILIAR</td>
+      <td>JUZGADOS FAMILIARES</td>
+      <td>CJM-TLP</td>
+      <td>...</td>
+      <td>ALVARO OBREGON</td>
+      <td>NaN</td>
+      <td>-99.23382</td>
+      <td>19.37586</td>
+      <td>NaN</td>
+      <td>POINT (-99.23382 19.37586)</td>
+      <td>1051</td>
+      <td>JALALPA TEPITO</td>
+      <td>09010</td>
+      <td>013</td>
     </tr>
   </tbody>
 </table>
@@ -599,8 +599,8 @@ victimas.head()
       <th>Ano_inicio</th>
       <th>Mes_inicio</th>
       <th>FechaInicio</th>
-      <th>Delito</th>
-      <th>Categoria</th>
+      <th>delito</th>
+      <th>categoria</th>
       <th>Sexo</th>
       <th>Edad</th>
       <th>TipoPersona</th>
@@ -620,123 +620,123 @@ victimas.head()
   <tbody>
     <tr>
       <th>0</th>
-      <td>1</td>
-      <td>8324429</td>
-      <td>2019</td>
-      <td>Enero</td>
-      <td>2019-04-01T00:00:00</td>
-      <td>FRAUDE</td>
-      <td>DELITO DE BAJO IMPACTO</td>
+      <td>595358</td>
+      <td>8960172</td>
+      <td>2021</td>
+      <td>Junio</td>
+      <td>2021-06-26T00:00:00</td>
+      <td>ROBO DE VEHICULO DE SERVICIO PARTICULAR CON VI...</td>
+      <td>ROBO DE VEHÍCULO CON Y SIN VIOLENCIA</td>
       <td>Masculino</td>
-      <td>62</td>
+      <td>25</td>
       <td>FISICA</td>
       <td>...</td>
-      <td>GUADALUPE INN</td>
-      <td>INSUGENTES SUR</td>
+      <td>PUERTA GRANDE</td>
+      <td>AVENIDA CENTENARIO   CASI ESQUINA CON LA CALLE...</td>
       <td>NaN</td>
-      <td>19.36125</td>
-      <td>-99.18314</td>
-      <td>POINT (-99.18314 19.36125)</td>
-      <td>263</td>
-      <td>GUADALUPE INN</td>
+      <td>19.3571148543388</td>
+      <td>-99.2289503701792</td>
+      <td>POINT (-99.22895 19.35711)</td>
+      <td>1121</td>
+      <td>LOMAS DE PUERTA GRANDE</td>
       <td>09010</td>
-      <td>012</td>
+      <td>017</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>2</td>
-      <td>8324430</td>
-      <td>2019</td>
-      <td>Enero</td>
-      <td>2019-04-01T00:00:00</td>
-      <td>PRODUCCIÓN, IMPRESIÓN, ENAJENACIÓN, DISTRIBUCI...</td>
-      <td>DELITO DE BAJO IMPACTO</td>
-      <td>Femenino</td>
-      <td>38</td>
-      <td>FISICA</td>
-      <td>...</td>
-      <td>VICTORIA DE LAS DEMOCRACIAS</td>
-      <td>AV.  CUATLAHUAC</td>
+      <td>595359</td>
+      <td>8960173</td>
+      <td>2021</td>
+      <td>Junio</td>
+      <td>2021-06-26T00:00:00</td>
+      <td>ROBO A TRANSPORTISTA Y VEHICULO PESADO CON VIO...</td>
+      <td>ROBO A TRANSPORTISTA CON Y SIN VIOLENCIA</td>
       <td>NaN</td>
-      <td>19.47181</td>
-      <td>-99.16458</td>
-      <td>POINT (-99.16458 19.47181)</td>
-      <td>683</td>
-      <td>VICTORIA DE LAS DEMOCRACIAS</td>
+      <td>NaN</td>
+      <td>MORAL</td>
+      <td>...</td>
+      <td>INDUSTRIAL VALLEJO</td>
+      <td>AVENIDA CEYLAN</td>
+      <td>ENTRE CERRADA CEYLAN</td>
+      <td>19.4938324187342</td>
+      <td>-99.1699397596072</td>
+      <td>POINT (-99.16994 19.49383)</td>
+      <td>80</td>
+      <td>INDUSTRIAL VALLEJO (U HAB)</td>
       <td>09002</td>
-      <td>026</td>
+      <td>022</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>3</td>
-      <td>8324431</td>
-      <td>2019</td>
-      <td>Enero</td>
-      <td>2019-04-01T00:00:00</td>
-      <td>ROBO A TRANSEUNTE SALIENDO DEL BANCO CON VIOLE...</td>
-      <td>ROBO A CUENTAHABIENTE SALIENDO DEL CAJERO CON ...</td>
-      <td>Masculino</td>
-      <td>42</td>
-      <td>FISICA</td>
-      <td>...</td>
-      <td>COPILCO UNIVERSIDAD ISSSTE</td>
-      <td>COPILCO</td>
+      <td>595360</td>
+      <td>8960173</td>
+      <td>2021</td>
+      <td>Junio</td>
+      <td>2021-06-26T00:00:00</td>
+      <td>ROBO A TRANSPORTISTA Y VEHICULO PESADO CON VIO...</td>
+      <td>ROBO A TRANSPORTISTA CON Y SIN VIOLENCIA</td>
       <td>NaN</td>
-      <td>19.33797</td>
-      <td>-99.18611</td>
-      <td>POINT (-99.18611 19.33797)</td>
-      <td>328</td>
-      <td>COPILCO EL BAJO</td>
-      <td>09003</td>
-      <td>0213</td>
+      <td>NaN</td>
+      <td>MORAL</td>
+      <td>...</td>
+      <td>INDUSTRIAL VALLEJO</td>
+      <td>AVENIDA CEYLAN</td>
+      <td>ENTRE CERRADA CEYLAN</td>
+      <td>19.4938324187342</td>
+      <td>-99.1699397596072</td>
+      <td>POINT (-99.16994 19.49383)</td>
+      <td>80</td>
+      <td>INDUSTRIAL VALLEJO (U HAB)</td>
+      <td>09002</td>
+      <td>022</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>4</td>
-      <td>8324435</td>
-      <td>2019</td>
-      <td>Enero</td>
-      <td>2019-04-01T00:00:00</td>
-      <td>ROBO DE VEHICULO DE SERVICIO PARTICULAR SIN VI...</td>
-      <td>ROBO DE VEHÍCULO CON Y SIN VIOLENCIA</td>
-      <td>Masculino</td>
-      <td>35</td>
-      <td>FISICA</td>
+      <td>595361</td>
+      <td>8960175</td>
+      <td>2021</td>
+      <td>Junio</td>
+      <td>2021-06-26T00:00:00</td>
+      <td>ROBO A NEGOCIO SIN VIOLENCIA POR FARDEROS (TIE...</td>
+      <td>DELITO DE BAJO IMPACTO</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>MORAL</td>
       <td>...</td>
-      <td>AGRÍCOLA PANTITLAN</td>
-      <td>CALLE 6</td>
-      <td>ENTRE PRIVADA DEL VALLE Y PRIVADA GONZALEZ</td>
-      <td>19.40327</td>
-      <td>-99.05983</td>
-      <td>POINT (-99.05983 19.40327)</td>
-      <td>227</td>
-      <td>PANTITLAN V</td>
-      <td>09006</td>
-      <td>026</td>
+      <td>GUADALUPE DEL MORAL</td>
+      <td>AVENIDA JAVIER ROJO GOMEZ</td>
+      <td>NaN</td>
+      <td>19.3681183577951</td>
+      <td>-99.0814492098267</td>
+      <td>POINT (-99.08145 19.36812)</td>
+      <td>1351</td>
+      <td>GUADALUPE DEL MORAL</td>
+      <td>09007</td>
+      <td>0120</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>5</td>
-      <td>8324438</td>
-      <td>2019</td>
-      <td>Enero</td>
-      <td>2019-04-01T00:00:00</td>
-      <td>ROBO DE MOTOCICLETA SIN VIOLENCIA</td>
-      <td>ROBO DE VEHÍCULO CON Y SIN VIOLENCIA</td>
+      <td>595362</td>
+      <td>8960176</td>
+      <td>2021</td>
+      <td>Junio</td>
+      <td>2021-06-26T00:00:00</td>
+      <td>FRAUDE</td>
+      <td>DELITO DE BAJO IMPACTO</td>
       <td>Masculino</td>
-      <td>NaN</td>
+      <td>37</td>
       <td>FISICA</td>
       <td>...</td>
-      <td>PROGRESISTA</td>
-      <td>UNIVERSIDAD</td>
-      <td>NaN</td>
-      <td>19.3548</td>
-      <td>-99.06324</td>
-      <td>POINT (-99.06324 19.35480)</td>
-      <td>1366</td>
-      <td>LAS AMERICAS (U HAB)</td>
-      <td>09007</td>
-      <td>0116</td>
+      <td>NAPOLES</td>
+      <td>ARIZONA</td>
+      <td>PENSILVANIA</td>
+      <td>19.3927810885787</td>
+      <td>-99.1806440001974</td>
+      <td>POINT (-99.18064 19.39278)</td>
+      <td>242</td>
+      <td>NAPOLES</td>
+      <td>09014</td>
+      <td>011</td>
     </tr>
   </tbody>
 </table>
@@ -892,13 +892,13 @@ carpetas[['delito', 'categoria']]
     </tr>
     <tr>
       <th>3</th>
-      <td>ROBO A NEGOCIO SIN VIOLENCIA</td>
-      <td>Robo a negocio</td>
+      <td>ROBO A TRANSEUNTE EN VIA PUBLICA CON VIOLENCIA</td>
+      <td>Robo a transeúnte</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>ROBO A TRANSEUNTE EN VIA PUBLICA CON VIOLENCIA</td>
-      <td>Robo a transeúnte</td>
+      <td>DENUNCIA DE HECHOS</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>...</th>
@@ -906,33 +906,33 @@ carpetas[['delito', 'categoria']]
       <td>...</td>
     </tr>
     <tr>
-      <th>90</th>
-      <td>USO DE DOCUMENTO FALSO</td>
+      <th>1217266</th>
+      <td>ABUSO DE AUTORIDAD Y USO ILEGAL DE LA FUERZA P...</td>
       <td>NaN</td>
     </tr>
     <tr>
-      <th>91</th>
+      <th>1217267</th>
+      <td>ROBO A NEGOCIO CON VIOLENCIA</td>
+      <td>Robo a negocio</td>
+    </tr>
+    <tr>
+      <th>1217268</th>
+      <td>DAÑO EN PROPIEDAD AJENA INTENCIONAL A BIENES I...</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1217269</th>
+      <td>ALLANAMIENTO DE MORADA, DESPACHO, OFICINA O ES...</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1217270</th>
       <td>ROBO A TRANSEUNTE EN VIA PUBLICA CON VIOLENCIA</td>
       <td>Robo a transeúnte</td>
-    </tr>
-    <tr>
-      <th>92</th>
-      <td>ROBO A TRANSEUNTE EN VIA PUBLICA CON VIOLENCIA</td>
-      <td>Robo a transeúnte</td>
-    </tr>
-    <tr>
-      <th>93</th>
-      <td>FRAUDE</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>94</th>
-      <td>DAÑO EN PROPIEDAD AJENA INTENCIONAL</td>
-      <td>NaN</td>
     </tr>
   </tbody>
 </table>
-<p>95 rows × 2 columns</p>
+<p>1217271 rows × 2 columns</p>
 </div>
 
 
@@ -1117,36 +1117,36 @@ victimas[['Delito', 'Nivel 1', 'Nivel 2', 'Nivel 3']]
   <tbody>
     <tr>
       <th>0</th>
-      <td>FRAUDE</td>
-      <td>Fraude</td>
-      <td>NaN</td>
+      <td>ROBO DE VEHICULO DE SERVICIO PARTICULAR CON VI...</td>
+      <td>Robo de Vehículo de Servicio Particular</td>
+      <td>Con Violencia</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>PRODUCCIÓN, IMPRESIÓN, ENAJENACIÓN, DISTRIBUCI...</td>
+      <td>ROBO A TRANSPORTISTA Y VEHICULO PESADO CON VIO...</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>ROBO A TRANSEUNTE SALIENDO DEL BANCO CON VIOLE...</td>
+      <td>ROBO A TRANSPORTISTA Y VEHICULO PESADO CON VIO...</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>ROBO DE VEHICULO DE SERVICIO PARTICULAR SIN VI...</td>
-      <td>Robo de Vehículo de Servicio Particular</td>
+      <td>ROBO A NEGOCIO SIN VIOLENCIA POR FARDEROS (TIE...</td>
+      <td>Robo a Negocio y Tiendas de Autoservicio</td>
       <td>Sin Violencia</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>ROBO DE MOTOCICLETA SIN VIOLENCIA</td>
-      <td>NaN</td>
+      <td>FRAUDE</td>
+      <td>Fraude</td>
       <td>NaN</td>
       <td>NaN</td>
     </tr>
@@ -1159,36 +1159,36 @@ victimas[['Delito', 'Nivel 1', 'Nivel 2', 'Nivel 3']]
     </tr>
     <tr>
       <th>90</th>
-      <td>ROBO DE VEHICULO DE SERVICIO PARTICULAR CON VI...</td>
-      <td>Robo de Vehículo de Servicio Particular</td>
-      <td>Con Violencia</td>
+      <td>NARCOMENUDEO POSESION SIMPLE</td>
+      <td>Narcomenudeo</td>
+      <td>Posesión Simple</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>91</th>
-      <td>ABUSO DE CONFIANZA</td>
-      <td>Abuso de Confianza</td>
+      <td>DAÑO EN PROPIEDAD AJENA CULPOSA POR TRÁNSITO V...</td>
+      <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>92</th>
-      <td>ROBO DE VEHICULO DE SERVICIO PARTICULAR SIN VI...</td>
-      <td>Robo de Vehículo de Servicio Particular</td>
-      <td>Sin Violencia</td>
+      <td>ROBO A TRANSEUNTE EN NEGOCIO CON VIOLENCIA</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>93</th>
-      <td>ROBO A TRANSEUNTE EN VIA PUBLICA CON VIOLENCIA</td>
-      <td>Robo a Transeúnte en Vía Pública</td>
-      <td>Con Violencia</td>
+      <td>LESIONES CULPOSAS POR TRANSITO VEHICULAR EN CO...</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>94</th>
-      <td>ROBO DE OBJETOS</td>
-      <td>Robo de Objetos</td>
+      <td>DAÑO EN PROPIEDAD AJENA CULPOSA POR TRÁNSITO V...</td>
+      <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
     </tr>
@@ -1242,7 +1242,7 @@ ax.plot_surface(xx, yy, zz,cmap='viridis', edgecolor='none')
 
 
 
-    <mpl_toolkits.mplot3d.art3d.Poly3DCollection at 0x7fe3262c3c70>
+    <mpl_toolkits.mplot3d.art3d.Poly3DCollection at 0x7f2122d15d00>
 
 
 
@@ -1254,28 +1254,29 @@ ax.plot_surface(xx, yy, zz,cmap='viridis', edgecolor='none')
 
 Para una categoría determinada se obtiene la serie de tiempo de densidades de Kernel para un periodo arbitrario, utilizando la agregación temporal determinada por el usuario.
 
-Para usar esta función no es necesario agregar los ids de unidades espaciales
+Para usar esta función no es necesario agregar los ids de unidades espaciales.
 
-```python
-carpetas = get_historico_carpetas()
-carpetas = agregar_categorias_de_usuario(carpetas)
-fechas = pd.date_range(start='1/1/2017', end='1/1/2020', freq='M').to_list()
-xx, yy, kdes = serie_tiempo_kde_categoria(carpetas, fechas, ["Homicidios dolosos"], "30 days")
-```
+````Python
 
-    /tmp/ipykernel_25308/253724238.py:1: DtypeWarning: Columns (15) have mixed types.Specify dtype option on import or set low_memory=False.
-      carpetas = get_historico_carpetas()
+carpetas = get_carpetas_desde_archivo()
+carpetas = agregar_categorias_carpetas(carpetas)
+fechas = pd.date_range(start='1/1/2019', end='1/1/2021', freq='M').to_list()
+xx, yy, kdes = serie_tiempo_kde_categoria(carpetas, 
+                                          fechas, 
+                                          ["Homicidios dolosos"], 
+                                          "30 days")
+````
 
+Ya teniendo la serie de KDEs es relatívamente fácil obtener una animación de la evolución utilizando el siguiente código. Es necesario instalar la extensión [ipywidgets](https://ipywidgets.readthedocs.io/en/latest/):
+````Python
 
-A partir de esta serie de kdes es relatívamente fácil obtener una animación de la evolución:
-
-```python
 import matplotlib.animation as animation
 def data(t):
     d = kdes[t]
     ax.clear()
-    surf = ax.plot_surface(XX, YY, d[2], cmap='viridis', edgecolor='none', antialiased=False)
-    ax.set_zlim([0,50]) # set zlim to be always the same for every frame
+    surf = ax.plot_surface(XX, YY, d[2], cmap='viridis', edgecolor='none', 
+                           antialiased=False)
+    ax.set_zlim([0,50]) 
 
 
 fig = plt.figure(figsize=(10,10))
@@ -1284,11 +1285,7 @@ surf = ax.plot_surface(xx, yy, kdes[0][2],cmap='viridis', edgecolor='none', anti
 ax.set_zlim(0, 50)
 ani = animation.FuncAnimation(fig, data, len(kdes), interval=50, repeat=False )
 plt.show()
-```
-
-    /tmp/ipykernel_25308/3416935710.py:10: MatplotlibDeprecationWarning: Calling gca() with keyword arguments was deprecated in Matplotlib 3.4. Starting two minor releases later, gca() will take no keyword arguments. The gca() function should only be used to get the current axes, or if no axes exist, create new axes with default keyword arguments. To create a new axes with non-default arguments, use plt.axes() or plt.subplot().
-      ax = fig.gca(projection='3d')
-
+````
 
 ### Agregar en hexágonos
 
@@ -1322,5 +1319,5 @@ plt.tight_layout()
 ```
 
 
-![png](docs/images/output_32_0.png)
+![png](docs/images/output_29_0.png)
 

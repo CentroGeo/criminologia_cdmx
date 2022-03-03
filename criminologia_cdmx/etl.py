@@ -65,7 +65,7 @@ def get_historico_carpetas():
     url = "https://archivo.datos.cdmx.gob.mx/fiscalia-general-de-justicia/carpetas-de-investigacion-fgj-de-la-ciudad-de-mexico/carpetas_completa_julio_2021.csv"
     r = requests.get(url, allow_redirects=True)
     open(archivo, 'wb').write(r.content)
-    records = pd.read_csv(archivo)
+    records = pd.read_csv(archivo, low_memory=False)
     records = procesa_registros(records)
     records['fecha_hechos'] = pd.to_datetime(records.fecha_hechos, dayfirst=True)
     return records
@@ -88,7 +88,7 @@ def get_historico_victimas():
 # Cell
 def get_carpetas_desde_archivo(archivo):
     """Regresa un GeoDataFrame con los registros leídos de un archivo"""
-    records = pd.read_csv(archivo)
+    records = pd.read_csv(archivo, low_memory=False)
     records = procesa_registros(records)
     records['fecha_hechos'] = pd.to_datetime(records.fecha_hechos, dayfirst=True)
     return records
@@ -166,7 +166,6 @@ def exporta_datos_visualizador(carpetas, archivo_resultado,
 
         La opción tipo=victimas/carpetas controla si los datos de entrada son carpetas o victimas.
     """
-    carpetas = carpetas.loc[carpetas.fecha_hechos >= fecha_inicio]
     columnas = ['fecha_hechos', 'delito', 'municipio_cvegeo',
                 'colonia_cve', 'cuadrante_id', 'categoria', 'lat', 'long']
     if tipo == 'carpetas':
@@ -177,6 +176,7 @@ def exporta_datos_visualizador(carpetas, archivo_resultado,
     carpetas['lat'] = carpetas.geometry.y
     carpetas['long'] = carpetas.geometry.x
     carpetas = carpetas[columnas]
+    carpetas = carpetas.loc[carpetas.fecha_hechos >= fecha_inicio]
     carpetas.to_csv(archivo_resultado)
 
 # Cell

@@ -246,21 +246,6 @@ nb_path: "00_etl.ipynb"
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>/tmp/ipykernel_16793/329436171.py:1: DtypeWarning: Columns (15) have mixed types.Specify dtype option on import or set low_memory=False.
-  carpetas_todas = get_historico_carpetas()
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
 </div>
     {% endraw %}
 
@@ -370,21 +355,6 @@ nb_path: "00_etl.ipynb"
 </pre></div>
 
     </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>/tmp/ipykernel_16793/796177901.py:1: DtypeWarning: Columns (15) have mixed types.Specify dtype option on import or set low_memory=False.
-  carpetas_todas = get_carpetas_desde_archivo(&#34;datos/descargas/carpetas_fiscalia.csv&#34;)
-</pre>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -642,7 +612,7 @@ que relacionen los niveles con las columnas Delito y Categoría en la base de V�
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="exporta_datos_visualizador" class="doc_header"><code>exporta_datos_visualizador</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/etl.py#L162" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>exporta_datos_visualizador</code>(<strong><code>carpetas</code></strong>, <strong><code>archivo_resultado</code></strong>, <strong><code>tipo</code></strong>=<em><code>'victimas'</code></em>)</p>
+<h4 id="exporta_datos_visualizador" class="doc_header"><code>exporta_datos_visualizador</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/etl.py#L162" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>exporta_datos_visualizador</code>(<strong><code>carpetas</code></strong>, <strong><code>archivo_resultado</code></strong>, <strong><code>fecha_inicio</code></strong>=<em><code>Timestamp('2019-01-01 00:00:00')</code></em>, <strong><code>tipo</code></strong>=<em><code>'victimas'</code></em>)</p>
 </blockquote>
 <p>Escribe en archivo_resultado un csv para consumirse en el visualizador.</p>
 <p>La opción tipo=victimas/carpetas controla si los datos de entrada son carpetas o victimas.</p>
@@ -699,7 +669,7 @@ que relacionen los niveles con las columnas Delito y Categoría en la base de V�
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="serie_de_tiempo_categoria" class="doc_header"><code>serie_de_tiempo_categoria</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/etl.py#L180" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>serie_de_tiempo_categoria</code>(<strong><code>carpetas</code></strong>, <strong><code>fecha_inicio</code></strong>, <strong><code>categoria</code></strong>, <strong><code>freq</code></strong>=<em><code>'M'</code></em>)</p>
+<h4 id="serie_de_tiempo_categoria" class="doc_header"><code>serie_de_tiempo_categoria</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/etl.py#L183" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>serie_de_tiempo_categoria</code>(<strong><code>carpetas</code></strong>, <strong><code>fecha_inicio</code></strong>, <strong><code>categoria</code></strong>, <strong><code>freq</code></strong>=<em><code>'M'</code></em>)</p>
 </blockquote>
 <p>Regresa una serie de tiempo con los agregados por <code>freq</code> de la <code>categoria</code>.</p>
 <p>parameters:
@@ -732,7 +702,7 @@ freq: frecuencia de agregación (<a href="https://pandas.pydata.org/pandas-docs/
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">serie</span> <span class="o">=</span> <span class="n">serie_de_tiempo_categoria</span><span class="p">(</span><span class="n">carpetas_todas</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="s1">&#39;01/01/2016&#39;</span><span class="p">),</span> <span class="s1">&#39;Robo a pasajero&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">serie</span> <span class="o">=</span> <span class="n">serie_de_tiempo_categoria</span><span class="p">(</span><span class="n">carpetas</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="s1">&#39;01/01/2016&#39;</span><span class="p">),</span> <span class="s1">&#39;Robo a pasajero&#39;</span><span class="p">)</span>
 <span class="n">serie</span>
 </pre></div>
 
@@ -772,62 +742,26 @@ freq: frecuencia de agregación (<a href="https://pandas.pydata.org/pandas-docs/
   <tbody>
     <tr>
       <th>0</th>
-      <td>2016-01-31</td>
-      <td>310</td>
+      <td>2016-11-30</td>
+      <td>2</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>2016-02-29</td>
-      <td>265</td>
+      <td>2016-12-31</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>2016-03-31</td>
-      <td>275</td>
+      <td>2017-01-31</td>
+      <td>1</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>2016-04-30</td>
-      <td>319</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>2016-05-31</td>
-      <td>256</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>62</th>
-      <td>2021-03-31</td>
-      <td>493</td>
-    </tr>
-    <tr>
-      <th>63</th>
-      <td>2021-04-30</td>
-      <td>472</td>
-    </tr>
-    <tr>
-      <th>64</th>
-      <td>2021-05-31</td>
-      <td>500</td>
-    </tr>
-    <tr>
-      <th>65</th>
-      <td>2021-06-30</td>
-      <td>435</td>
-    </tr>
-    <tr>
-      <th>66</th>
-      <td>2021-07-31</td>
-      <td>419</td>
+      <td>2017-02-28</td>
+      <td>1</td>
     </tr>
   </tbody>
 </table>
-<p>67 rows × 2 columns</p>
 </div>
 </div>
 
@@ -856,7 +790,7 @@ freq: frecuencia de agregación (<a href="https://pandas.pydata.org/pandas-docs/
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="serie_tiempo_categorias_unidades" class="doc_header"><code>serie_tiempo_categorias_unidades</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/etl.py#L201" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>serie_tiempo_categorias_unidades</code>(<strong><code>datos</code></strong>, <strong><code>fecha_inicio</code></strong>, <strong><code>tipo</code></strong>=<em><code>'victimas'</code></em>, <strong><code>geografia</code></strong>=<em><code>'colonias'</code></em>, <strong><code>freq</code></strong>=<em><code>'W'</code></em>, <strong><code>categorias</code></strong>=<em><code>['Nivel 1']</code></em>)</p>
+<h4 id="serie_tiempo_categorias_unidades" class="doc_header"><code>serie_tiempo_categorias_unidades</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/etl.py#L204" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>serie_tiempo_categorias_unidades</code>(<strong><code>datos</code></strong>, <strong><code>fecha_inicio</code></strong>, <strong><code>tipo</code></strong>=<em><code>'victimas'</code></em>, <strong><code>geografia</code></strong>=<em><code>'colonias'</code></em>, <strong><code>freq</code></strong>=<em><code>'W'</code></em>, <strong><code>categorias</code></strong>=<em><code>['Nivel 1']</code></em>)</p>
 </blockquote>
 <p>Regresa una serie de tiempo con los agregados por <code>freq</code> para categorias y
 la geografía especificada.</p>
@@ -935,41 +869,41 @@ categorias: lista de las categorías para agregar. Las columnas deben existir en
   <tbody>
     <tr>
       <th>0</th>
-      <td>2019-11-30</td>
-      <td>PROVIDENCIA (AMPL)</td>
-      <td>623.0</td>
+      <td>2019-06-30</td>
+      <td>LOS REYES (PBLO)</td>
+      <td>1304.0</td>
       <td>Nivel 1_Abuso Sexual</td>
       <td>0</td>
     </tr>
     <tr>
       <th>1</th>
       <td>2019-12-31</td>
-      <td>DOCTORES II</td>
-      <td>829.0</td>
+      <td>SANTA CECILIA TEPETLAPA (PBLO)</td>
+      <td>1800.0</td>
       <td>Nivel 1_Abuso Sexual</td>
       <td>0</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>2020-01-31</td>
-      <td>APATLACO</td>
-      <td>429.0</td>
+      <td>2020-06-30</td>
+      <td>MINERVA</td>
+      <td>1302.0</td>
       <td>Nivel 1_Abuso Sexual</td>
       <td>0</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>2020-01-31</td>
-      <td>ROMA NORTE I</td>
-      <td>162.0</td>
+      <td>2020-08-31</td>
+      <td>SANTA MARTHA ACATITLA_(PBLO)</td>
+      <td>1319.0</td>
       <td>Nivel 1_Abuso Sexual</td>
       <td>0</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>2020-02-29</td>
-      <td>VILLA PANAMERICANA 4TA. SECCION (U HAB)</td>
-      <td>1174.0</td>
+      <td>2020-09-30</td>
+      <td>SAN JUAN DE ARAGON 1A SECCION (U HAB) I</td>
+      <td>50.0</td>
       <td>Nivel 1_Abuso Sexual</td>
       <td>0</td>
     </tr>
@@ -982,48 +916,48 @@ categorias: lista de las categorías para agregar. Las columnas deben existir en
       <td>...</td>
     </tr>
     <tr>
-      <th>1387</th>
-      <td>2020-05-31</td>
-      <td>SANTA MARIA TEPEPAN (PBLO)</td>
-      <td>1750.0</td>
-      <td>Nivel 1_Violencia Familiar</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>1388</th>
-      <td>2020-05-31</td>
-      <td>SANTA MARTHA ACATITLA</td>
-      <td>1318.0</td>
+      <th>1113</th>
+      <td>2021-02-28</td>
+      <td>SANTIAGO AHUIZOTLA (PBLO)</td>
+      <td>99.0</td>
       <td>Nivel 1_Violencia Familiar</td>
       <td>0</td>
     </tr>
     <tr>
-      <th>1389</th>
-      <td>2020-05-31</td>
-      <td>STA ISABEL INDUSTRIAL</td>
-      <td>1305.0</td>
+      <th>1114</th>
+      <td>2021-02-28</td>
+      <td>TIERRA COLORADA</td>
+      <td>453.0</td>
       <td>Nivel 1_Violencia Familiar</td>
       <td>0</td>
     </tr>
     <tr>
-      <th>1390</th>
-      <td>2020-05-31</td>
-      <td>TABACALERA</td>
-      <td>825.0</td>
+      <th>1115</th>
+      <td>2021-02-28</td>
+      <td>TLAZINTLA</td>
+      <td>899.0</td>
       <td>Nivel 1_Violencia Familiar</td>
       <td>0</td>
     </tr>
     <tr>
-      <th>1391</th>
-      <td>2020-05-31</td>
-      <td>TACUBA</td>
-      <td>208.0</td>
+      <th>1116</th>
+      <td>2021-02-28</td>
+      <td>VERTIZ NARVARTE</td>
+      <td>935.0</td>
+      <td>Nivel 1_Violencia Familiar</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1117</th>
+      <td>2021-02-28</td>
+      <td>XALPA III</td>
+      <td>1397.0</td>
       <td>Nivel 1_Violencia Familiar</td>
       <td>0</td>
     </tr>
   </tbody>
 </table>
-<p>1392 rows × 5 columns</p>
+<p>1118 rows × 5 columns</p>
 </div>
 </div>
 
@@ -1052,7 +986,7 @@ categorias: lista de las categorías para agregar. Las columnas deben existir en
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="punto_to_hexid" class="doc_header"><code>punto_to_hexid</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/etl.py#L232" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>punto_to_hexid</code>(<strong><code>punto</code></strong>, <strong><code>resolution</code></strong>)</p>
+<h4 id="punto_to_hexid" class="doc_header"><code>punto_to_hexid</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/etl.py#L235" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>punto_to_hexid</code>(<strong><code>punto</code></strong>, <strong><code>resolution</code></strong>)</p>
 </blockquote>
 <p>Regresa el hexid (h3) del punto.</p>
 
@@ -1090,7 +1024,7 @@ categorias: lista de las categorías para agregar. Las columnas deben existir en
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="agrega_en_hexagonos" class="doc_header"><code>agrega_en_hexagonos</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/etl.py#L237" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>agrega_en_hexagonos</code>(<strong><code>puntos</code></strong>, <strong><code>resolution</code></strong>)</p>
+<h4 id="agrega_en_hexagonos" class="doc_header"><code>agrega_en_hexagonos</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/etl.py#L240" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>agrega_en_hexagonos</code>(<strong><code>puntos</code></strong>, <strong><code>resolution</code></strong>)</p>
 </blockquote>
 <p>Regresa un GeoDataFrame con las cuentas de puntos agregadas en hexágonos.</p>
 <p>params:

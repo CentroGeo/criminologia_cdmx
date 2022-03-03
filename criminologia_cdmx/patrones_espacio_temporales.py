@@ -105,7 +105,6 @@ def serie_razones_de_eventos(carpetas, fechas, categoria, offset, **kwargs):
     serie_razones = [np.divide(np.round(e, 5), np.round(b, 5), out=np.zeros_like(e), where=np.round(b, 5)!=0) for e, b in zip(kdes_categoria, kdes_base)]
     return serie_razones
 
-
 # Cell
 def serie_mapas_intensidad(carpetas, fechas, categoria, offset, **kwargs):
     """Regresa los mapas de razon y las intensidades de la categoría para las `fechas` seleccionadas."""
