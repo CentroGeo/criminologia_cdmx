@@ -166,6 +166,7 @@ def exporta_datos_visualizador(carpetas, archivo_resultado,
 
         La opción tipo=victimas/carpetas controla si los datos de entrada son carpetas o victimas.
     """
+    carpetas = carpetas.loc[carpetas.fecha_hechos >= fecha_inicio]
     columnas = ['fecha_hechos', 'delito', 'municipio_cvegeo',
                 'colonia_cve', 'cuadrante_id', 'categoria', 'lat', 'long']
     if tipo == 'carpetas':
