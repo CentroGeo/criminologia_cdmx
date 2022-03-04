@@ -10,7 +10,7 @@ jobs:
         python-version: '3.6'
         architecture: 'x64'
     - name: Install dependencies
-      run: sudo apt-get install -y gdal-bin python-gdal python3-gdal python3-rtree
+      run: sudo apt-get install -y gdal-bin python3-gdal python3-rtree
     - name: Install the library
       run: |
         pip install nbdev jupyter
