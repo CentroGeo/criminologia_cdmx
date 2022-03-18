@@ -116,6 +116,7 @@ def serie_mapas_intensidad(carpetas, fechas, categoria, offset, **kwargs):
 
 # Cell
 def p_value_maps(razones):
+    """Regresa los mapas de significancia estadística para las razones."""
     p_values = []
     for r in razones:
         comp = [b >= r for b in razones]
