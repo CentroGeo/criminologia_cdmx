@@ -1287,6 +1287,39 @@ ani = animation.FuncAnimation(fig, data, len(kdes), interval=50, repeat=False )
 plt.show()
 ````
 
+### Mapas de intensidad relativa y significancia
+
+Además de producir las superficies de probabilidad para cada categoría de delitos, es posible comparar dos categorías y estimar la significancia de las diferencias
+
+```python
+carpetas_todas = get_carpetas_desde_archivo('datos/descargas/carpetas_fiscalia.csv')
+carpetas_todas = agregar_categorias_carpetas(carpetas_todas)
+fechas = pd.date_range(start='1/1/2019', end='3/1/2019', freq='M').to_list()
+razones, intensidades = serie_mapas_intensidad(carpetas_todas, 
+                                               fechas,
+                                               'Homicidios dolosos',
+                                               "30 days", bw=0.001)
+significancias = p_value_maps(razones)
+fig, (ax1, ax2, ax3) = plt.subplots(1,3, figsize=(15,10))
+ax1.imshow(razones[0])
+ax1.set_title("Razón de la categoría")
+ax2.imshow(intensidades[0])
+ax2.set_title("Intensidad de la categoría")
+ax3.imshow(significancias[0])
+ax3.set_title("Significancia de la intensidad")
+```
+
+
+
+
+    Text(0.5, 1.0, 'Significancia de la intensidad')
+
+
+
+
+![png](docs/images/output_29_1.png)
+
+
 ### Agregar en hexágonos
 
 Se puede agregar los datos de carpetas/victimas en hexágonos de Uber H3 usando la función `agrega_en_hexagonos` y pasándole los datos y el nivel de escala. Por ejemplo, para agregar los datos en el nivel 8
@@ -1319,5 +1352,15 @@ plt.tight_layout()
 ```
 
 
-![png](docs/images/output_29_0.png)
+![png](docs/images/output_31_0.png)
 
+
+## Covariables
+
+Este módulo contiene diferentes funciones y clases para construir covariables para el analisis de delitos.
+
+Antes de utilizar este módulo es necesario descargar los datos:
+
+````Python
+descarga_datos_covariables()
+````

@@ -15,6 +15,9 @@ entries:
     - output: web,pdf
       title: patrones_espacio_temporales
       url: patrones_espacio_temporales.html
+    - output: web,pdf
+      title: covariables
+      url: covariables.html
     output: web
     title: criminologia_cdmx
   output: web

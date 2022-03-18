@@ -2,6 +2,7 @@
   "criminologia_cdmx": {
     "Overview": "/",
     "etl": "etl.html",
-    "patrones_espacio_temporales": "patrones_espacio_temporales.html"
+    "patrones_espacio_temporales": "patrones_espacio_temporales.html",
+    "covariables": "covariables.html"
   }
 }
