@@ -26,7 +26,8 @@ index = {"DATA_PATH": "02_covariables.ipynb",
          "serie_mapas_intensidad": "01_patrones_espacio_temporales.ipynb",
          "p_value_maps": "01_patrones_espacio_temporales.ipynb",
          "descarga_datos_covariables": "02_covariables.ipynb",
-         "get_diccionario_censo": "02_covariables.ipynb"}
+         "get_diccionario_censo": "02_covariables.ipynb",
+         "get_variables_censo": "02_covariables.ipynb"}
 
 modules = ["etl.py",
            "patrones_espacio_temporales.py",

@@ -62,7 +62,10 @@ nb_path: "02_covariables.ipynb"
 <div class="output_markdown rendered_html output_subarea ">
 <h4 id="descarga_datos_covariables" class="doc_header"><code>descarga_datos_covariables</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/covariables.py#L20" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>descarga_datos_covariables</code>()</p>
 </blockquote>
-<p>Descarga los archivos necesarios.</p>
+<p>Descarga los archivos necesarios qe son demasiado grandes para el repositorio.</p>
+<ul>
+<li>geometrías de manzanas</li>
+</ul>
 
 </div>
 
@@ -115,7 +118,7 @@ nb_path: "02_covariables.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="get_diccionario_censo" class="doc_header"><code>get_diccionario_censo</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/covariables.py#L27" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_diccionario_censo</code>()</p>
+<h4 id="get_diccionario_censo" class="doc_header"><code>get_diccionario_censo</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/covariables.py#L30" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_diccionario_censo</code>()</p>
 </blockquote>
 <p>Regresa un DataFrame con el diccionario de variables del censo.</p>
 
@@ -246,19 +249,31 @@ nb_path: "02_covariables.ipynb"
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
-<div class="input">
 
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">get_variables_censo</span><span class="p">():</span>
-    <span class="sd">&quot;&quot;&quot;Regresa un GeoDataFrame con las variables del censo a nivel manzana.&quot;&quot;&quot;</span>
-    <span class="n">gdf</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="s2">&quot;datos/descargas/covariables.gpkg&quot;</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">gdf</span>
-</pre></div>
+<div class="output_wrapper">
+<div class="output">
 
-    </div>
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="get_variables_censo" class="doc_header"><code>get_variables_censo</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/covariables.py#L41" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_variables_censo</code>()</p>
+</blockquote>
+<p>Regresa un DataFrame con las variables del censo a nivel manzana.</p>
+
+</div>
+
+</div>
+
 </div>
 </div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
 
 </div>
     {% endraw %}
@@ -306,14 +321,15 @@ nb_path: "02_covariables.ipynb"
       <th>CVEGEO</th>
       <th>AMBITO</th>
       <th>TIPOMZA</th>
-      <th>ENTIDAD</th>
-      <th>NOM_ENT</th>
-      <th>MUN</th>
-      <th>NOM_MUN</th>
-      <th>LOC</th>
-      <th>NOM_LOC</th>
-      <th>AGEB</th>
+      <th>POBTOT</th>
+      <th>POBFEM</th>
+      <th>POBMAS</th>
+      <th>P_0A2</th>
+      <th>P_0A2_F</th>
+      <th>P_0A2_M</th>
+      <th>P_3YMAS</th>
       <th>...</th>
+      <th>VPH_INTER</th>
       <th>VPH_STVP</th>
       <th>VPH_SPMVPI</th>
       <th>VPH_CVJ</th>
@@ -323,7 +339,6 @@ nb_path: "02_covariables.ipynb"
       <th>VPH_SINTIC</th>
       <th>colonia_cve</th>
       <th>cuadrante_id</th>
-      <th>geometry</th>
     </tr>
   </thead>
   <tbody>
@@ -332,124 +347,124 @@ nb_path: "02_covariables.ipynb"
       <td>0901000010898031</td>
       <td>Urbana</td>
       <td>Típica</td>
-      <td>09</td>
-      <td>Ciudad de México</td>
-      <td>010</td>
-      <td>Álvaro Obregón</td>
-      <td>0001</td>
-      <td>Álvaro Obregón</td>
-      <td>0898</td>
+      <td>93.0</td>
+      <td>56.0</td>
+      <td>37.0</td>
+      <td>4.0</td>
+      <td>NaN</td>
+      <td>3.0</td>
+      <td>89.0</td>
       <td>...</td>
-      <td>16</td>
-      <td>6</td>
-      <td>3</td>
-      <td>0</td>
-      <td>0</td>
-      <td>7</td>
-      <td>0</td>
+      <td>15.0</td>
+      <td>16.0</td>
+      <td>6.0</td>
+      <td>3.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>7.0</td>
+      <td>0.0</td>
       <td>1119.0</td>
-      <td>017</td>
-      <td>POLYGON ((2790204.135 820779.247, 2790125.593 ...</td>
+      <td>17.0</td>
     </tr>
     <tr>
       <th>1</th>
       <td>0901000012269024</td>
       <td>Urbana</td>
       <td>Típica</td>
-      <td>09</td>
-      <td>Ciudad de México</td>
-      <td>010</td>
-      <td>Álvaro Obregón</td>
-      <td>0001</td>
-      <td>Álvaro Obregón</td>
-      <td>2269</td>
+      <td>6.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>...</td>
-      <td>*</td>
-      <td>*</td>
-      <td>*</td>
-      <td>*</td>
-      <td>*</td>
-      <td>*</td>
-      <td>*</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>1082.0</td>
-      <td>014</td>
-      <td>POLYGON ((2791387.916 821465.156, 2791376.215 ...</td>
+      <td>14.0</td>
     </tr>
     <tr>
       <th>2</th>
       <td>0901000011472068</td>
       <td>Urbana</td>
       <td>Típica</td>
-      <td>09</td>
-      <td>Ciudad de México</td>
-      <td>010</td>
-      <td>Álvaro Obregón</td>
-      <td>0001</td>
-      <td>Álvaro Obregón</td>
-      <td>1472</td>
+      <td>124.0</td>
+      <td>66.0</td>
+      <td>58.0</td>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>0.0</td>
+      <td>121.0</td>
       <td>...</td>
-      <td>22</td>
-      <td>9</td>
-      <td>8</td>
-      <td>0</td>
-      <td>*</td>
-      <td>7</td>
-      <td>0</td>
+      <td>25.0</td>
+      <td>22.0</td>
+      <td>9.0</td>
+      <td>8.0</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>7.0</td>
+      <td>0.0</td>
       <td>1030.0</td>
-      <td>011</td>
-      <td>POLYGON ((2788494.355 822775.106, 2788478.422 ...</td>
+      <td>11.0</td>
     </tr>
     <tr>
       <th>3</th>
       <td>0901000011824024</td>
       <td>Urbana</td>
       <td>Típica</td>
-      <td>09</td>
-      <td>Ciudad de México</td>
-      <td>010</td>
-      <td>Álvaro Obregón</td>
-      <td>0001</td>
-      <td>Álvaro Obregón</td>
-      <td>1824</td>
+      <td>340.0</td>
+      <td>177.0</td>
+      <td>163.0</td>
+      <td>12.0</td>
+      <td>8.0</td>
+      <td>4.0</td>
+      <td>327.0</td>
       <td>...</td>
-      <td>56</td>
-      <td>29</td>
-      <td>14</td>
-      <td>*</td>
-      <td>*</td>
-      <td>25</td>
-      <td>*</td>
+      <td>69.0</td>
+      <td>56.0</td>
+      <td>29.0</td>
+      <td>14.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>25.0</td>
+      <td>NaN</td>
       <td>1135.0</td>
-      <td>0110</td>
-      <td>POLYGON ((2790870.494 819456.298, 2790862.256 ...</td>
+      <td>110.0</td>
     </tr>
     <tr>
       <th>4</th>
       <td>0901000012377004</td>
       <td>Urbana</td>
       <td>Típica</td>
-      <td>09</td>
-      <td>Ciudad de México</td>
-      <td>010</td>
-      <td>Álvaro Obregón</td>
-      <td>0001</td>
-      <td>Álvaro Obregón</td>
-      <td>2377</td>
+      <td>82.0</td>
+      <td>41.0</td>
+      <td>41.0</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>80.0</td>
       <td>...</td>
-      <td>13</td>
-      <td>6</td>
-      <td>3</td>
-      <td>0</td>
-      <td>0</td>
-      <td>9</td>
-      <td>0</td>
+      <td>13.0</td>
+      <td>13.0</td>
+      <td>6.0</td>
+      <td>3.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>9.0</td>
+      <td>0.0</td>
       <td>1081.0</td>
-      <td>018</td>
-      <td>POLYGON ((2792111.138 821977.886, 2792115.437 ...</td>
+      <td>18.0</td>
     </tr>
   </tbody>
 </table>
-<p>5 rows × 236 columns</p>
+<p>5 rows × 227 columns</p>
 </div>
 </div>
 
