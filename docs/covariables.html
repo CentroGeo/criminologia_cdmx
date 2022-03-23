@@ -98,6 +98,138 @@ nb_path: "02_covariables.ipynb"
 </div>
     {% endraw %}
 
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="get_diccionario_censo">get_diccionario_censo<a class="anchor-link" href="#get_diccionario_censo"> </a></h2>
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">get_diccionario_censo</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Regresa un DataFrame con el diccionario de variables del censo.&quot;&quot;&quot;</span>
+    <span class="n">dicionario</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;datos/diccionario_datos_ageb_urbana_09_cpv2020.csv&quot;</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">diccionario</span> <span class="o">=</span> <span class="p">(</span><span class="n">dicionario</span>
+                   <span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+                   <span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s1">&#39;Núm.&#39;</span><span class="p">)</span>
+                   <span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+                   <span class="o">.</span><span class="n">rename</span><span class="p">({</span><span class="s1">&#39;Mnemónico&#39;</span><span class="p">:</span><span class="s1">&#39;Nombre del Campo&#39;</span><span class="p">},</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">diccionario</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">diccionario</span> <span class="o">=</span> <span class="n">get_diccionario_censo</span><span class="p">()</span>
+<span class="n">diccionario</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Indicador</th>
+      <th>Descripción</th>
+      <th>Nombre del Campo</th>
+      <th>Rangos</th>
+      <th>Longitud</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Población total</td>
+      <td>Total de personas que residen habitualmente en...</td>
+      <td>POBTOT</td>
+      <td>0...999999999</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Población femenina</td>
+      <td>Total de mujeres que residen habitualmente en ...</td>
+      <td>POBFEM</td>
+      <td>0...999999999</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Población masculina</td>
+      <td>Total de hombres que residen habitualmente en ...</td>
+      <td>POBMAS</td>
+      <td>0...999999999</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Población de 0 a 2 años</td>
+      <td>Personas de 0 a 2 años de edad.</td>
+      <td>P_0A2</td>
+      <td>0…999999999</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Población femenina de 0 a 2 años</td>
+      <td>Mujeres de 0 a 2 años de edad.</td>
+      <td>P_0A2_F</td>
+      <td>0.,.999999999</td>
+      <td>9</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
 </div>
  
 

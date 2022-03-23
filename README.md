@@ -1364,3 +1364,5 @@ Antes de utilizar este módulo es necesario descargar los datos:
 ````Python
 descarga_datos_covariables()
 ````
+
+Después de descargar los datos es posible utilizar todas las funciones del módulo.
