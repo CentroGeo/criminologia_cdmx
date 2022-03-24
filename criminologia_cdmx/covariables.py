@@ -71,15 +71,17 @@ def agrega_en_unidades(censo, diciconario,
                        agregacion        = 'colonias',
                        imputacion        = 'ceros',
                        umbral_faltantes  = 0.5):
-    """Agrega las variables del censo en las unidades espaciales especificadas.
+    """ Agrega las variables del censo en las unidades espaciales especificadas.
 
-    params:
-    agregacion: str: colonias/cuadrantes o nombre del campo
-    imputacion: str: ceros/random. método para rellenar los datos faltantes.
-                         ceros llena con ceros, random con un aleatorio entre 0 y 3
-                         (faltantes por secreto)
-    umbral_faltantes float: Porcentaje de datos faltantes en una manzana para
-                            considerarla en el análisis
+        params:
+        agregacion: str: colonias/cuadrantes o nombre del campo
+        imputacion: str: ceros/random. método para rellenar los datos faltantes.
+                             ceros llena con ceros, random con un aleatorio entre 0 y 3
+                             (faltantes por secreto)
+        umbral_faltantes float: Porcentaje de datos faltantes en una manzana para
+                                considerarla en el análisis
+
+        NOTA: La columna PROM_HNV se pierde porque no hay forma de calcularla.
     """
     vars_pob = [v for v in diccionario['Nombre del Campo'].unique()
                 if (v.startswith('P') and v != 'PROM_HNV') ]
