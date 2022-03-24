@@ -81,7 +81,8 @@ def agrega_en_unidades(censo, diciconario,
         umbral_faltantes float: Porcentaje de datos faltantes en una manzana para
                                 considerarla en el análisis
 
-        NOTA: La columna PROM_HNV se pierde porque no hay forma de calcularla.
+        NOTA: Las columnas PROM_HNV, GRAPROES(F/M) se pierden porque
+        no hay forma de calcularlas.
     """
     vars_pob = [v for v in diccionario['Nombre del Campo'].unique()
                 if (v.startswith('P') and v != 'PROM_HNV') ]
@@ -97,7 +98,9 @@ def agrega_en_unidades(censo, diciconario,
     censo.dropna(thresh=umbral_faltantes*(len(vars_pob) + len(vars_viv)), inplace=True)
     censo = imputa_faltantes_manzana(censo, vars_pob + vars_viv, metodo=imputacion)
     censo = censo[[columna_agrega] + vars_pob + vars_viv].groupby(columna_agrega).sum()
-    censo['VPROM_OCUP'] = censo['OCUPVIVPAR'].div(censo['VIVPAR_HAB'])
+    # Calculamos las columnas que requieren trato espacial
+    censo['V_PROM_OCUP'] = censo['OCUPVIVPAR'].div(censo['VIVPAR_HAB'])
+    censo['V_PROM_OCUP_C'] = censo['OCUPVIVPAR'].div(censo['VPH_1CUART'] + 2*censo['VPH_2CUART'] + 3*censo['VPH_3YMASC'])
     return censo
 
 # Cell
