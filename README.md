@@ -1366,3 +1366,359 @@ descarga_datos_covariables()
 ````
 
 Después de descargar los datos es posible utilizar todas las funciones del módulo.
+
+### Variables censales
+
+El módulo contiene diferentes funciones para procesar las variables del censo, un flujo típico de trabajo consistiría en:
+
+* Leer el censo a nivel manzana
+* Agregar en colonias
+* Calcular las tasas de las variables
+
+```python
+diccionario = get_diccionario_censo()
+censo = get_variables_censo()
+agregado = agrega_en_unidades(censo, diccionario, imputacion='random')
+agregado = censo_a_tasas(agregado, diccionario)
+agregado
+```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>POBTOT</th>
+      <th>POBFEM</th>
+      <th>POBMAS</th>
+      <th>P_0A2</th>
+      <th>P_0A2_F</th>
+      <th>P_0A2_M</th>
+      <th>P_3YMAS</th>
+      <th>P_3YMAS_F</th>
+      <th>P_3YMAS_M</th>
+      <th>P_5YMAS</th>
+      <th>...</th>
+      <th>VPH_INTER</th>
+      <th>VPH_STVP</th>
+      <th>VPH_SPMVPI</th>
+      <th>VPH_CVJ</th>
+      <th>VPH_SINRTV</th>
+      <th>VPH_SINLTC</th>
+      <th>VPH_SINCINT</th>
+      <th>VPH_SINTIC</th>
+      <th>OCUPVIVPAR</th>
+      <th>PROM_OCUP_C</th>
+    </tr>
+    <tr>
+      <th>colonia_cve</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>73.0</td>
+      <td>1.191781</td>
+      <td>1.164384</td>
+      <td>1.534247</td>
+      <td>1.095890</td>
+      <td>1.068493</td>
+      <td>0.876712</td>
+      <td>1.123288</td>
+      <td>1.150685</td>
+      <td>1.082192</td>
+      <td>...</td>
+      <td>0.897727</td>
+      <td>0.806818</td>
+      <td>0.863636</td>
+      <td>0.818182</td>
+      <td>0.886364</td>
+      <td>0.977273</td>
+      <td>1.068182</td>
+      <td>1.000000</td>
+      <td>81.0</td>
+      <td>0.162651</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>106.0</td>
+      <td>1.037736</td>
+      <td>1.084906</td>
+      <td>1.047170</td>
+      <td>0.943396</td>
+      <td>0.783019</td>
+      <td>0.952830</td>
+      <td>0.981132</td>
+      <td>0.943396</td>
+      <td>0.915094</td>
+      <td>...</td>
+      <td>1.027027</td>
+      <td>0.909910</td>
+      <td>0.945946</td>
+      <td>0.819820</td>
+      <td>0.990991</td>
+      <td>0.963964</td>
+      <td>0.981982</td>
+      <td>0.891892</td>
+      <td>90.0</td>
+      <td>0.149007</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>24.0</td>
+      <td>0.916667</td>
+      <td>0.708333</td>
+      <td>0.708333</td>
+      <td>0.916667</td>
+      <td>0.958333</td>
+      <td>0.875000</td>
+      <td>0.958333</td>
+      <td>1.041667</td>
+      <td>0.875000</td>
+      <td>...</td>
+      <td>0.913043</td>
+      <td>0.695652</td>
+      <td>0.869565</td>
+      <td>0.913043</td>
+      <td>1.000000</td>
+      <td>0.826087</td>
+      <td>1.391304</td>
+      <td>1.086957</td>
+      <td>20.0</td>
+      <td>0.152672</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>36.0</td>
+      <td>1.138889</td>
+      <td>1.055556</td>
+      <td>1.000000</td>
+      <td>1.333333</td>
+      <td>1.083333</td>
+      <td>1.083333</td>
+      <td>1.138889</td>
+      <td>1.444444</td>
+      <td>0.916667</td>
+      <td>...</td>
+      <td>0.918367</td>
+      <td>0.816327</td>
+      <td>0.918367</td>
+      <td>0.714286</td>
+      <td>0.959184</td>
+      <td>0.918367</td>
+      <td>1.020408</td>
+      <td>0.816327</td>
+      <td>49.0</td>
+      <td>0.183521</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>90.0</td>
+      <td>0.700000</td>
+      <td>0.622222</td>
+      <td>0.733333</td>
+      <td>0.677778</td>
+      <td>0.588889</td>
+      <td>0.622222</td>
+      <td>0.722222</td>
+      <td>0.866667</td>
+      <td>0.777778</td>
+      <td>...</td>
+      <td>0.836066</td>
+      <td>1.114754</td>
+      <td>1.032787</td>
+      <td>1.032787</td>
+      <td>0.885246</td>
+      <td>1.163934</td>
+      <td>1.049180</td>
+      <td>0.950820</td>
+      <td>61.0</td>
+      <td>0.147700</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1820</th>
+      <td>99.0</td>
+      <td>0.989899</td>
+      <td>0.969697</td>
+      <td>1.030303</td>
+      <td>1.020202</td>
+      <td>0.919192</td>
+      <td>1.010101</td>
+      <td>0.818182</td>
+      <td>0.919192</td>
+      <td>0.888889</td>
+      <td>...</td>
+      <td>1.152174</td>
+      <td>1.000000</td>
+      <td>1.065217</td>
+      <td>1.021739</td>
+      <td>1.152174</td>
+      <td>1.010870</td>
+      <td>0.880435</td>
+      <td>0.989130</td>
+      <td>92.0</td>
+      <td>0.175908</td>
+    </tr>
+    <tr>
+      <th>1821</th>
+      <td>188.0</td>
+      <td>1.010638</td>
+      <td>1.058511</td>
+      <td>1.079787</td>
+      <td>1.106383</td>
+      <td>1.154255</td>
+      <td>1.164894</td>
+      <td>1.117021</td>
+      <td>1.053191</td>
+      <td>1.117021</td>
+      <td>...</td>
+      <td>1.120536</td>
+      <td>0.910714</td>
+      <td>0.973214</td>
+      <td>0.875000</td>
+      <td>0.937500</td>
+      <td>0.888393</td>
+      <td>0.924107</td>
+      <td>0.964286</td>
+      <td>259.0</td>
+      <td>0.212295</td>
+    </tr>
+    <tr>
+      <th>1822</th>
+      <td>9.0</td>
+      <td>1.000000</td>
+      <td>0.666667</td>
+      <td>0.666667</td>
+      <td>0.777778</td>
+      <td>0.555556</td>
+      <td>0.444444</td>
+      <td>0.333333</td>
+      <td>0.777778</td>
+      <td>0.555556</td>
+      <td>...</td>
+      <td>1.400000</td>
+      <td>1.600000</td>
+      <td>0.600000</td>
+      <td>0.800000</td>
+      <td>1.200000</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>1.800000</td>
+      <td>9.0</td>
+      <td>0.300000</td>
+    </tr>
+    <tr>
+      <th>1823</th>
+      <td>64.0</td>
+      <td>1.234375</td>
+      <td>1.031250</td>
+      <td>1.062500</td>
+      <td>0.843750</td>
+      <td>1.125000</td>
+      <td>1.187500</td>
+      <td>1.250000</td>
+      <td>1.218750</td>
+      <td>0.796875</td>
+      <td>...</td>
+      <td>1.257143</td>
+      <td>0.942857</td>
+      <td>0.871429</td>
+      <td>0.985714</td>
+      <td>1.014286</td>
+      <td>0.900000</td>
+      <td>0.900000</td>
+      <td>1.128571</td>
+      <td>74.0</td>
+      <td>0.187342</td>
+    </tr>
+    <tr>
+      <th>1824</th>
+      <td>11.0</td>
+      <td>0.636364</td>
+      <td>1.000000</td>
+      <td>1.181818</td>
+      <td>0.909091</td>
+      <td>0.727273</td>
+      <td>0.909091</td>
+      <td>1.363636</td>
+      <td>0.727273</td>
+      <td>0.727273</td>
+      <td>...</td>
+      <td>0.583333</td>
+      <td>0.583333</td>
+      <td>0.500000</td>
+      <td>0.916667</td>
+      <td>0.916667</td>
+      <td>0.833333</td>
+      <td>0.750000</td>
+      <td>1.250000</td>
+      <td>7.0</td>
+      <td>0.104478</td>
+    </tr>
+  </tbody>
+</table>
+<p>1809 rows × 212 columns</p>
+</div>
+
+
