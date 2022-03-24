@@ -62,6 +62,7 @@ def agrega_en_unidades(censo, diciconario,
     vars_pob = [v for v in diccionario['Nombre del Campo'].unique()
                 if (v.startswith('P') and v != 'PROM_HNV') ]
     vars_viv = [v for v in diccionario['Nombre del Campo'].unique() if v.startswith('V')]
+    vars_viv.append('OCUPVIVPAR')
     if agregacion == 'colonias':
         columna_agrega = 'colonia_cve'
     elif agregacion == 'cuadrantes':
@@ -81,6 +82,7 @@ def agrega_en_unidades(censo, diciconario,
     else:
         raise ValueError("llena_faltantes debe ser ceros o random")
     censo = censo[[columna_agrega] + vars_pob + vars_viv].groupby(columna_agrega).sum()
+    censo['VPROM_OCUP'] = censo['OCUPVIVPAR'].div(censo['VIVPAR_HAB'])
     return censo
 
 # Cell
