@@ -28,6 +28,7 @@ index = {"DATA_PATH": "02_covariables.ipynb",
          "descarga_datos_covariables": "02_covariables.ipynb",
          "get_diccionario_censo": "02_covariables.ipynb",
          "get_variables_censo": "02_covariables.ipynb",
+         "imputa_faltantes_manzana": "02_covariables.ipynb",
          "agrega_en_unidades": "02_covariables.ipynb",
          "censo_a_tasas": "02_covariables.ipynb"}
 
