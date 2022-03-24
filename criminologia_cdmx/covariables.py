@@ -67,7 +67,7 @@ def imputa_faltantes_manzana(censo, cols, metodo='ceros'):
     return censo
 
 # Cell
-def agrega_en_unidades(censo, diciconario,
+def agrega_en_unidades(censo, diccionario,
                        agregacion        = 'colonias',
                        imputacion        = 'ceros',
                        umbral_faltantes  = 0.5):
