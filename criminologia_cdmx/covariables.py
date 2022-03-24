@@ -99,12 +99,12 @@ def agrega_en_unidades(censo, diciconario,
     censo = imputa_faltantes_manzana(censo, vars_pob + vars_viv, metodo=imputacion)
     censo = censo[[columna_agrega] + vars_pob + vars_viv].groupby(columna_agrega).sum()
     # Calculamos las columnas que requieren trato espacial
-    censo['V_PROM_OCUP'] = censo['OCUPVIVPAR'].div(censo['VIVPAR_HAB'])
-    censo['V_PROM_OCUP_C'] = censo['OCUPVIVPAR'].div(censo['VPH_1CUART'] + 2*censo['VPH_2CUART'] + 3*censo['VPH_3YMASC'])
+    censo['PROM_OCUP'] = censo['OCUPVIVPAR'].div(censo['VIVPAR_HAB'])
+    censo['PROM_OCUP_C'] = censo['OCUPVIVPAR'].div(censo['VPH_1CUART'] + 2*censo['VPH_2CUART'] + 3*censo['VPH_3YMASC'])
     return censo
 
 # Cell
-def censo_a_tasas(censo, diccionario, agregacion='colonias', umbral_faltantes=0.5):
+def censo_a_tasas(censo, diccionario, umbral_faltantes=0.5):
     """Convierte las variables del censo a tasas en la agregación seleccionada.
 
     Para las variables de población divide por población total.
@@ -113,7 +113,7 @@ def censo_a_tasas(censo, diccionario, agregacion='colonias', umbral_faltantes=0.
      habitadas (VIVPAR_HAB)
 
     params:
-    umbral_faltantes float: Porcentaje de datos faltantes en una manzana para
+    umbral_faltantes float: Porcentaje de datos faltantes en una unidad para
     considerarla en el análisis
     """
     pob_col = 'POBTOT'
@@ -122,7 +122,9 @@ def censo_a_tasas(censo, diccionario, agregacion='colonias', umbral_faltantes=0.
     vars_pob = [v for v in diccionario['Nombre del Campo'].unique() if v.startswith('P')]
     eliminar = ['POBTOT', 'PROM_HNV']
     vars_pob = [v for v in vars_pob if (v not in eliminar)]
-    censo.dropna(thresh=umbral_faltantes*len(vars_pob), inplace=True)
-    if agregacion == None:
-        censo[vars_pob] = censo[vars_pob].div(censo[pob_col], axis=0)
+    vars_viv = [v for v in diccionario['Nombre del Campo'].unique()
+                if (v.startswith('V') and v != 'VIVPAR_HAB')]
+    censo[vars_pob] = censo[vars_pob].div(censo[pob_col], axis=0)
+    censo[vars_viv] = censo[vars_viv].div(censo[viv_col], axis=0)
+    censo.dropna(thresh=umbral_faltantes*(len(vars_pob) + len(vars_viv)), inplace=True)
     return censo
