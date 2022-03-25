@@ -62,7 +62,7 @@ def get_victimas_from_api(limit=100):
 def get_historico_carpetas():
     """Regresa un GeoDataFrame con todos los registros de carpetas de investigación."""
     archivo = os.path.join(DOWNLOADS_PATH, 'carpetas_fiscalia.csv')
-    url = "https://archivo.datos.cdmx.gob.mx/fiscalia-general-de-justicia/carpetas-de-investigacion-fgj-de-la-ciudad-de-mexico/carpetas_completa_julio_2021.csv"
+    url = "https://archivo.datos.cdmx.gob.mx/fiscalia-general-de-justicia/carpetas-de-investigacion-fgj-de-la-ciudad-de-mexico/carpetas_completa_febrero_2022.csv"
     r = requests.get(url, allow_redirects=True)
     open(archivo, 'wb').write(r.content)
     records = pd.read_csv(archivo, low_memory=False)
@@ -74,7 +74,7 @@ def get_historico_carpetas():
 def get_historico_victimas():
     """Regresa un GeoDataFrame con todos los registros de victimas en carpetas de investigación."""
     archivo = os.path.join(DOWNLOADS_PATH, 'victimas_carpetas_fiscalia.csv')
-    url = "https://archivo.datos.cdmx.gob.mx/fiscalia-general-de-justicia/victimas-en-carpetas-de-investigacion-fgj/victimas_completa_enero_2022.csv"
+    url = "https://archivo.datos.cdmx.gob.mx/fiscalia-general-de-justicia/victimas-en-carpetas-de-investigacion-fgj/victimas_completa_febrero_2022.csv"
     r = requests.get(url, allow_redirects=True)
     open(archivo, 'wb').write(r.content)
     records = pd.read_csv(archivo)
