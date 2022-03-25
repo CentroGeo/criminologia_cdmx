@@ -31,13 +31,35 @@ nb_path: "index.ipynb"
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Instalaci&#243;n">Instalaci&#243;n<a class="anchor-link" href="#Instalaci&#243;n"> </a></h2>
+<h2 id="Instalaci&#243;n">Instalaci&#243;n<a class="anchor-link" href="#Instalaci&#243;n"> </a></h2><p>La forma más sencilla de instalarlo es creando un environment de conda que tenga geopandas instalado y después usar <code>pip</code> para instalar la librería dese el repositorio:</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><code>pip install criminologia_cdmx</code></p>
+<div class="highlight"><pre><span></span>conda create -n criminologia <span class="nv">python</span><span class="o">=</span><span class="m">3</span>.7
+conda install -c conda-forge geopandas
+pip install git+https://github.com/CentroGeo/criminologia_cdmx
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Por lo pronto, como el repositorio es privado Git va a pedir usuario y contraseña de GitHub.</p>
+<p>Alternativamente, si tienes el repositorio clonado en la computadora:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="highlight"><pre><span></span>conda create -n criminologia <span class="nv">python</span><span class="o">=</span><span class="m">3</span>.7
+conda install -c conda-forge geopandas
+pip install git+file///ruta/a/criminologia_cdmx
+</pre></div>
 
 </div>
 </div>
@@ -1715,6 +1737,8 @@ nb_path: "index.ipynb"
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Covariables">Covariables<a class="anchor-link" href="#Covariables"> </a></h2><p>Este módulo contiene diferentes funciones y clases para construir covariables para el analisis de delitos.</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">criminologia_cdmx.</span> <span class="n">covariables</span> <span class="kn">import</span> <span class="o">*</span>
+</pre></div>
 <p>Antes de utilizar este módulo es necesario descargar los datos:</p>
 <div class="highlight"><pre><span></span><span class="n">descarga_datos_covariables</span><span class="p">()</span>
 </pre></div>

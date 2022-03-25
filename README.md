@@ -4,7 +4,24 @@
 
 ## Instalación
 
-`pip install criminologia_cdmx`
+La forma más sencilla de instalarlo es creando un environment de conda que tenga geopandas instalado y después usar `pip` para instalar la librería dese el repositorio:
+
+
+````bash
+conda create -n criminologia python=3.7
+conda install -c conda-forge geopandas
+pip install git+https://github.com/CentroGeo/criminologia_cdmx
+````
+
+Por lo pronto, como el repositorio es privado Git va a pedir usuario y contraseña de GitHub.
+
+Alternativamente, si tienes el repositorio clonado en la computadora:
+
+````bash
+conda create -n criminologia python=3.7
+conda install -c conda-forge geopandas
+pip install git+file///ruta/a/criminologia_cdmx
+````
 
 ## Uso
 
@@ -1247,7 +1264,7 @@ ax.plot_surface(xx, yy, zz,cmap='viridis', edgecolor='none')
 
 
 
-![png](docs/images/output_26_1.png)
+![png](docs/images/output_28_1.png)
 
 
 ### Serie de tiempo de KDEs por categoría
@@ -1317,7 +1334,7 @@ ax3.set_title("Significancia de la intensidad")
 
 
 
-![png](docs/images/output_29_1.png)
+![png](docs/images/output_31_1.png)
 
 
 ### Agregar en hexágonos
@@ -1352,13 +1369,15 @@ plt.tight_layout()
 ```
 
 
-![png](docs/images/output_31_0.png)
+![png](docs/images/output_33_0.png)
 
 
 ## Covariables
 
 Este módulo contiene diferentes funciones y clases para construir covariables para el analisis de delitos.
-
+````Python
+from criminologia_cdmx. covariables import *
+````
 Antes de utilizar este módulo es necesario descargar los datos:
 
 ````Python
