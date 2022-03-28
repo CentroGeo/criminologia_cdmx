@@ -184,7 +184,7 @@ class IndicePCA(object):
         """Calcula el índice y lo guarda en self.indice"""
         pca = PCA(n_components=1, svd_solver='full', random_state=1)
         indicadores = self.datos.replace([np.inf, -np.inf], np.nan)
-        indicadores = indicadores[vars_indice].dropna()
+        indicadores = indicadores[self.vars_indice].dropna()
         X = StandardScaler().fit_transform(indicadores.values)
         pca.fit(X)
         self.varianza_explicada = pca.explained_variance_ratio_
