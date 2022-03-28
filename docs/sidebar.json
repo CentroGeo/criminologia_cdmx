@@ -3,6 +3,7 @@
     "Overview": "/",
     "etl": "etl.html",
     "patrones_espacio_temporales": "patrones_espacio_temporales.html",
-    "covariables": "covariables.html"
+    "covariables": "covariables.html",
+    "modelos": "modelos.html"
   }
 }
