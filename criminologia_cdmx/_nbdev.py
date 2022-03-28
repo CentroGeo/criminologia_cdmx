@@ -33,11 +33,14 @@ index = {"DATA_PATH": "02_covariables.ipynb",
          "censo_a_tasas": "02_covariables.ipynb",
          "get_uso_de_suelo": "02_covariables.ipynb",
          "agrega_uso_suelo": "02_covariables.ipynb",
-         "IndicePCA": "02_covariables.ipynb"}
+         "IndicePCA": "02_covariables.ipynb",
+         "variable_independiente": "03_modelos.ipynb",
+         "CapaDeAnalisis": "03_modelos.ipynb"}
 
 modules = ["etl.py",
            "patrones_espacio_temporales.py",
-           "covariables.py"]
+           "covariables.py",
+           "modelos.py"]
 
 doc_url = "https://pages.github.CentroGeo.com./criminologia_cdmx/criminologia_cdmx/"
 

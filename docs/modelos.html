@@ -59,45 +59,40 @@ nb_path: "03_modelos.ipynb"
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
-<div class="input">
 
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">variable_independiente</span><span class="p">(</span><span class="n">datos</span><span class="p">,</span> <span class="n">columna_y</span><span class="p">,</span> <span class="n">valor_y</span><span class="p">,</span> <span class="n">fecha_inicio</span><span class="p">,</span> <span class="n">fecha_fin</span><span class="p">,</span> <span class="n">agregacion</span><span class="o">=</span><span class="s1">&#39;colonias&#39;</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot; Regresa un DataFrame con la variable independicente agregada entre fecha_inicio y fecha_fin</span>
-<span class="sd">        en las unidades requeridas.</span>
-<span class="sd">        </span>
-<span class="sd">        Args:</span>
-<span class="sd">            datos (DataFrame): carpetas/victimas con ids espaciales y categorías de usuario</span>
-<span class="sd">            columna_y (str): Nombre de la columna en donde vienen los incidentes de valor_y</span>
-<span class="sd">            valor_y (str): delito o categoría a utilizar como Y</span>
-<span class="sd">            fecha_inicio (str): fecha inicial para agregar delitos &quot;d-m-Y&quot;</span>
-<span class="sd">            fecha_fin (str): fecha final para agregar delitos &quot;d-m-Y&quot;</span>
-<span class="sd">            agregacion (str): colonias/cuadrantes. Eventualmente debe recibir </span>
-<span class="sd">             agregaciones arbitrarias</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">fecha_inicio</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">fecha_inicio</span><span class="p">,</span> <span class="n">dayfirst</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="n">fecha_fin</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">fecha_fin</span><span class="p">,</span> <span class="n">dayfirst</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="n">datos</span> <span class="o">=</span> <span class="n">datos</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">datos</span><span class="p">[</span><span class="s1">&#39;fecha_hechos&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">between</span><span class="p">(</span><span class="n">fecha_inicio</span><span class="p">,</span> <span class="n">fecha_fin</span><span class="p">)]</span>
-    <span class="n">datos</span> <span class="o">=</span> <span class="n">datos</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">datos</span><span class="p">[</span><span class="n">columna_y</span><span class="p">]</span> <span class="o">==</span> <span class="n">valor_y</span><span class="p">]</span>
-    <span class="k">if</span> <span class="n">agregacion</span> <span class="o">==</span> <span class="s1">&#39;colonias&#39;</span><span class="p">:</span>
-        <span class="n">columna_agrega</span> <span class="o">=</span> <span class="s1">&#39;colonia_cve&#39;</span>
-        <span class="n">layer</span> <span class="o">=</span> <span class="s1">&#39;colonias&#39;</span>
-    <span class="k">elif</span> <span class="n">agregacion</span> <span class="o">==</span> <span class="s1">&#39;cuadrantes&#39;</span><span class="p">:</span>
-        <span class="n">columna_agrega</span> <span class="o">=</span> <span class="s1">&#39;cuadrante_id&#39;</span>
-        <span class="n">layer</span> <span class="o">=</span> <span class="s1">&#39;cuadrantes&#39;</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;unidades debe ser &#39;colonias&#39; o &#39;cuadrantes&#39;&quot;</span><span class="p">)</span>
-    <span class="n">datos</span> <span class="o">=</span> <span class="n">datos</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">columna_agrega</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
-    <span class="n">datos</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">valor_y</span>
-    <span class="n">unidades</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="s2">&quot;datos/criminologia_capas.gpkg&quot;</span><span class="p">,</span> <span class="n">layer</span><span class="o">=</span><span class="n">layer</span><span class="p">)</span>
-    <span class="n">datos</span> <span class="o">=</span> <span class="n">unidades</span><span class="p">[[</span><span class="n">columna_agrega</span><span class="p">]]</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">datos</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="n">columna_agrega</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">datos</span>   
-</pre></div>
+<div class="output_wrapper">
+<div class="output">
 
-    </div>
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="variable_independiente" class="doc_header"><code>variable_independiente</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/modelos.py#L6" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>variable_independiente</code>(<strong><code>datos</code></strong>, <strong><code>columna_y</code></strong>, <strong><code>valor_y</code></strong>, <strong><code>fecha_inicio</code></strong>, <strong><code>fecha_fin</code></strong>, <strong><code>agregacion</code></strong>=<em><code>'colonias'</code></em>)</p>
+</blockquote>
+<p>Regresa un DataFrame con la variable independicente agregada entre fecha_inicio y fecha_fin
+en las unidades requeridas.</p>
+<p>Args:
+    datos (DataFrame): carpetas/victimas con ids espaciales y categorías de usuario
+    columna_y (str): Nombre de la columna en donde vienen los incidentes de valor_y
+    valor_y (str): delito o categoría a utilizar como Y
+    fecha_inicio (str): fecha inicial para agregar delitos "d-m-Y"
+    fecha_fin (str): fecha final para agregar delitos "d-m-Y"
+    agregacion (str): colonias/cuadrantes. Eventualmente debe recibir
+                      agregaciones arbitrarias</p>
+
+</div>
+
+</div>
+
 </div>
 </div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
 
 </div>
     {% endraw %}
@@ -219,6 +214,73 @@ nb_path: "03_modelos.ipynb"
 
 </div>
 
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="CapaDeAnalisis">CapaDeAnalisis<a class="anchor-link" href="#CapaDeAnalisis"> </a></h2>
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h2 id="CapaDeAnalisis" class="doc_header"><code>class</code> <code>CapaDeAnalisis</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/modelos.py#L38" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>CapaDeAnalisis</code>(<strong><code>Y</code></strong>, <strong><code>covariables</code></strong>)</p>
+</blockquote>
+<p>Clase para contener varieble objetivo y covariables.</p>
+<p>Args:
+    Y (DataFrame): debe tener dos columnas: el identificador de la unidad de análisis y
+                   el valor de la variable dependiente.
+    covariables (DataFrame): debe contener una columna con el identificador de la unidad
+                             de análisis (común a Y) y tantas como covariables.
+Atributos:
+    Y (DataFrame): la variable dependiente
+    X (DataFrame): las variables independientes</p>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">usos</span> <span class="o">=</span> <span class="n">get_uso_de_suelo</span><span class="p">()</span>
+<span class="n">usos</span> <span class="o">=</span> <span class="n">agrega_uso_suelo</span><span class="p">(</span><span class="n">usos</span><span class="p">,</span> <span class="n">unidades</span><span class="o">=</span><span class="s1">&#39;cuadrantes&#39;</span><span class="p">)</span>
+<span class="n">ca</span> <span class="o">=</span> <span class="n">CapaDeAnalisis</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">usos</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">ca</span><span class="o">.</span><span class="n">X</span><span class="o">.</span><span class="n">equals</span><span class="p">(</span><span class="n">usos</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">ca</span><span class="o">.</span><span class="n">Y</span><span class="o">.</span><span class="n">equals</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
+</pre></div>
+
+    </div>
 </div>
 </div>
 
