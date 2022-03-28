@@ -31,7 +31,8 @@ index = {"DATA_PATH": "02_covariables.ipynb",
          "imputa_faltantes_manzana": "02_covariables.ipynb",
          "agrega_en_unidades": "02_covariables.ipynb",
          "censo_a_tasas": "02_covariables.ipynb",
-         "get_uso_de_suelo": "02_covariables.ipynb"}
+         "get_uso_de_suelo": "02_covariables.ipynb",
+         "agrega_uso_suelo": "02_covariables.ipynb"}
 
 modules = ["etl.py",
            "patrones_espacio_temporales.py",
