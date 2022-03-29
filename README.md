@@ -2086,3 +2086,109 @@ indice.indice
 </div>
 
 
+
+## Modelos
+
+Este módulo contiene funciones y clases para ajustar diferentes tipos de modelos para el analisis criminológico.
+
+````Python
+from criminologia_cdmx.modelos import *
+````
+
+El módulo incluye funciones para procesar variables dependientes, crear capas de análisis y ajustar modelos.
+
+La `CapaDeAnalisis` es la unidad base de este módulo, es un contenedor para las variables dependiente e independientes.
+
+A continuación se muestra un flujo completo para ajustar un modelo GLM usando la familia Binomial Negativa.
+
+### Variable dependiente
+
+```python
+carpetas = get_carpetas_from_api(100000)
+carpetas = agrega_ids_espaciales(carpetas)
+fecha_inicio = carpetas.fecha_hechos.min().strftime("%d-%m.%Y")
+fecha_fin = carpetas.fecha_hechos.max().strftime("%d-%m.%Y")
+delito = 'ROBO A CASA HABITACION SIN VIOLENCIA'
+Y = variable_independiente(carpetas, 'delito', delito, fecha_inicio, fecha_fin)
+```
+
+### Covariables
+Para este ejemplo sólo vamos a usar uso de suelo
+
+```python
+usos = get_uso_de_suelo()
+usos = agrega_uso_suelo(usos, unidades='colonias')
+```
+
+### Capa de Análisis
+
+```python
+ca = CapaDeAnalisis(Y, usos, 'colonia_cve')
+```
+
+### Creación y ajuste de modelo
+
+```python
+m = ModeloGLM(ca, sm.families.NegativeBinomial())
+fm = m.fit()
+fm.summary()
+```
+
+
+
+
+<table class="simpletable">
+<caption>Generalized Linear Model Regression Results</caption>
+<tr>
+  <th>Dep. Variable:</th>   <td>Q('ROBO A CASA HABITACION SIN VIOLENCIA')</td> <th>  No. Observations:  </th>  <td>  1623</td> 
+</tr>
+<tr>
+  <th>Model:</th>                              <td>GLM</td>                    <th>  Df Residuals:      </th>  <td>  1618</td> 
+</tr>
+<tr>
+  <th>Model Family:</th>                <td>NegativeBinomial</td>              <th>  Df Model:          </th>  <td>     4</td> 
+</tr>
+<tr>
+  <th>Link Function:</th>                      <td>log</td>                    <th>  Scale:             </th> <td>  1.0000</td>
+</tr>
+<tr>
+  <th>Method:</th>                            <td>IRLS</td>                    <th>  Log-Likelihood:    </th> <td> -1441.2</td>
+</tr>
+<tr>
+  <th>Date:</th>                        <td>Tue, 29 Mar 2022</td>              <th>  Deviance:          </th> <td>  1145.1</td>
+</tr>
+<tr>
+  <th>Time:</th>                            <td>19:51:09</td>                  <th>  Pearson chi2:      </th> <td>1.24e+03</td>
+</tr>
+<tr>
+  <th>No. Iterations:</th>                     <td>100</td>                    <th>                     </th>     <td> </td>   
+</tr>
+<tr>
+  <th>Covariance Type:</th>                 <td>nonrobust</td>                 <th>                     </th>     <td> </td>   
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+         <td></td>            <th>coef</th>     <th>std err</th>      <th>z</th>      <th>P>|z|</th>  <th>[0.025</th>    <th>0.975]</th>  
+</tr>
+<tr>
+  <th>Intercept</th>       <td>   -1.8829</td> <td>    0.314</td> <td>   -5.989</td> <td> 0.000</td> <td>   -2.499</td> <td>   -1.267</td>
+</tr>
+<tr>
+  <th>Q('Industria')</th>  <td>    0.0031</td> <td>    0.001</td> <td>    2.694</td> <td> 0.007</td> <td>    0.001</td> <td>    0.005</td>
+</tr>
+<tr>
+  <th>Q('Comercio')</th>   <td>   -0.0024</td> <td>    0.000</td> <td>   -5.557</td> <td> 0.000</td> <td>   -0.003</td> <td>   -0.002</td>
+</tr>
+<tr>
+  <th>Q('Servicios')</th>  <td>    0.0013</td> <td>    0.000</td> <td>    2.736</td> <td> 0.006</td> <td>    0.000</td> <td>    0.002</td>
+</tr>
+<tr>
+  <th>Q('Intensidad')</th> <td>    0.0019</td> <td>    0.000</td> <td>    6.050</td> <td> 0.000</td> <td>    0.001</td> <td>    0.003</td>
+</tr>
+<tr>
+  <th>Q('Entropía')</th>   <td>   -0.1445</td> <td>    0.081</td> <td>   -1.790</td> <td> 0.074</td> <td>   -0.303</td> <td>    0.014</td>
+</tr>
+</table>
+
+
