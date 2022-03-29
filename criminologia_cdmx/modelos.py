@@ -94,12 +94,23 @@ class ModeloGLM(object):
         Args:
             capa (CapaDeAnalisis): objeto con las variables del modelo.
             familia (statsmodels.api.families.Family()) la distribución a usar en el modelo GLM.
+
+        Atributos:
+            capa (CapaDeAnalisis): objeto con las variables del modelo.
+            familia (statsmodels.api.families.Family()) la distribución a usar en el modelo GLM.
+            formula (str): la fórmula usada para ajustar el modelo.
+            df_resultado (DataFrame): los resultados como DataFrame.
+            df_diagnostico (DataFrame): los diagnósticos como DataFrame.
+        Métodos:
+            fit(): Ajusta el modelo.
     """
     def __init__(self, capa, familia):
         self.capa = capa
         self.familia = familia
         self.formula = self.__get_formula()
         self.__modelo = self.__get_modelo()
+        self.df_resultado = None
+        self.df_diagnostico = None
 
     def __get_formula(self):
         ls = f"Q('{self.capa.Y_nombre}') ~ "
@@ -116,6 +127,26 @@ class ModeloGLM(object):
                          family  = self.familia)
         return modelo
 
+    def __resultados_a_df(self, resultados):
+        """LLena self.df_resultado con los resultados del ajuste."""
+        results_df = pd.DataFrame({"coef":resultados.params,
+                                   "std err": resultados.bse,
+                                   "z": resultados.tvalues,
+                                   "P>|z|":resultados.pvalues,
+                                   "conf_lower":resultados.conf_int()[0],
+                                   "conf_higher":resultados.conf_int()[1]
+                                    })
+        self.df_resultado = results_df
+
+    def __diagnostico_a_df(self, resultados):
+        """LLena self.df_diagnostico con los resultados del ajuste."""
+        indice = ["Log-Likelihood", "Deviance", "Pearson chi2"]
+        valores = [resultados.llf, resultados.deviance, resultados.pearson_chi2]
+        results_df = pd.DataFrame({"Diagnóstico": indice, "Valor": valores})
+        self.df_diagnostico = results_df
+
     def fit(self):
         fm = self.__modelo.fit()
+        self.__resultados_a_df(fm)
+        self.__diagnostico_a_df(fm)
         return fm
