@@ -59,7 +59,11 @@ class CapaDeAnalisis(object):
     def __init__(self, Y, covariables, campo_id):
         self.Y = Y
         self.X = covariables
-        self.df = Y.merge(covariables, on=campo_id)
+        self.df = (Y
+                   .merge(covariables, on=campo_id)
+                   .replace([np.inf, -np.inf], np.nan)
+                   .dropna())
     # TODO:
     # agregar/quitar variables
     # checar que exista el campo_id en las dos bases
+    # quitamos unas filas, hay que llevar registro de eso
