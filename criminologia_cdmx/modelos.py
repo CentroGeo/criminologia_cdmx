@@ -3,6 +3,13 @@
 __all__ = ['variable_independiente', 'CapaDeAnalisis']
 
 # Cell
+import numpy as np
+import pandas as pd
+import geopandas as gpd
+from .etl import *
+from criminologia_cdmx. covariables import *
+
+# Cell
 def variable_independiente(datos, columna_y, valor_y, fecha_inicio, fecha_fin, agregacion='colonias'):
     """ Regresa un DataFrame con la variable independicente agregada entre fecha_inicio y fecha_fin
         en las unidades requeridas.
