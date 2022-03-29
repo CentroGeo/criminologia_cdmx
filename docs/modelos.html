@@ -53,7 +53,7 @@ nb_path: "03_modelos.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="variable_independiente" class="doc_header"><code>variable_independiente</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/modelos.py#L13" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>variable_independiente</code>(<strong><code>datos</code></strong>, <strong><code>columna_y</code></strong>, <strong><code>valor_y</code></strong>, <strong><code>fecha_inicio</code></strong>, <strong><code>fecha_fin</code></strong>, <strong><code>agregacion</code></strong>=<em><code>'colonias'</code></em>)</p>
+<h4 id="variable_independiente" class="doc_header"><code>variable_independiente</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/modelos.py#L15" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>variable_independiente</code>(<strong><code>datos</code></strong>, <strong><code>columna_y</code></strong>, <strong><code>valor_y</code></strong>, <strong><code>fecha_inicio</code></strong>, <strong><code>fecha_fin</code></strong>, <strong><code>agregacion</code></strong>=<em><code>'colonias'</code></em>)</p>
 </blockquote>
 <p>Regresa un DataFrame con la variable independicente agregada entre fecha_inicio y fecha_fin
 en las unidades requeridas.</p>
@@ -95,10 +95,10 @@ en las unidades requeridas.</p>
 <span class="n">fecha_inicio</span> <span class="o">=</span> <span class="n">carpetas</span><span class="o">.</span><span class="n">fecha_hechos</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">-%m.%Y&quot;</span><span class="p">)</span>
 <span class="n">fecha_fin</span> <span class="o">=</span> <span class="n">carpetas</span><span class="o">.</span><span class="n">fecha_hechos</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">-%m.%Y&quot;</span><span class="p">)</span>
 <span class="n">delito</span> <span class="o">=</span> <span class="s1">&#39;ROBO A CASA HABITACION SIN VIOLENCIA&#39;</span>
-<span class="n">Y</span> <span class="o">=</span> <span class="n">variable_independiente</span><span class="p">(</span><span class="n">carpetas</span><span class="p">,</span> <span class="s1">&#39;delito&#39;</span><span class="p">,</span> <span class="n">delito</span><span class="p">,</span> <span class="n">fecha_inicio</span><span class="p">,</span> <span class="n">fecha_fin</span><span class="p">)</span>
-<span class="k">assert</span> <span class="n">delito</span> <span class="ow">in</span> <span class="n">Y</span><span class="o">.</span><span class="n">columns</span>
 <span class="n">Y</span> <span class="o">=</span> <span class="n">variable_independiente</span><span class="p">(</span><span class="n">carpetas</span><span class="p">,</span> <span class="s1">&#39;delito&#39;</span><span class="p">,</span> <span class="n">delito</span><span class="p">,</span> <span class="n">fecha_inicio</span><span class="p">,</span> <span class="n">fecha_fin</span><span class="p">,</span> 
                            <span class="n">agregacion</span><span class="o">=</span><span class="s1">&#39;cuadrantes&#39;</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">delito</span> <span class="ow">in</span> <span class="n">Y</span><span class="o">.</span><span class="n">columns</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">variable_independiente</span><span class="p">(</span><span class="n">carpetas</span><span class="p">,</span> <span class="s1">&#39;delito&#39;</span><span class="p">,</span> <span class="n">delito</span><span class="p">,</span> <span class="n">fecha_inicio</span><span class="p">,</span> <span class="n">fecha_fin</span><span class="p">)</span>
 <span class="k">assert</span> <span class="n">delito</span> <span class="ow">in</span> <span class="n">Y</span><span class="o">.</span><span class="n">columns</span>
 <span class="n">Y</span>
 </pre></div>
@@ -132,35 +132,35 @@ en las unidades requeridas.</p>
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>cuadrante_id</th>
+      <th>colonia_cve</th>
       <th>ROBO A CASA HABITACION SIN VIOLENCIA</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>018</td>
-      <td>31.0</td>
+      <td>32</td>
+      <td>0.0</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0110</td>
-      <td>28.0</td>
+      <td>619</td>
+      <td>2.0</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>014</td>
-      <td>40.0</td>
+      <td>1792</td>
+      <td>0.0</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>015</td>
-      <td>34.0</td>
+      <td>1774</td>
+      <td>0.0</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>018</td>
-      <td>31.0</td>
+      <td>583</td>
+      <td>1.0</td>
     </tr>
     <tr>
       <th>...</th>
@@ -168,33 +168,33 @@ en las unidades requeridas.</p>
       <td>...</td>
     </tr>
     <tr>
-      <th>842</th>
-      <td>043</td>
-      <td>15.0</td>
+      <th>1819</th>
+      <td>1731</td>
+      <td>2.0</td>
     </tr>
     <tr>
-      <th>843</th>
-      <td>046</td>
-      <td>12.0</td>
+      <th>1820</th>
+      <td>1801</td>
+      <td>0.0</td>
     </tr>
     <tr>
-      <th>844</th>
-      <td>045</td>
-      <td>15.0</td>
+      <th>1821</th>
+      <td>1799</td>
+      <td>0.0</td>
     </tr>
     <tr>
-      <th>845</th>
-      <td>038</td>
-      <td>10.0</td>
+      <th>1822</th>
+      <td>1800</td>
+      <td>1.0</td>
     </tr>
     <tr>
-      <th>846</th>
-      <td>036</td>
-      <td>9.0</td>
+      <th>1823</th>
+      <td>1824</td>
+      <td>0.0</td>
     </tr>
   </tbody>
 </table>
-<p>847 rows × 2 columns</p>
+<p>1824 rows × 2 columns</p>
 </div>
 </div>
 
@@ -223,18 +223,23 @@ en las unidades requeridas.</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="CapaDeAnalisis" class="doc_header"><code>class</code> <code>CapaDeAnalisis</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/modelos.py#L45" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>CapaDeAnalisis</code>(<strong><code>Y</code></strong>, <strong><code>covariables</code></strong>, <strong><code>campo_id</code></strong>)</p>
+<h2 id="CapaDeAnalisis" class="doc_header"><code>class</code> <code>CapaDeAnalisis</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/modelos.py#L47" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>CapaDeAnalisis</code>(<strong><code>Y</code></strong>, <strong><code>covariables</code></strong>, <strong><code>campo_id</code></strong>)</p>
 </blockquote>
-<p>Clase para contener varieble objetivo y covariables.</p>
+<p>Clase para contener variable objetivo y covariables.</p>
 <p>Args:
     Y (DataFrame): debe tener dos columnas: el identificador de la unidad de análisis y
-                   el valor de la variable dependiente.
+                   el valor de la variable dependiente
+                   (las columnas deben venir en ese orden).
     covariables (DataFrame): debe contener una columna con el identificador de la unidad
                              de análisis (común a Y) y tantas como covariables.
+    campo_id (str): el nombre del campo común en X y Y para unirlos.
 Atributos:
-    Y (DataFrame): la variable dependiente
-    X (DataFrame): las variables independientes
-    df (DataFrame): la unión de los dos anteriores</p>
+    Y (DataFrame): la variable dependiente.
+    Y_nombre (str): Nombre de la columna con el delito a modelar.
+    X (DataFrame): las variables independientes.
+    X_nombres (list): Lista de los nombres de columnas de las covariables.
+    campo_id (str): el nombre del campo común en X y Y para unirlos.
+    df (DataFrame): la unión de los dos anteriores.</p>
 
 </div>
 
@@ -261,8 +266,8 @@ Atributos:
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">usos</span> <span class="o">=</span> <span class="n">get_uso_de_suelo</span><span class="p">()</span>
-<span class="n">usos</span> <span class="o">=</span> <span class="n">agrega_uso_suelo</span><span class="p">(</span><span class="n">usos</span><span class="p">,</span> <span class="n">unidades</span><span class="o">=</span><span class="s1">&#39;cuadrantes&#39;</span><span class="p">)</span>
-<span class="n">ca</span> <span class="o">=</span> <span class="n">CapaDeAnalisis</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">usos</span><span class="p">,</span> <span class="s1">&#39;cuadrante_id&#39;</span><span class="p">)</span>
+<span class="n">usos</span> <span class="o">=</span> <span class="n">agrega_uso_suelo</span><span class="p">(</span><span class="n">usos</span><span class="p">,</span> <span class="n">unidades</span><span class="o">=</span><span class="s1">&#39;colonias&#39;</span><span class="p">)</span>
+<span class="n">ca</span> <span class="o">=</span> <span class="n">CapaDeAnalisis</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">usos</span><span class="p">,</span> <span class="s1">&#39;colonia_cve&#39;</span><span class="p">)</span>
 <span class="k">assert</span> <span class="n">ca</span><span class="o">.</span><span class="n">X</span><span class="o">.</span><span class="n">equals</span><span class="p">(</span><span class="n">usos</span><span class="p">)</span>
 <span class="k">assert</span> <span class="n">ca</span><span class="o">.</span><span class="n">Y</span><span class="o">.</span><span class="n">equals</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
 </pre></div>
@@ -276,10 +281,47 @@ Atributos:
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="ModeloRegresion">ModeloRegresion<a class="anchor-link" href="#ModeloRegresion"> </a></h2>
+<h2 id="ModeloGLM">ModeloGLM<a class="anchor-link" href="#ModeloGLM"> </a></h2>
 </div>
 </div>
 </div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h2 id="ModeloGLM" class="doc_header"><code>class</code> <code>ModeloGLM</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/modelos.py#L88" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>ModeloGLM</code>(<strong><code>capa</code></strong>, <strong><code>familia</code></strong>)</p>
+</blockquote>
+<p>Wrapper para modelos de Regresión GLM de statsmodels.</p>
+<p>La clase prepara y ajusta un modelo GLM usando la variable objetivo
+definida en CapaDeAnalisis y <strong>todas</strong> las covariables.</p>
+<p>Args:
+    capa (CapaDeAnalisis): objeto con las variables del modelo.
+    familia (statsmodels.api.families.Family()) la distribución a usar en el modelo GLM.</p>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    {% endraw %}
+
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
@@ -287,11 +329,79 @@ Atributos:
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">ModeloRegresion</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Wrapper para diferentes modelos de Regresión&quot;&quot;&quot;</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">ModeloGLM</span><span class="p">(</span><span class="n">ca</span><span class="p">,</span> <span class="n">sm</span><span class="o">.</span><span class="n">families</span><span class="o">.</span><span class="n">NegativeBinomial</span><span class="p">())</span>
+<span class="n">fm</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="n">fm</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<table class="simpletable">
+<caption>Generalized Linear Model Regression Results</caption>
+<tr>
+  <th>Dep. Variable:</th>   <td>Q('ROBO A CASA HABITACION SIN VIOLENCIA')</td> <th>  No. Observations:  </th>  <td>  1623</td> 
+</tr>
+<tr>
+  <th>Model:</th>                              <td>GLM</td>                    <th>  Df Residuals:      </th>  <td>  1618</td> 
+</tr>
+<tr>
+  <th>Model Family:</th>                <td>NegativeBinomial</td>              <th>  Df Model:          </th>  <td>     4</td> 
+</tr>
+<tr>
+  <th>Link Function:</th>                      <td>log</td>                    <th>  Scale:             </th> <td>  1.0000</td>
+</tr>
+<tr>
+  <th>Method:</th>                            <td>IRLS</td>                    <th>  Log-Likelihood:    </th> <td> -1430.4</td>
+</tr>
+<tr>
+  <th>Date:</th>                        <td>Tue, 29 Mar 2022</td>              <th>  Deviance:          </th> <td>  1176.0</td>
+</tr>
+<tr>
+  <th>Time:</th>                            <td>19:29:11</td>                  <th>  Pearson chi2:      </th> <td>1.34e+03</td>
+</tr>
+<tr>
+  <th>No. Iterations:</th>                     <td>100</td>                    <th>                     </th>     <td> </td>   
+</tr>
+<tr>
+  <th>Covariance Type:</th>                 <td>nonrobust</td>                 <th>                     </th>     <td> </td>   
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+         <td></td>            <th>coef</th>     <th>std err</th>      <th>z</th>      <th>P>|z|</th>  <th>[0.025</th>    <th>0.975]</th>  
+</tr>
+<tr>
+  <th>Intercept</th>       <td>   -2.2758</td> <td>    0.337</td> <td>   -6.762</td> <td> 0.000</td> <td>   -2.935</td> <td>   -1.616</td>
+</tr>
+<tr>
+  <th>Q('Industria')</th>  <td>    0.0065</td> <td>    0.001</td> <td>    5.970</td> <td> 0.000</td> <td>    0.004</td> <td>    0.009</td>
+</tr>
+<tr>
+  <th>Q('Comercio')</th>   <td>   -0.0036</td> <td>    0.000</td> <td>   -8.495</td> <td> 0.000</td> <td>   -0.004</td> <td>   -0.003</td>
+</tr>
+<tr>
+  <th>Q('Servicios')</th>  <td> 1.343e-05</td> <td>    0.000</td> <td>    0.030</td> <td> 0.976</td> <td>   -0.001</td> <td>    0.001</td>
+</tr>
+<tr>
+  <th>Q('Intensidad')</th> <td>    0.0030</td> <td>    0.000</td> <td>    9.817</td> <td> 0.000</td> <td>    0.002</td> <td>    0.004</td>
+</tr>
+<tr>
+  <th>Q('Entropía')</th>   <td>   -0.2247</td> <td>    0.086</td> <td>   -2.611</td> <td> 0.009</td> <td>   -0.393</td> <td>   -0.056</td>
+</tr>
+</table>
+</div>
+
+</div>
+
 </div>
 </div>
 

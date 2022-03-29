@@ -35,7 +35,8 @@ index = {"DATA_PATH": "02_covariables.ipynb",
          "agrega_uso_suelo": "02_covariables.ipynb",
          "IndicePCA": "02_covariables.ipynb",
          "variable_independiente": "03_modelos.ipynb",
-         "CapaDeAnalisis": "03_modelos.ipynb"}
+         "CapaDeAnalisis": "03_modelos.ipynb",
+         "ModeloGLM": "03_modelos.ipynb"}
 
 modules = ["etl.py",
            "patrones_espacio_temporales.py",
