@@ -53,12 +53,13 @@ class CapaDeAnalisis(object):
         Atributos:
             Y (DataFrame): la variable dependiente
             X (DataFrame): las variables independientes
+            df (DataFrame): la unión de los dos anteriores
     """
 
-    def __init__(self, Y, covariables):
+    def __init__(self, Y, covariables, campo_id):
         self.Y = Y
         self.X = covariables
-
+        self.df = Y.merge(covariables, on=campo_id)
     # TODO:
     # agregar/quitar variables
-    # checar que el id común pegue
+    # checar que exista el campo_id en las dos bases
