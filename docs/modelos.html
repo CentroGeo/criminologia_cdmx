@@ -53,7 +53,7 @@ nb_path: "03_modelos.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="variable_independiente" class="doc_header"><code>variable_independiente</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/modelos.py#L15" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>variable_independiente</code>(<strong><code>datos</code></strong>, <strong><code>columna_y</code></strong>, <strong><code>valor_y</code></strong>, <strong><code>fecha_inicio</code></strong>, <strong><code>fecha_fin</code></strong>, <strong><code>agregacion</code></strong>=<em><code>'colonias'</code></em>)</p>
+<h4 id="variable_independiente" class="doc_header"><code>variable_independiente</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/modelos.py#L19" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>variable_independiente</code>(<strong><code>datos</code></strong>, <strong><code>columna_y</code></strong>, <strong><code>valor_y</code></strong>, <strong><code>fecha_inicio</code></strong>, <strong><code>fecha_fin</code></strong>, <strong><code>agregacion</code></strong>=<em><code>'colonias'</code></em>)</p>
 </blockquote>
 <p>Regresa un DataFrame con la variable independicente agregada entre fecha_inicio y fecha_fin
 en las unidades requeridas.</p>
@@ -223,7 +223,7 @@ en las unidades requeridas.</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="CapaDeAnalisis" class="doc_header"><code>class</code> <code>CapaDeAnalisis</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/modelos.py#L47" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>CapaDeAnalisis</code>(<strong><code>Y</code></strong>, <strong><code>covariables</code></strong>, <strong><code>campo_id</code></strong>)</p>
+<h2 id="CapaDeAnalisis" class="doc_header"><code>class</code> <code>CapaDeAnalisis</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/modelos.py#L51" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>CapaDeAnalisis</code>(<strong><code>Y</code></strong>, <strong><code>covariables</code></strong>, <strong><code>campo_id</code></strong>)</p>
 </blockquote>
 <p>Clase para contener variable objetivo y covariables.</p>
 <p>Args:
@@ -296,20 +296,22 @@ Atributos:
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="ModeloGLM" class="doc_header"><code>class</code> <code>ModeloGLM</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/modelos.py#L88" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>ModeloGLM</code>(<strong><code>capa</code></strong>, <strong><code>familia</code></strong>)</p>
+<h2 id="ModeloGLM" class="doc_header"><code>class</code> <code>ModeloGLM</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/modelos.py#L92" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>ModeloGLM</code>(<strong><code>capa</code></strong>, <strong><code>familia</code></strong>, <strong><code>nombre</code></strong>=<em><code>None</code></em>)</p>
 </blockquote>
 <p>Wrapper para modelos de Regresión GLM de statsmodels.</p>
 <p>La clase prepara y ajusta un modelo GLM usando la variable objetivo
 definida en CapaDeAnalisis y <strong>todas</strong> las covariables.</p>
 <p>Args:
     capa (CapaDeAnalisis): objeto con las variables del modelo.
-    familia (statsmodels.api.families.Family()) la distribución a usar en el modelo GLM.</p>
+    familia (statsmodels.api.families.Family()) la distribución a usar en el modelo GLM.
+    nombre (str): si no es nulo, el nombre, si no, se asigna nombre al azar.</p>
 <p>Atributos:
     capa (CapaDeAnalisis): objeto con las variables del modelo.
     familia (statsmodels.api.families.Family()) la distribución a usar en el modelo GLM.
     formula (str): la fórmula usada para ajustar el modelo.
     df_resultado (DataFrame): los resultados como DataFrame.
     df_diagnostico (DataFrame): los diagnósticos como DataFrame.
+    nombre (str): nombre que identifica al modelo.
 Métodos:
     fit(): Ajusta el modelo.</p>
 
@@ -341,6 +343,100 @@ Métodos:
 <span class="n">fm</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
 <span class="k">assert</span> <span class="nb">type</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">df_resultado</span><span class="p">)</span> <span class="o">==</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span>
 <span class="k">assert</span> <span class="nb">type</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">df_diagnostico</span><span class="p">)</span> <span class="o">==</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="ComparaModelos">ComparaModelos<a class="anchor-link" href="#ComparaModelos"> </a></h2>
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h2 id="ComparaModelos" class="doc_header"><code>class</code> <code>ComparaModelos</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/modelos.py#L168" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>ComparaModelos</code>(<strong><code>modelos</code></strong>, <strong><code>columnas</code></strong>=<em><code>None</code></em>, <strong><code>redondeo</code></strong>=<em><code>None</code></em>)</p>
+</blockquote>
+<p>Clase para construir comparaciones de modelos.
+Construte dos DataFrames para visualizar rápidamente una comparación de los modelos:
+uno con los resultados (coeficientes, etc) y otro con los diagnósticos.
+Args:
+    modelos (list): Lista de modelos a comparar
+    columnas (list): Lista de columnas que aparecen en la comparación de resultados
+                     (opcional, default None)
+    redondeo: (int): Decimales a usar en la comparaciónn (opcional, default None)
+Atributos:
+    modelos (list): Lista de modelos a comparar
+    comparacion (DataFrame): comparación de los resultados</p>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">diccionario</span> <span class="o">=</span> <span class="n">get_diccionario_censo</span><span class="p">()</span>
+<span class="n">censo</span> <span class="o">=</span> <span class="n">get_variables_censo</span><span class="p">()</span>
+<span class="n">agregado</span> <span class="o">=</span> <span class="n">agrega_en_unidades</span><span class="p">(</span><span class="n">censo</span><span class="p">,</span> <span class="n">diccionario</span><span class="p">)</span>
+<span class="n">agregado</span> <span class="o">=</span> <span class="n">censo_a_tasas</span><span class="p">(</span><span class="n">agregado</span><span class="p">,</span> <span class="n">diccionario</span><span class="p">)</span>
+<span class="n">vars_viv</span> <span class="o">=</span> <span class="n">agregado</span><span class="p">[[</span><span class="s1">&#39;VIVPAR_HAB&#39;</span><span class="p">,</span> <span class="s1">&#39;VPH_3YMASC&#39;</span><span class="p">]]</span>
+<span class="n">vars_indice</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;P5_HLI&#39;</span><span class="p">,</span> <span class="s1">&#39;POB_AFRO&#39;</span><span class="p">,</span> <span class="s1">&#39;PCON_DISC&#39;</span><span class="p">,</span> <span class="s1">&#39;P3A5_NOA&#39;</span><span class="p">,</span> 
+               <span class="s1">&#39;P6A11_NOA&#39;</span><span class="p">,</span> <span class="s1">&#39;P12A14NOA&#39;</span><span class="p">,</span> <span class="s1">&#39;P15YM_AN&#39;</span><span class="p">,</span> <span class="s1">&#39;PSINDER&#39;</span><span class="p">,</span> <span class="s1">&#39;PDESOCUP&#39;</span><span class="p">]</span>
+<span class="n">indice</span> <span class="o">=</span> <span class="n">IndicePCA</span><span class="p">(</span><span class="n">agregado</span><span class="p">,</span> <span class="n">vars_indice</span><span class="p">)</span>
+<span class="n">indice</span><span class="o">.</span><span class="n">calcula_indice</span><span class="p">()</span>
+<span class="n">var_m1</span> <span class="o">=</span> <span class="p">(</span><span class="n">vars_viv</span>
+          <span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">indice</span><span class="o">.</span><span class="n">indice</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;colonia_cve&#39;</span><span class="p">))</span>
+          <span class="o">.</span><span class="n">rename</span><span class="p">({</span><span class="s1">&#39;Índice&#39;</span><span class="p">:</span> <span class="s1">&#39;Concentración de Desventajas&#39;</span><span class="p">},</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">usos</span> <span class="o">=</span> <span class="n">get_uso_de_suelo</span><span class="p">()</span>
+<span class="n">usos</span> <span class="o">=</span> <span class="n">agrega_uso_suelo</span><span class="p">(</span><span class="n">usos</span><span class="p">,</span> <span class="n">unidades</span><span class="o">=</span><span class="s1">&#39;colonias&#39;</span><span class="p">)</span>
+<span class="n">var_m2</span> <span class="o">=</span> <span class="n">var_m1</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">usos</span><span class="p">)</span>
+<span class="c1"># Dos capas de análisis</span>
+<span class="n">ca1</span> <span class="o">=</span> <span class="n">CapaDeAnalisis</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">var_m1</span><span class="p">,</span> <span class="s1">&#39;colonia_cve&#39;</span><span class="p">)</span>
+<span class="n">ca2</span> <span class="o">=</span> <span class="n">CapaDeAnalisis</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">var_m2</span><span class="p">,</span> <span class="s1">&#39;colonia_cve&#39;</span><span class="p">)</span>
+<span class="c1"># Ajustamos modelos</span>
+<span class="n">m1</span> <span class="o">=</span> <span class="n">ModeloGLM</span><span class="p">(</span><span class="n">ca1</span><span class="p">,</span> <span class="n">sm</span><span class="o">.</span><span class="n">families</span><span class="o">.</span><span class="n">NegativeBinomial</span><span class="p">(),</span><span class="s2">&quot;nulo&quot;</span><span class="p">)</span>
+<span class="n">r1</span> <span class="o">=</span> <span class="n">m1</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="n">m2</span> <span class="o">=</span> <span class="n">ModeloGLM</span><span class="p">(</span><span class="n">ca2</span><span class="p">,</span> <span class="n">sm</span><span class="o">.</span><span class="n">families</span><span class="o">.</span><span class="n">NegativeBinomial</span><span class="p">(),</span> <span class="s2">&quot;uso de suelo&quot;</span><span class="p">)</span>
+<span class="n">r2</span> <span class="o">=</span> <span class="n">m2</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="c1"># Probamos la comparacion</span>
+<span class="n">compara</span> <span class="o">=</span> <span class="n">ComparaModelos</span><span class="p">([</span><span class="n">m1</span><span class="p">,</span><span class="n">m2</span><span class="p">])</span>
+<span class="k">assert</span> <span class="nb">type</span><span class="p">(</span><span class="n">compara</span><span class="o">.</span><span class="n">comparacion</span><span class="p">)</span> <span class="o">==</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span>
+<span class="k">assert</span> <span class="nb">type</span><span class="p">(</span><span class="n">compara</span><span class="o">.</span><span class="n">diagnosticos</span><span class="p">)</span> <span class="o">==</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span>
+<span class="n">compara</span> <span class="o">=</span> <span class="n">ComparaModelos</span><span class="p">([</span><span class="n">m1</span><span class="p">,</span> <span class="n">m2</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;coef&#39;</span><span class="p">,</span> <span class="s1">&#39;P&gt;|z|&#39;</span><span class="p">],</span> <span class="mi">3</span><span class="p">)</span>
+<span class="k">assert</span> <span class="nb">type</span><span class="p">(</span><span class="n">compara</span><span class="o">.</span><span class="n">comparacion</span><span class="p">)</span> <span class="o">==</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span>
+<span class="k">assert</span> <span class="nb">type</span><span class="p">(</span><span class="n">compara</span><span class="o">.</span><span class="n">diagnosticos</span><span class="p">)</span> <span class="o">==</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span>
 </pre></div>
 
     </div>
