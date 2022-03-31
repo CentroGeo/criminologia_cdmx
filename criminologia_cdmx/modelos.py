@@ -91,12 +91,36 @@ class CapaDeAnalisis(object):
         ax.set_ylabel("Conteo")
         return ax
 
+    def pairplot_X(self, altura=10, ratio=1):
+        """Regresa un pairplot de las variables independientes."""
+        return sns.pairplot(self.X)
+
+    def describe_Y(self):
+        """Regresa un DataFrame con estadísticas descriptivas de la variable dependiente."""
+        d = self.Y[self.Y_nombre].describe()
+        v = pd.Series({"Var":self.Y[self.Y_nombre].var()})
+        d = d.append(v)
+        d = pd.DataFrame(d)
+        d = d.reset_index()
+        d.columns = ['Estadístico', '']
+        d = d.set_index('Estadístico')
+        orden = ['count', 'mean','Var',  'std', 'min', '25%', '50%', '75%', 'max']
+        d = d.reindex(orden)
+        d = d.rename({'count': 'N', 'mean': 'Media',
+                      'Var':'Varianza',
+                      'std': 'Desviación estándar',
+                      'min': 'Mínimo',
+                      'max': 'Máximo'})
+        return d
+
+
 
     # TODO:
     # agregar/quitar variables
     # checar que exista el campo_id en las dos bases
     # quitamos unas filas, hay que llevar registro de eso
     # Calcular variables con retraso espacial
+    # Implementar transformadores sobre las variables
 
 
 # Cell

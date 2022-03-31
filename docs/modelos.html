@@ -270,6 +270,7 @@ Atributos:
 <span class="n">ca</span> <span class="o">=</span> <span class="n">CapaDeAnalisis</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">usos</span><span class="p">,</span> <span class="s1">&#39;colonia_cve&#39;</span><span class="p">)</span>
 <span class="k">assert</span> <span class="n">ca</span><span class="o">.</span><span class="n">X</span><span class="o">.</span><span class="n">equals</span><span class="p">(</span><span class="n">usos</span><span class="p">)</span>
 <span class="k">assert</span> <span class="n">ca</span><span class="o">.</span><span class="n">Y</span><span class="o">.</span><span class="n">equals</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
+<span class="k">assert</span> <span class="nb">type</span><span class="p">(</span><span class="n">ca</span><span class="o">.</span><span class="n">describe_Y</span><span class="p">())</span> <span class="o">==</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span>
 </pre></div>
 
     </div>
@@ -296,7 +297,7 @@ Atributos:
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="ModeloGLM" class="doc_header"><code>class</code> <code>ModeloGLM</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/modelos.py#L103" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>ModeloGLM</code>(<strong><code>capa</code></strong>, <strong><code>familia</code></strong>, <strong><code>nombre</code></strong>=<em><code>None</code></em>)</p>
+<h2 id="ModeloGLM" class="doc_header"><code>class</code> <code>ModeloGLM</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/modelos.py#L127" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>ModeloGLM</code>(<strong><code>capa</code></strong>, <strong><code>familia</code></strong>, <strong><code>nombre</code></strong>=<em><code>None</code></em>)</p>
 </blockquote>
 <p>Wrapper para modelos de Regresión GLM de statsmodels.</p>
 <p>La clase prepara y ajusta un modelo GLM usando la variable objetivo
@@ -369,7 +370,7 @@ Métodos:
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="ComparaModelos" class="doc_header"><code>class</code> <code>ComparaModelos</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/modelos.py#L179" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>ComparaModelos</code>(<strong><code>modelos</code></strong>, <strong><code>columnas</code></strong>=<em><code>None</code></em>, <strong><code>redondeo</code></strong>=<em><code>None</code></em>)</p>
+<h2 id="ComparaModelos" class="doc_header"><code>class</code> <code>ComparaModelos</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/modelos.py#L203" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>ComparaModelos</code>(<strong><code>modelos</code></strong>, <strong><code>columnas</code></strong>=<em><code>None</code></em>, <strong><code>redondeo</code></strong>=<em><code>None</code></em>)</p>
 </blockquote>
 <p>Clase para construir comparaciones de modelos.
 Construte dos DataFrames para visualizar rápidamente una comparación de los modelos:
