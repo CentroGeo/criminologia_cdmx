@@ -12,6 +12,8 @@ import pandas as pd
 import geopandas as gpd
 import statsmodels.formula.api as smf
 import statsmodels.api as sm
+import seaborn as sns
+import matplotlib.pyplot as plt
 from .etl import *
 from .covariables import *
 
@@ -80,6 +82,15 @@ class CapaDeAnalisis(object):
                     .replace([np.inf, -np.inf], np.nan)
                     .dropna())
         return df
+
+    def displot_Y(self, size=(12,6)):
+        """Regresa el histograma de la variable dependiente."""
+        f, ax = plt.subplots(1,figsize=size)
+        ax = sns.histplot(data=self.Y, x=self.Y_nombre, ax=ax)
+        ax.axvline(x=self.Y[self.Y_nombre].mean(), color='red')
+        ax.set_ylabel("Conteo")
+        return ax
+
 
     # TODO:
     # agregar/quitar variables
