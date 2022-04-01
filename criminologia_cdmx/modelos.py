@@ -18,23 +18,28 @@ from .etl import *
 from .covariables import *
 
 # Cell
-def variable_independiente(datos, columna_y, valor_y, fecha_inicio, fecha_fin, agregacion='colonias'):
+def variable_independiente(datos, columna_y, valores_y,
+                           fecha_inicio, fecha_fin,
+                           agregacion='colonias',
+                           nombre_y=None):
     """ Regresa un DataFrame con la variable independicente agregada entre fecha_inicio y fecha_fin
         en las unidades requeridas.
 
         Args:
             datos (DataFrame): carpetas/victimas con ids espaciales y categorías de usuario
             columna_y (str): Nombre de la columna en donde vienen los incidentes de valor_y
-            valor_y (str): delito o categoría a utilizar como Y
+            valores_y (list): delitos o categorías a utilizar como Y
             fecha_inicio (str): fecha inicial para agregar delitos "d-m-Y"
             fecha_fin (str): fecha final para agregar delitos "d-m-Y"
             agregacion (str): colonias/cuadrantes. Eventualmente debe recibir
-                              agregaciones arbitrarias
+                              agregaciones arbitrarias (opcional)
+            nombre_y (str): Nombre para la columna con la variable dependiente
+                           (opcional, si se omite se concatenan los nombres de valores_y).
     """
     fecha_inicio = pd.to_datetime(fecha_inicio, dayfirst=True)
     fecha_fin = pd.to_datetime(fecha_fin, dayfirst=True)
     datos = datos.loc[datos['fecha_hechos'].between(fecha_inicio, fecha_fin)]
-    datos = datos.loc[datos[columna_y] == valor_y]
+    datos = datos.loc[datos[columna_y].isin(valores_y)]
     if agregacion == 'colonias':
         columna_agrega = 'colonia_cve'
         layer = 'colonias'
@@ -44,7 +49,11 @@ def variable_independiente(datos, columna_y, valor_y, fecha_inicio, fecha_fin, a
     else:
         raise ValueError("unidades debe ser 'colonias' o 'cuadrantes'")
     datos = datos.groupby(columna_agrega).size()
-    datos.name = valor_y
+    if nombre_y is not None:
+        datos.name = nombre_y
+    else:
+        datos.name = " ".join(valores_y)
+
     unidades = gpd.read_file("datos/criminologia_capas.gpkg", layer=layer)
     datos = unidades[[columna_agrega]].merge(datos, on=columna_agrega, how='left').fillna(0)
     return datos
