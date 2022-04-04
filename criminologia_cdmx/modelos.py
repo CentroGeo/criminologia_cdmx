@@ -12,6 +12,7 @@ import pandas as pd
 import geopandas as gpd
 import statsmodels.formula.api as smf
 import statsmodels.api as sm
+from scipy import stats
 import seaborn as sns
 import matplotlib.pyplot as plt
 from .etl import *
@@ -274,6 +275,20 @@ class ModeloGLM(object):
         ax.set_ylabel('Residuales de Pearson')
         ax.set_xlabel('Valores ajustados')
         return ax
+
+    def histograma_deviance(self, size=(10,5), ax=None):
+        """Regresa un ax con el hitograma de deviance de los residuales."""
+        resid = self.modelo_ajustado.resid_deviance.copy()
+        resid_std = stats.zscore(resid)
+        resid_std = pd.DataFrame(resid_std, columns=["Desviación"])
+        if ax is None:
+            f, ax = plt.subplots(1,figsize=size)
+        ax = sns.histplot(data=resid_std, x="Desviación", ax=ax)
+        ax.set_title('Histograma de desviación estandarizada')
+        ax.set_ylabel('Conteo')
+        return ax
+
+
 
 
 # Cell
