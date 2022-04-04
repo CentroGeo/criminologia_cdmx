@@ -203,6 +203,7 @@ class ModeloGLM(object):
         self.nombre = self.__get_nombre(nombre)
         self.formula = self.__get_formula()
         self.__modelo = self.__get_modelo()
+        self.modelo_ajustado = None
         self.df_resultado = None
         self.df_diagnostico = None
 
@@ -247,9 +248,22 @@ class ModeloGLM(object):
 
     def fit(self):
         fm = self.__modelo.fit()
+        self.modelo_ajustado = fm
         self.__resultados_a_df(fm)
         self.__diagnostico_a_df(fm)
         return fm
+
+    def grafica_de_ajuste(self, size=(10,5), ax=None):
+        """Regresa un ax con la gráfica de ajuste del modelo."""
+        if ax is None:
+            f, ax = plt.subplots(1,figsize=size)
+        y =  self.capa.df[self.capa.Y_nombre].values
+        ax = sns.regplot(x=self.modelo_ajustado.mu, y=y)
+        ax.set_title('Gráfica de Ajuste del Modelo')
+        ax.set_ylabel('Valores observados')
+        ax.set_xlabel('Valores ajustados')
+        return ax
+
 
 # Cell
 class ComparaModelos(object):
