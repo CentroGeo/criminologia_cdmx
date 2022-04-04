@@ -122,7 +122,27 @@ class CapaDeAnalisis(object):
                       'max': 'Máximo'})
         return d
 
+    def mapa_Y(self, agregacion, ax=None,
+               size=(10,10), clasificacion='quantiles',
+               cmap='YlOrRd', legend=True):
+        """ Regresa un ax con el mapa de la variable dependiente.
 
+            Args:
+            agregacion (str): colonias/cuadrantes
+            ax (matplotlib.plot.ax): el eje en donde se hace el mapa (opcional, default None)
+            size ((int,int)): tamaño del mapa (opcional, si se pasa un eje se ignora)
+            clasificacion (str): esquema de clasificación demapclassify (opcional)
+            cmap (str): mapa de colores de matplotlib (opcional)
+            legend (bool): poner o no poner la leyenda (opcional)
+        """
+        capa = gpd.read_file("datos/criminologia_capas.gpkg", layer=agregacion)
+        capa = capa.merge(self.Y, on=self.campo_id)
+        if ax is None:
+            f, ax = plt.subplots(1,figsize=size)
+        ax = capa.plot(self.Y_nombre, scheme=clasificacion, ax=ax, cmap=cmap, legend=legend)
+        ax.set_axis_off()
+        ax.set_title(self.Y_nombre)
+        return ax
 
     # TODO:
     # agregar/quitar variables
