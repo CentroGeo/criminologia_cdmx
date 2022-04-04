@@ -196,6 +196,7 @@ class ModeloGLM(object):
             nombre (str): nombre que identifica al modelo.
         Métodos:
             fit(): Ajusta el modelo.
+            grafica_de_ajuste(): regresa la gráfica de ajuste.
     """
     def __init__(self, capa, familia, nombre=None):
         self.capa = capa
@@ -261,6 +262,16 @@ class ModeloGLM(object):
         ax = sns.regplot(x=self.modelo_ajustado.mu, y=y)
         ax.set_title('Gráfica de Ajuste del Modelo')
         ax.set_ylabel('Valores observados')
+        ax.set_xlabel('Valores ajustados')
+        return ax
+
+    def grafica_residuales_pearson(self, size=(10,5), ax=None):
+        """Regresa un ax con la gráfica de Dependencia de los Residuales."""
+        yhat = self.capa.df[self.capa.Y_nombre].values / self.capa.df[self.capa.Y_nombre].values.sum()
+        ax = sns.scatterplot(x=yhat, y=self.modelo_ajustado.resid_pearson)
+        ax.hlines(0, 0, yhat.max(), colors='black')
+        ax.set_title('Gráfica de Dependencia de los Residuales')
+        ax.set_ylabel('Residuales de Pearson')
         ax.set_xlabel('Valores ajustados')
         return ax
 
