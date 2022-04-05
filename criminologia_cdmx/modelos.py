@@ -317,9 +317,10 @@ class ModeloGLM(object):
             y_label = "Residual (Pearson)"
         if ax is None:
             f, ax = plt.subplots(1,figsize=size)
-        resid = self.modelo_ajustado.resid_deviance
-        resid.name = "Residual"
-        mapa_residuales = self.capa.Y.join(resid, how='right')
+        resid = self.modelo_ajustado.resid_deviance.copy()
+        resid_std = stats.zscore(resid)
+        resid_std = pd.DataFrame(resid_std, columns=["Residual"])
+        mapa_residuales = self.capa.Y.join(resid_std, how='right')
         geos = gpd.read_file("datos/criminologia_capas.gpkg", capa=agregacion)
         mapa_residuales = geos.merge(mapa_residuales, on=self.capa.campo_id)
         ax = mapa_residuales.plot("Residual", ax=ax, scheme=clasificacion, cmap=cmap, legend=legend)
