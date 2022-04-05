@@ -266,13 +266,19 @@ class ModeloGLM(object):
         ax.set_xlabel('Valores ajustados')
         return ax
 
-    def grafica_residuales_pearson(self, size=(10,5), ax=None):
+    def grafica_residuales(self, tipo="deviance", size=(10,5), ax=None):
         """Regresa un ax con la gráfica de Dependencia de los Residuales."""
-        yhat = self.capa.df[self.capa.Y_nombre].values / self.capa.df[self.capa.Y_nombre].values.sum()
-        ax = sns.scatterplot(x=yhat, y=self.modelo_ajustado.resid_pearson)
-        ax.hlines(0, 0, yhat.max(), colors='black')
+        observados = self.capa.df[self.capa.Y_nombre].values
+        if tipo == "deviance":
+            y = self.modelo_ajustado.resid_deviance
+            y_label = "Residual (Deviance)"
+        else:
+            y = self.modelo_ajustado.resid_pearson
+            y_label = "Residual (Pearson)"
+        ax = sns.scatterplot(x=observados, y=y)
+        ax.hlines(0, 0, observados.max(), colors='black')
         ax.set_title('Gráfica de Dependencia de los Residuales')
-        ax.set_ylabel('Residuales de Pearson')
+        ax.set_ylabel(y_label)
         ax.set_xlabel('Valores ajustados')
         return ax
 
