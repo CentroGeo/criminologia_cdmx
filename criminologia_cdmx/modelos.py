@@ -294,8 +294,38 @@ class ModeloGLM(object):
         ax.set_ylabel('Conteo')
         return ax
 
+    def mapa_residuales(self, tipo="deviance", size=(10,10), ax=None, agregacion='colonias',
+                        clasificacion='quantiles',
+                        cmap='YlOrRd', legend=True):
+        """ Regresa un ax con el mapa de residuales (deviance/pearson)
 
+            Args:
+                agregacion (str): colonias/cuadrantes
+                ax (matplotlib.plot.ax): el eje en donde se hace el mapa (opcional, default None)
+                size ((int,int)): tamaño del mapa (opcional, si se pasa un eje se ignora)
+                clasificacion (str): esquema de clasificación demapclassify (opcional)
+                cmap (str): mapa de colores de matplotlib (opcional)
+                legend (bool): poner o no poner la leyenda (opcional)
 
+        """
+        observados = self.capa.df[self.capa.Y_nombre].values
+        if tipo == "deviance":
+            y = self.modelo_ajustado.resid_deviance
+            y_label = "Residual (Deviance)"
+        else:
+            y = self.modelo_ajustado.resid_pearson
+            y_label = "Residual (Pearson)"
+        if ax is None:
+            f, ax = plt.subplots(1,figsize=size)
+        resid = self.modelo_ajustado.resid_deviance
+        resid.name = "Residual"
+        mapa_residuales = self.capa.Y.join(resid, how='right')
+        geos = gpd.read_file("datos/criminologia_capas.gpkg", capa=agregacion)
+        mapa_residuales = geos.merge(mapa_residuales, on=self.capa.campo_id)
+        ax = mapa_residuales.plot("Residual", ax=ax, scheme=clasificacion, cmap=cmap, legend=legend)
+        ax.set_axis_off()
+        ax.set_title("Mapa de residuales")
+        return ax
 
 # Cell
 class ComparaModelos(object):
