@@ -2109,66 +2109,9 @@ carpetas = agrega_ids_espaciales(carpetas)
 fecha_inicio = carpetas.fecha_hechos.min().strftime("%d-%m.%Y")
 fecha_fin = carpetas.fecha_hechos.max().strftime("%d-%m.%Y")
 delito = ['ROBO A CASA HABITACION SIN VIOLENCIA']
-Y = variable_independiente(carpetas, 'delito', delito, fecha_inicio, fecha_fin)
+Y = variable_dependiente(carpetas, 'delito', delito, fecha_inicio, fecha_fin)
 Y.head()
 ```
-
-
-
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>colonia_cve</th>
-      <th>ROBO A CASA HABITACION SIN VIOLENCIA</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>32</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>619</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>1792</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>1774</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>583</td>
-      <td>0.0</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-
 
 ### Covariables
 Para este ejemplo sólo vamos a usar uso de suelo
