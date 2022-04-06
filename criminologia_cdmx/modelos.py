@@ -12,6 +12,8 @@ import numpy as np
 import pandas as pd
 import geopandas as gpd
 from libpysal.weights import Queen
+from esda.moran import Moran
+from splot.esda import moran_scatterplot
 import statsmodels.formula.api as smf
 import statsmodels.api as sm
 from scipy import stats
@@ -258,6 +260,9 @@ class ModeloGLM(object):
         self.modelo_ajustado = None
         self.df_resultado = None
         self.df_diagnostico = None
+        self.gdf_residuales = None
+        self.moran_p_residuales = None
+        self.moran_dev_residuales = None
 
     def __get_nombre(self, nombre):
         if nombre is None:
@@ -265,6 +270,7 @@ class ModeloGLM(object):
             return ''.join(random.choice(letters) for i in range(5))
         else:
             return nombre
+
     def __get_formula(self):
         ls = f"Q('{self.capa.Y_nombre}') ~ "
         rs = ""
@@ -298,11 +304,33 @@ class ModeloGLM(object):
         results_df = pd.DataFrame({"Diagnóstico": indice, "Valor": valores})
         self.df_diagnostico = results_df
 
+    def __residuales_gdf(self, resultados):
+        """ Llena el campo gdf_residuales."""
+        resid_dev = resultados.resid_deviance.copy()
+        resid_dev = stats.zscore(resid_dev)
+        resid_df = pd.DataFrame(resid_dev, columns=["Residual Deviance"])
+        resid_p = resultados.resid_pearson
+        resid_p = pd.DataFrame(resid_p, columns=["Residual Pearson"])
+        resid_df = resid_df.join(resid_p)
+        mapa_residuales = self.capa.Y.join(resid_df, how='right')
+        geos = gpd.read_file("datos/criminologia_capas.gpkg",
+                             capa=self.capa.agregacion)
+        mapa_residuales = geos.merge(mapa_residuales, on=self.capa.campo_id)
+        self.gdf_residuales = mapa_residuales
+
+    def __calcula_moran_residuales(self):
+        moran_dev = Moran(self.gdf_residuales['Residual Deviance'].values, self.capa.w)
+        self.moran_dev_residuales = moran_dev
+        moran_p = Moran(self.gdf_residuales['Residual Pearson'].values, self.capa.w)
+        self.moran_p_residuales = moran_p
+
     def fit(self):
         fm = self.__modelo.fit()
         self.modelo_ajustado = fm
         self.__resultados_a_df(fm)
         self.__diagnostico_a_df(fm)
+        self.__residuales_gdf(fm)
+        self.__calcula_moran_residuales()
         return fm
 
     def grafica_de_ajuste(self, size=(10,5), ax=None):
@@ -361,22 +389,33 @@ class ModeloGLM(object):
         observados = self.capa.df[self.capa.Y_nombre].values
         if tipo == "deviance":
             y = self.modelo_ajustado.resid_deviance
-            y_label = "Residual (Deviance)"
+            y_label = "Residual Deviance"
         else:
             y = self.modelo_ajustado.resid_pearson
-            y_label = "Residual (Pearson)"
+            y_label = "Residual Pearson"
         if ax is None:
             f, ax = plt.subplots(1,figsize=size)
-        resid = self.modelo_ajustado.resid_deviance.copy()
-        resid_std = stats.zscore(resid)
-        resid_std = pd.DataFrame(resid_std, columns=["Residual"])
-        mapa_residuales = self.capa.Y.join(resid_std, how='right')
-        geos = gpd.read_file("datos/criminologia_capas.gpkg", capa=agregacion)
-        mapa_residuales = geos.merge(mapa_residuales, on=self.capa.campo_id)
-        ax = mapa_residuales.plot("Residual", ax=ax, scheme=clasificacion, cmap=cmap, legend=legend)
+        ax = self.gdf_residuales.plot(y_label,
+                                      ax=ax, scheme=clasificacion, cmap=cmap, legend=legend)
         ax.set_axis_off()
         ax.set_title("Mapa de residuales")
         return ax
+
+    def scatterpĺot_moran(self, tipo="Residual Deviance"):
+        """ Regresa un ax con el diagrama de dispersión de Moran para los residuales."""
+        if tipo == "Residual Deviance":
+            moran = self.moran_dev_residuales
+        elif tipo == "Residual Pearson":
+            moran = self.moran_p_residuales
+        else:
+            raise ValueError("El tipo debe ser 'Residual Deviance' o 'Residual Pearson'")
+        fig, ax = moran_scatterplot(moran, aspect_equal=True)
+        ax.set_ylabel("Retraso espacial")
+        ax.set_xlabel(tipo)
+        ax.set_title(f"I de Moran {np.round(moran.I, 3)}, Significancia {moran.p_sim}")
+        return ax
+
+
 
 # Cell
 class ComparaModelos(object):

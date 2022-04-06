@@ -53,7 +53,7 @@ nb_path: "03_modelos.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="variable_independiente" class="doc_header"><code>variable_independiente</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/modelos.py#L24" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>variable_independiente</code>(<strong><code>datos</code></strong>, <strong><code>columna_y</code></strong>, <strong><code>valores_y</code></strong>, <strong><code>fecha_inicio</code></strong>, <strong><code>fecha_fin</code></strong>, <strong><code>agregacion</code></strong>=<em><code>'colonias'</code></em>, <strong><code>nombre_y</code></strong>=<em><code>None</code></em>)</p>
+<h4 id="variable_independiente" class="doc_header"><code>variable_independiente</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/modelos.py#L26" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>variable_independiente</code>(<strong><code>datos</code></strong>, <strong><code>columna_y</code></strong>, <strong><code>valores_y</code></strong>, <strong><code>fecha_inicio</code></strong>, <strong><code>fecha_fin</code></strong>, <strong><code>agregacion</code></strong>=<em><code>'colonias'</code></em>, <strong><code>nombre_y</code></strong>=<em><code>None</code></em>)</p>
 </blockquote>
 <p>Regresa un DataFrame con la variable independicente agregada entre fecha_inicio y fecha_fin
 en las unidades requeridas.</p>
@@ -138,7 +138,7 @@ en las unidades requeridas.</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="CapaDeAnalisis" class="doc_header"><code>class</code> <code>CapaDeAnalisis</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/modelos.py#L65" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>CapaDeAnalisis</code>(<strong><code>Y</code></strong>, <strong><code>covariables</code></strong>, <strong><code>agregacion</code></strong>=<em><code>'colonias'</code></em>)</p>
+<h2 id="CapaDeAnalisis" class="doc_header"><code>class</code> <code>CapaDeAnalisis</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/modelos.py#L67" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>CapaDeAnalisis</code>(<strong><code>Y</code></strong>, <strong><code>covariables</code></strong>, <strong><code>agregacion</code></strong>=<em><code>'colonias'</code></em>)</p>
 </blockquote>
 <p>Clase para contener variable objetivo y covariables.</p>
 <p>Args:
@@ -224,7 +224,7 @@ datos, en el futuro esto debe cambiar para permitir al usuario definir su propia
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="ModeloGLM" class="doc_header"><code>class</code> <code>ModeloGLM</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/modelos.py#L230" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>ModeloGLM</code>(<strong><code>capa</code></strong>, <strong><code>familia</code></strong>, <strong><code>nombre</code></strong>=<em><code>None</code></em>)</p>
+<h2 id="ModeloGLM" class="doc_header"><code>class</code> <code>ModeloGLM</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/modelos.py#L232" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>ModeloGLM</code>(<strong><code>capa</code></strong>, <strong><code>familia</code></strong>, <strong><code>nombre</code></strong>=<em><code>None</code></em>)</p>
 </blockquote>
 <p>Wrapper para modelos de Regresión GLM de statsmodels.</p>
 <p>La clase prepara y ajusta un modelo GLM usando la variable objetivo
@@ -298,7 +298,7 @@ Métodos:
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="ComparaModelos" class="doc_header"><code>class</code> <code>ComparaModelos</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/modelos.py#L382" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>ComparaModelos</code>(<strong><code>modelos</code></strong>, <strong><code>columnas</code></strong>=<em><code>None</code></em>, <strong><code>redondeo</code></strong>=<em><code>None</code></em>)</p>
+<h2 id="ComparaModelos" class="doc_header"><code>class</code> <code>ComparaModelos</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/modelos.py#L421" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>ComparaModelos</code>(<strong><code>modelos</code></strong>, <strong><code>columnas</code></strong>=<em><code>None</code></em>, <strong><code>redondeo</code></strong>=<em><code>None</code></em>)</p>
 </blockquote>
 <p>Clase para construir comparaciones de modelos.
 Construte dos DataFrames para visualizar rápidamente una comparación de los modelos:
