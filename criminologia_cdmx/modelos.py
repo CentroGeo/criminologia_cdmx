@@ -3,6 +3,7 @@
 __all__ = ['variable_independiente', 'CapaDeAnalisis', 'ModeloGLM', 'ComparaModelos']
 
 # Cell
+import warnings
 from functools import reduce
 from itertools import chain
 import random
@@ -10,6 +11,7 @@ import string
 import numpy as np
 import pandas as pd
 import geopandas as gpd
+from libpysal.weights import Queen
 import statsmodels.formula.api as smf
 import statsmodels.api as sm
 from scipy import stats
@@ -69,29 +71,77 @@ class CapaDeAnalisis(object):
                            (las columnas deben venir en ese orden).
             covariables (DataFrame): debe contener una columna con el identificador de la unidad
                                      de análisis (común a Y) y tantas como covariables.
-            campo_id (str): el nombre del campo común en X y Y para unirlos.
+            agregación (str): colonias/cuadrantes.
         Atributos:
             Y (DataFrame): la variable dependiente.
             Y_nombre (str): Nombre de la columna con el delito a modelar.
             X (DataFrame): las variables independientes.
             X_nombres (list): Lista de los nombres de columnas de las covariables.
+            agregacion (str): colonias/cuadrantes.
             campo_id (str): el nombre del campo común en X y Y para unirlos.
-            df (DataFrame): la unión de los dos anteriores.
+            df (DataFrame): la unión de los dos X y Y.
+            geo (GeoDataFrame): la unión de df con las geometrias que corresponden a `agregacion`
+            w (libpysal.weights.Queen): Matriz de vecindad para los datos válidos
+
+        **NOTAS:**
+            1) El DataFrame con los datos finales va a contener sólo las observaciones válidas
+            (sin nulos en Y o X), además, para poder hacer análisis espaciales, se eliminan los
+            polígonos isla.
+
+            2) Por lo pronto la clase calcula automáticamente una matriz de vecindad para los
+            datos, en el futuro esto debe cambiar para permitir al usuario definir su propia matriz.
+
+
     """
 
-    def __init__(self, Y, covariables, campo_id):
+    def __init__(self, Y, covariables, agregacion='colonias'):
         self.Y = Y
         self.Y_nombre = Y.columns[-1]
         self.X = covariables
-        self.X_nombres = [x for x in covariables.columns if x != campo_id]
-        self.campo_id = campo_id
+        self.campo_id = self.__get_campo_id(agregacion)
+        self.X_nombres = [x for x in covariables.columns if x != self.campo_id]
+        self.agregacion = agregacion
         self.df = self.__merge_covars()
+        self.geo = self.__get_geo(agregacion)
+        self.w = self.__calcula_matriz_pesos()
+        # TODO self_repr() una función que describa en texto lo que pasó (datos válidos, etc.)
 
     def __merge_covars(self):
+        """Regresa la unión de X y Y."""
+        # TODO: aquí hay que contar cuántos datos perdimos por valores faltantes
         df = (self.Y.merge(self.X, on=self.campo_id)
                     .replace([np.inf, -np.inf], np.nan)
                     .dropna())
         return df
+
+    def __get_campo_id(self, agregacion):
+        """ Regresa la columna que une los dataframes."""
+        if agregacion == 'colonias':
+            campo_id = 'colonia_cve'
+        elif agregacion == 'cuadrantes':
+            campo_id = 'cuadrante_id'
+        else:
+            raise ValueError("agregacion debe ser colonias o cuadrantes.")
+        return campo_id
+
+    def __get_geo(self, agregacion):
+        """ Regresa el GeoDataframe correspondiente a la agregación."""
+        geo = gpd.read_file("datos/criminologia_capas.gpkg", layer=agregacion)
+        geo = geo.merge(self.df, on=self.campo_id, how='inner')
+        return geo
+
+    def __calcula_matriz_pesos(self):
+        """Regresa la matriz de peso y actualiza geo y df para eliminar las islas."""
+        # TODO: aquí hay que contar los datos perdidos por islas
+        with warnings.catch_warnings():
+            warnings.simplefilter("ignore")
+            w = Queen.from_dataframe(self.geo)
+            if len(w.islands):
+                self.df.drop(w.islands, inplace=True)
+                self.geo.drop(w.islands, inplace=True)
+                w = Queen.from_dataframe(self.geo)
+        return w
+
 
     def displot_Y(self, size=(12,6)):
         """Regresa el histograma de la variable dependiente."""
