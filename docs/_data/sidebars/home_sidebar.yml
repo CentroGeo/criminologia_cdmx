@@ -21,6 +21,9 @@ entries:
     - output: web,pdf
       title: modelos
       url: modelos.html
+    - output: web,pdf
+      title: Title
+      url: Untitled.html
     output: web
     title: criminologia_cdmx
   output: web
