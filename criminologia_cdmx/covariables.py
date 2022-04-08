@@ -191,5 +191,6 @@ class IndicePCA(object):
         indice = pca.fit_transform(X)[:,:1]
         id_var = indicadores.index.name
         df = indicadores.reset_index()[[id_var]]
-        df['Índice'] = abs(indice)
+        # df['Índice'] = abs(indice)
+        df['Índice'] = indice
         self.indice = df
