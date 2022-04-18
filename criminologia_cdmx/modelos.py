@@ -326,6 +326,15 @@ class ModeloGLM(object):
         self.moran_p_residuales = moran_p
 
     def fit(self):
+        """ Ajusta el modelo y llena los campos correspondientes.
+
+            modelo_ajustado
+            df_resultado
+            df_diagnostico
+            gdf_residuales
+            moran_p_residuales
+            moran_dev_residuales
+        """
         fm = self.__modelo.fit()
         self.modelo_ajustado = fm
         self.__resultados_a_df(fm)
@@ -335,7 +344,14 @@ class ModeloGLM(object):
         return fm
 
     def grafica_de_ajuste(self, size=(10,5), ax=None):
-        """Regresa un ax con la gráfica de ajuste del modelo."""
+        """ Regresa un ax con la gráfica de ajuste del modelo.
+
+            Args:
+
+                size ((int,int)): Tamaño de la figura (opcional default (10,5))
+                                  si ax !=None, se ignora
+                ax (matplotlib.axes): Eje en el que se grafica (opcional, default None)
+        """
         if ax is None:
             f, ax = plt.subplots(1,figsize=size)
         y =  self.capa.df[self.capa.Y_nombre].values
@@ -346,7 +362,14 @@ class ModeloGLM(object):
         return ax
 
     def grafica_residuales(self, tipo="deviance", size=(10,5), ax=None):
-        """Regresa un ax con la gráfica de Dependencia de los Residuales."""
+        """ Regresa un ax con la gráfica de Dependencia de los Residuales.
+
+            Args:
+
+                size ((int,int)): Tamaño de la figura (opcional default (10,5))
+                                  si ax !=None, se ignora
+                ax (matplotlib.axes): Eje en el que se grafica (opcional, default None)
+        """
         observados = self.capa.df[self.capa.Y_nombre].values
         if tipo == "deviance":
             y = self.modelo_ajustado.resid_deviance
@@ -364,7 +387,14 @@ class ModeloGLM(object):
         return ax
 
     def histograma_deviance(self, size=(10,5), ax=None):
-        """Regresa un ax con el hitograma de deviance de los residuales."""
+        """ Regresa un ax con el hitograma de deviance de los residuales.
+
+            Args:
+
+                size ((int,int)): Tamaño de la figura (opcional default (10,5))
+                                  si ax !=None, se ignora
+                ax (matplotlib.axes): Eje en el que se grafica (opcional, default None)
+        """
         resid = self.modelo_ajustado.resid_deviance.copy()
         resid_std = stats.zscore(resid)
         resid_std = pd.DataFrame(resid_std, columns=["Desviación"])
@@ -381,6 +411,7 @@ class ModeloGLM(object):
         """ Regresa un ax con el mapa de residuales (deviance/pearson)
 
             Args:
+
                 agregacion (str): colonias/cuadrantes
                 ax (matplotlib.plot.ax): el eje en donde se hace el mapa (opcional, default None)
                 size ((int,int)): tamaño del mapa (opcional, si se pasa un eje se ignora)
@@ -405,7 +436,16 @@ class ModeloGLM(object):
         return ax
 
     def scatterpĺot_moran(self, tipo="deviance", ax=None):
-        """ Regresa un ax con el diagrama de dispersión de Moran para los residuales."""
+        """ Regresa un ax con el diagrama de dispersión de Moran para los residuales.
+
+            Args:
+
+                tipo (str): deviance/pearson el tipo de residuales a graficar,
+                            (opcional, default=deviance) .
+                size ((int,int)): Tamaño de la figura (opcional default (10,5))
+                                  si ax !=None, se ignora
+                ax (matplotlib.axes): Eje en el que se grafica (opcional, default None)
+        """
         if tipo == "deviance":
             x_label = "Residual Deviance"
             moran = self.moran_dev_residuales
@@ -488,6 +528,13 @@ class ComparaModelos(object):
         return unidos
 
     def graficas_de_ajuste(self, n_cols=2, size=(20,5)):
+        """ Gráficas de ajuste para todos los modelos.
+
+            Args:
+
+                n_cols (int): Número de columnas en la figura
+                size ((int, int)): Tamaño de la figura
+        """
         n_modelos = len(self.modelos)
         filas = math.ceil(n_modelos / n_cols)
         f, axs = plt.subplots(filas, n_cols, figsize=size)
@@ -498,6 +545,16 @@ class ComparaModelos(object):
             ax.set_title(f"{self.modelos[i].nombre}")
 
     def graficas_residuales(self, tipo='deviance', n_cols=2, size=(20,5)):
+        """ Gráficas de residuales para todos los modelos.
+
+
+            Args:
+
+                tipo (str): pearson/deviance tipo de residuales a graficar.
+                n_cols (int): Número de columnas en la figura.
+                size ((int, int)): Tamaño de la figura.
+
+        """
         n_modelos = len(self.modelos)
         filas = math.ceil(n_modelos / n_cols)
         f, axs = plt.subplots(filas, n_cols, figsize=size)
@@ -508,6 +565,14 @@ class ComparaModelos(object):
             ax.set_title(f"{self.modelos[i].nombre}")
 
     def histogramas_deviance(self, n_cols=2, size=(20,5)):
+        """ Histogramas de deviance para todos los modelos.
+
+            Args:
+
+                n_cols (int): Número de columnas en la figura.
+                size ((int, int)): Tamaño de la figura.
+        """
+
         n_modelos = len(self.modelos)
         filas = math.ceil(n_modelos / n_cols)
         f, axs = plt.subplots(filas, n_cols, figsize=size)
@@ -520,9 +585,18 @@ class ComparaModelos(object):
     def mapas_residuales(self, tipo='deviance', n_cols=2,
                          size=(20,10), clasificacion='quantiles',
                          cmap='YlOrRd', legend=True):
-         # mapa_residuales(self, tipo="deviance", size=(10,10), ax=None,
-         #                        clasificacion='quantiles',
-         #                        cmap='YlOrRd', legend=True)
+        """ Mapas de residuales para todos los modelos.
+
+
+            Args:
+
+                tipo (str): deviance/pearson el tipo de residual a mapear
+                n_cols (int): Número de columnas en la figura.
+                size ((int, int)): Tamaño de la figura.
+                clasificacion (str): esquema de clasificación (mapclassify).
+                cmap (str): mapa de colores (matplotlib).
+                legend (bool): desplegar o no la leyenda.
+        """
         n_modelos = len(self.modelos)
         filas = math.ceil(n_modelos / n_cols)
         f, axs = plt.subplots(filas, n_cols, figsize=size)
@@ -536,6 +610,16 @@ class ComparaModelos(object):
             ax.set_title(f"{self.modelos[i].nombre}")
 
     def scatterpĺots_moran(self, tipo="deviance", n_cols=2, size=(20,10)):
+        """ Graficas de moran para todos los modelos.
+
+
+            Args:
+
+                tipo (str): deviance/pearson el tipo de residual a mapear
+                n_cols (int): Número de columnas en la figura.
+                size ((int, int)): Tamaño de la figura.
+        """
+
         n_modelos = len(self.modelos)
         filas = math.ceil(n_modelos / n_cols)
         f, axs = plt.subplots(filas, n_cols, figsize=size)
