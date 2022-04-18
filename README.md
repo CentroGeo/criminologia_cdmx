@@ -88,123 +88,123 @@ carpetas.head()
   <tbody>
     <tr>
       <th>0</th>
-      <td>751816</td>
-      <td>2019</td>
+      <td>131438</td>
+      <td>2011</td>
+      <td>Diciembre</td>
+      <td>2011-12-23 12:00:00</td>
+      <td>2016</td>
       <td>Octubre</td>
-      <td>2019-10-07 14:00:00</td>
-      <td>2019</td>
-      <td>Octubre</td>
-      <td>2019-10-07T21:45:16</td>
-      <td>PRODUCCIÓN, IMPRESIÓN, ENAJENACIÓN, DISTRIBUCI...</td>
-      <td>INVESTIGACIÓN EN COYOACÁN</td>
-      <td>COY-1</td>
+      <td>2016-10-11T10:58:59</td>
+      <td>FRAUDE</td>
+      <td>INVESTIGACIÓN PARA LA ATENCIÓN DE DELITOS FINA...</td>
+      <td>T</td>
       <td>...</td>
       <td>DELITO DE BAJO IMPACTO</td>
-      <td>MIGUEL ANGEL DE QUEVEDO</td>
+      <td>NO SE PRECISA</td>
+      <td>LA CORUÑA</td>
+      <td>VIADUCTO PIEDAD</td>
+      <td>IZTACALCO</td>
       <td>NaN</td>
-      <td>ROMERO DE TERREROS</td>
-      <td>COYOACAN</td>
+      <td>-99.1310879999999</td>
+      <td>19.4003803998337</td>
       <td>NaN</td>
-      <td>-99.17525</td>
-      <td>19.34586</td>
-      <td>NaN</td>
-      <td>POINT (-99.17525 19.34586)</td>
+      <td>POINT (-99.13109 19.40038)</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>751817</td>
-      <td>2019</td>
+      <td>131439</td>
+      <td>2016</td>
       <td>Octubre</td>
-      <td>2019-10-07 14:00:00</td>
-      <td>2019</td>
+      <td>2016-10-11 10:00:00</td>
+      <td>2016</td>
       <td>Octubre</td>
-      <td>2019-10-07T21:46:30</td>
-      <td>DAÑO EN PROPIEDAD AJENA CULPOSA POR TRÁNSITO V...</td>
-      <td>INVESTIGACIÓN EN ÁLVARO OBREGÓN</td>
-      <td>AO-4</td>
+      <td>2016-10-11T11:05:39</td>
+      <td>ROBO A TRANSEUNTE DE CELULAR SIN VIOLENCIA</td>
+      <td>INVESTIGACIÓN EN BENITO JUÁREZ</td>
+      <td>URI-BJ-4</td>
       <td>...</td>
       <td>DELITO DE BAJO IMPACTO</td>
-      <td>AVENIDA PERIFERICO SUR</td>
-      <td>CALZADA LAS AGUILAS</td>
-      <td>LOS ALPES</td>
-      <td>ALVARO OBREGON</td>
+      <td>TOLEDO</td>
       <td>NaN</td>
-      <td>-99.19513</td>
-      <td>19.35819</td>
+      <td>ÁLAMOS</td>
+      <td>BENITO JUAREZ</td>
       <td>NaN</td>
-      <td>POINT (-99.19513 19.35819)</td>
+      <td>-99.1382219</td>
+      <td>19.3955250998333</td>
+      <td>NaN</td>
+      <td>POINT (-99.13822 19.39553)</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>751818</td>
-      <td>2019</td>
+      <td>131440</td>
+      <td>2016</td>
       <td>Octubre</td>
-      <td>2019-10-06 23:30:00</td>
-      <td>2019</td>
+      <td>2016-10-10 18:00:00</td>
+      <td>2016</td>
       <td>Octubre</td>
-      <td>2019-10-07T21:49:20</td>
-      <td>ROBO A TRANSEUNTE CONDUCTOR DE TAXI PUBLICO Y ...</td>
-      <td>INVESTIGACIÓN EN IZTAPALAPA</td>
-      <td>IZP-6</td>
+      <td>2016-10-11T11:06:45</td>
+      <td>ROBO DE ACCESORIOS DE AUTO</td>
+      <td>INVESTIGACIÓN EN IZTACALCO</td>
+      <td>IZC-2</td>
       <td>...</td>
       <td>DELITO DE BAJO IMPACTO</td>
-      <td>AV. TELECOMUNICACIONES</td>
-      <td>AV. GENERAL ANTONIO LEON LOYOLA (AMBAS SON PAR...</td>
-      <td>UNIDAD EJÉRCITO CONSTITUCIONALISTA</td>
-      <td>IZTAPALAPA</td>
+      <td>CANELA  469 EDIFICIO E</td>
+      <td>RESINA</td>
+      <td>GRANJAS MÉXICO</td>
+      <td>IZTACALCO</td>
       <td>NaN</td>
-      <td>-99.04765</td>
-      <td>19.38716</td>
+      <td>-99.0949096468644</td>
+      <td>19.3975309850492</td>
       <td>NaN</td>
-      <td>POINT (-99.04765 19.38716)</td>
+      <td>POINT (-99.09491 19.39753)</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>751819</td>
-      <td>2019</td>
-      <td>Septiembre</td>
-      <td>2019-09-14 12:00:00</td>
-      <td>2019</td>
+      <td>131441</td>
+      <td>2016</td>
       <td>Octubre</td>
-      <td>2019-10-07T21:57:48</td>
-      <td>FRAUDE</td>
-      <td>INVESTIGACIÓN EN BENITO JUÁREZ</td>
-      <td>BJ-3</td>
+      <td>2016-10-10 23:30:00</td>
+      <td>2016</td>
+      <td>Octubre</td>
+      <td>2016-10-11T11:15:54</td>
+      <td>ROBO DE DOCUMENTOS</td>
+      <td>INVESTIGACIÓN EN IZTAPALAPA</td>
+      <td>IZP-9</td>
       <td>...</td>
       <td>DELITO DE BAJO IMPACTO</td>
-      <td>EUGENIA</td>
+      <td>GUANAJUATO</td>
+      <td>HIDALGO</td>
+      <td>BUENAVISTA</td>
+      <td>IZTAPALAPA</td>
       <td>NaN</td>
-      <td>NARVARTE</td>
-      <td>BENITO JUAREZ</td>
+      <td>-99.0330593</td>
+      <td>19.328085399834</td>
       <td>NaN</td>
-      <td>-99.16102</td>
-      <td>19.38601</td>
-      <td>NaN</td>
-      <td>POINT (-99.16102 19.38601)</td>
+      <td>POINT (-99.03306 19.32809)</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>751820</td>
-      <td>2019</td>
-      <td>Agosto</td>
-      <td>2019-08-13 13:00:00</td>
-      <td>2019</td>
+      <td>131442</td>
+      <td>2016</td>
       <td>Octubre</td>
-      <td>2019-10-07T21:59:40</td>
-      <td>VIOLENCIA FAMILIAR</td>
-      <td>JUZGADOS FAMILIARES</td>
-      <td>CJM-TLP</td>
+      <td>2016-10-11 06:30:00</td>
+      <td>2016</td>
+      <td>Octubre</td>
+      <td>2016-10-11T11:16:19</td>
+      <td>ROBO A NEGOCIO SIN VIOLENCIA</td>
+      <td>INVESTIGACIÓN EN MIGUEL HIDALGO</td>
+      <td>MH-4</td>
       <td>...</td>
       <td>DELITO DE BAJO IMPACTO</td>
-      <td>AVENIDA GUSTAVO DIAZ ORDAZ</td>
+      <td>GUTEMBERG</td>
       <td>NaN</td>
-      <td>AMPLIACIÓN JALALPA</td>
-      <td>ALVARO OBREGON</td>
+      <td>VERONICA ANZURES</td>
+      <td>MIGUEL HIDALGO</td>
       <td>NaN</td>
-      <td>-99.23382</td>
-      <td>19.37586</td>
+      <td>-99.1721142279077</td>
+      <td>19.4335004163422</td>
       <td>NaN</td>
-      <td>POINT (-99.23382 19.37586)</td>
+      <td>POINT (-99.17211 19.43350)</td>
     </tr>
   </tbody>
 </table>
@@ -265,123 +265,123 @@ victimas.head()
   <tbody>
     <tr>
       <th>0</th>
-      <td>595358</td>
-      <td>8960172</td>
-      <td>2021</td>
-      <td>Junio</td>
-      <td>2021-06-26T00:00:00</td>
-      <td>ROBO DE VEHICULO DE SERVICIO PARTICULAR CON VI...</td>
-      <td>ROBO DE VEHÍCULO CON Y SIN VIOLENCIA</td>
-      <td>Masculino</td>
-      <td>25</td>
-      <td>FISICA</td>
-      <td>...</td>
-      <td>2021-06-26</td>
-      <td>19:10:00</td>
-      <td>22:17:00</td>
-      <td>ALVARO OBREGON</td>
-      <td>PUERTA GRANDE</td>
-      <td>AVENIDA CENTENARIO   CASI ESQUINA CON LA CALLE...</td>
-      <td>NaN</td>
-      <td>19.3571148543388</td>
-      <td>-99.2289503701792</td>
-      <td>POINT (-99.22895 19.35711)</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>595359</td>
-      <td>8960173</td>
-      <td>2021</td>
-      <td>Junio</td>
-      <td>2021-06-26T00:00:00</td>
-      <td>ROBO A TRANSPORTISTA Y VEHICULO PESADO CON VIO...</td>
-      <td>ROBO A TRANSPORTISTA CON Y SIN VIOLENCIA</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>MORAL</td>
-      <td>...</td>
-      <td>2021-06-25</td>
-      <td>23:30:00</td>
-      <td>22:17:00</td>
-      <td>AZCAPOTZALCO</td>
-      <td>INDUSTRIAL VALLEJO</td>
-      <td>AVENIDA CEYLAN</td>
-      <td>ENTRE CERRADA CEYLAN</td>
-      <td>19.4938324187342</td>
-      <td>-99.1699397596072</td>
-      <td>POINT (-99.16994 19.49383)</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>595360</td>
-      <td>8960173</td>
-      <td>2021</td>
-      <td>Junio</td>
-      <td>2021-06-26T00:00:00</td>
-      <td>ROBO A TRANSPORTISTA Y VEHICULO PESADO CON VIO...</td>
-      <td>ROBO A TRANSPORTISTA CON Y SIN VIOLENCIA</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>MORAL</td>
-      <td>...</td>
-      <td>2021-06-25</td>
-      <td>23:30:00</td>
-      <td>22:17:00</td>
-      <td>AZCAPOTZALCO</td>
-      <td>INDUSTRIAL VALLEJO</td>
-      <td>AVENIDA CEYLAN</td>
-      <td>ENTRE CERRADA CEYLAN</td>
-      <td>19.4938324187342</td>
-      <td>-99.1699397596072</td>
-      <td>POINT (-99.16994 19.49383)</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>595361</td>
-      <td>8960175</td>
-      <td>2021</td>
-      <td>Junio</td>
-      <td>2021-06-26T00:00:00</td>
-      <td>ROBO A NEGOCIO SIN VIOLENCIA POR FARDEROS (TIE...</td>
-      <td>DELITO DE BAJO IMPACTO</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>MORAL</td>
-      <td>...</td>
-      <td>2021-06-26</td>
-      <td>21:20:00</td>
-      <td>22:21:00</td>
-      <td>IZTAPALAPA</td>
-      <td>GUADALUPE DEL MORAL</td>
-      <td>AVENIDA JAVIER ROJO GOMEZ</td>
-      <td>NaN</td>
-      <td>19.3681183577951</td>
-      <td>-99.0814492098267</td>
-      <td>POINT (-99.08145 19.36812)</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>595362</td>
-      <td>8960176</td>
-      <td>2021</td>
-      <td>Junio</td>
-      <td>2021-06-26T00:00:00</td>
+      <td>1</td>
+      <td>8324429</td>
+      <td>2019</td>
+      <td>Enero</td>
+      <td>2019-04-01T00:00:00</td>
       <td>FRAUDE</td>
       <td>DELITO DE BAJO IMPACTO</td>
       <td>Masculino</td>
-      <td>37</td>
+      <td>62</td>
       <td>FISICA</td>
       <td>...</td>
-      <td>2021-06-26</td>
-      <td>08:27:00</td>
-      <td>22:31:00</td>
-      <td>BENITO JUAREZ</td>
-      <td>NAPOLES</td>
-      <td>ARIZONA</td>
-      <td>PENSILVANIA</td>
-      <td>19.3927810885787</td>
-      <td>-99.1806440001974</td>
-      <td>POINT (-99.18064 19.39278)</td>
+      <td>2018-08-29</td>
+      <td>12:00:00</td>
+      <td>12:19:00</td>
+      <td>ALVARO OBREGON</td>
+      <td>GUADALUPE INN</td>
+      <td>INSUGENTES SUR</td>
+      <td>NaN</td>
+      <td>19.36125</td>
+      <td>-99.18314</td>
+      <td>POINT (-99.18314 19.36125)</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>8324430</td>
+      <td>2019</td>
+      <td>Enero</td>
+      <td>2019-04-01T00:00:00</td>
+      <td>PRODUCCIÓN, IMPRESIÓN, ENAJENACIÓN, DISTRIBUCI...</td>
+      <td>DELITO DE BAJO IMPACTO</td>
+      <td>Femenino</td>
+      <td>38</td>
+      <td>FISICA</td>
+      <td>...</td>
+      <td>2018-12-15</td>
+      <td>15:00:00</td>
+      <td>12:20:00</td>
+      <td>AZCAPOTZALCO</td>
+      <td>VICTORIA DE LAS DEMOCRACIAS</td>
+      <td>AV.  CUATLAHUAC</td>
+      <td>NaN</td>
+      <td>19.47181</td>
+      <td>-99.16458</td>
+      <td>POINT (-99.16458 19.47181)</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>8324431</td>
+      <td>2019</td>
+      <td>Enero</td>
+      <td>2019-04-01T00:00:00</td>
+      <td>ROBO A TRANSEUNTE SALIENDO DEL BANCO CON VIOLE...</td>
+      <td>ROBO A CUENTAHABIENTE SALIENDO DEL CAJERO CON ...</td>
+      <td>Masculino</td>
+      <td>42</td>
+      <td>FISICA</td>
+      <td>...</td>
+      <td>2018-12-22</td>
+      <td>15:30:00</td>
+      <td>12:23:00</td>
+      <td>COYOACAN</td>
+      <td>COPILCO UNIVERSIDAD ISSSTE</td>
+      <td>COPILCO</td>
+      <td>NaN</td>
+      <td>19.33797</td>
+      <td>-99.18611</td>
+      <td>POINT (-99.18611 19.33797)</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>8324435</td>
+      <td>2019</td>
+      <td>Enero</td>
+      <td>2019-04-01T00:00:00</td>
+      <td>ROBO DE VEHICULO DE SERVICIO PARTICULAR SIN VI...</td>
+      <td>ROBO DE VEHÍCULO CON Y SIN VIOLENCIA</td>
+      <td>Masculino</td>
+      <td>35</td>
+      <td>FISICA</td>
+      <td>...</td>
+      <td>2019-01-04</td>
+      <td>06:00:00</td>
+      <td>12:27:00</td>
+      <td>IZTACALCO</td>
+      <td>AGRÍCOLA PANTITLAN</td>
+      <td>CALLE 6</td>
+      <td>ENTRE PRIVADA DEL VALLE Y PRIVADA GONZALEZ</td>
+      <td>19.40327</td>
+      <td>-99.05983</td>
+      <td>POINT (-99.05983 19.40327)</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>8324438</td>
+      <td>2019</td>
+      <td>Enero</td>
+      <td>2019-04-01T00:00:00</td>
+      <td>ROBO DE MOTOCICLETA SIN VIOLENCIA</td>
+      <td>ROBO DE VEHÍCULO CON Y SIN VIOLENCIA</td>
+      <td>Masculino</td>
+      <td>NaN</td>
+      <td>FISICA</td>
+      <td>...</td>
+      <td>2019-01-03</td>
+      <td>20:00:00</td>
+      <td>12:35:00</td>
+      <td>IZTAPALAPA</td>
+      <td>PROGRESISTA</td>
+      <td>UNIVERSIDAD</td>
+      <td>NaN</td>
+      <td>19.3548</td>
+      <td>-99.06324</td>
+      <td>POINT (-99.06324 19.35480)</td>
     </tr>
   </tbody>
 </table>
@@ -460,123 +460,123 @@ carpetas.head()
   <tbody>
     <tr>
       <th>0</th>
-      <td>751816</td>
-      <td>2019</td>
+      <td>131438</td>
+      <td>2011</td>
+      <td>Diciembre</td>
+      <td>2011-12-23 12:00:00</td>
+      <td>2016</td>
       <td>Octubre</td>
-      <td>2019-10-07 14:00:00</td>
-      <td>2019</td>
-      <td>Octubre</td>
-      <td>2019-10-07T21:45:16</td>
-      <td>PRODUCCIÓN, IMPRESIÓN, ENAJENACIÓN, DISTRIBUCI...</td>
-      <td>INVESTIGACIÓN EN COYOACÁN</td>
-      <td>COY-1</td>
+      <td>2016-10-11T10:58:59</td>
+      <td>FRAUDE</td>
+      <td>INVESTIGACIÓN PARA LA ATENCIÓN DE DELITOS FINA...</td>
+      <td>T</td>
       <td>...</td>
-      <td>COYOACAN</td>
+      <td>IZTACALCO</td>
       <td>NaN</td>
-      <td>-99.17525</td>
-      <td>19.34586</td>
+      <td>-99.1310879999999</td>
+      <td>19.4003803998337</td>
       <td>NaN</td>
-      <td>POINT (-99.17525 19.34586)</td>
-      <td>1149</td>
-      <td>ROMERO DE TERREROS (FRACC)</td>
-      <td>09003</td>
-      <td>023</td>
+      <td>POINT (-99.13109 19.40038)</td>
+      <td>209</td>
+      <td>VIADUCTO PIEDAD</td>
+      <td>09006</td>
+      <td>021</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>751817</td>
-      <td>2019</td>
+      <td>131439</td>
+      <td>2016</td>
       <td>Octubre</td>
-      <td>2019-10-07 14:00:00</td>
-      <td>2019</td>
+      <td>2016-10-11 10:00:00</td>
+      <td>2016</td>
       <td>Octubre</td>
-      <td>2019-10-07T21:46:30</td>
-      <td>DAÑO EN PROPIEDAD AJENA CULPOSA POR TRÁNSITO V...</td>
-      <td>INVESTIGACIÓN EN ÁLVARO OBREGÓN</td>
-      <td>AO-4</td>
-      <td>...</td>
-      <td>ALVARO OBREGON</td>
-      <td>NaN</td>
-      <td>-99.19513</td>
-      <td>19.35819</td>
-      <td>NaN</td>
-      <td>POINT (-99.19513 19.35819)</td>
-      <td>264</td>
-      <td>ALPES</td>
-      <td>09010</td>
-      <td>015</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>751818</td>
-      <td>2019</td>
-      <td>Octubre</td>
-      <td>2019-10-06 23:30:00</td>
-      <td>2019</td>
-      <td>Octubre</td>
-      <td>2019-10-07T21:49:20</td>
-      <td>ROBO A TRANSEUNTE CONDUCTOR DE TAXI PUBLICO Y ...</td>
-      <td>INVESTIGACIÓN EN IZTAPALAPA</td>
-      <td>IZP-6</td>
-      <td>...</td>
-      <td>IZTAPALAPA</td>
-      <td>NaN</td>
-      <td>-99.04765</td>
-      <td>19.38716</td>
-      <td>NaN</td>
-      <td>POINT (-99.04765 19.38716)</td>
-      <td>1269</td>
-      <td>EJTO CONSTITUCIONALISTA, SUPERMANZANA I ( U HAB)</td>
-      <td>09007</td>
-      <td>0119</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>751819</td>
-      <td>2019</td>
-      <td>Septiembre</td>
-      <td>2019-09-14 12:00:00</td>
-      <td>2019</td>
-      <td>Octubre</td>
-      <td>2019-10-07T21:57:48</td>
-      <td>FRAUDE</td>
+      <td>2016-10-11T11:05:39</td>
+      <td>ROBO A TRANSEUNTE DE CELULAR SIN VIOLENCIA</td>
       <td>INVESTIGACIÓN EN BENITO JUÁREZ</td>
-      <td>BJ-3</td>
+      <td>URI-BJ-4</td>
       <td>...</td>
       <td>BENITO JUAREZ</td>
       <td>NaN</td>
-      <td>-99.16102</td>
-      <td>19.38601</td>
+      <td>-99.1382219</td>
+      <td>19.3955250998333</td>
       <td>NaN</td>
-      <td>POINT (-99.16102 19.38601)</td>
-      <td>936</td>
-      <td>NARVARTE V</td>
+      <td>POINT (-99.13822 19.39553)</td>
+      <td>941</td>
+      <td>ALAMOS II</td>
       <td>09014</td>
-      <td>0111</td>
+      <td>014</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>131440</td>
+      <td>2016</td>
+      <td>Octubre</td>
+      <td>2016-10-10 18:00:00</td>
+      <td>2016</td>
+      <td>Octubre</td>
+      <td>2016-10-11T11:06:45</td>
+      <td>ROBO DE ACCESORIOS DE AUTO</td>
+      <td>INVESTIGACIÓN EN IZTACALCO</td>
+      <td>IZC-2</td>
+      <td>...</td>
+      <td>IZTACALCO</td>
+      <td>NaN</td>
+      <td>-99.0949096468644</td>
+      <td>19.3975309850492</td>
+      <td>NaN</td>
+      <td>POINT (-99.09491 19.39753)</td>
+      <td>233</td>
+      <td>GRANJAS MEXICO II</td>
+      <td>09006</td>
+      <td>024</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>131441</td>
+      <td>2016</td>
+      <td>Octubre</td>
+      <td>2016-10-10 23:30:00</td>
+      <td>2016</td>
+      <td>Octubre</td>
+      <td>2016-10-11T11:15:54</td>
+      <td>ROBO DE DOCUMENTOS</td>
+      <td>INVESTIGACIÓN EN IZTAPALAPA</td>
+      <td>IZP-9</td>
+      <td>...</td>
+      <td>IZTAPALAPA</td>
+      <td>NaN</td>
+      <td>-99.0330593</td>
+      <td>19.328085399834</td>
+      <td>NaN</td>
+      <td>POINT (-99.03306 19.32809)</td>
+      <td>1407</td>
+      <td>BUENAVISTA II</td>
+      <td>09007</td>
+      <td>017</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>751820</td>
-      <td>2019</td>
-      <td>Agosto</td>
-      <td>2019-08-13 13:00:00</td>
-      <td>2019</td>
+      <td>131442</td>
+      <td>2016</td>
       <td>Octubre</td>
-      <td>2019-10-07T21:59:40</td>
-      <td>VIOLENCIA FAMILIAR</td>
-      <td>JUZGADOS FAMILIARES</td>
-      <td>CJM-TLP</td>
+      <td>2016-10-11 06:30:00</td>
+      <td>2016</td>
+      <td>Octubre</td>
+      <td>2016-10-11T11:16:19</td>
+      <td>ROBO A NEGOCIO SIN VIOLENCIA</td>
+      <td>INVESTIGACIÓN EN MIGUEL HIDALGO</td>
+      <td>MH-4</td>
       <td>...</td>
-      <td>ALVARO OBREGON</td>
+      <td>MIGUEL HIDALGO</td>
       <td>NaN</td>
-      <td>-99.23382</td>
-      <td>19.37586</td>
+      <td>-99.1721142279077</td>
+      <td>19.4335004163422</td>
       <td>NaN</td>
-      <td>POINT (-99.23382 19.37586)</td>
-      <td>1051</td>
-      <td>JALALPA TEPITO</td>
-      <td>09010</td>
-      <td>013</td>
+      <td>POINT (-99.17211 19.43350)</td>
+      <td>203</td>
+      <td>VERONICA ANZURES</td>
+      <td>09016</td>
+      <td>0421</td>
     </tr>
   </tbody>
 </table>
@@ -637,123 +637,123 @@ victimas.head()
   <tbody>
     <tr>
       <th>0</th>
-      <td>595358</td>
-      <td>8960172</td>
-      <td>2021</td>
-      <td>Junio</td>
-      <td>2021-06-26T00:00:00</td>
-      <td>ROBO DE VEHICULO DE SERVICIO PARTICULAR CON VI...</td>
-      <td>ROBO DE VEHÍCULO CON Y SIN VIOLENCIA</td>
-      <td>Masculino</td>
-      <td>25</td>
-      <td>FISICA</td>
-      <td>...</td>
-      <td>PUERTA GRANDE</td>
-      <td>AVENIDA CENTENARIO   CASI ESQUINA CON LA CALLE...</td>
-      <td>NaN</td>
-      <td>19.3571148543388</td>
-      <td>-99.2289503701792</td>
-      <td>POINT (-99.22895 19.35711)</td>
-      <td>1121</td>
-      <td>LOMAS DE PUERTA GRANDE</td>
-      <td>09010</td>
-      <td>017</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>595359</td>
-      <td>8960173</td>
-      <td>2021</td>
-      <td>Junio</td>
-      <td>2021-06-26T00:00:00</td>
-      <td>ROBO A TRANSPORTISTA Y VEHICULO PESADO CON VIO...</td>
-      <td>ROBO A TRANSPORTISTA CON Y SIN VIOLENCIA</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>MORAL</td>
-      <td>...</td>
-      <td>INDUSTRIAL VALLEJO</td>
-      <td>AVENIDA CEYLAN</td>
-      <td>ENTRE CERRADA CEYLAN</td>
-      <td>19.4938324187342</td>
-      <td>-99.1699397596072</td>
-      <td>POINT (-99.16994 19.49383)</td>
-      <td>80</td>
-      <td>INDUSTRIAL VALLEJO (U HAB)</td>
-      <td>09002</td>
-      <td>022</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>595360</td>
-      <td>8960173</td>
-      <td>2021</td>
-      <td>Junio</td>
-      <td>2021-06-26T00:00:00</td>
-      <td>ROBO A TRANSPORTISTA Y VEHICULO PESADO CON VIO...</td>
-      <td>ROBO A TRANSPORTISTA CON Y SIN VIOLENCIA</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>MORAL</td>
-      <td>...</td>
-      <td>INDUSTRIAL VALLEJO</td>
-      <td>AVENIDA CEYLAN</td>
-      <td>ENTRE CERRADA CEYLAN</td>
-      <td>19.4938324187342</td>
-      <td>-99.1699397596072</td>
-      <td>POINT (-99.16994 19.49383)</td>
-      <td>80</td>
-      <td>INDUSTRIAL VALLEJO (U HAB)</td>
-      <td>09002</td>
-      <td>022</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>595361</td>
-      <td>8960175</td>
-      <td>2021</td>
-      <td>Junio</td>
-      <td>2021-06-26T00:00:00</td>
-      <td>ROBO A NEGOCIO SIN VIOLENCIA POR FARDEROS (TIE...</td>
-      <td>DELITO DE BAJO IMPACTO</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>MORAL</td>
-      <td>...</td>
-      <td>GUADALUPE DEL MORAL</td>
-      <td>AVENIDA JAVIER ROJO GOMEZ</td>
-      <td>NaN</td>
-      <td>19.3681183577951</td>
-      <td>-99.0814492098267</td>
-      <td>POINT (-99.08145 19.36812)</td>
-      <td>1351</td>
-      <td>GUADALUPE DEL MORAL</td>
-      <td>09007</td>
-      <td>0120</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>595362</td>
-      <td>8960176</td>
-      <td>2021</td>
-      <td>Junio</td>
-      <td>2021-06-26T00:00:00</td>
+      <td>1</td>
+      <td>8324429</td>
+      <td>2019</td>
+      <td>Enero</td>
+      <td>2019-04-01T00:00:00</td>
       <td>FRAUDE</td>
       <td>DELITO DE BAJO IMPACTO</td>
       <td>Masculino</td>
-      <td>37</td>
+      <td>62</td>
       <td>FISICA</td>
       <td>...</td>
-      <td>NAPOLES</td>
-      <td>ARIZONA</td>
-      <td>PENSILVANIA</td>
-      <td>19.3927810885787</td>
-      <td>-99.1806440001974</td>
-      <td>POINT (-99.18064 19.39278)</td>
-      <td>242</td>
-      <td>NAPOLES</td>
-      <td>09014</td>
-      <td>011</td>
+      <td>GUADALUPE INN</td>
+      <td>INSUGENTES SUR</td>
+      <td>NaN</td>
+      <td>19.36125</td>
+      <td>-99.18314</td>
+      <td>POINT (-99.18314 19.36125)</td>
+      <td>263</td>
+      <td>GUADALUPE INN</td>
+      <td>09010</td>
+      <td>012</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>8324430</td>
+      <td>2019</td>
+      <td>Enero</td>
+      <td>2019-04-01T00:00:00</td>
+      <td>PRODUCCIÓN, IMPRESIÓN, ENAJENACIÓN, DISTRIBUCI...</td>
+      <td>DELITO DE BAJO IMPACTO</td>
+      <td>Femenino</td>
+      <td>38</td>
+      <td>FISICA</td>
+      <td>...</td>
+      <td>VICTORIA DE LAS DEMOCRACIAS</td>
+      <td>AV.  CUATLAHUAC</td>
+      <td>NaN</td>
+      <td>19.47181</td>
+      <td>-99.16458</td>
+      <td>POINT (-99.16458 19.47181)</td>
+      <td>683</td>
+      <td>VICTORIA DE LAS DEMOCRACIAS</td>
+      <td>09002</td>
+      <td>026</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>8324431</td>
+      <td>2019</td>
+      <td>Enero</td>
+      <td>2019-04-01T00:00:00</td>
+      <td>ROBO A TRANSEUNTE SALIENDO DEL BANCO CON VIOLE...</td>
+      <td>ROBO A CUENTAHABIENTE SALIENDO DEL CAJERO CON ...</td>
+      <td>Masculino</td>
+      <td>42</td>
+      <td>FISICA</td>
+      <td>...</td>
+      <td>COPILCO UNIVERSIDAD ISSSTE</td>
+      <td>COPILCO</td>
+      <td>NaN</td>
+      <td>19.33797</td>
+      <td>-99.18611</td>
+      <td>POINT (-99.18611 19.33797)</td>
+      <td>328</td>
+      <td>COPILCO EL BAJO</td>
+      <td>09003</td>
+      <td>0213</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>8324435</td>
+      <td>2019</td>
+      <td>Enero</td>
+      <td>2019-04-01T00:00:00</td>
+      <td>ROBO DE VEHICULO DE SERVICIO PARTICULAR SIN VI...</td>
+      <td>ROBO DE VEHÍCULO CON Y SIN VIOLENCIA</td>
+      <td>Masculino</td>
+      <td>35</td>
+      <td>FISICA</td>
+      <td>...</td>
+      <td>AGRÍCOLA PANTITLAN</td>
+      <td>CALLE 6</td>
+      <td>ENTRE PRIVADA DEL VALLE Y PRIVADA GONZALEZ</td>
+      <td>19.40327</td>
+      <td>-99.05983</td>
+      <td>POINT (-99.05983 19.40327)</td>
+      <td>227</td>
+      <td>PANTITLAN V</td>
+      <td>09006</td>
+      <td>026</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>8324438</td>
+      <td>2019</td>
+      <td>Enero</td>
+      <td>2019-04-01T00:00:00</td>
+      <td>ROBO DE MOTOCICLETA SIN VIOLENCIA</td>
+      <td>ROBO DE VEHÍCULO CON Y SIN VIOLENCIA</td>
+      <td>Masculino</td>
+      <td>NaN</td>
+      <td>FISICA</td>
+      <td>...</td>
+      <td>PROGRESISTA</td>
+      <td>UNIVERSIDAD</td>
+      <td>NaN</td>
+      <td>19.3548</td>
+      <td>-99.06324</td>
+      <td>POINT (-99.06324 19.35480)</td>
+      <td>1366</td>
+      <td>LAS AMERICAS (U HAB)</td>
+      <td>09007</td>
+      <td>0116</td>
     </tr>
   </tbody>
 </table>
@@ -894,28 +894,28 @@ carpetas[['delito', 'categoria']]
   <tbody>
     <tr>
       <th>0</th>
-      <td>DAÑO EN PROPIEDAD AJENA INTENCIONAL</td>
+      <td>FRAUDE</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>ROBO DE VEHICULO DE SERVICIO PARTICULAR CON VI...</td>
-      <td>Robo de/en vehículo</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>NARCOMENUDEO POSESION SIMPLE</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>ROBO A TRANSEUNTE EN VIA PUBLICA CON VIOLENCIA</td>
+      <td>ROBO A TRANSEUNTE DE CELULAR SIN VIOLENCIA</td>
       <td>Robo a transeúnte</td>
     </tr>
     <tr>
-      <th>4</th>
-      <td>DENUNCIA DE HECHOS</td>
+      <th>2</th>
+      <td>ROBO DE ACCESORIOS DE AUTO</td>
+      <td>Robo de/en vehículo</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>ROBO DE DOCUMENTOS</td>
       <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>ROBO A NEGOCIO SIN VIOLENCIA</td>
+      <td>Robo a negocio</td>
     </tr>
     <tr>
       <th>...</th>
@@ -923,33 +923,33 @@ carpetas[['delito', 'categoria']]
       <td>...</td>
     </tr>
     <tr>
-      <th>1217266</th>
-      <td>ABUSO DE AUTORIDAD Y USO ILEGAL DE LA FUERZA P...</td>
+      <th>91</th>
+      <td>AMENAZAS</td>
       <td>NaN</td>
     </tr>
     <tr>
-      <th>1217267</th>
-      <td>ROBO A NEGOCIO CON VIOLENCIA</td>
-      <td>Robo a negocio</td>
-    </tr>
-    <tr>
-      <th>1217268</th>
-      <td>DAÑO EN PROPIEDAD AJENA INTENCIONAL A BIENES I...</td>
+      <th>92</th>
+      <td>FALSIFICACION DE TITULOS AL PORTADOR Y DOCUMEN...</td>
       <td>NaN</td>
     </tr>
     <tr>
-      <th>1217269</th>
-      <td>ALLANAMIENTO DE MORADA, DESPACHO, OFICINA O ES...</td>
+      <th>93</th>
+      <td>ROBO DE OBJETOS DEL INTERIOR DE UN VEHICULO</td>
+      <td>Robo de/en vehículo</td>
+    </tr>
+    <tr>
+      <th>94</th>
+      <td>ROBO DE MOTOCICLETA CON VIOLENCIA</td>
       <td>NaN</td>
     </tr>
     <tr>
-      <th>1217270</th>
-      <td>ROBO A TRANSEUNTE EN VIA PUBLICA CON VIOLENCIA</td>
+      <th>95</th>
+      <td>ROBO A TRANSEUNTE DE CELULAR CON VIOLENCIA</td>
       <td>Robo a transeúnte</td>
     </tr>
   </tbody>
 </table>
-<p>1217271 rows × 2 columns</p>
+<p>96 rows × 2 columns</p>
 </div>
 
 
@@ -1134,36 +1134,36 @@ victimas[['Delito', 'Nivel 1', 'Nivel 2', 'Nivel 3']]
   <tbody>
     <tr>
       <th>0</th>
-      <td>ROBO DE VEHICULO DE SERVICIO PARTICULAR CON VI...</td>
-      <td>Robo de Vehículo de Servicio Particular</td>
-      <td>Con Violencia</td>
+      <td>FRAUDE</td>
+      <td>Fraude</td>
+      <td>NaN</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>ROBO A TRANSPORTISTA Y VEHICULO PESADO CON VIO...</td>
+      <td>PRODUCCIÓN, IMPRESIÓN, ENAJENACIÓN, DISTRIBUCI...</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>ROBO A TRANSPORTISTA Y VEHICULO PESADO CON VIO...</td>
+      <td>ROBO A TRANSEUNTE SALIENDO DEL BANCO CON VIOLE...</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>ROBO A NEGOCIO SIN VIOLENCIA POR FARDEROS (TIE...</td>
-      <td>Robo a Negocio y Tiendas de Autoservicio</td>
+      <td>ROBO DE VEHICULO DE SERVICIO PARTICULAR SIN VI...</td>
+      <td>Robo de Vehículo de Servicio Particular</td>
       <td>Sin Violencia</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>FRAUDE</td>
-      <td>Fraude</td>
+      <td>ROBO DE MOTOCICLETA SIN VIOLENCIA</td>
+      <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
     </tr>
@@ -1176,36 +1176,36 @@ victimas[['Delito', 'Nivel 1', 'Nivel 2', 'Nivel 3']]
     </tr>
     <tr>
       <th>90</th>
-      <td>NARCOMENUDEO POSESION SIMPLE</td>
-      <td>Narcomenudeo</td>
-      <td>Posesión Simple</td>
+      <td>ROBO DE VEHICULO DE SERVICIO PARTICULAR CON VI...</td>
+      <td>Robo de Vehículo de Servicio Particular</td>
+      <td>Con Violencia</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>91</th>
-      <td>DAÑO EN PROPIEDAD AJENA CULPOSA POR TRÁNSITO V...</td>
-      <td>NaN</td>
+      <td>ABUSO DE CONFIANZA</td>
+      <td>Abuso de Confianza</td>
       <td>NaN</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>92</th>
-      <td>ROBO A TRANSEUNTE EN NEGOCIO CON VIOLENCIA</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>ROBO DE VEHICULO DE SERVICIO PARTICULAR SIN VI...</td>
+      <td>Robo de Vehículo de Servicio Particular</td>
+      <td>Sin Violencia</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>93</th>
-      <td>LESIONES CULPOSAS POR TRANSITO VEHICULAR EN CO...</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>ROBO A TRANSEUNTE EN VIA PUBLICA CON VIOLENCIA</td>
+      <td>Robo a Transeúnte en Vía Pública</td>
+      <td>Con Violencia</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>94</th>
-      <td>DAÑO EN PROPIEDAD AJENA CULPOSA POR TRÁNSITO V...</td>
-      <td>NaN</td>
+      <td>ROBO DE OBJETOS</td>
+      <td>Robo de Objetos</td>
       <td>NaN</td>
       <td>NaN</td>
     </tr>
@@ -1259,7 +1259,7 @@ ax.plot_surface(xx, yy, zz,cmap='viridis', edgecolor='none')
 
 
 
-    <mpl_toolkits.mplot3d.art3d.Poly3DCollection at 0x7f2122d15d00>
+    <mpl_toolkits.mplot3d.art3d.Poly3DCollection at 0x7fa59992c8b0>
 
 
 
@@ -1474,122 +1474,122 @@ agregado
     <tr>
       <th>1</th>
       <td>80.0</td>
+      <td>1.025000</td>
+      <td>1.037500</td>
+      <td>1.075000</td>
+      <td>1.050000</td>
       <td>0.912500</td>
       <td>0.987500</td>
+      <td>1.012500</td>
       <td>1.050000</td>
-      <td>1.100000</td>
-      <td>0.950000</td>
-      <td>1.037500</td>
-      <td>1.225000</td>
-      <td>1.150000</td>
-      <td>0.987500</td>
+      <td>0.775000</td>
       <td>...</td>
-      <td>1.040541</td>
-      <td>0.972973</td>
-      <td>1.013514</td>
-      <td>1.175676</td>
-      <td>1.027027</td>
-      <td>1.081081</td>
-      <td>1.054054</td>
-      <td>0.959459</td>
-      <td>86.0</td>
-      <td>0.170635</td>
+      <td>1.024691</td>
+      <td>0.888889</td>
+      <td>1.135802</td>
+      <td>1.000000</td>
+      <td>0.962963</td>
+      <td>0.925926</td>
+      <td>0.987654</td>
+      <td>0.876543</td>
+      <td>91.0</td>
+      <td>0.168831</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>118.0</td>
-      <td>0.966102</td>
-      <td>0.932203</td>
-      <td>0.872881</td>
-      <td>0.915254</td>
-      <td>0.838983</td>
-      <td>0.940678</td>
-      <td>0.949153</td>
-      <td>0.864407</td>
-      <td>0.822034</td>
+      <td>96.0</td>
+      <td>1.072917</td>
+      <td>0.979167</td>
+      <td>1.125000</td>
+      <td>1.135417</td>
+      <td>1.177083</td>
+      <td>1.125000</td>
+      <td>0.937500</td>
+      <td>1.229167</td>
+      <td>1.052083</td>
       <td>...</td>
-      <td>0.895652</td>
-      <td>0.947826</td>
-      <td>0.895652</td>
-      <td>0.843478</td>
-      <td>0.869565</td>
-      <td>0.982609</td>
-      <td>0.852174</td>
-      <td>0.913043</td>
-      <td>104.0</td>
-      <td>0.162500</td>
+      <td>1.086538</td>
+      <td>1.019231</td>
+      <td>0.884615</td>
+      <td>1.067308</td>
+      <td>0.721154</td>
+      <td>0.932692</td>
+      <td>1.163462</td>
+      <td>0.903846</td>
+      <td>113.0</td>
+      <td>0.197208</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>25.0</td>
-      <td>1.000000</td>
-      <td>1.040000</td>
-      <td>0.480000</td>
-      <td>0.800000</td>
-      <td>0.840000</td>
-      <td>1.280000</td>
-      <td>0.840000</td>
-      <td>0.640000</td>
-      <td>1.000000</td>
+      <td>18.0</td>
+      <td>1.388889</td>
+      <td>1.222222</td>
+      <td>1.500000</td>
+      <td>0.944444</td>
+      <td>1.277778</td>
+      <td>1.277778</td>
+      <td>1.388889</td>
+      <td>1.055556</td>
+      <td>1.166667</td>
       <td>...</td>
+      <td>1.571429</td>
       <td>0.952381</td>
-      <td>1.238095</td>
+      <td>1.190476</td>
+      <td>1.333333</td>
+      <td>0.809524</td>
+      <td>1.047619</td>
       <td>1.000000</td>
-      <td>1.047619</td>
-      <td>0.857143</td>
-      <td>1.047619</td>
-      <td>0.857143</td>
-      <td>1.047619</td>
-      <td>24.0</td>
-      <td>0.198347</td>
+      <td>0.761905</td>
+      <td>21.0</td>
+      <td>0.157895</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>34.0</td>
-      <td>1.264706</td>
-      <td>1.294118</td>
-      <td>1.352941</td>
-      <td>1.058824</td>
-      <td>1.235294</td>
-      <td>1.500000</td>
-      <td>1.176471</td>
-      <td>1.117647</td>
-      <td>1.235294</td>
+      <td>46.0</td>
+      <td>1.173913</td>
+      <td>1.152174</td>
+      <td>0.913043</td>
+      <td>0.978261</td>
+      <td>0.956522</td>
+      <td>0.847826</td>
+      <td>0.978261</td>
+      <td>1.021739</td>
+      <td>1.065217</td>
       <td>...</td>
-      <td>0.850000</td>
-      <td>0.925000</td>
-      <td>0.900000</td>
-      <td>0.900000</td>
-      <td>1.325000</td>
-      <td>1.000000</td>
-      <td>1.100000</td>
-      <td>0.925000</td>
-      <td>54.0</td>
-      <td>0.200000</td>
+      <td>1.200000</td>
+      <td>0.875000</td>
+      <td>1.525000</td>
+      <td>0.950000</td>
+      <td>1.300000</td>
+      <td>1.150000</td>
+      <td>1.225000</td>
+      <td>1.175000</td>
+      <td>55.0</td>
+      <td>0.214008</td>
     </tr>
     <tr>
       <th>5</th>
-      <td>61.0</td>
-      <td>0.934426</td>
-      <td>1.262295</td>
-      <td>1.213115</td>
-      <td>0.983607</td>
-      <td>1.065574</td>
-      <td>0.983607</td>
-      <td>1.147541</td>
-      <td>1.163934</td>
-      <td>1.180328</td>
+      <td>66.0</td>
+      <td>0.848485</td>
+      <td>1.075758</td>
+      <td>1.136364</td>
+      <td>1.212121</td>
+      <td>1.090909</td>
+      <td>0.984848</td>
+      <td>0.909091</td>
+      <td>1.045455</td>
+      <td>1.075758</td>
       <td>...</td>
-      <td>0.971014</td>
-      <td>1.072464</td>
-      <td>0.840580</td>
-      <td>0.884058</td>
-      <td>1.028986</td>
-      <td>0.956522</td>
-      <td>0.797101</td>
-      <td>1.043478</td>
-      <td>84.0</td>
-      <td>0.217054</td>
+      <td>0.928571</td>
+      <td>0.900000</td>
+      <td>0.914286</td>
+      <td>1.014286</td>
+      <td>1.057143</td>
+      <td>0.971429</td>
+      <td>0.985714</td>
+      <td>0.942857</td>
+      <td>74.0</td>
+      <td>0.180488</td>
     </tr>
     <tr>
       <th>...</th>
@@ -1617,123 +1617,123 @@ agregado
     </tr>
     <tr>
       <th>1820</th>
-      <td>89.0</td>
-      <td>1.033708</td>
-      <td>0.966292</td>
-      <td>0.865169</td>
-      <td>1.011236</td>
-      <td>1.011236</td>
-      <td>1.134831</td>
-      <td>0.955056</td>
-      <td>1.033708</td>
-      <td>1.056180</td>
+      <td>98.0</td>
+      <td>0.908163</td>
+      <td>1.000000</td>
+      <td>0.918367</td>
+      <td>0.969388</td>
+      <td>1.081633</td>
+      <td>0.948980</td>
+      <td>0.836735</td>
+      <td>0.928571</td>
+      <td>0.857143</td>
       <td>...</td>
-      <td>1.045977</td>
-      <td>1.045977</td>
-      <td>0.954023</td>
-      <td>0.942529</td>
-      <td>1.103448</td>
-      <td>1.022989</td>
-      <td>0.816092</td>
-      <td>1.160920</td>
-      <td>94.0</td>
-      <td>0.170909</td>
+      <td>0.858586</td>
+      <td>0.868687</td>
+      <td>0.969697</td>
+      <td>0.808081</td>
+      <td>1.040404</td>
+      <td>0.939394</td>
+      <td>0.939394</td>
+      <td>0.979798</td>
+      <td>80.0</td>
+      <td>0.141593</td>
     </tr>
     <tr>
       <th>1821</th>
-      <td>209.0</td>
-      <td>0.918660</td>
-      <td>0.961722</td>
-      <td>1.047847</td>
+      <td>208.0</td>
+      <td>0.927885</td>
+      <td>1.014423</td>
+      <td>1.173077</td>
+      <td>0.870192</td>
+      <td>1.062500</td>
+      <td>1.009615</td>
+      <td>0.947115</td>
+      <td>1.019231</td>
+      <td>0.932692</td>
+      <td>...</td>
+      <td>0.976077</td>
+      <td>0.937799</td>
+      <td>1.004785</td>
+      <td>1.057416</td>
+      <td>1.023923</td>
       <td>1.000000</td>
       <td>1.062201</td>
-      <td>1.090909</td>
       <td>0.995215</td>
-      <td>1.052632</td>
-      <td>0.933014</td>
-      <td>...</td>
-      <td>0.776316</td>
-      <td>0.903509</td>
-      <td>0.912281</td>
-      <td>0.947368</td>
-      <td>0.872807</td>
-      <td>0.859649</td>
-      <td>0.907895</td>
-      <td>0.864035</td>
-      <td>212.0</td>
-      <td>0.175207</td>
+      <td>197.0</td>
+      <td>0.153188</td>
     </tr>
     <tr>
       <th>1822</th>
-      <td>7.0</td>
-      <td>0.857143</td>
-      <td>0.285714</td>
-      <td>0.714286</td>
-      <td>1.142857</td>
-      <td>1.285714</td>
-      <td>0.857143</td>
-      <td>0.857143</td>
-      <td>0.428571</td>
-      <td>0.571429</td>
-      <td>...</td>
-      <td>2.200000</td>
-      <td>1.400000</td>
-      <td>1.800000</td>
-      <td>1.400000</td>
+      <td>2.0</td>
+      <td>3.000000</td>
+      <td>3.000000</td>
+      <td>2.500000</td>
+      <td>2.500000</td>
+      <td>5.000000</td>
+      <td>2.500000</td>
+      <td>3.500000</td>
+      <td>6.000000</td>
       <td>1.000000</td>
-      <td>1.200000</td>
-      <td>1.200000</td>
-      <td>1.200000</td>
-      <td>6.0</td>
-      <td>0.109091</td>
+      <td>...</td>
+      <td>0.666667</td>
+      <td>1.500000</td>
+      <td>1.333333</td>
+      <td>2.000000</td>
+      <td>1.000000</td>
+      <td>0.833333</td>
+      <td>1.000000</td>
+      <td>1.500000</td>
+      <td>7.0</td>
+      <td>0.205882</td>
     </tr>
     <tr>
       <th>1823</th>
-      <td>61.0</td>
-      <td>0.934426</td>
-      <td>1.393443</td>
-      <td>1.049180</td>
-      <td>1.278689</td>
-      <td>1.147541</td>
-      <td>1.147541</td>
-      <td>1.213115</td>
-      <td>1.213115</td>
+      <td>64.0</td>
+      <td>1.062500</td>
+      <td>1.109375</td>
       <td>1.000000</td>
+      <td>1.171875</td>
+      <td>1.015625</td>
+      <td>1.156250</td>
+      <td>1.125000</td>
+      <td>1.062500</td>
+      <td>1.171875</td>
       <td>...</td>
-      <td>0.985075</td>
-      <td>1.014925</td>
-      <td>1.029851</td>
-      <td>1.029851</td>
-      <td>1.059701</td>
-      <td>0.895522</td>
-      <td>0.776119</td>
-      <td>1.044776</td>
-      <td>88.0</td>
-      <td>0.232804</td>
+      <td>1.064516</td>
+      <td>0.983871</td>
+      <td>1.129032</td>
+      <td>1.080645</td>
+      <td>0.806452</td>
+      <td>1.177419</td>
+      <td>1.225806</td>
+      <td>1.209677</td>
+      <td>78.0</td>
+      <td>0.194030</td>
     </tr>
     <tr>
       <th>1824</th>
-      <td>13.0</td>
-      <td>0.846154</td>
-      <td>1.076923</td>
-      <td>0.461538</td>
-      <td>0.923077</td>
-      <td>0.846154</td>
-      <td>1.076923</td>
-      <td>0.538462</td>
-      <td>0.538462</td>
-      <td>0.461538</td>
-      <td>...</td>
-      <td>0.750000</td>
-      <td>0.833333</td>
-      <td>0.916667</td>
-      <td>0.833333</td>
-      <td>0.916667</td>
-      <td>0.333333</td>
-      <td>0.750000</td>
-      <td>1.166667</td>
       <td>15.0</td>
-      <td>0.250000</td>
+      <td>0.933333</td>
+      <td>0.466667</td>
+      <td>0.533333</td>
+      <td>0.333333</td>
+      <td>0.533333</td>
+      <td>0.666667</td>
+      <td>0.733333</td>
+      <td>0.800000</td>
+      <td>0.866667</td>
+      <td>...</td>
+      <td>1.272727</td>
+      <td>1.000000</td>
+      <td>0.727273</td>
+      <td>0.818182</td>
+      <td>1.090909</td>
+      <td>0.727273</td>
+      <td>0.909091</td>
+      <td>1.181818</td>
+      <td>12.0</td>
+      <td>0.196721</td>
     </tr>
   </tbody>
 </table>
@@ -1990,7 +1990,7 @@ indice.calcula_indice()
 print(f'El porcentaje de la varianza explicada por el índice es {indice.varianza_explicada[0]}')
 ```
 
-    El porcentaje de la varianza explicada por el índice es 0.6004451881076397
+    El porcentaje de la varianza explicada por el índice es 0.6733575453347628
 
 
 El DataFrame con los valores del índice se guarda en la propiedad `indice`:
@@ -2028,27 +2028,27 @@ indice.indice
     <tr>
       <th>0</th>
       <td>1</td>
-      <td>0.184298</td>
+      <td>-0.283277</td>
     </tr>
     <tr>
       <th>1</th>
       <td>2</td>
-      <td>1.687427</td>
+      <td>-0.231614</td>
     </tr>
     <tr>
       <th>2</th>
       <td>3</td>
-      <td>1.540912</td>
+      <td>0.541123</td>
     </tr>
     <tr>
       <th>3</th>
       <td>4</td>
-      <td>2.636684</td>
+      <td>-1.054452</td>
     </tr>
     <tr>
       <th>4</th>
       <td>5</td>
-      <td>1.026860</td>
+      <td>-0.372295</td>
     </tr>
     <tr>
       <th>...</th>
@@ -2056,33 +2056,33 @@ indice.indice
       <td>...</td>
     </tr>
     <tr>
-      <th>1797</th>
+      <th>1796</th>
       <td>1820</td>
-      <td>0.218373</td>
+      <td>-0.650093</td>
+    </tr>
+    <tr>
+      <th>1797</th>
+      <td>1821</td>
+      <td>-0.576023</td>
     </tr>
     <tr>
       <th>1798</th>
-      <td>1821</td>
-      <td>0.318991</td>
+      <td>1822</td>
+      <td>10.963350</td>
     </tr>
     <tr>
       <th>1799</th>
-      <td>1822</td>
-      <td>0.710312</td>
+      <td>1823</td>
+      <td>0.299546</td>
     </tr>
     <tr>
       <th>1800</th>
-      <td>1823</td>
-      <td>1.402441</td>
-    </tr>
-    <tr>
-      <th>1801</th>
       <td>1824</td>
-      <td>2.263297</td>
+      <td>-2.199762</td>
     </tr>
   </tbody>
 </table>
-<p>1802 rows × 2 columns</p>
+<p>1801 rows × 2 columns</p>
 </div>
 
 
@@ -2162,7 +2162,7 @@ Y.head()
     <tr>
       <th>4</th>
       <td>583</td>
-      <td>2.0</td>
+      <td>0.0</td>
     </tr>
   </tbody>
 </table>
@@ -2181,7 +2181,7 @@ usos = agrega_uso_suelo(usos, unidades='colonias')
 ### Capa de Análisis
 
 ```python
-ca = CapaDeAnalisis(Y, usos, 'colonia_cve')
+ca = CapaDeAnalisis(Y, usos, 'colonias')
 ```
 
 ### Creación y ajuste de modelo
@@ -2198,10 +2198,10 @@ fm.summary()
 <table class="simpletable">
 <caption>Generalized Linear Model Regression Results</caption>
 <tr>
-  <th>Dep. Variable:</th>   <td>Q('ROBO A CASA HABITACION SIN VIOLENCIA')</td> <th>  No. Observations:  </th>  <td>  1623</td> 
+  <th>Dep. Variable:</th>   <td>Q('ROBO A CASA HABITACION SIN VIOLENCIA')</td> <th>  No. Observations:  </th>  <td>  1619</td> 
 </tr>
 <tr>
-  <th>Model:</th>                              <td>GLM</td>                    <th>  Df Residuals:      </th>  <td>  1618</td> 
+  <th>Model:</th>                              <td>GLM</td>                    <th>  Df Residuals:      </th>  <td>  1614</td> 
 </tr>
 <tr>
   <th>Model Family:</th>                <td>NegativeBinomial</td>              <th>  Df Model:          </th>  <td>     4</td> 
@@ -2210,13 +2210,13 @@ fm.summary()
   <th>Link Function:</th>                      <td>log</td>                    <th>  Scale:             </th> <td>  1.0000</td>
 </tr>
 <tr>
-  <th>Method:</th>                            <td>IRLS</td>                    <th>  Log-Likelihood:    </th> <td> -1441.2</td>
+  <th>Method:</th>                            <td>IRLS</td>                    <th>  Log-Likelihood:    </th> <td> -1454.6</td>
 </tr>
 <tr>
-  <th>Date:</th>                        <td>Tue, 29 Mar 2022</td>              <th>  Deviance:          </th> <td>  1145.1</td>
+  <th>Date:</th>                        <td>Mon, 18 Apr 2022</td>              <th>  Deviance:          </th> <td>  1149.7</td>
 </tr>
 <tr>
-  <th>Time:</th>                            <td>19:51:09</td>                  <th>  Pearson chi2:      </th> <td>1.24e+03</td>
+  <th>Time:</th>                            <td>16:17:13</td>                  <th>  Pearson chi2:      </th> <td>1.25e+03</td>
 </tr>
 <tr>
   <th>No. Iterations:</th>                     <td>100</td>                    <th>                     </th>     <td> </td>   
@@ -2230,22 +2230,22 @@ fm.summary()
          <td></td>            <th>coef</th>     <th>std err</th>      <th>z</th>      <th>P>|z|</th>  <th>[0.025</th>    <th>0.975]</th>  
 </tr>
 <tr>
-  <th>Intercept</th>       <td>   -1.8829</td> <td>    0.314</td> <td>   -5.989</td> <td> 0.000</td> <td>   -2.499</td> <td>   -1.267</td>
+  <th>Intercept</th>       <td>   -2.0145</td> <td>    0.318</td> <td>   -6.332</td> <td> 0.000</td> <td>   -2.638</td> <td>   -1.391</td>
 </tr>
 <tr>
-  <th>Q('Industria')</th>  <td>    0.0031</td> <td>    0.001</td> <td>    2.694</td> <td> 0.007</td> <td>    0.001</td> <td>    0.005</td>
+  <th>Q('Industria')</th>  <td>    0.0041</td> <td>    0.001</td> <td>    3.505</td> <td> 0.000</td> <td>    0.002</td> <td>    0.006</td>
 </tr>
 <tr>
-  <th>Q('Comercio')</th>   <td>   -0.0024</td> <td>    0.000</td> <td>   -5.557</td> <td> 0.000</td> <td>   -0.003</td> <td>   -0.002</td>
+  <th>Q('Comercio')</th>   <td>   -0.0029</td> <td>    0.000</td> <td>   -5.959</td> <td> 0.000</td> <td>   -0.004</td> <td>   -0.002</td>
 </tr>
 <tr>
-  <th>Q('Servicios')</th>  <td>    0.0013</td> <td>    0.000</td> <td>    2.736</td> <td> 0.006</td> <td>    0.000</td> <td>    0.002</td>
+  <th>Q('Servicios')</th>  <td>    0.0009</td> <td>    0.000</td> <td>    1.924</td> <td> 0.054</td> <td>-1.68e-05</td> <td>    0.002</td>
 </tr>
 <tr>
-  <th>Q('Intensidad')</th> <td>    0.0019</td> <td>    0.000</td> <td>    6.050</td> <td> 0.000</td> <td>    0.001</td> <td>    0.003</td>
+  <th>Q('Intensidad')</th> <td>    0.0021</td> <td>    0.000</td> <td>    6.550</td> <td> 0.000</td> <td>    0.001</td> <td>    0.003</td>
 </tr>
 <tr>
-  <th>Q('Entropía')</th>   <td>   -0.1445</td> <td>    0.081</td> <td>   -1.790</td> <td> 0.074</td> <td>   -0.303</td> <td>    0.014</td>
+  <th>Q('Entropía')</th>   <td>   -0.1935</td> <td>    0.082</td> <td>   -2.372</td> <td> 0.018</td> <td>   -0.353</td> <td>   -0.034</td>
 </tr>
 </table>
 
