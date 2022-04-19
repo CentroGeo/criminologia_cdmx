@@ -9,6 +9,7 @@ from itertools import chain
 import math
 import random
 import string
+import copy
 import numpy as np
 import pandas as pd
 import geopandas as gpd
@@ -146,6 +147,9 @@ class CapaDeAnalisis(object):
                 w = Queen.from_dataframe(self.geo)
         return w
 
+    def copy(self):
+        """Regresa una copia del objeto"""
+        return copy.deepcopy(self)
 
     def displot_Y(self, size=(12,6)):
         """Regresa el histograma de la variable dependiente."""
