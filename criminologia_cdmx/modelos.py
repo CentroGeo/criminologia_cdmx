@@ -188,6 +188,7 @@ class CapaDeAnalisis(object):
         self.w.transform = 'R'
         rezago = lag_spatial(self.w, self.df[columna])
         self.df[columna + '_lag'] = rezago
+        self.X_nombres.append(columna + '_lag')
         return self
 
     def mapa_Y(self, agregacion, ax=None,
