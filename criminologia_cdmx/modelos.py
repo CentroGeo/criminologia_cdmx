@@ -12,7 +12,7 @@ import string
 import numpy as np
 import pandas as pd
 import geopandas as gpd
-from libpysal.weights import Queen
+from libpysal.weights import Queen, lag_spatial
 from esda.moran import Moran
 from splot.esda import moran_scatterplot
 import statsmodels.formula.api as smf
@@ -89,7 +89,8 @@ class CapaDeAnalisis(object):
         **NOTAS:**
             1) El DataFrame con los datos finales va a contener sólo las observaciones válidas
             (sin nulos en Y o X), además, para poder hacer análisis espaciales, se eliminan los
-            polígonos isla.
+            polígonos isla. Este DataFrame se guarda en self.df y es el que se debe usar para
+            cualquier análisis
 
             2) Por lo pronto la clase calcula automáticamente una matriz de vecindad para los
             datos, en el futuro esto debe cambiar para permitir al usuario definir su propia matriz.
@@ -99,7 +100,7 @@ class CapaDeAnalisis(object):
 
     def __init__(self, Y, covariables, agregacion='colonias'):
         self.Y = Y
-        self.Y_nombre = Y.columns[-1]
+        self.Y_nombre = Y.columns[-1] # Se asume que la última columna tiene la variable de interés
         self.X = covariables
         self.campo_id = self.__get_campo_id(agregacion)
         self.X_nombres = [x for x in covariables.columns if x != self.campo_id]
@@ -175,6 +176,19 @@ class CapaDeAnalisis(object):
                       'min': 'Mínimo',
                       'max': 'Máximo'})
         return d
+
+    def retraso_x(self, columna):
+        """ Agrega una columna con el retraso espacial de la variable `columna`.
+
+            La nueva columna se va a nombrar `columna`_lag.
+
+            **NOTA:** Por lo pronto se usa la matriz de vecindad que calculada en
+            `__calcula_matriz_pesos`.
+        """
+        self.w.transform = 'R'
+        rezago = lag_spatial(self.w, self.df[columna])
+        self.df[columna + '_lag'] = rezago
+        return self
 
     def mapa_Y(self, agregacion, ax=None,
                size=(10,10), clasificacion='quantiles',
