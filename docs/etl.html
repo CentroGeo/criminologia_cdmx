@@ -557,6 +557,7 @@ tolerancia (float): ¿qué tan lejos puede estar un incidente de una manzana? En
 <span class="k">assert</span> <span class="s1">&#39;cuadrante_id&#39;</span> <span class="ow">in</span> <span class="n">victimas</span><span class="o">.</span><span class="n">columns</span>
 <span class="k">assert</span> <span class="s1">&#39;municipio_cvegeo&#39;</span> <span class="ow">in</span> <span class="n">victimas</span><span class="o">.</span><span class="n">columns</span>
 <span class="k">assert</span> <span class="s1">&#39;manzana_cvegeo&#39;</span> <span class="ow">in</span> <span class="n">carpetas</span><span class="o">.</span><span class="n">columns</span>
+<span class="c1"># TODO prueba de excepción</span>
 </pre></div>
 
     </div>
@@ -583,7 +584,7 @@ tolerancia (float): ¿qué tan lejos puede estar un incidente de una manzana? En
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="agregar_categorias_carpetas" class="doc_header"><code>agregar_categorias_carpetas</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/etl.py#L162" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>agregar_categorias_carpetas</code>(<strong><code>carpetas</code></strong>, <strong><code>archivo_categorias</code></strong>=<em><code>'datos/categorias_carpetas.csv'</code></em>)</p>
+<h4 id="agregar_categorias_carpetas" class="doc_header"><code>agregar_categorias_carpetas</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/etl.py#L164" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>agregar_categorias_carpetas</code>(<strong><code>carpetas</code></strong>, <strong><code>archivo_categorias</code></strong>=<em><code>'datos/categorias_carpetas.csv'</code></em>)</p>
 </blockquote>
 <p>Agrega una columna con categorías definidas por el usuario.</p>
 <p>Las categorías tienen que venir en un csv con columnas incidente y categoria que
@@ -641,7 +642,7 @@ relacionen las categorías del usuario con la columna delitos de la base de carp
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="agregar_categorias_victimas" class="doc_header"><code>agregar_categorias_victimas</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/etl.py#L179" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>agregar_categorias_victimas</code>(<strong><code>carpetas</code></strong>, <strong><code>archivo_categorias</code></strong>=<em><code>'datos/categorias_victimas.csv'</code></em>)</p>
+<h4 id="agregar_categorias_victimas" class="doc_header"><code>agregar_categorias_victimas</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/etl.py#L181" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>agregar_categorias_victimas</code>(<strong><code>carpetas</code></strong>, <strong><code>archivo_categorias</code></strong>=<em><code>'datos/categorias_victimas.csv'</code></em>)</p>
 </blockquote>
 <p>Columnas con niveles definidos por el usuario</p>
 <p>Las categorías tienen que venir en un csv con columnas llamadas Nivel 1, Nivel 2 ...
@@ -699,7 +700,7 @@ que relacionen los niveles con las columnas Delito y Categoría en la base de V�
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="exporta_datos_visualizador" class="doc_header"><code>exporta_datos_visualizador</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/etl.py#L196" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>exporta_datos_visualizador</code>(<strong><code>carpetas</code></strong>, <strong><code>archivo_resultado</code></strong>, <strong><code>fecha_inicio</code></strong>=<em><code>Timestamp('2019-01-01 00:00:00')</code></em>, <strong><code>tipo</code></strong>=<em><code>'victimas'</code></em>)</p>
+<h4 id="exporta_datos_visualizador" class="doc_header"><code>exporta_datos_visualizador</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/etl.py#L198" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>exporta_datos_visualizador</code>(<strong><code>carpetas</code></strong>, <strong><code>archivo_resultado</code></strong>, <strong><code>fecha_inicio</code></strong>=<em><code>Timestamp('2019-01-01 00:00:00')</code></em>, <strong><code>tipo</code></strong>=<em><code>'victimas'</code></em>)</p>
 </blockquote>
 <p>Escribe en archivo_resultado un csv para consumirse en el visualizador.</p>
 <p>La opción tipo=victimas/carpetas controla si los datos de entrada son carpetas o victimas.</p>
@@ -756,7 +757,7 @@ que relacionen los niveles con las columnas Delito y Categoría en la base de V�
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="serie_de_tiempo_categoria" class="doc_header"><code>serie_de_tiempo_categoria</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/etl.py#L217" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>serie_de_tiempo_categoria</code>(<strong><code>carpetas</code></strong>, <strong><code>fecha_inicio</code></strong>, <strong><code>categoria</code></strong>, <strong><code>freq</code></strong>=<em><code>'M'</code></em>)</p>
+<h4 id="serie_de_tiempo_categoria" class="doc_header"><code>serie_de_tiempo_categoria</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/etl.py#L219" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>serie_de_tiempo_categoria</code>(<strong><code>carpetas</code></strong>, <strong><code>fecha_inicio</code></strong>, <strong><code>categoria</code></strong>, <strong><code>freq</code></strong>=<em><code>'M'</code></em>)</p>
 </blockquote>
 <p>Regresa una serie de tiempo con los agregados por <code>freq</code> de la <code>categoria</code>.</p>
 <p>parameters:
@@ -860,7 +861,7 @@ freq: frecuencia de agregación (<a href="https://pandas.pydata.org/pandas-docs/
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="serie_tiempo_categorias_unidades" class="doc_header"><code>serie_tiempo_categorias_unidades</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/etl.py#L238" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>serie_tiempo_categorias_unidades</code>(<strong><code>datos</code></strong>, <strong><code>fecha_inicio</code></strong>, <strong><code>tipo</code></strong>=<em><code>'victimas'</code></em>, <strong><code>geografia</code></strong>=<em><code>'colonias'</code></em>, <strong><code>freq</code></strong>=<em><code>'W'</code></em>, <strong><code>categorias</code></strong>=<em><code>['Nivel 1']</code></em>)</p>
+<h4 id="serie_tiempo_categorias_unidades" class="doc_header"><code>serie_tiempo_categorias_unidades</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/etl.py#L240" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>serie_tiempo_categorias_unidades</code>(<strong><code>datos</code></strong>, <strong><code>fecha_inicio</code></strong>, <strong><code>tipo</code></strong>=<em><code>'victimas'</code></em>, <strong><code>geografia</code></strong>=<em><code>'colonias'</code></em>, <strong><code>freq</code></strong>=<em><code>'W'</code></em>, <strong><code>categorias</code></strong>=<em><code>['Nivel 1']</code></em>)</p>
 </blockquote>
 <p>Regresa una serie de tiempo con los agregados por <code>freq</code> para categorias y
 la geografía especificada.</p>
@@ -1054,7 +1055,7 @@ categorias: lista de las categorías para agregar. Las columnas deben existir en
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="punto_to_hexid" class="doc_header"><code>punto_to_hexid</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/etl.py#L269" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>punto_to_hexid</code>(<strong><code>punto</code></strong>, <strong><code>resolution</code></strong>)</p>
+<h4 id="punto_to_hexid" class="doc_header"><code>punto_to_hexid</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/etl.py#L271" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>punto_to_hexid</code>(<strong><code>punto</code></strong>, <strong><code>resolution</code></strong>)</p>
 </blockquote>
 <p>Regresa el hexid (h3) del punto.</p>
 
@@ -1092,7 +1093,7 @@ categorias: lista de las categorías para agregar. Las columnas deben existir en
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="agrega_en_hexagonos" class="doc_header"><code>agrega_en_hexagonos</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/etl.py#L274" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>agrega_en_hexagonos</code>(<strong><code>puntos</code></strong>, <strong><code>resolution</code></strong>)</p>
+<h4 id="agrega_en_hexagonos" class="doc_header"><code>agrega_en_hexagonos</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/etl.py#L276" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>agrega_en_hexagonos</code>(<strong><code>puntos</code></strong>, <strong><code>resolution</code></strong>)</p>
 </blockquote>
 <p>Regresa un GeoDataFrame con las cuentas de puntos agregadas en hexágonos.</p>
 <p>params:

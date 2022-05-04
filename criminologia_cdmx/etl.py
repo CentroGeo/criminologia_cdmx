@@ -156,6 +156,8 @@ def agrega_ids_espaciales(carpetas, metodo='manzanas', tolerancia=500):
                     .rename({'CVEGEO': 'manzana_cvegeo'}, axis=1)
                     .drop(columns='index_right')
                     .to_crs(crs_original))
+    else:
+        raise ValueError("'metodo' debe ser 'poligonos' o 'manzanas'")
     return carpetas
 
 # Cell

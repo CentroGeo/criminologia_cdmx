@@ -8,7 +8,7 @@ La forma más sencilla de instalarlo es creando un environment de conda que teng
 
 
 ````bash
-conda create -n criminologia python=3.7
+conda create -n criminologia python=3.8
 conda install -c conda-forge geopandas
 pip install git+https://github.com/CentroGeo/criminologia_cdmx
 ````
@@ -18,7 +18,7 @@ Por lo pronto, como el repositorio es privado Git va a pedir usuario y contrase�
 Alternativamente, si tienes el repositorio clonado en la computadora:
 
 ````bash
-conda create -n criminologia python=3.7
+conda create -n criminologia python=3.8
 conda install -c conda-forge geopandas
 pip install git+file///ruta/a/criminologia_cdmx
 ````
@@ -88,123 +88,123 @@ carpetas.head()
   <tbody>
     <tr>
       <th>0</th>
-      <td>131438</td>
-      <td>2011</td>
-      <td>Diciembre</td>
-      <td>2011-12-23 12:00:00</td>
+      <td>1</td>
       <td>2016</td>
-      <td>Octubre</td>
-      <td>2016-10-11T10:58:59</td>
-      <td>FRAUDE</td>
-      <td>INVESTIGACIÓN PARA LA ATENCIÓN DE DELITOS FINA...</td>
-      <td>T</td>
+      <td>Enero</td>
+      <td>2016-01-31 22:16:00</td>
+      <td>2016</td>
+      <td>Febrero</td>
+      <td>2016-02-01T00:25:44</td>
+      <td>DAÑO EN PROPIEDAD AJENA INTENCIONAL</td>
+      <td>INVESTIGACIÓN EN BENITO JUÁREZ</td>
+      <td>BJ-2</td>
       <td>...</td>
       <td>DELITO DE BAJO IMPACTO</td>
-      <td>NO SE PRECISA</td>
-      <td>LA CORUÑA</td>
-      <td>VIADUCTO PIEDAD</td>
-      <td>IZTACALCO</td>
+      <td>CALZ. DE TLALPAN</td>
+      <td>LAGO PTE.</td>
+      <td>AMÉRICAS UNIDAS</td>
+      <td>BENITO JUAREZ</td>
       <td>NaN</td>
-      <td>-99.1310879999999</td>
-      <td>19.4003803998337</td>
+      <td>-99.1402149999999</td>
+      <td>19.3803149998337</td>
       <td>NaN</td>
-      <td>POINT (-99.13109 19.40038)</td>
+      <td>POINT (-99.14021 19.38031)</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>131439</td>
+      <td>2</td>
       <td>2016</td>
-      <td>Octubre</td>
-      <td>2016-10-11 10:00:00</td>
+      <td>Enero</td>
+      <td>2016-01-31 20:50:00</td>
       <td>2016</td>
-      <td>Octubre</td>
-      <td>2016-10-11T11:05:39</td>
-      <td>ROBO A TRANSEUNTE DE CELULAR SIN VIOLENCIA</td>
-      <td>INVESTIGACIÓN EN BENITO JUÁREZ</td>
-      <td>URI-BJ-4</td>
+      <td>Febrero</td>
+      <td>2016-02-01T00:52:37</td>
+      <td>ROBO DE VEHICULO DE SERVICIO PARTICULAR CON VI...</td>
+      <td>INVESTIGACIÓN PARA LA ATENCIÓN DEL DELITO DE R...</td>
+      <td>ORIENTEII</td>
       <td>...</td>
-      <td>DELITO DE BAJO IMPACTO</td>
-      <td>TOLEDO</td>
+      <td>ROBO DE VEHÍCULO CON Y SIN VIOLENCIA</td>
+      <td>SUR 25 A</td>
+      <td>GRANJEROS</td>
+      <td>LOS CIPRESES</td>
+      <td>IZTAPALAPA</td>
       <td>NaN</td>
-      <td>ÁLAMOS</td>
-      <td>BENITO JUAREZ</td>
+      <td>-99.1084029999999</td>
+      <td>19.3528589998337</td>
       <td>NaN</td>
-      <td>-99.1382219</td>
-      <td>19.3955250998333</td>
-      <td>NaN</td>
-      <td>POINT (-99.13822 19.39553)</td>
+      <td>POINT (-99.10840 19.35286)</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>131440</td>
+      <td>3</td>
       <td>2016</td>
-      <td>Octubre</td>
-      <td>2016-10-10 18:00:00</td>
+      <td>Febrero</td>
+      <td>2016-02-01 00:30:00</td>
       <td>2016</td>
-      <td>Octubre</td>
-      <td>2016-10-11T11:06:45</td>
-      <td>ROBO DE ACCESORIOS DE AUTO</td>
-      <td>INVESTIGACIÓN EN IZTACALCO</td>
-      <td>IZC-2</td>
+      <td>Febrero</td>
+      <td>2016-02-01T01:33:26</td>
+      <td>NARCOMENUDEO POSESION SIMPLE</td>
+      <td>INVESTIGACIÓN PARA LA ATENCIÓN DE NIÑOS, NIÑAS...</td>
+      <td>57</td>
       <td>...</td>
       <td>DELITO DE BAJO IMPACTO</td>
-      <td>CANELA  469 EDIFICIO E</td>
-      <td>RESINA</td>
-      <td>GRANJAS MÉXICO</td>
-      <td>IZTACALCO</td>
+      <td>BATALLONES ROJOS</td>
       <td>NaN</td>
-      <td>-99.0949096468644</td>
-      <td>19.3975309850492</td>
+      <td>UNIDAD VICENTE GUERRERO</td>
+      <td>IZTAPALAPA</td>
       <td>NaN</td>
-      <td>POINT (-99.09491 19.39753)</td>
+      <td>-99.061321</td>
+      <td>19.3564509998336</td>
+      <td>NaN</td>
+      <td>POINT (-99.06132 19.35645)</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>131441</td>
+      <td>4</td>
       <td>2016</td>
-      <td>Octubre</td>
-      <td>2016-10-10 23:30:00</td>
+      <td>Enero</td>
+      <td>2016-01-31 22:00:00</td>
       <td>2016</td>
-      <td>Octubre</td>
-      <td>2016-10-11T11:15:54</td>
-      <td>ROBO DE DOCUMENTOS</td>
+      <td>Febrero</td>
+      <td>2016-02-01T02:09:11</td>
+      <td>ROBO A TRANSEUNTE EN VIA PUBLICA CON VIOLENCIA</td>
       <td>INVESTIGACIÓN EN IZTAPALAPA</td>
-      <td>IZP-9</td>
+      <td>IZP-6</td>
       <td>...</td>
-      <td>DELITO DE BAJO IMPACTO</td>
-      <td>GUANAJUATO</td>
-      <td>HIDALGO</td>
-      <td>BUENAVISTA</td>
+      <td>ROBO A TRANSEUNTE EN VÍA PÚBLICA CON Y SIN VIO...</td>
+      <td>GERANIO</td>
+      <td>GAVILLEROS</td>
+      <td>EMILIANO ZAPATA</td>
       <td>IZTAPALAPA</td>
       <td>NaN</td>
-      <td>-99.0330593</td>
-      <td>19.328085399834</td>
+      <td>-98.9763790000001</td>
+      <td>19.3316329998333</td>
       <td>NaN</td>
-      <td>POINT (-99.03306 19.32809)</td>
+      <td>POINT (-98.97638 19.33163)</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>131442</td>
+      <td>5</td>
+      <td>2015</td>
+      <td>Diciembre</td>
+      <td>2015-12-25 12:00:00</td>
       <td>2016</td>
-      <td>Octubre</td>
-      <td>2016-10-11 06:30:00</td>
-      <td>2016</td>
-      <td>Octubre</td>
-      <td>2016-10-11T11:16:19</td>
-      <td>ROBO A NEGOCIO SIN VIOLENCIA</td>
-      <td>INVESTIGACIÓN EN MIGUEL HIDALGO</td>
-      <td>MH-4</td>
+      <td>Febrero</td>
+      <td>2016-02-01T02:16:49</td>
+      <td>DENUNCIA DE HECHOS</td>
+      <td>INVESTIGACIÓN EN BENITO JUÁREZ</td>
+      <td>BJ-1</td>
       <td>...</td>
-      <td>DELITO DE BAJO IMPACTO</td>
-      <td>GUTEMBERG</td>
+      <td>HECHO NO DELICTIVO</td>
+      <td>SAN FRANCISCO</td>
+      <td>AVENIDA COLONIA DEL VALLE</td>
+      <td>DEL VALLE CENTRO</td>
+      <td>BENITO JUAREZ</td>
       <td>NaN</td>
-      <td>VERONICA ANZURES</td>
-      <td>MIGUEL HIDALGO</td>
+      <td>-99.1721889999999</td>
+      <td>19.387113999834</td>
       <td>NaN</td>
-      <td>-99.1721142279077</td>
-      <td>19.4335004163422</td>
-      <td>NaN</td>
-      <td>POINT (-99.17211 19.43350)</td>
+      <td>POINT (-99.17219 19.38711)</td>
     </tr>
   </tbody>
 </table>
@@ -406,7 +406,22 @@ victimas_todas = get_victimas_desde_archivo("path-a-los-datos")
 
 ### Agregar identificadores espaciales (carpetas o victimas)
 
-Para agregar los identificadores de colonia y cuadrante:
+Podemos agregar fácilmente identificadores para diferentes unidades espaciales:
+
+* manzanas (del marco censal 2020)
+* colonias (datos abiertos cdmx)
+* cuadrantes (datos abiertos cdmx)
+
+Hay dos métodos diferentes para agregar los identificadores espaciales: `poligonos` y `manzanas`. El primero hace la unión espacial directa entre los puntos de los incidentes (carpetas o víctimas) y las geometrías de colonias y cuadrantes (no agrega ids de manzanas), el segundo hace la unión por vecino más cercano entre los incidentes y la geometría de las manzanas, después agrega los ids de colonia y cuadrante a través de la relación entre manzanas y los niveles superiores que ya viene modelada en los datos. Por la forma en la que se hacen las uniones los resultados entre ambos métodos no son exáctamente iguales.
+
+Para usar el método `manzanas` es necesario primero descargar los datos:
+
+```python
+descarga_manzanas()
+```
+
+    El archivo ya está descargado.
+
 
 ```python
 carpetas = agrega_ids_espaciales(carpetas)
@@ -451,132 +466,132 @@ carpetas.head()
       <th>latitud</th>
       <th>tempo</th>
       <th>geometry</th>
-      <th>colonia_cve</th>
-      <th>colonia_nombre</th>
+      <th>manzana_cvegeo</th>
       <th>municipio_cvegeo</th>
+      <th>colonia_cve</th>
       <th>cuadrante_id</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>131438</td>
-      <td>2011</td>
-      <td>Diciembre</td>
-      <td>2011-12-23 12:00:00</td>
+      <td>1</td>
       <td>2016</td>
-      <td>Octubre</td>
-      <td>2016-10-11T10:58:59</td>
-      <td>FRAUDE</td>
-      <td>INVESTIGACIÓN PARA LA ATENCIÓN DE DELITOS FINA...</td>
-      <td>T</td>
-      <td>...</td>
-      <td>IZTACALCO</td>
-      <td>NaN</td>
-      <td>-99.1310879999999</td>
-      <td>19.4003803998337</td>
-      <td>NaN</td>
-      <td>POINT (-99.13109 19.40038)</td>
-      <td>209</td>
-      <td>VIADUCTO PIEDAD</td>
-      <td>09006</td>
-      <td>021</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>131439</td>
+      <td>Enero</td>
+      <td>2016-01-31 22:16:00</td>
       <td>2016</td>
-      <td>Octubre</td>
-      <td>2016-10-11 10:00:00</td>
-      <td>2016</td>
-      <td>Octubre</td>
-      <td>2016-10-11T11:05:39</td>
-      <td>ROBO A TRANSEUNTE DE CELULAR SIN VIOLENCIA</td>
+      <td>Febrero</td>
+      <td>2016-02-01T00:25:44</td>
+      <td>DAÑO EN PROPIEDAD AJENA INTENCIONAL</td>
       <td>INVESTIGACIÓN EN BENITO JUÁREZ</td>
-      <td>URI-BJ-4</td>
+      <td>BJ-2</td>
       <td>...</td>
       <td>BENITO JUAREZ</td>
       <td>NaN</td>
-      <td>-99.1382219</td>
-      <td>19.3955250998333</td>
+      <td>-99.1402149999999</td>
+      <td>19.3803149998337</td>
       <td>NaN</td>
-      <td>POINT (-99.13822 19.39553)</td>
-      <td>941</td>
-      <td>ALAMOS II</td>
+      <td>POINT (-99.14021 19.38031)</td>
+      <td>0901400010505010</td>
       <td>09014</td>
-      <td>014</td>
+      <td>948</td>
+      <td>016</td>
     </tr>
     <tr>
-      <th>2</th>
-      <td>131440</td>
+      <th>1</th>
+      <td>2</td>
       <td>2016</td>
-      <td>Octubre</td>
-      <td>2016-10-10 18:00:00</td>
+      <td>Enero</td>
+      <td>2016-01-31 20:50:00</td>
       <td>2016</td>
-      <td>Octubre</td>
-      <td>2016-10-11T11:06:45</td>
-      <td>ROBO DE ACCESORIOS DE AUTO</td>
-      <td>INVESTIGACIÓN EN IZTACALCO</td>
-      <td>IZC-2</td>
-      <td>...</td>
-      <td>IZTACALCO</td>
-      <td>NaN</td>
-      <td>-99.0949096468644</td>
-      <td>19.3975309850492</td>
-      <td>NaN</td>
-      <td>POINT (-99.09491 19.39753)</td>
-      <td>233</td>
-      <td>GRANJAS MEXICO II</td>
-      <td>09006</td>
-      <td>024</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>131441</td>
-      <td>2016</td>
-      <td>Octubre</td>
-      <td>2016-10-10 23:30:00</td>
-      <td>2016</td>
-      <td>Octubre</td>
-      <td>2016-10-11T11:15:54</td>
-      <td>ROBO DE DOCUMENTOS</td>
-      <td>INVESTIGACIÓN EN IZTAPALAPA</td>
-      <td>IZP-9</td>
+      <td>Febrero</td>
+      <td>2016-02-01T00:52:37</td>
+      <td>ROBO DE VEHICULO DE SERVICIO PARTICULAR CON VI...</td>
+      <td>INVESTIGACIÓN PARA LA ATENCIÓN DEL DELITO DE R...</td>
+      <td>ORIENTEII</td>
       <td>...</td>
       <td>IZTAPALAPA</td>
       <td>NaN</td>
-      <td>-99.0330593</td>
-      <td>19.328085399834</td>
+      <td>-99.1084029999999</td>
+      <td>19.3528589998337</td>
       <td>NaN</td>
-      <td>POINT (-99.03306 19.32809)</td>
-      <td>1407</td>
-      <td>BUENAVISTA II</td>
+      <td>POINT (-99.10840 19.35286)</td>
+      <td>0900700011195011</td>
       <td>09007</td>
-      <td>017</td>
+      <td>1303</td>
+      <td>0111</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>2016</td>
+      <td>Febrero</td>
+      <td>2016-02-01 00:30:00</td>
+      <td>2016</td>
+      <td>Febrero</td>
+      <td>2016-02-01T01:33:26</td>
+      <td>NARCOMENUDEO POSESION SIMPLE</td>
+      <td>INVESTIGACIÓN PARA LA ATENCIÓN DE NIÑOS, NIÑAS...</td>
+      <td>57</td>
+      <td>...</td>
+      <td>IZTAPALAPA</td>
+      <td>NaN</td>
+      <td>-99.061321</td>
+      <td>19.3564509998336</td>
+      <td>NaN</td>
+      <td>POINT (-99.06132 19.35645)</td>
+      <td>0900700011034012</td>
+      <td>09007</td>
+      <td>1373</td>
+      <td>0111</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>2016</td>
+      <td>Enero</td>
+      <td>2016-01-31 22:00:00</td>
+      <td>2016</td>
+      <td>Febrero</td>
+      <td>2016-02-01T02:09:11</td>
+      <td>ROBO A TRANSEUNTE EN VIA PUBLICA CON VIOLENCIA</td>
+      <td>INVESTIGACIÓN EN IZTAPALAPA</td>
+      <td>IZP-6</td>
+      <td>...</td>
+      <td>IZTAPALAPA</td>
+      <td>NaN</td>
+      <td>-98.9763790000001</td>
+      <td>19.3316329998333</td>
+      <td>NaN</td>
+      <td>POINT (-98.97638 19.33163)</td>
+      <td>090070001426A031</td>
+      <td>09007</td>
+      <td>1806</td>
+      <td>0116</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>131442</td>
+      <td>5</td>
+      <td>2015</td>
+      <td>Diciembre</td>
+      <td>2015-12-25 12:00:00</td>
       <td>2016</td>
-      <td>Octubre</td>
-      <td>2016-10-11 06:30:00</td>
-      <td>2016</td>
-      <td>Octubre</td>
-      <td>2016-10-11T11:16:19</td>
-      <td>ROBO A NEGOCIO SIN VIOLENCIA</td>
-      <td>INVESTIGACIÓN EN MIGUEL HIDALGO</td>
-      <td>MH-4</td>
+      <td>Febrero</td>
+      <td>2016-02-01T02:16:49</td>
+      <td>DENUNCIA DE HECHOS</td>
+      <td>INVESTIGACIÓN EN BENITO JUÁREZ</td>
+      <td>BJ-1</td>
       <td>...</td>
-      <td>MIGUEL HIDALGO</td>
+      <td>BENITO JUAREZ</td>
       <td>NaN</td>
-      <td>-99.1721142279077</td>
-      <td>19.4335004163422</td>
+      <td>-99.1721889999999</td>
+      <td>19.387113999834</td>
       <td>NaN</td>
-      <td>POINT (-99.17211 19.43350)</td>
-      <td>203</td>
-      <td>VERONICA ANZURES</td>
-      <td>09016</td>
-      <td>0421</td>
+      <td>POINT (-99.17219 19.38711)</td>
+      <td>0901400010399017</td>
+      <td>09014</td>
+      <td>924</td>
+      <td>016</td>
     </tr>
   </tbody>
 </table>
@@ -628,9 +643,9 @@ victimas.head()
       <th>latitud</th>
       <th>longitud</th>
       <th>geometry</th>
-      <th>colonia_cve</th>
-      <th>colonia_nombre</th>
+      <th>manzana_cvegeo</th>
       <th>municipio_cvegeo</th>
+      <th>colonia_cve</th>
       <th>cuadrante_id</th>
     </tr>
   </thead>
@@ -654,9 +669,9 @@ victimas.head()
       <td>19.36125</td>
       <td>-99.18314</td>
       <td>POINT (-99.18314 19.36125)</td>
-      <td>263</td>
-      <td>GUADALUPE INN</td>
+      <td>0901000010987021</td>
       <td>09010</td>
+      <td>263</td>
       <td>012</td>
     </tr>
     <tr>
@@ -678,9 +693,9 @@ victimas.head()
       <td>19.47181</td>
       <td>-99.16458</td>
       <td>POINT (-99.16458 19.47181)</td>
-      <td>683</td>
-      <td>VICTORIA DE LAS DEMOCRACIAS</td>
+      <td>090020001074A016</td>
       <td>09002</td>
+      <td>683</td>
       <td>026</td>
     </tr>
     <tr>
@@ -702,10 +717,10 @@ victimas.head()
       <td>19.33797</td>
       <td>-99.18611</td>
       <td>POINT (-99.18611 19.33797)</td>
-      <td>328</td>
-      <td>COPILCO EL BAJO</td>
+      <td>0900300010376010</td>
       <td>09003</td>
-      <td>0213</td>
+      <td>328</td>
+      <td>021</td>
     </tr>
     <tr>
       <th>3</th>
@@ -726,9 +741,9 @@ victimas.head()
       <td>19.40327</td>
       <td>-99.05983</td>
       <td>POINT (-99.05983 19.40327)</td>
-      <td>227</td>
-      <td>PANTITLAN V</td>
+      <td>0900600010109020</td>
       <td>09006</td>
+      <td>227</td>
       <td>026</td>
     </tr>
     <tr>
@@ -750,9 +765,9 @@ victimas.head()
       <td>19.3548</td>
       <td>-99.06324</td>
       <td>POINT (-99.06324 19.35480)</td>
-      <td>1366</td>
-      <td>LAS AMERICAS (U HAB)</td>
+      <td>0900700015111001</td>
       <td>09007</td>
+      <td>1366</td>
       <td>0116</td>
     </tr>
   </tbody>
@@ -894,28 +909,28 @@ carpetas[['delito', 'categoria']]
   <tbody>
     <tr>
       <th>0</th>
-      <td>FRAUDE</td>
+      <td>DAÑO EN PROPIEDAD AJENA INTENCIONAL</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>ROBO A TRANSEUNTE DE CELULAR SIN VIOLENCIA</td>
-      <td>Robo a transeúnte</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>ROBO DE ACCESORIOS DE AUTO</td>
+      <td>ROBO DE VEHICULO DE SERVICIO PARTICULAR CON VI...</td>
       <td>Robo de/en vehículo</td>
     </tr>
     <tr>
-      <th>3</th>
-      <td>ROBO DE DOCUMENTOS</td>
+      <th>2</th>
+      <td>NARCOMENUDEO POSESION SIMPLE</td>
       <td>NaN</td>
     </tr>
     <tr>
+      <th>3</th>
+      <td>ROBO A TRANSEUNTE EN VIA PUBLICA CON VIOLENCIA</td>
+      <td>Robo a transeúnte</td>
+    </tr>
+    <tr>
       <th>4</th>
-      <td>ROBO A NEGOCIO SIN VIOLENCIA</td>
-      <td>Robo a negocio</td>
+      <td>DENUNCIA DE HECHOS</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>...</th>
@@ -923,33 +938,33 @@ carpetas[['delito', 'categoria']]
       <td>...</td>
     </tr>
     <tr>
-      <th>91</th>
-      <td>AMENAZAS</td>
+      <th>89</th>
+      <td>USO DE DOCUMENTO FALSO</td>
       <td>NaN</td>
     </tr>
     <tr>
+      <th>90</th>
+      <td>ROBO A TRANSEUNTE EN VIA PUBLICA CON VIOLENCIA</td>
+      <td>Robo a transeúnte</td>
+    </tr>
+    <tr>
+      <th>91</th>
+      <td>ROBO A TRANSEUNTE EN VIA PUBLICA CON VIOLENCIA</td>
+      <td>Robo a transeúnte</td>
+    </tr>
+    <tr>
       <th>92</th>
-      <td>FALSIFICACION DE TITULOS AL PORTADOR Y DOCUMEN...</td>
+      <td>FRAUDE</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>93</th>
-      <td>ROBO DE OBJETOS DEL INTERIOR DE UN VEHICULO</td>
-      <td>Robo de/en vehículo</td>
-    </tr>
-    <tr>
-      <th>94</th>
-      <td>ROBO DE MOTOCICLETA CON VIOLENCIA</td>
+      <td>DAÑO EN PROPIEDAD AJENA INTENCIONAL</td>
       <td>NaN</td>
-    </tr>
-    <tr>
-      <th>95</th>
-      <td>ROBO A TRANSEUNTE DE CELULAR CON VIOLENCIA</td>
-      <td>Robo a transeúnte</td>
     </tr>
   </tbody>
 </table>
-<p>96 rows × 2 columns</p>
+<p>94 rows × 2 columns</p>
 </div>
 
 
@@ -1245,26 +1260,46 @@ from criminologia_cdmx.patrones_espacio_temporales import *
 A partir de cualquier capa de incidentes se puede estimar el KDE utilizando validación cruzada para encontrar el mejor bandwidth
 
 ```python
-carpetas = get_carpetas_from_api(1000)
+carpetas = get_carpetas_from_api(10000)
+carpetas = carpetas.to_crs(32614)
 x = carpetas.geometry.x.to_numpy()
 y = carpetas.geometry.y.to_numpy()
-params = {'bandwidth': np.linspace(0.001, 0.1, 100)}
+params = {'bandwidth': np.linspace(10, 1000, 100)}
 bw = ajusta_bandwidth_kde(x, y, params)
 xx, yy, zz = kde2D(x, y, bw, xbins=100j, ybins=100j)
 fig = plt.figure(figsize=(10,10))
 ax = plt.axes(projection='3d')
-ax.plot_surface(xx, yy, zz,cmap='viridis', edgecolor='none')
+ax = ax.plot_surface(xx, yy, zz,cmap='viridis', edgecolor='none')
 ```
 
 
+    ---------------------------------------------------------------------------
+
+    AttributeError                            Traceback (most recent call last)
+
+    Input In [12], in <cell line: 6>()
+          4 y = carpetas.geometry.y.to_numpy()
+          5 params = {'bandwidth': np.linspace(10, 1000, 100)}
+    ----> 6 bw = ajusta_bandwidth_kde(x, y, params)
+          7 xx, yy, zz = kde2D(x, y, bw, xbins=100j, ybins=100j)
+          8 fig = plt.figure(figsize=(10,10))
 
 
-    <mpl_toolkits.mplot3d.art3d.Poly3DCollection at 0x7fa59992c8b0>
+    File ~/git/criminologia_cdmx/criminologia_cdmx/patrones_espacio_temporales.py:47, in ajusta_bandwidth_kde(datos, bandwidth_space, size, n_jobs, metric)
+         46 def ajusta_bandwidth_kde(datos, bandwidth_space, size, n_jobs=-1, metric="euclidean"):
+    ---> 47     xx, yy = construye_maya(datos, size)
+         48     xy_sample = np.vstack([yy.ravel(), xx.ravel()]).T
+         49     x = datos.geometry.x.to_numpy()
 
 
+    File ~/git/criminologia_cdmx/criminologia_cdmx/patrones_espacio_temporales.py:17, in construye_maya(datos, size)
+         16 def construye_maya(datos, size):
+    ---> 17     xmin, ymin, xmax, ymax = datos.geometry.total_bounds
+         18     xgrid = np.arange(xmin, xmax, size)
+         19     ygrid = np.arange(ymin, ymax, size)
 
 
-![png](docs/images/output_28_1.png)
+    AttributeError: 'numpy.ndarray' object has no attribute 'geometry'
 
 
 ### Serie de tiempo de KDEs por categoría
@@ -1311,11 +1346,12 @@ Además de producir las superficies de probabilidad para cada categoría de deli
 ```python
 carpetas_todas = get_carpetas_desde_archivo('datos/descargas/carpetas_fiscalia.csv')
 carpetas_todas = agregar_categorias_carpetas(carpetas_todas)
+carpetas_todas = carpetas_todas.to_crs(32614)
 fechas = pd.date_range(start='1/1/2019', end='3/1/2019', freq='M').to_list()
 razones, intensidades = serie_mapas_intensidad(carpetas_todas, 
                                                fechas,
                                                'Homicidios dolosos',
-                                               "30 days", bw=0.001)
+                                               "30 days", bw=300)
 significancias = p_value_maps(razones)
 fig, (ax1, ax2, ax3) = plt.subplots(1,3, figsize=(15,10))
 ax1.imshow(razones[0])
@@ -1334,7 +1370,9 @@ ax3.set_title("Significancia de la intensidad")
 
 
 
-![png](docs/images/output_31_1.png)
+    
+![png](docs/images/output_32_1.png)
+    
 
 
 ### Agregar en hexágonos
@@ -1369,7 +1407,9 @@ plt.tight_layout()
 ```
 
 
-![png](docs/images/output_33_0.png)
+    
+![png](docs/images/output_34_0.png)
+    
 
 
 ## Covariables

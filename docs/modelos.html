@@ -63,7 +63,7 @@ en las unidades requeridas.</p>
     valores_y (list): delitos o categorías a utilizar como Y
     fecha_inicio (str): fecha inicial para agregar delitos "d-m-Y"
     fecha_fin (str): fecha final para agregar delitos "d-m-Y"
-    agregacion (str): colonias/cuadrantes. Eventualmente debe recibir
+    agregacion (str): colonias/cuadrantes/manzanas. Eventualmente debe recibir
                       agregaciones arbitrarias (opcional)
     nombre_y (str): Nombre para la columna con la variable dependiente
                    (opcional, si se omite se concatenan los nombres de valores_y).</p>
@@ -101,8 +101,14 @@ en las unidades requeridas.</p>
 <span class="n">Y</span> <span class="o">=</span> <span class="n">variable_dependiente</span><span class="p">(</span><span class="n">carpetas</span><span class="p">,</span> <span class="s1">&#39;delito&#39;</span><span class="p">,</span> <span class="n">delito</span><span class="p">,</span> <span class="n">fecha_inicio</span><span class="p">,</span> <span class="n">fecha_fin</span><span class="p">,</span> 
                            <span class="n">agregacion</span><span class="o">=</span><span class="s1">&#39;cuadrantes&#39;</span><span class="p">)</span>
 <span class="k">assert</span> <span class="n">delito</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">in</span> <span class="n">Y</span><span class="o">.</span><span class="n">columns</span>
+<span class="k">assert</span> <span class="s1">&#39;cuadrante_id&#39;</span> <span class="ow">in</span> <span class="n">Y</span><span class="o">.</span><span class="n">columns</span>
 <span class="n">Y</span> <span class="o">=</span> <span class="n">variable_dependiente</span><span class="p">(</span><span class="n">carpetas</span><span class="p">,</span> <span class="s1">&#39;delito&#39;</span><span class="p">,</span> <span class="n">delito</span><span class="p">,</span> <span class="n">fecha_inicio</span><span class="p">,</span> <span class="n">fecha_fin</span><span class="p">)</span>
 <span class="k">assert</span> <span class="n">delito</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">in</span> <span class="n">Y</span><span class="o">.</span><span class="n">columns</span>
+<span class="k">assert</span> <span class="s1">&#39;colonia_cve&#39;</span> <span class="ow">in</span> <span class="n">Y</span><span class="o">.</span><span class="n">columns</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">variable_dependiente</span><span class="p">(</span><span class="n">carpetas</span><span class="p">,</span> <span class="s1">&#39;delito&#39;</span><span class="p">,</span> <span class="n">delito</span><span class="p">,</span> <span class="n">fecha_inicio</span><span class="p">,</span> <span class="n">fecha_fin</span><span class="p">,</span> 
+                         <span class="n">agregacion</span><span class="o">=</span><span class="s1">&#39;manzanas&#39;</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">delito</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">in</span> <span class="n">Y</span><span class="o">.</span><span class="n">columns</span>
+<span class="k">assert</span> <span class="s1">&#39;manzana_cvegeo&#39;</span> <span class="ow">in</span> <span class="n">Y</span><span class="o">.</span><span class="n">columns</span>
 <span class="c1"># Prueba con dos delitos y nombre de columna</span>
 <span class="n">delitos</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ROBO A CASA HABITACION SIN VIOLENCIA&#39;</span><span class="p">,</span> <span class="s1">&#39;ROBO A CASA HABITACION CON VIOLENCIA&#39;</span><span class="p">]</span>
 <span class="n">nombre_y</span> <span class="o">=</span> <span class="s2">&quot;Robo a Casa habitación (CV/SV)&quot;</span>
@@ -111,6 +117,9 @@ en las unidades requeridas.</p>
 <span class="k">assert</span> <span class="n">nombre_y</span> <span class="ow">in</span> <span class="n">Y</span><span class="o">.</span><span class="n">columns</span>
 <span class="n">Y</span> <span class="o">=</span> <span class="n">variable_dependiente</span><span class="p">(</span><span class="n">carpetas</span><span class="p">,</span> <span class="s1">&#39;delito&#39;</span><span class="p">,</span> <span class="n">delitos</span><span class="p">,</span> <span class="n">fecha_inicio</span><span class="p">,</span> <span class="n">fecha_fin</span><span class="p">,</span> 
                            <span class="n">nombre_y</span><span class="o">=</span><span class="n">nombre_y</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">nombre_y</span> <span class="ow">in</span> <span class="n">Y</span><span class="o">.</span><span class="n">columns</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">variable_dependiente</span><span class="p">(</span><span class="n">carpetas</span><span class="p">,</span> <span class="s1">&#39;delito&#39;</span><span class="p">,</span> <span class="n">delitos</span><span class="p">,</span> <span class="n">fecha_inicio</span><span class="p">,</span> <span class="n">fecha_fin</span><span class="p">,</span> 
+                           <span class="n">agregacion</span><span class="o">=</span><span class="s1">&#39;manzanas&#39;</span><span class="p">,</span> <span class="n">nombre_y</span><span class="o">=</span><span class="n">nombre_y</span><span class="p">)</span>
 <span class="k">assert</span> <span class="n">nombre_y</span> <span class="ow">in</span> <span class="n">Y</span><span class="o">.</span><span class="n">columns</span>
 </pre></div>
 
@@ -138,7 +147,7 @@ en las unidades requeridas.</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="CapaDeAnalisis" class="doc_header"><code>class</code> <code>CapaDeAnalisis</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/modelos.py#L69" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>CapaDeAnalisis</code>(<strong><code>Y</code></strong>, <strong><code>covariables</code></strong>, <strong><code>agregacion</code></strong>=<em><code>'colonias'</code></em>)</p>
+<h2 id="CapaDeAnalisis" class="doc_header"><code>class</code> <code>CapaDeAnalisis</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/modelos.py#L83" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>CapaDeAnalisis</code>(<strong><code>Y</code></strong>, <strong><code>covariables</code></strong>, <strong><code>agregacion</code></strong>=<em><code>'colonias'</code></em>)</p>
 </blockquote>
 <p>Clase para contener variable objetivo y covariables.</p>
 <p>Args:
@@ -230,7 +239,7 @@ datos, en el futuro esto debe cambiar para permitir al usuario definir su propia
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="ModeloGLM" class="doc_header"><code>class</code> <code>ModeloGLM</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/modelos.py#L252" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>ModeloGLM</code>(<strong><code>capa</code></strong>, <strong><code>familia</code></strong>, <strong><code>nombre</code></strong>=<em><code>None</code></em>)</p>
+<h2 id="ModeloGLM" class="doc_header"><code>class</code> <code>ModeloGLM</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/modelos.py#L266" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>ModeloGLM</code>(<strong><code>capa</code></strong>, <strong><code>familia</code></strong>, <strong><code>nombre</code></strong>=<em><code>None</code></em>)</p>
 </blockquote>
 <p>Wrapper para modelos de Regresión GLM de statsmodels.</p>
 <p>La clase prepara y ajusta un modelo GLM usando la variable objetivo
@@ -304,7 +313,7 @@ Métodos:
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="ComparaModelos" class="doc_header"><code>class</code> <code>ComparaModelos</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/modelos.py#L489" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>ComparaModelos</code>(<strong><code>modelos</code></strong>, <strong><code>columnas</code></strong>=<em><code>None</code></em>, <strong><code>redondeo</code></strong>=<em><code>None</code></em>)</p>
+<h2 id="ComparaModelos" class="doc_header"><code>class</code> <code>ComparaModelos</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/modelos.py#L503" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>ComparaModelos</code>(<strong><code>modelos</code></strong>, <strong><code>columnas</code></strong>=<em><code>None</code></em>, <strong><code>redondeo</code></strong>=<em><code>None</code></em>)</p>
 </blockquote>
 <p>Clase para construir comparaciones de modelos.
 Construte dos DataFrames para visualizar rápidamente una comparación de los modelos:
