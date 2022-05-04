@@ -1546,16 +1546,15 @@ pip install git+file///ruta/a/criminologia_cdmx
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">carpetas</span> <span class="o">=</span> <span class="n">get_carpetas_from_api</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
-<span class="n">carpetas</span> <span class="o">=</span> <span class="n">carpetas</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="mi">32614</span><span class="p">)</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">carpetas</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">carpetas</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
-<span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;bandwidth&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">100</span><span class="p">)}</span>
-<span class="n">bw</span> <span class="o">=</span> <span class="n">ajusta_bandwidth_kde</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
-<span class="n">xx</span><span class="p">,</span> <span class="n">yy</span><span class="p">,</span> <span class="n">zz</span> <span class="o">=</span> <span class="n">kde2D</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">bw</span><span class="p">,</span> <span class="n">xbins</span><span class="o">=</span><span class="mi">100</span><span class="n">j</span><span class="p">,</span> <span class="n">ybins</span><span class="o">=</span><span class="mi">100</span><span class="n">j</span><span class="p">)</span>
-<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot_surface</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">yy</span><span class="p">,</span> <span class="n">zz</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># carpetas = carpetas.to_crs(32614)</span>
+<span class="c1"># x = carpetas.geometry.x.to_numpy()</span>
+<span class="c1"># y = carpetas.geometry.y.to_numpy()</span>
+<span class="c1"># params = {&#39;bandwidth&#39;: np.linspace(10, 1000, 100)}</span>
+<span class="c1"># bw = ajusta_bandwidth_kde(x, y, params)</span>
+<span class="c1"># xx, yy, zz = kde2D(x, y, bw, xbins=100j, ybins=100j)</span>
+<span class="c1"># fig = plt.figure(figsize=(10,10))</span>
+<span class="c1"># ax = plt.axes(projection=&#39;3d&#39;)</span>
+<span class="c1"># ax = ax.plot_surface(xx, yy, zz,cmap=&#39;viridis&#39;, edgecolor=&#39;none&#39;)</span>
 </pre></div>
 
     </div>
@@ -1647,22 +1646,21 @@ File <span class="ansi-green-fg">~/git/criminologia_cdmx/criminologia_cdmx/patro
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">carpetas_todas</span> <span class="o">=</span> <span class="n">get_carpetas_desde_archivo</span><span class="p">(</span><span class="s1">&#39;datos/descargas/carpetas_fiscalia.csv&#39;</span><span class="p">)</span>
-<span class="n">carpetas_todas</span> <span class="o">=</span> <span class="n">agregar_categorias_carpetas</span><span class="p">(</span><span class="n">carpetas_todas</span><span class="p">)</span>
-<span class="n">carpetas_todas</span> <span class="o">=</span> <span class="n">carpetas_todas</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="mi">32614</span><span class="p">)</span>
-<span class="n">fechas</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="s1">&#39;1/1/2019&#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;3/1/2019&#39;</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;M&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">to_list</span><span class="p">()</span>
-<span class="n">razones</span><span class="p">,</span> <span class="n">intensidades</span> <span class="o">=</span> <span class="n">serie_mapas_intensidad</span><span class="p">(</span><span class="n">carpetas_todas</span><span class="p">,</span> 
-                                               <span class="n">fechas</span><span class="p">,</span>
-                                               <span class="s1">&#39;Homicidios dolosos&#39;</span><span class="p">,</span>
-                                               <span class="s2">&quot;30 days&quot;</span><span class="p">,</span> <span class="n">bw</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
-<span class="n">significancias</span> <span class="o">=</span> <span class="n">p_value_maps</span><span class="p">(</span><span class="n">razones</span><span class="p">)</span>
-<span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">,</span> <span class="n">ax3</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">razones</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Razón de la categoría&quot;</span><span class="p">)</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">intensidades</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Intensidad de la categoría&quot;</span><span class="p">)</span>
-<span class="n">ax3</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">significancias</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="n">ax3</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Significancia de la intensidad&quot;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># carpetas_todas = agregar_categorias_carpetas(carpetas_todas)</span>
+<span class="c1"># carpetas_todas = carpetas_todas.to_crs(32614)</span>
+<span class="c1"># fechas = pd.date_range(start=&#39;1/1/2019&#39;, end=&#39;3/1/2019&#39;, freq=&#39;M&#39;).to_list()</span>
+<span class="c1"># razones, intensidades = serie_mapas_intensidad(carpetas_todas, </span>
+<span class="c1">#                                                fechas,</span>
+<span class="c1">#                                                &#39;Homicidios dolosos&#39;,</span>
+<span class="c1">#                                                &quot;30 days&quot;, bw=300)</span>
+<span class="c1"># significancias = p_value_maps(razones)</span>
+<span class="c1"># fig, (ax1, ax2, ax3) = plt.subplots(1,3, figsize=(15,10))</span>
+<span class="c1"># ax1.imshow(razones[0])</span>
+<span class="c1"># ax1.set_title(&quot;Razón de la categoría&quot;)</span>
+<span class="c1"># ax2.imshow(intensidades[0])</span>
+<span class="c1"># ax2.set_title(&quot;Intensidad de la categoría&quot;)</span>
+<span class="c1"># ax3.imshow(significancias[0])</span>
+<span class="c1"># ax3.set_title(&quot;Significancia de la intensidad&quot;)</span>
 </pre></div>
 
     </div>

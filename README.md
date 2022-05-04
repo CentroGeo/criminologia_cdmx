@@ -1260,16 +1260,16 @@ from criminologia_cdmx.patrones_espacio_temporales import *
 A partir de cualquier capa de incidentes se puede estimar el KDE utilizando validación cruzada para encontrar el mejor bandwidth
 
 ```python
-carpetas = get_carpetas_from_api(10000)
-carpetas = carpetas.to_crs(32614)
-x = carpetas.geometry.x.to_numpy()
-y = carpetas.geometry.y.to_numpy()
-params = {'bandwidth': np.linspace(10, 1000, 100)}
-bw = ajusta_bandwidth_kde(x, y, params)
-xx, yy, zz = kde2D(x, y, bw, xbins=100j, ybins=100j)
-fig = plt.figure(figsize=(10,10))
-ax = plt.axes(projection='3d')
-ax = ax.plot_surface(xx, yy, zz,cmap='viridis', edgecolor='none')
+# carpetas = get_carpetas_from_api(10000)
+# carpetas = carpetas.to_crs(32614)
+# x = carpetas.geometry.x.to_numpy()
+# y = carpetas.geometry.y.to_numpy()
+# params = {'bandwidth': np.linspace(10, 1000, 100)}
+# bw = ajusta_bandwidth_kde(x, y, params)
+# xx, yy, zz = kde2D(x, y, bw, xbins=100j, ybins=100j)
+# fig = plt.figure(figsize=(10,10))
+# ax = plt.axes(projection='3d')
+# ax = ax.plot_surface(xx, yy, zz,cmap='viridis', edgecolor='none')
 ```
 
 
@@ -1344,22 +1344,22 @@ plt.show()
 Además de producir las superficies de probabilidad para cada categoría de delitos, es posible comparar dos categorías y estimar la significancia de las diferencias
 
 ```python
-carpetas_todas = get_carpetas_desde_archivo('datos/descargas/carpetas_fiscalia.csv')
-carpetas_todas = agregar_categorias_carpetas(carpetas_todas)
-carpetas_todas = carpetas_todas.to_crs(32614)
-fechas = pd.date_range(start='1/1/2019', end='3/1/2019', freq='M').to_list()
-razones, intensidades = serie_mapas_intensidad(carpetas_todas, 
-                                               fechas,
-                                               'Homicidios dolosos',
-                                               "30 days", bw=300)
-significancias = p_value_maps(razones)
-fig, (ax1, ax2, ax3) = plt.subplots(1,3, figsize=(15,10))
-ax1.imshow(razones[0])
-ax1.set_title("Razón de la categoría")
-ax2.imshow(intensidades[0])
-ax2.set_title("Intensidad de la categoría")
-ax3.imshow(significancias[0])
-ax3.set_title("Significancia de la intensidad")
+# carpetas_todas = get_carpetas_desde_archivo('datos/descargas/carpetas_fiscalia.csv')
+# carpetas_todas = agregar_categorias_carpetas(carpetas_todas)
+# carpetas_todas = carpetas_todas.to_crs(32614)
+# fechas = pd.date_range(start='1/1/2019', end='3/1/2019', freq='M').to_list()
+# razones, intensidades = serie_mapas_intensidad(carpetas_todas, 
+#                                                fechas,
+#                                                'Homicidios dolosos',
+#                                                "30 days", bw=300)
+# significancias = p_value_maps(razones)
+# fig, (ax1, ax2, ax3) = plt.subplots(1,3, figsize=(15,10))
+# ax1.imshow(razones[0])
+# ax1.set_title("Razón de la categoría")
+# ax2.imshow(intensidades[0])
+# ax2.set_title("Intensidad de la categoría")
+# ax3.imshow(significancias[0])
+# ax3.set_title("Significancia de la intensidad")
 ```
 
 
