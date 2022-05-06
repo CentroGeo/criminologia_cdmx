@@ -414,29 +414,34 @@ malla (np.meshgrid): la malla en la que se va a ajustar el KDE, si es None se ca
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
-<div class="input">
 
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">malla_comun</span><span class="p">(</span><span class="n">datos</span><span class="p">,</span> <span class="n">size</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot; Regresa la malla más pequeña (de tamaño size) que contiene a todos los datos.</span>
-<span class="sd">    </span>
-<span class="sd">        Args:</span>
-<span class="sd">            datos(list(GeoDataGrames)): lista con los datos para la malla común.</span>
-<span class="sd">            size (float): tamaño de las celdas en la malla.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">envolventes</span> <span class="o">=</span> <span class="p">[</span><span class="n">d</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">unary_union</span><span class="o">.</span><span class="n">envelope</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">datos</span><span class="p">]</span>
-    <span class="n">envolventes</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoSeries</span><span class="p">(</span><span class="n">envolventes</span><span class="p">)</span>
-    <span class="n">xmin</span><span class="p">,</span> <span class="n">ymin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="n">ymax</span> <span class="o">=</span> <span class="n">envolventes</span><span class="o">.</span><span class="n">unary_union</span><span class="o">.</span><span class="n">envelope</span><span class="o">.</span><span class="n">bounds</span>
-    <span class="n">xgrid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="n">size</span><span class="p">)</span>
-    <span class="n">ygrid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span><span class="p">,</span> <span class="n">size</span><span class="p">)</span>
-    <span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">xgrid</span><span class="p">,</span> <span class="n">ygrid</span><span class="p">)</span>
-    <span class="k">return</span> <span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">)</span>
-</pre></div>
+<div class="output_wrapper">
+<div class="output">
 
-    </div>
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="malla_comun" class="doc_header"><code>malla_comun</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/patrones_espacio_temporales.py#L92" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>malla_comun</code>(<strong><code>datos</code></strong>, <strong><code>size</code></strong>)</p>
+</blockquote>
+<p>Regresa la malla más pequeña (de tamaño size) que contiene a todos los datos.</p>
+<p>Args:
+    datos(list(GeoDataGrames)): lista con los datos para la malla común.
+    size (float): tamaño de las celdas en la malla.</p>
+
+</div>
+
+</div>
+
 </div>
 </div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
 
 </div>
     {% endraw %}
@@ -465,7 +470,7 @@ malla (np.meshgrid): la malla en la que se va a ajustar el KDE, si es None se ca
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="get_lista_datos" class="doc_header"><code>get_lista_datos</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/patrones_espacio_temporales.py#L92" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_lista_datos</code>(<strong><code>carpetas</code></strong>, <strong><code>fechas</code></strong>, <strong><code>categorias</code></strong>, <strong><code>offset</code></strong>)</p>
+<h4 id="get_lista_datos" class="doc_header"><code>get_lista_datos</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/patrones_espacio_temporales.py#L108" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_lista_datos</code>(<strong><code>carpetas</code></strong>, <strong><code>fechas</code></strong>, <strong><code>categorias</code></strong>, <strong><code>offset</code></strong>)</p>
 </blockquote>
 <p>Regresa una lista de GeoDataFrames con los datos segmentados en fechas
 para la categoría seleccionada.</p>
@@ -705,7 +710,7 @@ para la categoría seleccionada.</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="serie_tiempo_kde_categoria" class="doc_header"><code>serie_tiempo_kde_categoria</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/patrones_espacio_temporales.py#L108" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>serie_tiempo_kde_categoria</code>(<strong><code>datos</code></strong>, <strong><code>size</code></strong>, <strong><code>malla</code></strong>=<em><code>None</code></em>, <strong><code>grid_search</code></strong>=*`{'bandwidth': array([   10.        ,   110.90909091,   211.81818182,   312.72727273,
+<h4 id="serie_tiempo_kde_categoria" class="doc_header"><code>serie_tiempo_kde_categoria</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/patrones_espacio_temporales.py#L124" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>serie_tiempo_kde_categoria</code>(<strong><code>datos</code></strong>, <strong><code>size</code></strong>, <strong><code>malla</code></strong>=<em><code>None</code></em>, <strong><code>grid_search</code></strong>=*`{'bandwidth': array([   10.        ,   110.90909091,   211.81818182,   312.72727273,
          413.63636364,   514.54545455,   615.45454545,   716.36363636,
          817.27272727,   918.18181818,  1019.09090909,  1120.        ,
         1220.90909091,  1321.81818182,  1422.72727273,  1523.63636364,
@@ -848,7 +853,7 @@ para la categoría seleccionada.</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="serie_razones_de_eventos" class="doc_header"><code>serie_razones_de_eventos</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/patrones_espacio_temporales.py#L136" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>serie_razones_de_eventos</code>(<strong><code>carpetas</code></strong>, <strong><code>fechas</code></strong>, <strong><code>categoria</code></strong>, <strong><code>offset</code></strong>, <strong><code>size</code></strong>, <strong><code>bw</code></strong>)</p>
+<h4 id="serie_razones_de_eventos" class="doc_header"><code>serie_razones_de_eventos</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/patrones_espacio_temporales.py#L152" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>serie_razones_de_eventos</code>(<strong><code>carpetas</code></strong>, <strong><code>fechas</code></strong>, <strong><code>categoria</code></strong>, <strong><code>offset</code></strong>, <strong><code>size</code></strong>, <strong><code>bw</code></strong>)</p>
 </blockquote>
 <p>Regresa el mapa de razón entre una categoría con respecto a las demás.</p>
 
@@ -963,7 +968,7 @@ para la categoría seleccionada.</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="serie_mapas_intensidad" class="doc_header"><code>serie_mapas_intensidad</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/patrones_espacio_temporales.py#L151" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>serie_mapas_intensidad</code>(<strong><code>carpetas</code></strong>, <strong><code>fechas</code></strong>, <strong><code>categorias</code></strong>, <strong><code>offset</code></strong>, <strong><code>size</code></strong>, <strong><code>bw</code></strong>)</p>
+<h4 id="serie_mapas_intensidad" class="doc_header"><code>serie_mapas_intensidad</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/patrones_espacio_temporales.py#L167" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>serie_mapas_intensidad</code>(<strong><code>carpetas</code></strong>, <strong><code>fechas</code></strong>, <strong><code>categorias</code></strong>, <strong><code>offset</code></strong>, <strong><code>size</code></strong>, <strong><code>bw</code></strong>)</p>
 </blockquote>
 <p>Regresa los mapas de razon y las intensidades de la categoría para las <code>fechas</code> seleccionadas.</p>
 
@@ -1079,7 +1084,7 @@ para la categoría seleccionada.</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="p_value_maps" class="doc_header"><code>p_value_maps</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/patrones_espacio_temporales.py#L167" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>p_value_maps</code>(<strong><code>razones</code></strong>)</p>
+<h4 id="p_value_maps" class="doc_header"><code>p_value_maps</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/patrones_espacio_temporales.py#L183" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>p_value_maps</code>(<strong><code>razones</code></strong>)</p>
 </blockquote>
 <p>Regresa los mapas de significancia estadística para las razones.</p>
 
