@@ -8,9 +8,11 @@ from sklearn.neighbors import KernelDensity
 from sklearn.model_selection import GridSearchCV
 from sklearn.model_selection import KFold
 import pandas as pd
+import geopandas as gpd
 import numpy as np
 import matplotlib.pyplot as plt
 from .etl import *
+from functools import partial
 
 # Cell
 def construye_malla(datos, size):
@@ -81,18 +83,19 @@ def kde2D(datos, bandwidth, size=1000, malla=None):
     xy_train = np.vstack([y, x]).T
     kde = KernelDensity(bandwidth=bandwidth)
     kde.fit(xy_train)
+    # Z = kde.score_samples(XY)
     Z = np.exp(kde.score_samples(XY))
     return X, Y, np.reshape(Z, X.shape)
 
 # Cell
-def serie_tiempo_kde_categoria(carpetas, fechas, categorias, offset, size,
+def serie_tiempo_kde_categoria(datos, size,
+                               malla = None,
                                grid_search={'bandwidth': np.linspace(10, 10000, 100)},
                                bw=None):
     """ Ajusta kdes egregando los datos sobre cada categoria e intervalo de fecha.
 
        Args:
-           carpetas: Las carpetas de investigación (preprocesadas)
-           fechas: lista de fechas con los extremos de los intervalos
+           datos list(GeoDataFrame): Lista con los datos para cada intervalo a procesar
            categorias: Lista de categorías para calcular el KDE
            offset: intervalo para agregar antes de la primera fecha, p.ej: "30 days" si los intervalos son mensuales
            size (float): Tamaño de la celda (en las unidades de la proyección)
@@ -103,48 +106,53 @@ def serie_tiempo_kde_categoria(carpetas, fechas, categorias, offset, size,
        returns:
        (xx, yy) [zz]: la tupla (xx, yy) es el grid común de los kdes, la lista contiene los valores de z para cada intervalo
     """
-    kdes = []
-    fecha_inicio = fechas[0] - pd.to_timedelta(offset)
-    for i, fecha in enumerate(fechas):
-        # TODO: paralelizar este loop
-        if i == 0:
-            datos_intervalo = carpetas.loc[(carpetas['fecha_hechos'].between(fecha_inicio, fecha, inclusive='left')) &
-                                           (carpetas['categoria'].isin(categorias))]
-        else:
-            datos_intervalo = carpetas.loc[(carpetas['fecha_hechos'].between(fechas[i-1], fecha, inclusive='left')) &
-                                           (carpetas['categoria'].isin(categorias))]
-        if bw is None:
-            bw = ajusta_bandwidth_kde(datos_intervalo, size, grid_search)
-        xx, yy, zz = kde2D(datos_intervalo, bw, size)
-        kdes.append(zz)
-    return xx, yy, kdes
+    # fecha_inicio = fechas[0] - pd.to_timedelta(offset)
+    # fechas.insert(0, fecha_inicio)
+    # intervalos = [(fechas[i-1], f) for i, f in enumerate(fechas[1:],1)]
+    # datos = []
+    # for intervalo in intervalos:
+    #     datos_intervalo = carpetas.loc[(carpetas['fecha_hechos'].between(*intervalo, inclusive='left')) &
+    #                                    (carpetas['categoria'].isin(categorias))]
+    #     datos.append(datos_intervalo)
+    if malla is None:
+        malla = malla_comun(datos, size)
+    if bw is None:
+        bw = ajusta_bandwidth_kde(datos_intervalo, size, grid_search)
+    kde2D_p = lambda d: kde2D(d, bw, size=size, malla=malla)
+    kdes = map(kde2D_p, datos)
+    kdes = [k[2] for k in kdes]
+    return malla[0], malla[1], kdes
 
 # Cell
 def serie_razones_de_eventos(carpetas, fechas, categoria, offset, size, bw):
     """Regresa el mapa de razón entre una categoría con respecto a las demás."""
-    xx, yy, kdes_categoria = serie_tiempo_kde_categoria(carpetas, fechas, [categoria],
-                                                        offset, size, bw=bw)
+    datos_categoria = get_lista_datos(carpetas, fechas, categoria, offset)
     categorias_todas = list(carpetas[carpetas.categoria.notnull()]['categoria'].unique())
-    categorias_todas.remove(categoria)
-    xx, yy, kdes_base = serie_tiempo_kde_categoria(carpetas, fechas,
-                                                   categorias_todas, offset, size, bw=bw)
+    categorias_todas = set(categorias_todas) - set(categoria)
+    datos_base = get_lista_datos(carpetas, fechas, categorias_todas, offset)
+    datos_completos = datos_categoria + datos_base
+    malla = malla_comun(datos_completos, size)
+    _, _, kdes_categoria = serie_tiempo_kde_categoria(datos_categoria, size, bw=bw, malla=malla)
+    _, _, kdes_base = serie_tiempo_kde_categoria(datos_base, size, bw=bw, malla=malla)
     # TODO: vectorizar esta operación np.divide(a, b, out=np.zeros_like(a), where=b!=0)
-    serie_razones = [np.divide(np.round(e, 5),
-                               np.round(b, 5),
-                               out=np.zeros_like(e),
-                               where=np.round(b, 5)!=0)
-                     for e, b in zip(kdes_categoria, kdes_base)]
-    return serie_razones
-    # return kdes_base
+    sr = [e / b for e,b in zip(kdes_categoria, kdes_base)]
+    return malla[0], malla[1], sr
 
 # Cell
-def serie_mapas_intensidad(carpetas, fechas, categoria, offset, **kwargs):
+def serie_mapas_intensidad(carpetas, fechas, categorias, offset, size, bw):
     """Regresa los mapas de razon y las intensidades de la categoría para las `fechas` seleccionadas."""
-    razones = serie_razones_de_eventos(carpetas, fechas, categoria, offset, **kwargs)
-    avg = np.round(np.mean(razones, axis=0), 5)
-    std = np.round(np.std(razones, axis=0), 5)
-    intensidad = [np.divide(r - avg, std, out=np.zeros_like(r), where=std!=0) for r in razones]
-    return razones, intensidad
+    xx, yy, razones = serie_razones_de_eventos(carpetas, fechas, categorias,
+                                               offset, size, bw)
+    avg = np.mean(razones, axis=0)
+    std = np.std(razones, axis=0)
+    intensidad = [(r - avg) / std for r in razones]
+    p_values = []
+    for r in razones:
+        comp = [b >= r for b in razones]
+        comp = np.sum(comp, axis=0)
+        p = comp / (len(razones) + 1)
+        p_values.append(p)
+    return xx, yy, razones, intensidad, p_values
 
 # Cell
 def p_value_maps(razones):
