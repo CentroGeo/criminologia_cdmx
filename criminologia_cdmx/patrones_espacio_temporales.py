@@ -191,7 +191,7 @@ def serie_mapas_intensidad(carpetas, fechas, categorias, offset, size, bw):
     series = series.assign(intensidad=intensidad)
     ps = []
     for i in range(len(fechas)):
-        n_h = (series['Serie razones'].isel(tiempo=i) >= series['Serie razones'])
+        n_h = (series['Serie razones'].isel(tiempo=i) <= series['Serie razones'])
         n_h = n_h.sum(dim='tiempo')
         p = n_h / (len(fechas) + 1)
         ps.append(p)
