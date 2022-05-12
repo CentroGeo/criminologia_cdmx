@@ -1541,7 +1541,7 @@ pip install git+file///ruta/a/criminologia_cdmx
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Hotspots-de-densidad-de-Kernel">Hotspots de densidad de Kernel<a class="anchor-link" href="#Hotspots-de-densidad-de-Kernel"> </a></h3><p>Partiendo de los datos de incidentes (carpetas o victimas) es posible calcular la evolución espacio-temporal de la densidad de kernel de una categoría utilizando una agregación temporal regular arbitraria.</p>
-<p>Por ejemplo, para ver la evolución de la densidad de Homicidios Dolosos, podemos utilizar la función <a href="/criminologia_cdmx/criminologia_cdmx/patrones_espacio_temporales.html#KDE_hotspots"><code>KDE_hotspots</code></a> sobre las carpetas etiquetadas por categorías y visualizar los resultados usando Holoviews.</p>
+<p>Por ejemplo, para ver la evolución de la densidad de Homicidios Dolosos, podemos utilizar la función <a href="/criminologia_cdmx/criminologia_cdmx/hotspots.html#KDE_hotspots"><code>KDE_hotspots</code></a> sobre las carpetas etiquetadas por categorías y visualizar los resultados usando Holoviews.</p>
 
 </div>
 </div>
@@ -1630,7 +1630,7 @@ xr_dataset = gv.Dataset(xr_kde,
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Hotspots-de-SMER">Hotspots de SMER<a class="anchor-link" href="#Hotspots-de-SMER"> </a></h3><p>El SMER (Social Media Even Ratio) es una medida de la prevalencia de una categoría con respecto a las demás. Intenta medir el <em>saliency</em> de una categoría al compararla con el resto de forma estandarizada, es decir, sin que importe el número relativo de incidentes, simplemente mide en qué lugares la categoría seleccionada pesa más con respecto a las demás a través de sus densidades de probabilidad.</p>
 <p>Los hotspots de SMER consisten en realidad de dos mapas complementarios: por un lado la intensidad, que es el z-score de el cociente de las densidades de kernel (entre la categoría seleccionada y las demás categorías); y por otro lado, un mapa de <em>significancia</em> que trata de medir qué tan probable es que esos mapas sean observados contra la hipótesis nula de que no es más importante ninguna categoría.</p>
-<p>La función <a href="/criminologia_cdmx/criminologia_cdmx/patrones_espacio_temporales.html#smer_KDE"><code>smer_KDE</code></a> calcula todo lo necesario para obtener estos mapas, tomando los mismos datos que en el ejemplo anterior, la misma categoría de referencia e intervalos de tiempo, podemos calcular el <a href="/criminologia_cdmx/criminologia_cdmx/patrones_espacio_temporales.html#smer_KDE"><code>smer_KDE</code></a>, podemos utilizar holoviews para visualizar el resultado</p>
+<p>La función <a href="/criminologia_cdmx/criminologia_cdmx/hotspots.html#smer_KDE"><code>smer_KDE</code></a> calcula todo lo necesario para obtener estos mapas, tomando los mismos datos que en el ejemplo anterior, la misma categoría de referencia e intervalos de tiempo, podemos calcular el <a href="/criminologia_cdmx/criminologia_cdmx/hotspots.html#smer_KDE"><code>smer_KDE</code></a>, podemos utilizar holoviews para visualizar el resultado</p>
 
 </div>
 </div>

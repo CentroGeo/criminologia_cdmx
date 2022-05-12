@@ -14,7 +14,7 @@ entries:
       url: etl.html
     - output: web,pdf
       title: patrones_espacio_temporales
-      url: patrones_espacio_temporales.html
+      url: hotspots.html
     - output: web,pdf
       title: covariables
       url: covariables.html
