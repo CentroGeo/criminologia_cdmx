@@ -116,10 +116,10 @@ en las unidades requeridas.</p>
                            <span class="n">agregacion</span><span class="o">=</span><span class="s1">&#39;cuadrantes&#39;</span><span class="p">,</span> <span class="n">nombre_y</span><span class="o">=</span><span class="n">nombre_y</span><span class="p">)</span>
 <span class="k">assert</span> <span class="n">nombre_y</span> <span class="ow">in</span> <span class="n">Y</span><span class="o">.</span><span class="n">columns</span>
 <span class="n">Y</span> <span class="o">=</span> <span class="n">variable_dependiente</span><span class="p">(</span><span class="n">carpetas</span><span class="p">,</span> <span class="s1">&#39;delito&#39;</span><span class="p">,</span> <span class="n">delitos</span><span class="p">,</span> <span class="n">fecha_inicio</span><span class="p">,</span> <span class="n">fecha_fin</span><span class="p">,</span> 
-                           <span class="n">nombre_y</span><span class="o">=</span><span class="n">nombre_y</span><span class="p">)</span>
+                           <span class="n">agregacion</span><span class="o">=</span><span class="s1">&#39;manzanas&#39;</span><span class="p">,</span> <span class="n">nombre_y</span><span class="o">=</span><span class="n">nombre_y</span><span class="p">)</span>
 <span class="k">assert</span> <span class="n">nombre_y</span> <span class="ow">in</span> <span class="n">Y</span><span class="o">.</span><span class="n">columns</span>
 <span class="n">Y</span> <span class="o">=</span> <span class="n">variable_dependiente</span><span class="p">(</span><span class="n">carpetas</span><span class="p">,</span> <span class="s1">&#39;delito&#39;</span><span class="p">,</span> <span class="n">delitos</span><span class="p">,</span> <span class="n">fecha_inicio</span><span class="p">,</span> <span class="n">fecha_fin</span><span class="p">,</span> 
-                           <span class="n">agregacion</span><span class="o">=</span><span class="s1">&#39;manzanas&#39;</span><span class="p">,</span> <span class="n">nombre_y</span><span class="o">=</span><span class="n">nombre_y</span><span class="p">)</span>
+                           <span class="n">nombre_y</span><span class="o">=</span><span class="n">nombre_y</span><span class="p">)</span>
 <span class="k">assert</span> <span class="n">nombre_y</span> <span class="ow">in</span> <span class="n">Y</span><span class="o">.</span><span class="n">columns</span>
 </pre></div>
 
@@ -216,6 +216,23 @@ datos, en el futuro esto debe cambiar para permitir al usuario definir su propia
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>/home/plablo/miniconda3/envs/criminologia_new/lib/python3.8/site-packages/pandas/core/internals/blocks.py:402: RuntimeWarning: divide by zero encountered in log
+  result = func(self.values, **kwargs)
+/tmp/ipykernel_26137/548001371.py:103: FutureWarning: The series.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  d = d.append(v)
+</pre>
+</div>
+</div>
+
 </div>
 </div>
 
