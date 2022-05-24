@@ -2,9 +2,9 @@
 
 __all__ = ['DATA_PATH', 'DOWNLOADS_PATH', 'procesa_registros', 'get_carpetas_from_api', 'get_victimas_from_api',
            'get_historico_carpetas', 'get_historico_victimas', 'get_carpetas_desde_archivo',
-           'get_victimas_desde_archivo', 'descarga_manzanas', 'agrega_ids_espaciales', 'agregar_categorias_carpetas',
-           'agregar_categorias_victimas', 'exporta_datos_visualizador', 'serie_de_tiempo_categoria',
-           'serie_tiempo_categorias_unidades', 'punto_to_hexid', 'agrega_en_hexagonos']
+           'get_victimas_desde_archivo', 'get_datos_911', 'descarga_manzanas', 'agrega_ids_espaciales',
+           'agregar_categorias_carpetas', 'agregar_categorias_victimas', 'exporta_datos_visualizador',
+           'serie_de_tiempo_categoria', 'serie_tiempo_categorias_unidades', 'punto_to_hexid', 'agrega_en_hexagonos']
 
 # Cell
 import os
@@ -105,6 +105,25 @@ def get_victimas_desde_archivo(archivo):
     return records
 
 # Cell
+def get_datos_911():
+    """ Regresa un GeoDataFrame con los datos del 911 integrados por nosotros.
+
+        El preproceso es similar al de carpetas y víctimas.
+
+        NOTA: son los mismos archivos descargados de la página de datos abiertos pero
+              integrados y con el encoding arreglado
+    """
+    if os.path.exists(DOWNLOADS_PATH + 'incidentes_911.pkl'):
+        print("El archivo ya está descargado.")
+    else:
+        print("Descargando archivo de incidentes.")
+        url = "https://www.dropbox.com/s/l83t5ak108hz2ax/911_19-21_unidas.csv.zip?dl=1"
+        r = requests.get(url, allow_redirects=True)
+        open(DOWNLOADS_PATH + 'incidentes_911.pkl', 'wb').write(r.content)
+    records = pd.read_pickle(DOWNLOADS_PATH + 'incidentes_911.pkl')
+    return records
+
+# Cell
 def descarga_manzanas():
     """ Descarga la geometría de manzanas con ids de cuadrante y colonia."""
     if os.path.exists(DOWNLOADS_PATH + 'manzanas_identificadores.gpkg'):
@@ -116,7 +135,7 @@ def descarga_manzanas():
 
 # Cell
 def agrega_ids_espaciales(carpetas, metodo='manzanas', tolerancia=500):
-    """ Agrega ids de colonias y cuadrantes a la base de carpetas.
+    """ Agrega ids de colonias y cuadrantes a cualquier base de incidentes.
 
         Args:
 

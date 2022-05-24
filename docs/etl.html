@@ -26,6 +26,20 @@ nb_path: "00_etl.ipynb"
     
 <div class="cell border-box-sizing code_cell rendered">
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>ERROR 1: PROJ: proj_create_from_database: Open of /home/plablo/miniconda3/envs/criminologia/share/proj failed
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
 </div>
     {% endraw %}
 
@@ -419,6 +433,395 @@ nb_path: "00_etl.ipynb"
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="get_datos_911">get_datos_911<a class="anchor-link" href="#get_datos_911"> </a></h2>
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="get_datos_911" class="doc_header"><code>get_datos_911</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/etl.py#L108" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_datos_911</code>()</p>
+</blockquote>
+<p>Regresa un GeoDataFrame con los datos del 911 integrados por nosotros.</p>
+<p>El preproceso es similar al de carpetas y víctimas.</p>
+<p>NOTA: son los mismos archivos descargados de la página de datos abiertos pero
+      integrados y con el encoding arreglado</p>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">datos_911</span> <span class="o">=</span> <span class="n">get_datos_911</span><span class="p">()</span>
+<span class="n">datos_911</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>El archivo ya está descargado.
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>folio</th>
+      <th>incidente_c4</th>
+      <th>fecha_creacion</th>
+      <th>hora_creacion</th>
+      <th>mes_creacion</th>
+      <th>año_creacion</th>
+      <th>fecha_cierre</th>
+      <th>mes_cierre</th>
+      <th>año_cierre</th>
+      <th>hora_cierre</th>
+      <th>...</th>
+      <th>codigo_cierre</th>
+      <th>clas_con_f_alarma</th>
+      <th>delegacion_cierre</th>
+      <th>manzana</th>
+      <th>longitud_centroide</th>
+      <th>latitud_centroide</th>
+      <th>geometry</th>
+      <th>colonia_cve</th>
+      <th>colonia_nombre</th>
+      <th>cuadrante_id</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>C5/200702/07369</td>
+      <td>Lesionado-Caída</td>
+      <td>2020-07-02</td>
+      <td>21:25:59</td>
+      <td>Julio</td>
+      <td>2020.0</td>
+      <td>2020-07-02</td>
+      <td>Julio</td>
+      <td>2020.0</td>
+      <td>21:30:35</td>
+      <td>...</td>
+      <td>Duplicado</td>
+      <td>URGENCIAS MEDICAS</td>
+      <td>GUSTAVO A. MADERO</td>
+      <td>0900500012907021</td>
+      <td>-99.09506</td>
+      <td>19.48655</td>
+      <td>POINT (-99.09506 19.48655)</td>
+      <td>662</td>
+      <td>SALVADOR DIAZ MIRON</td>
+      <td>015</td>
+    </tr>
+    <tr>
+      <th>6657</th>
+      <td>C5/200703/03163</td>
+      <td>Médicos-Convulsiones</td>
+      <td>2020-07-03</td>
+      <td>11:46:51</td>
+      <td>Julio</td>
+      <td>2020.0</td>
+      <td>2020-07-03</td>
+      <td>Julio</td>
+      <td>2020.0</td>
+      <td>11:52:46</td>
+      <td>...</td>
+      <td>Duplicado</td>
+      <td>URGENCIAS MEDICAS</td>
+      <td>GUSTAVO A. MADERO</td>
+      <td>0900500012907021</td>
+      <td>-99.09506</td>
+      <td>19.48655</td>
+      <td>POINT (-99.09506 19.48655)</td>
+      <td>662</td>
+      <td>SALVADOR DIAZ MIRON</td>
+      <td>015</td>
+    </tr>
+    <tr>
+      <th>25901</th>
+      <td>C5/200712/00975</td>
+      <td>Disturbio-Fiestas</td>
+      <td>2020-07-12</td>
+      <td>01:39:46</td>
+      <td>Julio</td>
+      <td>2020.0</td>
+      <td>2020-07-12</td>
+      <td>Julio</td>
+      <td>2020.0</td>
+      <td>01:42:46</td>
+      <td>...</td>
+      <td>Duplicado</td>
+      <td>FALTA CÍVICA</td>
+      <td>GUSTAVO A. MADERO</td>
+      <td>0900500012907021</td>
+      <td>-99.09506</td>
+      <td>19.48655</td>
+      <td>POINT (-99.09506 19.48655)</td>
+      <td>662</td>
+      <td>SALVADOR DIAZ MIRON</td>
+      <td>015</td>
+    </tr>
+    <tr>
+      <th>45484</th>
+      <td>C5/200709/04377</td>
+      <td>Disturbio-Escándalo</td>
+      <td>2020-07-09</td>
+      <td>16:44:01</td>
+      <td>Julio</td>
+      <td>2020.0</td>
+      <td>2020-07-09</td>
+      <td>Julio</td>
+      <td>2020.0</td>
+      <td>16:53:41</td>
+      <td>...</td>
+      <td>Negativo</td>
+      <td>FALTA CÍVICA</td>
+      <td>GUSTAVO A. MADERO</td>
+      <td>0900500012907021</td>
+      <td>-99.09506</td>
+      <td>19.48655</td>
+      <td>POINT (-99.09506 19.48655)</td>
+      <td>662</td>
+      <td>SALVADOR DIAZ MIRON</td>
+      <td>015</td>
+    </tr>
+    <tr>
+      <th>48174</th>
+      <td>C5/200717/04329</td>
+      <td>Lesionado-Por Golpes-Agresión</td>
+      <td>2020-07-17</td>
+      <td>15:32:46</td>
+      <td>Julio</td>
+      <td>2020.0</td>
+      <td>2020-07-17</td>
+      <td>Julio</td>
+      <td>2020.0</td>
+      <td>15:49:46</td>
+      <td>...</td>
+      <td>Negativo</td>
+      <td>URGENCIAS MEDICAS</td>
+      <td>GUSTAVO A. MADERO</td>
+      <td>0900500012907021</td>
+      <td>-99.09506</td>
+      <td>19.48655</td>
+      <td>POINT (-99.09506 19.48655)</td>
+      <td>662</td>
+      <td>SALVADOR DIAZ MIRON</td>
+      <td>015</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>3681081</th>
+      <td>C5/190718/02975</td>
+      <td>Cadáver-Natural</td>
+      <td>2019-07-18</td>
+      <td>11:51:59</td>
+      <td>Julio</td>
+      <td>2019.0</td>
+      <td>2019-07-18</td>
+      <td>Julio</td>
+      <td>2019.0</td>
+      <td>13:14:20</td>
+      <td>...</td>
+      <td>Afirmativo</td>
+      <td>EMERGENCIA</td>
+      <td>COYOACAN</td>
+      <td>0900300011730006</td>
+      <td>-99.133123</td>
+      <td>19.314774</td>
+      <td>POINT (-99.13312 19.31477)</td>
+      <td>1232</td>
+      <td>LOS ROBLES (FRACC)</td>
+      <td>0213</td>
+    </tr>
+    <tr>
+      <th>3703218</th>
+      <td>C5/191229/06232</td>
+      <td>Lesionado-Caída</td>
+      <td>2019-12-29</td>
+      <td>18:22:55</td>
+      <td>Diciembre</td>
+      <td>2019.0</td>
+      <td>2019-12-29</td>
+      <td>Diciembre</td>
+      <td>2019.0</td>
+      <td>18:44:00</td>
+      <td>...</td>
+      <td>Duplicado</td>
+      <td>URGENCIAS MEDICAS</td>
+      <td>MILPA ALTA</td>
+      <td>0900900170365011</td>
+      <td>-99.011308</td>
+      <td>19.194389</td>
+      <td>POINT (-99.01131 19.19439)</td>
+      <td>1548</td>
+      <td>SAN AGUSTIN OHTENCO (PBLO)</td>
+      <td>023</td>
+    </tr>
+    <tr>
+      <th>3704538</th>
+      <td>C5/191229/05845</td>
+      <td>Lesionado-Caída</td>
+      <td>2019-12-29</td>
+      <td>17:28:25</td>
+      <td>Diciembre</td>
+      <td>2019.0</td>
+      <td>2019-12-29</td>
+      <td>Diciembre</td>
+      <td>2019.0</td>
+      <td>17:59:58</td>
+      <td>...</td>
+      <td>Afirmativo</td>
+      <td>URGENCIAS MEDICAS</td>
+      <td>MILPA ALTA</td>
+      <td>0900900170365011</td>
+      <td>-99.011308</td>
+      <td>19.194389</td>
+      <td>POINT (-99.01131 19.19439)</td>
+      <td>1548</td>
+      <td>SAN AGUSTIN OHTENCO (PBLO)</td>
+      <td>023</td>
+    </tr>
+    <tr>
+      <th>3706709</th>
+      <td>C5/190725/04837</td>
+      <td>Daños por Fenómeno Natural o Tercero-Caída de ...</td>
+      <td>2019-07-25</td>
+      <td>16:20:31</td>
+      <td>Julio</td>
+      <td>2019.0</td>
+      <td>2019-07-25</td>
+      <td>Julio</td>
+      <td>2019.0</td>
+      <td>16:29:21</td>
+      <td>...</td>
+      <td>Duplicado</td>
+      <td>SERVICIO</td>
+      <td>ALVARO OBREGON</td>
+      <td>0901000011148032</td>
+      <td>-99.259052</td>
+      <td>19.338943</td>
+      <td>POINT (-99.25905 19.33894)</td>
+      <td>1122</td>
+      <td>VILLA VERDUN</td>
+      <td>013</td>
+    </tr>
+    <tr>
+      <th>3707946</th>
+      <td>C5/190725/04806</td>
+      <td>Daños por Fenómeno Natural o Tercero-Caída de ...</td>
+      <td>2019-07-25</td>
+      <td>16:17:41</td>
+      <td>Julio</td>
+      <td>2019.0</td>
+      <td>2019-07-25</td>
+      <td>Julio</td>
+      <td>2019.0</td>
+      <td>18:14:56</td>
+      <td>...</td>
+      <td>Afirmativo</td>
+      <td>SERVICIO</td>
+      <td>ALVARO OBREGON</td>
+      <td>0901000011148032</td>
+      <td>-99.259052</td>
+      <td>19.338943</td>
+      <td>POINT (-99.25905 19.33894)</td>
+      <td>1122</td>
+      <td>VILLA VERDUN</td>
+      <td>013</td>
+    </tr>
+  </tbody>
+</table>
+<p>3560134 rows × 21 columns</p>
+</div></div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="descarga_manzanas">descarga_manzanas<a class="anchor-link" href="#descarga_manzanas"> </a></h2>
 </div>
 </div>
@@ -434,7 +837,7 @@ nb_path: "00_etl.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="descarga_manzanas" class="doc_header"><code>descarga_manzanas</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/etl.py#L108" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>descarga_manzanas</code>()</p>
+<h4 id="descarga_manzanas" class="doc_header"><code>descarga_manzanas</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/etl.py#L127" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>descarga_manzanas</code>()</p>
 </blockquote>
 <p>Descarga la geometría de manzanas con ids de cuadrante y colonia.</p>
 
@@ -469,20 +872,6 @@ nb_path: "00_etl.ipynb"
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>El archivo ya está descargado.
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
 </div>
     {% endraw %}
 
@@ -503,9 +892,9 @@ nb_path: "00_etl.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="agrega_ids_espaciales" class="doc_header"><code>agrega_ids_espaciales</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/etl.py#L118" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>agrega_ids_espaciales</code>(<strong><code>carpetas</code></strong>, <strong><code>metodo</code></strong>=<em><code>'manzanas'</code></em>, <strong><code>tolerancia</code></strong>=<em><code>500</code></em>)</p>
+<h4 id="agrega_ids_espaciales" class="doc_header"><code>agrega_ids_espaciales</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/etl.py#L137" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>agrega_ids_espaciales</code>(<strong><code>carpetas</code></strong>, <strong><code>metodo</code></strong>=<em><code>'manzanas'</code></em>, <strong><code>tolerancia</code></strong>=<em><code>500</code></em>)</p>
 </blockquote>
-<p>Agrega ids de colonias y cuadrantes a la base de carpetas.</p>
+<p>Agrega ids de colonias y cuadrantes a cualquier base de incidentes.</p>
 <p>Args:</p>
 
 <pre><code>metodo (str): manzanas/poligonos. El método 'manzanas' hace un join_nearest con
@@ -584,7 +973,7 @@ tolerancia (float): ¿qué tan lejos puede estar un incidente de una manzana? En
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="agregar_categorias_carpetas" class="doc_header"><code>agregar_categorias_carpetas</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/etl.py#L164" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>agregar_categorias_carpetas</code>(<strong><code>carpetas</code></strong>, <strong><code>archivo_categorias</code></strong>=<em><code>'datos/categorias_carpetas.csv'</code></em>)</p>
+<h4 id="agregar_categorias_carpetas" class="doc_header"><code>agregar_categorias_carpetas</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/etl.py#L183" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>agregar_categorias_carpetas</code>(<strong><code>carpetas</code></strong>, <strong><code>archivo_categorias</code></strong>=<em><code>'datos/categorias_carpetas.csv'</code></em>)</p>
 </blockquote>
 <p>Agrega una columna con categorías definidas por el usuario.</p>
 <p>Las categorías tienen que venir en un csv con columnas incidente y categoria que
@@ -642,7 +1031,7 @@ relacionen las categorías del usuario con la columna delitos de la base de carp
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="agregar_categorias_victimas" class="doc_header"><code>agregar_categorias_victimas</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/etl.py#L181" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>agregar_categorias_victimas</code>(<strong><code>carpetas</code></strong>, <strong><code>archivo_categorias</code></strong>=<em><code>'datos/categorias_victimas.csv'</code></em>)</p>
+<h4 id="agregar_categorias_victimas" class="doc_header"><code>agregar_categorias_victimas</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/etl.py#L200" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>agregar_categorias_victimas</code>(<strong><code>carpetas</code></strong>, <strong><code>archivo_categorias</code></strong>=<em><code>'datos/categorias_victimas.csv'</code></em>)</p>
 </blockquote>
 <p>Columnas con niveles definidos por el usuario</p>
 <p>Las categorías tienen que venir en un csv con columnas llamadas Nivel 1, Nivel 2 ...
@@ -700,7 +1089,7 @@ que relacionen los niveles con las columnas Delito y Categoría en la base de V�
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="exporta_datos_visualizador" class="doc_header"><code>exporta_datos_visualizador</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/etl.py#L198" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>exporta_datos_visualizador</code>(<strong><code>carpetas</code></strong>, <strong><code>archivo_resultado</code></strong>, <strong><code>fecha_inicio</code></strong>=<em><code>Timestamp('2019-01-01 00:00:00')</code></em>, <strong><code>tipo</code></strong>=<em><code>'victimas'</code></em>)</p>
+<h4 id="exporta_datos_visualizador" class="doc_header"><code>exporta_datos_visualizador</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/etl.py#L217" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>exporta_datos_visualizador</code>(<strong><code>carpetas</code></strong>, <strong><code>archivo_resultado</code></strong>, <strong><code>fecha_inicio</code></strong>=<em><code>Timestamp('2019-01-01 00:00:00')</code></em>, <strong><code>tipo</code></strong>=<em><code>'victimas'</code></em>)</p>
 </blockquote>
 <p>Escribe en archivo_resultado un csv para consumirse en el visualizador.</p>
 <p>La opción tipo=victimas/carpetas controla si los datos de entrada son carpetas o victimas.</p>
@@ -757,7 +1146,7 @@ que relacionen los niveles con las columnas Delito y Categoría en la base de V�
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="serie_de_tiempo_categoria" class="doc_header"><code>serie_de_tiempo_categoria</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/etl.py#L219" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>serie_de_tiempo_categoria</code>(<strong><code>carpetas</code></strong>, <strong><code>fecha_inicio</code></strong>, <strong><code>categoria</code></strong>, <strong><code>freq</code></strong>=<em><code>'M'</code></em>)</p>
+<h4 id="serie_de_tiempo_categoria" class="doc_header"><code>serie_de_tiempo_categoria</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/etl.py#L238" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>serie_de_tiempo_categoria</code>(<strong><code>carpetas</code></strong>, <strong><code>fecha_inicio</code></strong>, <strong><code>categoria</code></strong>, <strong><code>freq</code></strong>=<em><code>'M'</code></em>)</p>
 </blockquote>
 <p>Regresa una serie de tiempo con los agregados por <code>freq</code> de la <code>categoria</code>.</p>
 <p>parameters:
@@ -861,7 +1250,7 @@ freq: frecuencia de agregación (<a href="https://pandas.pydata.org/pandas-docs/
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="serie_tiempo_categorias_unidades" class="doc_header"><code>serie_tiempo_categorias_unidades</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/etl.py#L240" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>serie_tiempo_categorias_unidades</code>(<strong><code>datos</code></strong>, <strong><code>fecha_inicio</code></strong>, <strong><code>tipo</code></strong>=<em><code>'victimas'</code></em>, <strong><code>geografia</code></strong>=<em><code>'colonias'</code></em>, <strong><code>freq</code></strong>=<em><code>'W'</code></em>, <strong><code>categorias</code></strong>=<em><code>['Nivel 1']</code></em>)</p>
+<h4 id="serie_tiempo_categorias_unidades" class="doc_header"><code>serie_tiempo_categorias_unidades</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/etl.py#L259" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>serie_tiempo_categorias_unidades</code>(<strong><code>datos</code></strong>, <strong><code>fecha_inicio</code></strong>, <strong><code>tipo</code></strong>=<em><code>'victimas'</code></em>, <strong><code>geografia</code></strong>=<em><code>'colonias'</code></em>, <strong><code>freq</code></strong>=<em><code>'W'</code></em>, <strong><code>categorias</code></strong>=<em><code>['Nivel 1']</code></em>)</p>
 </blockquote>
 <p>Regresa una serie de tiempo con los agregados por <code>freq</code> para categorias y
 la geografía especificada.</p>
@@ -1055,7 +1444,7 @@ categorias: lista de las categorías para agregar. Las columnas deben existir en
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="punto_to_hexid" class="doc_header"><code>punto_to_hexid</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/etl.py#L271" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>punto_to_hexid</code>(<strong><code>punto</code></strong>, <strong><code>resolution</code></strong>)</p>
+<h4 id="punto_to_hexid" class="doc_header"><code>punto_to_hexid</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/etl.py#L290" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>punto_to_hexid</code>(<strong><code>punto</code></strong>, <strong><code>resolution</code></strong>)</p>
 </blockquote>
 <p>Regresa el hexid (h3) del punto.</p>
 
@@ -1093,7 +1482,7 @@ categorias: lista de las categorías para agregar. Las columnas deben existir en
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="agrega_en_hexagonos" class="doc_header"><code>agrega_en_hexagonos</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/etl.py#L276" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>agrega_en_hexagonos</code>(<strong><code>puntos</code></strong>, <strong><code>resolution</code></strong>)</p>
+<h4 id="agrega_en_hexagonos" class="doc_header"><code>agrega_en_hexagonos</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/etl.py#L295" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>agrega_en_hexagonos</code>(<strong><code>puntos</code></strong>, <strong><code>resolution</code></strong>)</p>
 </blockquote>
 <p>Regresa un GeoDataFrame con las cuentas de puntos agregadas en hexágonos.</p>
 <p>params:

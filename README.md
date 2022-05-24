@@ -36,7 +36,7 @@ Podemos bajar dos fuentes de datos: [carpetas de investigación](https://datos.c
 
 Hay dos formas de bajar los datos abiertos, la primera es usando el api que baja las primeras `limit` carpetas/víctimas de la base abierta
 
-```python
+```
 carpetas = get_carpetas_from_api(limit=100)
 carpetas.head()
 ```
@@ -213,7 +213,7 @@ carpetas.head()
 
 
 
-```python
+```
 victimas = get_victimas_from_api(limit=100)
 victimas.head()
 ```
@@ -416,14 +416,14 @@ Hay dos métodos diferentes para agregar los identificadores espaciales: `poligo
 
 Para usar el método `manzanas` es necesario primero descargar los datos:
 
-```python
+```
 descarga_manzanas()
 ```
 
     El archivo ya está descargado.
 
 
-```python
+```
 carpetas = agrega_ids_espaciales(carpetas)
 carpetas.head()
 ```
@@ -600,7 +600,7 @@ carpetas.head()
 
 
 
-```python
+```
 victimas = agrega_ids_espaciales(victimas)
 victimas.head()
 ```
@@ -781,7 +781,7 @@ victimas.head()
 
 Para clasificar las carpetas de investigación de acuerdo a una categorización definida por el usuario necesitamos un archivo que relacione la columna delitos de la base de carpetas con las categorías definidas por el usuario
 
-```python
+```
 categorias = pd.read_csv("datos/categorias_carpetas.csv")
 categorias
 ```
@@ -876,7 +876,7 @@ categorias
 
 Entonces podemos agregar las categorías a nuestra base
 
-```python
+```
 carpetas = agregar_categorias_carpetas(carpetas)
 carpetas[['delito', 'categoria']]
 ```
@@ -971,7 +971,7 @@ carpetas[['delito', 'categoria']]
 
 Algo similar se puede hacer para los datos de Víctimas, en este caso el archivo de categorías es un poco diferente
 
-```python
+```
 categorias_victimas = pd.read_csv("datos/categorias_victimas.csv")
 categorias_victimas
 ```
@@ -1114,7 +1114,7 @@ categorias_victimas
 
 Las columnas importantes son `Nivel 1` y `Nivel 2` (podría haber más niveles), esas definen las categorías que se van a asignar a cada fila que se una a los datos de víctimas via la columna `Delito`
 
-```python
+```
 victimas = agregar_categorias_victimas(victimas)
 victimas[['Delito', 'Nivel 1', 'Nivel 2', 'Nivel 3']]
 ```
@@ -1233,7 +1233,7 @@ victimas[['Delito', 'Nivel 1', 'Nivel 2', 'Nivel 3']]
 
 ### Exportar datos para el visualizador
 
-```python
+```
 exporta_datos_visualizador(carpetas, "datos/salidas/carpetas.csv", tipo='carpetas')
 exporta_datos_visualizador(victimas, "datos/salidas/victimas.csv", tipo='victimas')
 ```
@@ -1268,7 +1268,7 @@ Partiendo de los datos de incidentes (carpetas o victimas) es posible calcular l
 
 Por ejemplo, para ver la evolución de la densidad de Homicidios Dolosos, podemos utilizar la función `KDE_hotspots` sobre las carpetas etiquetadas por categorías y visualizar los resultados usando Holoviews.
 
-```python
+```
 %%output  size=200 widget_location='bottom'
 carpetas = get_historico_carpetas()
 carpetas = agregar_categorias_carpetas(carpetas)
@@ -1332,7 +1332,7 @@ Los hotspots de SMER consisten en realidad de dos mapas complementarios: por un 
 
 La función `smer_KDE` calcula todo lo necesario para obtener estos mapas, tomando los mismos datos que en el ejemplo anterior, la misma categoría de referencia e intervalos de tiempo, podemos calcular el `smer_KDE`, podemos utilizar holoviews para visualizar el resultado
 
-```python
+```
 %%output widget_location='bottom', size=150
 series_smer = smer_KDE(carpetas, fechas, ["Homicidios dolosos"], "30 days", 1000, 1000)
 xr_dataset = gv.Dataset(series_smer, 
@@ -1393,7 +1393,7 @@ lo
 
 Se puede agregar los datos de carpetas/victimas en hexágonos de Uber H3 usando la función `agrega_en_hexagonos` y pasándole los datos y el nivel de escala. Por ejemplo, para agregar los datos en el nivel 8
 
-```python
+```
 carpetas_hex = agrega_en_hexagonos(carpetas, 8)
 victimas_hex = agrega_en_hexagonos(victimas, 8)
 fig, (ax0, ax1) = plt.subplots(1, 2, figsize=(18, 18))
@@ -1448,7 +1448,7 @@ El módulo contiene diferentes funciones para procesar las variables del censo, 
 * Agregar en colonias
 * Calcular las tasas de las variables
 
-```python
+```
 diccionario = get_diccionario_censo()
 censo = get_variables_censo()
 agregado = agrega_en_unidades(censo, diccionario, imputacion='random')
@@ -1809,7 +1809,7 @@ Estas variables están a nivel manzana, pero por lo pronto no es posible (¿conv
 * Intensidad: la cantidad de total de usos de suelo considerados
 * Entropía: una medida de la mezcla de los usos de suelo
 
-```python
+```
 usos = get_uso_de_suelo()
 usos = agrega_uso_suelo(usos, unidades='colonias')
 usos
@@ -1953,7 +1953,7 @@ Para facilitar la construcción de modelos utilizando variables censales, provee
 
 Construir un índice es muy sencillo, primero se seleccionan un conjunto de variables:
 
-```python
+```
 vars_indice = ['P5_HLI', 'POB_AFRO', 'PCON_DISC', 'P3A5_NOA', 
                'P6A11_NOA', 'P12A14NOA', 'P15YM_AN', 'PSINDER', 'PDESOCUP']
 diccionario[diccionario['Nombre del Campo'].isin(vars_indice)][['Nombre del Campo', 'Descripción']]
@@ -2038,7 +2038,7 @@ diccionario[diccionario['Nombre del Campo'].isin(vars_indice)][['Nombre del Camp
 
 Con la lista de variables se inicializa la clase y se calcula el índice. En este caso vamos a usar los agregados por colonia que calculamos antes.  
 
-```python
+```
 indice = IndicePCA(agregado, vars_indice)
 indice.calcula_indice()
 print(f'El porcentaje de la varianza explicada por el índice es {indice.varianza_explicada[0]}')
@@ -2049,7 +2049,7 @@ print(f'El porcentaje de la varianza explicada por el índice es {indice.varianz
 
 El DataFrame con los valores del índice se guarda en la propiedad `indice`:
 
-```python
+```
 indice.indice
 ```
 
@@ -2157,7 +2157,7 @@ A continuación se muestra un flujo completo para ajustar un modelo GLM usando l
 
 ### Variable dependiente
 
-```python
+```
 carpetas = get_carpetas_from_api(100000)
 carpetas = agrega_ids_espaciales(carpetas)
 fecha_inicio = carpetas.fecha_hechos.min().strftime("%d-%m.%Y")
@@ -2227,20 +2227,20 @@ Y.head()
 ### Covariables
 Para este ejemplo sólo vamos a usar uso de suelo
 
-```python
+```
 usos = get_uso_de_suelo()
 usos = agrega_uso_suelo(usos, unidades='colonias')
 ```
 
 ### Capa de Análisis
 
-```python
+```
 ca = CapaDeAnalisis(Y, usos, 'colonias')
 ```
 
 ### Creación y ajuste de modelo
 
-```python
+```
 m = ModeloGLM(ca, sm.families.NegativeBinomial())
 fm = m.fit()
 fm.summary()
