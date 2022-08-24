@@ -148,7 +148,7 @@ def agrega_ids_espaciales(carpetas, metodo='manzanas', tolerancia=500):
     """
 
     if 'manzana_cvegeo' in carpetas.columns:
-        carpetas = carpetas.drop(columns='colonia_cve')
+        carpetas = carpetas.drop(columns='manzana_cvegeo')
     if 'colonia_cve' in carpetas.columns:
         carpetas = carpetas.drop(columns='colonia_cve')
     if 'cuadrante_id' in carpetas.columns:
@@ -157,7 +157,9 @@ def agrega_ids_espaciales(carpetas, metodo='manzanas', tolerancia=500):
         carpetas = carpetas.drop(columns='municipio_cvegeo')
     if metodo == 'poligonos':
         shapes = os.path.join(DATA_PATH, 'criminologia_capas.gpkg')
-        colonias = gpd.read_file(shapes, layer='colonias').drop(columns='colonia_geom_6362')
+        colonias = (gpd
+                    .read_file(shapes, layer='colonias')
+                    .to_crs(4326))
         cuadrantes = gpd.read_file(shapes, layer='cuadrantes')
         carpetas = (gpd.tools.sjoin(carpetas, colonias[['colonia_cve', 'colonia_nombre', 'municipio_cvegeo', 'geometry']])
                     .drop(columns=['index_right'])
@@ -167,7 +169,7 @@ def agrega_ids_espaciales(carpetas, metodo='manzanas', tolerancia=500):
     elif metodo == 'manzanas':
         crs_original = carpetas.crs
         manzanas = gpd.read_file("datos/descargas/manzanas_identificadores.gpkg")
-        manzanas['municipio_cvegeo'] = manzanas['CVE_ENT'] + manzanas['CVE_MUN']
+        manzanas['municipio_cvegeo'] = manzanas['ENTIDAD'] + manzanas['MUN']
         carpetas = (carpetas
                     .to_crs(manzanas.crs)
                     .sjoin_nearest(manzanas[['CVEGEO', 'municipio_cvegeo', 'colonia_cve',
