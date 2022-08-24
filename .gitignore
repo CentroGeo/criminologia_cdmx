@@ -152,3 +152,5 @@ datos/salidas/*
 # exclude img folder content
 img/*
 !img/.gitkeep
+datos/criminologia_capas.gpkg-shm
+datos/criminologia_capas.gpkg-wal
