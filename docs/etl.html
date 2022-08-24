@@ -26,20 +26,6 @@ nb_path: "00_etl.ipynb"
     
 <div class="cell border-box-sizing code_cell rendered">
 
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>ERROR 1: PROJ: proj_create_from_database: Open of /home/plablo/miniconda3/envs/criminologia/share/proj failed
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
 </div>
     {% endraw %}
 
@@ -950,28 +936,28 @@ nb_path: "00_etl.ipynb"
   <tbody>
     <tr>
       <th>0</th>
-      <td>32</td>
-      <td>0.0</td>
+      <td>1</td>
+      <td>17.0</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>619</td>
-      <td>45.0</td>
+      <td>2</td>
+      <td>17.0</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>1792</td>
-      <td>3.0</td>
+      <td>3</td>
+      <td>1.0</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>1774</td>
-      <td>2.0</td>
+      <td>4</td>
+      <td>10.0</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>583</td>
-      <td>54.0</td>
+      <td>5</td>
+      <td>15.0</td>
     </tr>
     <tr>
       <th>...</th>
@@ -979,33 +965,33 @@ nb_path: "00_etl.ipynb"
       <td>...</td>
     </tr>
     <tr>
-      <th>1819</th>
-      <td>1731</td>
-      <td>51.0</td>
-    </tr>
-    <tr>
-      <th>1820</th>
-      <td>1801</td>
+      <th>1810</th>
+      <td>1811</td>
       <td>0.0</td>
     </tr>
     <tr>
-      <th>1821</th>
-      <td>1799</td>
-      <td>18.0</td>
+      <th>1811</th>
+      <td>1812</td>
+      <td>0.0</td>
     </tr>
     <tr>
-      <th>1822</th>
-      <td>1800</td>
-      <td>24.0</td>
+      <th>1812</th>
+      <td>1813</td>
+      <td>7.0</td>
     </tr>
     <tr>
-      <th>1823</th>
-      <td>1824</td>
-      <td>8.0</td>
+      <th>1813</th>
+      <td>1814</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>1814</th>
+      <td>1815</td>
+      <td>90.0</td>
     </tr>
   </tbody>
 </table>
-<p>1824 rows × 2 columns</p>
+<p>1815 rows × 2 columns</p>
 </div></div>
 
 </div>
@@ -1169,7 +1155,7 @@ tolerancia (float): ¿qué tan lejos puede estar un incidente de una manzana? En
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="agregar_categorias_carpetas" class="doc_header"><code>agregar_categorias_carpetas</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/etl.py#L183" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>agregar_categorias_carpetas</code>(<strong><code>carpetas</code></strong>, <strong><code>archivo_categorias</code></strong>=<em><code>'datos/categorias_carpetas.csv'</code></em>)</p>
+<h4 id="agregar_categorias_carpetas" class="doc_header"><code>agregar_categorias_carpetas</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/etl.py#L185" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>agregar_categorias_carpetas</code>(<strong><code>carpetas</code></strong>, <strong><code>archivo_categorias</code></strong>=<em><code>'datos/categorias_carpetas.csv'</code></em>)</p>
 </blockquote>
 <p>Agrega una columna con categorías definidas por el usuario.</p>
 <p>Las categorías tienen que venir en un csv con columnas incidente y categoria que
@@ -1227,7 +1213,7 @@ relacionen las categorías del usuario con la columna delitos de la base de carp
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="agregar_categorias_victimas" class="doc_header"><code>agregar_categorias_victimas</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/etl.py#L200" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>agregar_categorias_victimas</code>(<strong><code>carpetas</code></strong>, <strong><code>archivo_categorias</code></strong>=<em><code>'datos/categorias_victimas.csv'</code></em>)</p>
+<h4 id="agregar_categorias_victimas" class="doc_header"><code>agregar_categorias_victimas</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/etl.py#L202" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>agregar_categorias_victimas</code>(<strong><code>carpetas</code></strong>, <strong><code>archivo_categorias</code></strong>=<em><code>'datos/categorias_victimas.csv'</code></em>)</p>
 </blockquote>
 <p>Columnas con niveles definidos por el usuario</p>
 <p>Las categorías tienen que venir en un csv con columnas llamadas Nivel 1, Nivel 2 ...
@@ -1285,7 +1271,7 @@ que relacionen los niveles con las columnas Delito y Categoría en la base de V�
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="exporta_datos_visualizador" class="doc_header"><code>exporta_datos_visualizador</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/etl.py#L217" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>exporta_datos_visualizador</code>(<strong><code>carpetas</code></strong>, <strong><code>archivo_resultado</code></strong>, <strong><code>fecha_inicio</code></strong>=<em><code>Timestamp('2019-01-01 00:00:00')</code></em>, <strong><code>tipo</code></strong>=<em><code>'victimas'</code></em>)</p>
+<h4 id="exporta_datos_visualizador" class="doc_header"><code>exporta_datos_visualizador</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/etl.py#L219" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>exporta_datos_visualizador</code>(<strong><code>carpetas</code></strong>, <strong><code>archivo_resultado</code></strong>, <strong><code>fecha_inicio</code></strong>=<em><code>Timestamp('2019-01-01 00:00:00')</code></em>, <strong><code>tipo</code></strong>=<em><code>'victimas'</code></em>)</p>
 </blockquote>
 <p>Escribe en archivo_resultado un csv para consumirse en el visualizador.</p>
 <p>La opción tipo=victimas/carpetas controla si los datos de entrada son carpetas o victimas.</p>
@@ -1342,7 +1328,7 @@ que relacionen los niveles con las columnas Delito y Categoría en la base de V�
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="serie_de_tiempo_categoria" class="doc_header"><code>serie_de_tiempo_categoria</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/etl.py#L238" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>serie_de_tiempo_categoria</code>(<strong><code>carpetas</code></strong>, <strong><code>fecha_inicio</code></strong>, <strong><code>categoria</code></strong>, <strong><code>freq</code></strong>=<em><code>'M'</code></em>)</p>
+<h4 id="serie_de_tiempo_categoria" class="doc_header"><code>serie_de_tiempo_categoria</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/etl.py#L240" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>serie_de_tiempo_categoria</code>(<strong><code>carpetas</code></strong>, <strong><code>fecha_inicio</code></strong>, <strong><code>categoria</code></strong>, <strong><code>freq</code></strong>=<em><code>'M'</code></em>)</p>
 </blockquote>
 <p>Regresa una serie de tiempo con los agregados por <code>freq</code> de la <code>categoria</code>.</p>
 <p>parameters:
@@ -1414,8 +1400,8 @@ freq: frecuencia de agregación (<a href="https://pandas.pydata.org/pandas-docs/
   <tbody>
     <tr>
       <th>0</th>
-      <td>2016-02-29</td>
-      <td>2</td>
+      <td>2016-01-31</td>
+      <td>1</td>
     </tr>
   </tbody>
 </table>
@@ -1446,7 +1432,7 @@ freq: frecuencia de agregación (<a href="https://pandas.pydata.org/pandas-docs/
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="serie_tiempo_categorias_unidades" class="doc_header"><code>serie_tiempo_categorias_unidades</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/etl.py#L259" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>serie_tiempo_categorias_unidades</code>(<strong><code>datos</code></strong>, <strong><code>fecha_inicio</code></strong>, <strong><code>tipo</code></strong>=<em><code>'victimas'</code></em>, <strong><code>geografia</code></strong>=<em><code>'colonias'</code></em>, <strong><code>freq</code></strong>=<em><code>'W'</code></em>, <strong><code>categorias</code></strong>=<em><code>['Nivel 1']</code></em>)</p>
+<h4 id="serie_tiempo_categorias_unidades" class="doc_header"><code>serie_tiempo_categorias_unidades</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/etl.py#L261" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>serie_tiempo_categorias_unidades</code>(<strong><code>datos</code></strong>, <strong><code>fecha_inicio</code></strong>, <strong><code>tipo</code></strong>=<em><code>'victimas'</code></em>, <strong><code>geografia</code></strong>=<em><code>'colonias'</code></em>, <strong><code>freq</code></strong>=<em><code>'W'</code></em>, <strong><code>categorias</code></strong>=<em><code>['Nivel 1']</code></em>)</p>
 </blockquote>
 <p>Regresa una serie de tiempo con los agregados por <code>freq</code> para categorias y
 la geografía especificada.</p>
@@ -1525,41 +1511,41 @@ categorias: lista de las categorías para agregar. Las columnas deben existir en
     <tr>
       <th>0</th>
       <td>2019-01-31</td>
-      <td>7 DE JULIO</td>
-      <td>868.0</td>
-      <td>Nivel 1_Abuso de Confianza</td>
+      <td>AGRICOLA ORIENTAL IV</td>
+      <td>703.0</td>
+      <td>Nivel 1_Abuso Sexual</td>
       <td>0</td>
     </tr>
     <tr>
       <th>1</th>
       <td>2019-01-31</td>
-      <td>AGRICOLA ORIENTAL V</td>
-      <td>885.0</td>
-      <td>Nivel 1_Abuso de Confianza</td>
+      <td>AMPLIACION MIGUEL HIDALGO 2A SECC</td>
+      <td>1181.0</td>
+      <td>Nivel 1_Abuso Sexual</td>
       <td>0</td>
     </tr>
     <tr>
       <th>2</th>
       <td>2019-01-31</td>
-      <td>ASTURIAS (AMPL)</td>
-      <td>170.0</td>
-      <td>Nivel 1_Abuso de Confianza</td>
+      <td>BOSQUE DE TEPEXIMILPA</td>
+      <td>1193.0</td>
+      <td>Nivel 1_Abuso Sexual</td>
       <td>0</td>
     </tr>
     <tr>
       <th>3</th>
       <td>2019-01-31</td>
-      <td>AÑO DE JUAREZ</td>
-      <td>1469.0</td>
-      <td>Nivel 1_Abuso de Confianza</td>
+      <td>BOSQUES DE LAS LOMAS</td>
+      <td>224.0</td>
+      <td>Nivel 1_Abuso Sexual</td>
       <td>0</td>
     </tr>
     <tr>
       <th>4</th>
       <td>2019-01-31</td>
-      <td>BOSQUE DE CHAPULTEPEC I, II Y III SECCIONES</td>
-      <td>187.0</td>
-      <td>Nivel 1_Abuso de Confianza</td>
+      <td>CAFETALES I (RDCIAL)</td>
+      <td>192.0</td>
+      <td>Nivel 1_Abuso Sexual</td>
       <td>0</td>
     </tr>
     <tr>
@@ -1571,48 +1557,48 @@ categorias: lista de las categorías para agregar. Las columnas deben existir en
       <td>...</td>
     </tr>
     <tr>
-      <th>640</th>
+      <th>907</th>
       <td>2019-01-31</td>
-      <td>TACUBAYA</td>
-      <td>181.0</td>
+      <td>SIMON  BOLIVAR</td>
+      <td>1480.0</td>
       <td>Nivel 1_Violencia Familiar</td>
       <td>0</td>
     </tr>
     <tr>
-      <th>641</th>
+      <th>908</th>
       <td>2019-01-31</td>
-      <td>TENORIOS</td>
-      <td>1401.0</td>
+      <td>STA CRUZ ATOYAC</td>
+      <td>170.0</td>
       <td>Nivel 1_Violencia Familiar</td>
       <td>0</td>
     </tr>
     <tr>
-      <th>642</th>
+      <th>909</th>
       <td>2019-01-31</td>
-      <td>TEPETATAL</td>
-      <td>14.0</td>
+      <td>STA MA AZTAHUACAN (PBLO)</td>
+      <td>1000.0</td>
       <td>Nivel 1_Violencia Familiar</td>
       <td>0</td>
     </tr>
     <tr>
-      <th>643</th>
+      <th>910</th>
       <td>2019-01-31</td>
-      <td>TLAXPANA</td>
-      <td>204.0</td>
+      <td>TABACALERA</td>
+      <td>471.0</td>
       <td>Nivel 1_Violencia Familiar</td>
       <td>0</td>
     </tr>
     <tr>
-      <th>644</th>
+      <th>911</th>
       <td>2019-01-31</td>
-      <td>TOLTECA</td>
-      <td>969.0</td>
+      <td>TACUBA</td>
+      <td>1156.0</td>
       <td>Nivel 1_Violencia Familiar</td>
       <td>0</td>
     </tr>
   </tbody>
 </table>
-<p>645 rows × 5 columns</p>
+<p>912 rows × 5 columns</p>
 </div></div>
 
 </div>
@@ -1640,7 +1626,7 @@ categorias: lista de las categorías para agregar. Las columnas deben existir en
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="punto_to_hexid" class="doc_header"><code>punto_to_hexid</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/etl.py#L290" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>punto_to_hexid</code>(<strong><code>punto</code></strong>, <strong><code>resolution</code></strong>)</p>
+<h4 id="punto_to_hexid" class="doc_header"><code>punto_to_hexid</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/etl.py#L292" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>punto_to_hexid</code>(<strong><code>punto</code></strong>, <strong><code>resolution</code></strong>)</p>
 </blockquote>
 <p>Regresa el hexid (h3) del punto.</p>
 
@@ -1678,7 +1664,7 @@ categorias: lista de las categorías para agregar. Las columnas deben existir en
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="agrega_en_hexagonos" class="doc_header"><code>agrega_en_hexagonos</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/etl.py#L295" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>agrega_en_hexagonos</code>(<strong><code>puntos</code></strong>, <strong><code>resolution</code></strong>)</p>
+<h4 id="agrega_en_hexagonos" class="doc_header"><code>agrega_en_hexagonos</code><a href="https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/criminologia_cdmx/etl.py#L297" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>agrega_en_hexagonos</code>(<strong><code>puntos</code></strong>, <strong><code>resolution</code></strong>)</p>
 </blockquote>
 <p>Regresa un GeoDataFrame con las cuentas de puntos agregadas en hexágonos.</p>
 <p>params:
