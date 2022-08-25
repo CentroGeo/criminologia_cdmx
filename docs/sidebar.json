@@ -1,9 +1,0 @@
-{
-  "criminologia_cdmx": {
-    "Overview": "/",
-    "etl": "etl.html",
-    "patrones_espacio_temporales": "hotspots.html",
-    "covariables": "covariables.html",
-    "modelos": "modelos.html"
-  }
-}

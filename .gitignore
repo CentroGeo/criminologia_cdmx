@@ -154,3 +154,5 @@ img/*
 !img/.gitkeep
 datos/criminologia_capas.gpkg-shm
 datos/criminologia_capas.gpkg-wal
+_docs/
+sidebar.yml
