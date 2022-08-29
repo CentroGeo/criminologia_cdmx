@@ -29,7 +29,8 @@ from .covariables import *
 def variable_dependiente(datos, columna_y, valores_y, 
                            fecha_inicio, fecha_fin, 
                            agregacion='colonias',
-                           nombre_y=None):
+                           nombres_y=None,
+                           agregado=False):
     """ Regresa un DataFrame con la variable independicente agregada entre fecha_inicio y fecha_fin
         en las unidades requeridas.
         
@@ -41,8 +42,9 @@ def variable_dependiente(datos, columna_y, valores_y,
             fecha_fin (str): fecha final para agregar delitos "d-m-Y"
             agregacion (str): colonias/cuadrantes/manzanas. Eventualmente debe recibir 
                               agregaciones arbitrarias (opcional)
-            nombre_y (str): Nombre para la columna con la variable dependiente 
+            nombres_y (list): Lista con los nombres para las columnas con las variables dependientes 
                            (opcional, si se omite se concatenan los nombres de valores_y).
+            agregado (bool): Agregamos o no los conteos de los valores_y
     """
     fecha_inicio = pd.to_datetime(fecha_inicio, dayfirst=True)
     fecha_fin = pd.to_datetime(fecha_fin, dayfirst=True)
@@ -64,20 +66,33 @@ def variable_dependiente(datos, columna_y, valores_y,
         columna_agrega = 'manzana_cvegeo'
     else:
         raise ValueError("unidades debe ser 'colonias' o 'cuadrantes'")
-    datos = datos.groupby(columna_agrega).size()
-    if nombre_y is not None:
-        datos.name = nombre_y
+
+    if agregado:
+        datos = pd.DataFrame(datos.groupby(columna_agrega).size())
     else:
-        datos.name = " ".join(valores_y)
+        datos = datos.groupby([columna_agrega, columna_y]).size().unstack()
+
+    if nombres_y is not None:
+        try:
+            assert len(nombres_y) == len(datos.columns)
+        except:
+            print("La lista de nombres debe ser del mismo tamaño que la lista de variables")
+            raise
+        datos.columns = nombres_y
+    else:
+        if agregado:
+            datos.columns = [" ".join(valores_y)]
+
     if agregacion in ('colonias', 'cuadrantes'):
         unidades = gpd.read_file("datos/criminologia_capas.gpkg", layer=layer)
     else:
         unidades = (gpd
                     .read_file("datos/descargas/manzanas_identificadores.gpkg", layer="manzanas")
-                    .rename({"CVEGEO": columna_agrega}, axis=1))
+                    .rename({"CVEGEO": columna_agrega}, axis=1)
+                    )
         
     
-    datos = unidades[[columna_agrega]].merge(datos, on=columna_agrega, how='left').fillna(0)
+    datos = unidades[[columna_agrega]].join(datos, how='left').fillna(0)
     return datos   
 
 # %% ../03_modelos.ipynb 8
