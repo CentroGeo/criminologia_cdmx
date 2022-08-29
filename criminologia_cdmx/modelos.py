@@ -125,13 +125,14 @@ class CapaDeAnalisis(object):
         self.geo = self.__get_geo(agregacion)
         self.w = self.__calcula_matriz_pesos()
         # TODO self_repr() una función que describa en texto lo que pasó (datos válidos, etc.)
-        
+    
     def __merge_covars(self):
         """Regresa la unión de X y Y."""
         # TODO: aquí hay que contar cuántos datos perdimos por valores faltantes
         df = (self.Y.merge(self.X, on=self.campo_id)
                     .replace([np.inf, -np.inf], np.nan)
                     .dropna())
+        df.set_index(self.campo_id, inplace=True)
         return df
     
     def __get_campo_id(self, agregacion):
@@ -147,7 +148,8 @@ class CapaDeAnalisis(object):
     def __get_geo(self, agregacion):
         """ Regresa el GeoDataframe correspondiente a la agregación."""
         geo = gpd.read_file("datos/criminologia_capas.gpkg", layer=agregacion)
-        geo = geo.merge(self.df, on=self.campo_id, how='inner')
+        geo.set_index(self.campo_id, inplace=True)
+        geo = geo.join(self.df, how='inner')
         return geo
     
     def __calcula_matriz_pesos(self):
@@ -155,7 +157,7 @@ class CapaDeAnalisis(object):
         # TODO: aquí hay que contar los datos perdidos por islas
         with warnings.catch_warnings():
             warnings.simplefilter("ignore")
-            w = Queen.from_dataframe(self.geo)
+            w = Queen.from_dataframe(self.geo.reset_index(), idVariable=self.campo_id)
             if len(w.islands):
                 self.df.drop(w.islands, inplace=True)
                 self.geo.drop(w.islands, inplace=True)
@@ -350,7 +352,7 @@ class ModeloGLM(object):
         mapa_residuales = self.capa.Y.join(resid_df, how='right')
         geos = gpd.read_file("datos/criminologia_capas.gpkg",
                              capa=self.capa.agregacion)
-        mapa_residuales = geos.merge(mapa_residuales, on=self.capa.campo_id)
+        mapa_residuales = geos.join(mapa_residuales, how='right')
         self.gdf_residuales = mapa_residuales
         
     def __calcula_moran_residuales(self):
@@ -500,7 +502,7 @@ class ModeloGLM(object):
             ax.set_title(f"I de Moran {np.round(moran.I, 3)}, Significancia {moran.p_sim}")
         return ax
 
-# %% ../03_modelos.ipynb 14
+# %% ../03_modelos.ipynb 16
 class ComparaModelos(object):
     """ Clase para construir comparaciones de modelos.
         Construte dos DataFrames para visualizar rápidamente una comparación de los modelos:

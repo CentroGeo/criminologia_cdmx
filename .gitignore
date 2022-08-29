@@ -1,5 +1,5 @@
 .jekyll-cache/
-Gemfile.lock  
+Gemfile.lock
 *.bak
 .gitattributes
 .last_checked
@@ -156,3 +156,5 @@ datos/criminologia_capas.gpkg-shm
 datos/criminologia_capas.gpkg-wal
 _docs/
 sidebar.yml
+
+/.quarto/
