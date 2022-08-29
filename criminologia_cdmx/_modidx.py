@@ -148,4 +148,6 @@ d = { 'settings': { 'branch': 'master',
                                            'criminologia_cdmx.modelos.ModeloGLM.scatterpĺot_moran': ( 'modelos.html#scatterpĺot_moran',
                                                                                                       'criminologia_cdmx/modelos.py'),
                                            'criminologia_cdmx.modelos.variable_dependiente': ( 'modelos.html#variable_dependiente',
-                                                                                               'criminologia_cdmx/modelos.py')}}}
+                                                                                               'criminologia_cdmx/modelos.py'),
+                                           'criminologia_cdmx.modelos.variable_dependiente_serie': ( 'modelos.html#variable_dependiente_serie',
+                                                                                                     'criminologia_cdmx/modelos.py')}}}
