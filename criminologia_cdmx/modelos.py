@@ -14,6 +14,7 @@ import copy
 import numpy as np
 import pandas as pd
 import geopandas as gpd
+import janitor as jn
 from libpysal.weights import Queen, lag_spatial
 from esda.moran import Moran
 from splot.esda import moran_scatterplot
@@ -110,11 +111,46 @@ def variable_dependiente_serie(datos:pd.DataFrame, # carpetas/victimas con ids e
     Regresa un DataFrame con la serie de tiempo para la(s) variable(s) dependiente(s) seleccionada(s),
     agregadas en unidades espaciales.  
     """
+    fecha_inicio = pd.to_datetime(fecha_inicio, dayfirst=True)
+    fecha_fin = pd.to_datetime(fecha_fin, dayfirst=True)
+    datos = datos.loc[datos['fecha_hechos'].between(fecha_inicio, fecha_fin)]
+    datos = datos.loc[datos[columna_y].isin(valores_y)]
+    if agregacion == 'colonias':
+        columna_agrega = 'colonia_cve'
+        layer = 'colonias'
+    elif agregacion == 'cuadrantes':
+        columna_agrega = 'cuadrante_id'
+        layer = 'cuadrantes'
+    elif agregacion == 'manzanas':
+        try:
+            assert 'manzana_cvegeo' in datos.columns
+        except AssertionError:
+            print("Para usar la agregación por manzanas primero \
+                  debes agregar el identificador correspondiente")
+            raise
+        columna_agrega = 'manzana_cvegeo'
+    else:
+        raise ValueError("unidades debe ser 'colonias' o 'cuadrantes'")
+
+    fechas_todas = pd.date_range(fecha_inicio, fecha_fin, freq=freq)
+    delitos_todos = datos[columna_y].unique()
+    st = (datos
+         .groupby([columna_agrega, columna_y])
+         .resample(rule='Y', on='fecha_hechos')
+         .size()
+         .reset_index()
+         .rename({0:'conteo'}, axis=1)
+         .complete(
+            columna_agrega,
+            {'fecha_hechos' : fechas_todas},
+            {columna_y : delitos_todos},
+            sort=True
+         )
+         .fillna(0))
+    return st
 
 
-
-
-# %% ../03_modelos.ipynb 10
+# %% ../03_modelos.ipynb 12
 class CapaDeAnalisis(object):
     """ Clase para contener variable objetivo y covariables.
     
@@ -299,7 +335,7 @@ class CapaDeAnalisis(object):
     # Implementar transformadores sobre las variables
     
 
-# %% ../03_modelos.ipynb 13
+# %% ../03_modelos.ipynb 15
 class ModeloGLM(object):
     """ Wrapper para modelos de Regresión GLM de statsmodels.
         
@@ -536,7 +572,7 @@ class ModeloGLM(object):
             ax.set_title(f"I de Moran {np.round(moran.I, 3)}, Significancia {moran.p_sim}")
         return ax
 
-# %% ../03_modelos.ipynb 18
+# %% ../03_modelos.ipynb 20
 class ComparaModelos(object):
     """ Clase para construir comparaciones de modelos.
         Construte dos DataFrames para visualizar rápidamente una comparación de los modelos:
