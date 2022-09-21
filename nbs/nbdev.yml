@@ -1,0 +1,9 @@
+project:
+  output-dir: _docs
+
+website:
+  title: "criminologia_cdmx"
+  site-url: "https://CentroGeo.github.io/criminologia_cdmx"
+  description: "Herramientas para análisis espacial de delitos en CDMX."
+  repo-branch: master
+  repo-url: "https://github.com/CentroGeo/criminologia_cdmx"

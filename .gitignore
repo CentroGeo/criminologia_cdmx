@@ -1,3 +1,13 @@
+_docs/
+_publish.yml
+_quarto.yml
+_proc/
+tests/settings.ini
+idx/
+.install
+conda/
+_site/
+
 .jekyll-cache/
 Gemfile.lock  
 *.bak

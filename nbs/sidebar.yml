@@ -1,0 +1,19 @@
+website:
+  sidebar:
+    contents:
+      - index.ipynb
+      - section: api
+        contents:
+          - api/00_etl.ipynb
+          - api/01_hotspots.ipynb
+          - api/02_covariables.ipynb
+          - api/03_modelos.ipynb
+      - section: fuentes
+        contents:
+          - fuentes/Bases_indicadores.ipynb
+      - section: tutoriales
+        contents:
+          - tutoriales/Tutorial_GLM_1.ipynb
+          - tutoriales/Tutorial_GLM_2.ipynb
+          - tutoriales/Tutorial_modelos_2.ipynb
+          - tutoriales/robo_repartidor.ipynb
