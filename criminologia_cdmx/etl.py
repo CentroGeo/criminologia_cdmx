@@ -2,7 +2,7 @@
 
 # %% auto 0
 __all__ = ['DATA_PATH', 'DOWNLOADS_PATH', 'procesa_registros', 'get_carpetas_from_api', 'get_victimas_from_api',
-           'get_historico_carpetas', 'get_historico_victimas', 'get_carpetas_desde_archivo',
+           'descarga_historico_carpetas', 'descarga_historico_victimas', 'get_carpetas_desde_archivo',
            'get_victimas_desde_archivo', 'descarga_manzanas', 'agrega_ids_espaciales', 'agregar_categorias_carpetas',
            'agregar_categorias_victimas', 'exporta_datos_visualizador', 'serie_de_tiempo_categoria',
            'serie_tiempo_categorias_unidades', 'punto_to_hexid', 'agrega_en_hexagonos']
@@ -11,6 +11,7 @@ __all__ = ['DATA_PATH', 'DOWNLOADS_PATH', 'procesa_registros', 'get_carpetas_fro
 import os
 import glob
 import itertools
+from typing import Union
 from pathlib import Path
 import numpy as np
 import pandas as pd
@@ -19,14 +20,15 @@ from datetime import timedelta, date, datetime
 import seaborn as sns
 import requests
 import h3
-from shapely.geometry import Polygon
+from shapely.geometry import Polygon, Point
 
 # %% ../nbs/api/00_etl.ipynb 4
 DATA_PATH = os.path.abspath("../../datos/")
 DOWNLOADS_PATH = os.path.abspath("../../datos/descargas/")
 
 # %% ../nbs/api/00_etl.ipynb 6
-def procesa_registros(records):
+def procesa_registros(records:pd.DataFrame # viene de leer datos de carpetas o víctimas
+    )-> gpd.GeoDataFrame: # el mismo pero con los registros corregidos
     """Hace el procesamineto básico de los records de carpetas o víctimas."""
     records.replace('NA', np.nan, inplace=True)
     records.dropna(subset=['longitud', 'latitud'], how='any', inplace=True)
@@ -35,10 +37,14 @@ def procesa_registros(records):
     return records
 
 # %% ../nbs/api/00_etl.ipynb 8
-def get_carpetas_from_api(limit=100):
+def get_carpetas_from_api(limit:int=100 # Cuántos registros traigo del api
+    )-> Union[gpd.GeoDataFrame, None]:
     """Regresa un GeoDataFrame con los primeros `limit` registros de la base abierta."""
     url = f'https://datos.cdmx.gob.mx/api/3/action/datastore_search?resource_id=48fcb848-220c-4af0-839b-4fd8ac812c0f&limit={limit}'
-    r = requests.get(url, allow_redirects=True)
+    try:
+        r = requests.get(url, allow_redirects=True)
+    except: # Quizá deberíamos cachar cosas específicas
+        return None
     records = r.json()['result']['records']
     records = pd.DataFrame(records)
     records = procesa_registros(records)
@@ -46,10 +52,14 @@ def get_carpetas_from_api(limit=100):
     return records
 
 # %% ../nbs/api/00_etl.ipynb 11
-def get_victimas_from_api(limit=100):
+def get_victimas_from_api(limit=100 # Cuántos registros traigo del api
+    )-> Union[gpd.GeoDataFrame, None]:
     """Regresa un GeoDataFrame con los primeros `limit` registros de la base abierta de víctimas."""
     url = f'https://datos.cdmx.gob.mx/api/3/action/datastore_search?resource_id=d543a7b1-f8cb-439f-8a5c-e56c5479eeb5&limit={limit}'
-    r = requests.get(url, allow_redirects=True)
+    try:
+        r = requests.get(url, allow_redirects=True)
+    except:
+        return None
     records = r.json()['result']['records']
     records = pd.DataFrame(records)
     records = procesa_registros(records)
@@ -60,34 +70,34 @@ def get_victimas_from_api(limit=100):
     return records
 
 # %% ../nbs/api/00_etl.ipynb 14
-def get_historico_carpetas():
-    """Regresa un GeoDataFrame con todos los registros de carpetas de investigación."""
-    archivo = os.path.join(DOWNLOADS_PATH, 'carpetas_fiscalia.csv')
+def descarga_historico_carpetas()->os.path:
+    """Descarga el histórico de carpetas y regrersa el path al archivo."""
+    absp = os.path.abspath(os.path.join(DOWNLOADS_PATH, 'carpetas_fiscalia.csv'))
     url = "https://archivo.datos.cdmx.gob.mx/fiscalia-general-de-justicia/carpetas-de-investigacion-fgj-de-la-ciudad-de-mexico/carpetas_completa_febrero_2022.csv"
-    r = requests.get(url, allow_redirects=True)
-    open(archivo, 'wb').write(r.content)
-    records = pd.read_csv(archivo, low_memory=False)
-    records = procesa_registros(records)
-    records['fecha_hechos'] = pd.to_datetime(records.fecha_hechos, dayfirst=True)
-    return records
+    if os.path.exists(absp):
+        print("El archivo ya está descargado")
+    else:
+        r = requests.get(url, allow_redirects=True)
+        open(absp, 'wb').write(r.content)
+    return absp
+
 
 # %% ../nbs/api/00_etl.ipynb 17
-def get_historico_victimas():
-    """Regresa un GeoDataFrame con todos los registros de victimas en carpetas de investigación."""
-    archivo = os.path.join(DOWNLOADS_PATH, 'victimas_carpetas_fiscalia.csv')
+def descarga_historico_victimas()->os.path:
+    """Descarga el histórico de víctimas y regrersa el path al archivo."""
+    absp = os.path.abspath(os.path.join(DOWNLOADS_PATH, 'victimas_carpetas_fiscalia.csv'))
     url = "https://archivo.datos.cdmx.gob.mx/fiscalia-general-de-justicia/victimas-en-carpetas-de-investigacion-fgj/victimas_completa_febrero_2022.csv"
-    r = requests.get(url, allow_redirects=True)
-    open(archivo, 'wb').write(r.content)
-    records = pd.read_csv(archivo)
-    records = procesa_registros(records)
-    records['FechaHecho'] = pd.to_datetime(records.FechaHecho, dayfirst=True)
-    records = records.rename({'FechaHecho':'fecha_hechos',
-                              'Delito': 'delito',
-                              'Categoria': 'categoria'}, axis=1)
-    return records
+    if os.path.exists(absp):
+        print("El archivo ya está descargado")
+    else:
+        r = requests.get(url, allow_redirects=True)
+        open(absp, 'wb').write(r.content)
+    return absp
+
 
 # %% ../nbs/api/00_etl.ipynb 20
-def get_carpetas_desde_archivo(archivo):
+def get_carpetas_desde_archivo(archivo:os.path # El path al archivo (`descarga_historico_carpetas`)
+    )->gpd.GeoDataFrame:
     """Regresa un GeoDataFrame con los registros leídos de un archivo"""
     records = pd.read_csv(archivo, low_memory=False)
     records = procesa_registros(records)
@@ -95,7 +105,8 @@ def get_carpetas_desde_archivo(archivo):
     return records
 
 # %% ../nbs/api/00_etl.ipynb 23
-def get_victimas_desde_archivo(archivo):
+def get_victimas_desde_archivo(archivo # El path al archivo (`descarga_historico_victimas`)
+    )->os.path:
     """Regresa un GeoDataFrame con los registros leídos de un archivo"""
     records = pd.read_csv(archivo)
     records = procesa_registros(records)
@@ -106,28 +117,23 @@ def get_victimas_desde_archivo(archivo):
     return records
 
 # %% ../nbs/api/00_etl.ipynb 26
-def descarga_manzanas():
+def descarga_manzanas()->os.path:
     """ Descarga la geometría de manzanas con ids de cuadrante y colonia."""
-    if os.path.exists(DOWNLOADS_PATH + 'manzanas_identificadores.gpkg'):
+    absp = os.path.abspath(os.path.join(DOWNLOADS_PATH, 'manzanas_identificadores.gpkg'))
+    if os.path.exists(absp):
         print("El archivo ya está descargado.")
     else:
         url = "https://www.dropbox.com/s/a370kmtknhgca2y/manzanas_identificadores.gpkg?dl=1"
         r = requests.get(url, allow_redirects=True)
-        open(DOWNLOADS_PATH + 'manzanas_identificadores.gpkg', 'wb').write(r.content)
+        open(absp, 'wb').write(r.content)
+    return absp
 
 # %% ../nbs/api/00_etl.ipynb 29
-def agrega_ids_espaciales(carpetas, metodo='manzanas', tolerancia=500):
-    """ Agrega ids de colonias y cuadrantes a la base de carpetas.
-    
-        Args:
-        
-            metodo (str): manzanas/poligonos. El método 'manzanas' hace un join_nearest con 
-                          las manzanas que ya tienen ids de cuadrante y polígono; el método poligonos
-                          hace la unión espacial de los incidentes con las geometrías.
-            tolerancia (float): ¿qué tan lejos puede estar un incidente de una manzana? En el
-                                método 'poligonos' se ignora
-    
-    """
+def agrega_ids_espaciales(carpetas: gpd.GeoDataFrame, # Datos de carpetas o victimas (p.ej. `get_victimas_desde_archivo`)
+                          metodo:str='manzanas', # manzanas/poligonos
+                          tolerancia:float=500 # ¿qué tan lejos puede estar un incidente de una manzana?
+    )->gpd.GeoDataFrame:
+    """ Agrega ids de colonias y cuadrantes a la base de carpetas."""
     
     if 'manzana_cvegeo' in carpetas.columns:
         carpetas = carpetas.drop(columns='colonia_cve')
@@ -162,8 +168,10 @@ def agrega_ids_espaciales(carpetas, metodo='manzanas', tolerancia=500):
         raise ValueError("'metodo' debe ser 'poligonos' o 'manzanas'")
     return carpetas
 
-# %% ../nbs/api/00_etl.ipynb 32
-def agregar_categorias_carpetas(carpetas, archivo_categorias=os.path.join(DATA_PATH, "categorias_carpetas.csv")):
+# %% ../nbs/api/00_etl.ipynb 33
+def agregar_categorias_carpetas(carpetas:gpd.GeoDataFrame, # Carpetas de investigación (p.ej. `get_carpetas_desde_archivo`) 
+                                archivo_categorias:os.path # path al archivo con las categorías
+                              )->gpd.GeoDataFrame:
     """Agrega una columna con categorías definidas por el usuario.
 
       Las categorías tienen que venir en un csv con columnas incidente y categoria que
@@ -179,8 +187,9 @@ def agregar_categorias_carpetas(carpetas, archivo_categorias=os.path.join(DATA_P
                 .drop(columns='incidente'))
     return carpetas
 
-# %% ../nbs/api/00_etl.ipynb 35
-def agregar_categorias_victimas(carpetas, archivo_categorias=os.path.join(DATA_PATH, "categorias_victimas.csv")):
+# %% ../nbs/api/00_etl.ipynb 36
+def agregar_categorias_victimas(carpetas:gpd.GeoDataFrame, # Víctimas en Carpetas de investigación (p.ej. `get_victimas_desde_archivo`)
+                                archivo_categorias:os.path)-> gpd.GeoDataFrame:
     """Columnas con niveles definidos por el usuario
 
       Las categorías tienen que venir en un csv con columnas llamadas Nivel 1, Nivel 2 ...
@@ -196,10 +205,11 @@ def agregar_categorias_victimas(carpetas, archivo_categorias=os.path.join(DATA_P
                 )
     return carpetas
 
-# %% ../nbs/api/00_etl.ipynb 38
-def exporta_datos_visualizador(carpetas, archivo_resultado,
-                               fecha_inicio=pd.to_datetime('01/01/2019'),
-                               tipo='victimas'):
+# %% ../nbs/api/00_etl.ipynb 39
+def exporta_datos_visualizador(carpetas:gpd.GeoDataFrame, # Datos de carpetas o victimas (p.ej. `get_victimas_desde_archivo`)
+                               archivo_resultado:os.path, # A dónde exportamos el archivo
+                               fecha_inicio:pd.DatetimeTZDtype=pd.to_datetime('01/01/2019'), # Dónde empezamos
+                               tipo:str='victimas')->None:
     """ Escribe en archivo_resultado un csv para consumirse en el visualizador.
 
         La opción tipo=victimas/carpetas controla si los datos de entrada son carpetas o victimas.
@@ -217,16 +227,13 @@ def exporta_datos_visualizador(carpetas, archivo_resultado,
     carpetas = carpetas.loc[carpetas.fecha_hechos >= fecha_inicio]
     carpetas.to_csv(archivo_resultado)
 
-# %% ../nbs/api/00_etl.ipynb 41
-def serie_de_tiempo_categoria(carpetas, fecha_inicio, categoria, freq='M'):
-    """ Regresa una serie de tiempo con los agregados por `freq` de la `categoria`.
-
-        parameters:
-        carpetas: incidentes, deben traer la columna categoria
-        fecha_inicio: pd.datetime fecha del inicio de la serie
-        categoria: nombre de la categoría a agregar (`agregar_categorias_de_usuario`)
-        freq: frecuencia de agregación (https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#offset-aliases)
-    """
+# %% ../nbs/api/00_etl.ipynb 42
+def serie_de_tiempo_categoria(carpetas:gpd.GeoDataFrame, # incidentes, deben traer la columna categoria (p.ej. 'agregar_categorias_carpetas')
+                              fecha_inicio:pd.DatetimeTZDtype, # fecha del inicio de la serie
+                              categoria, # nombre de la categoría a agregar (`agregar_categorias_carpetas`)
+                              freq:str='M' # frecuencia de agregación (https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#offset-aliases)
+                              )-> pd.DataFrame:
+    """ Regresa una serie de tiempo con los agregados por `freq` de la `categoria`."""
     carpetas = carpetas.loc[carpetas.fecha_hechos >= fecha_inicio]
     carpetas = carpetas.loc[carpetas.categoria == categoria]
     serie = (carpetas
@@ -238,21 +245,16 @@ def serie_de_tiempo_categoria(carpetas, fecha_inicio, categoria, freq='M'):
             )
     return serie
 
-# %% ../nbs/api/00_etl.ipynb 44
-def serie_tiempo_categorias_unidades(datos, fecha_inicio, tipo='victimas',
-                                     geografia='colonias',freq='W',
-                                     categorias=['Nivel 1']):
+# %% ../nbs/api/00_etl.ipynb 45
+def serie_tiempo_categorias_unidades(datos:gpd.GeoDataFrame, # víctimas/carpetas, deben tener agregadas las categorías de usuario
+                                     fecha_inicio:pd.DatetimeTZDtype, # fecha del inicio de la serie 
+                                     tipo:str='victimas', # carpetas/victimas
+                                     geografia:str='colonias',# colonias/cuadrantes
+                                     freq:str='W', #frecuencia de agregación (https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#offset-aliases)
+                                     categorias:list=['Nivel 1'] # lista de las categorías para agregar. Las columnas deben existir en la base
+                                     )->pd.DataFrame:
     """ Regresa una serie de tiempo con los agregados por `freq` para categorias y
-        la geografía especificada.
-
-        parameters:
-        datos: víctimas/carpetas, deben tener agregadas las categorías de usuario
-        fecha_inicio: pd.datetime fecha del inicio de la serie
-        tipo: carpetas/victimas
-        geografia: 'colonias/cuadrantes'
-        freq: frecuencia de agregación (https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#offset-aliases)
-        categorias: lista de las categorías para agregar. Las columnas deben existir en la base
-    """
+        la geografía especificada."""
     dummies = pd.get_dummies(datos[categorias])
     datos = datos.loc[datos.fecha_hechos >= fecha_inicio]
     datos = pd.concat([datos, dummies], axis=1)
@@ -269,19 +271,18 @@ def serie_tiempo_categorias_unidades(datos, fecha_inicio, tipo='victimas',
     serie = serie.reset_index().melt(id_vars=['fecha_hechos', *id_vars])
     return serie
 
-# %% ../nbs/api/00_etl.ipynb 47
-def punto_to_hexid(punto, resolution):
+# %% ../nbs/api/00_etl.ipynb 48
+def punto_to_hexid(punto:Point, # Punto para obtener el hex_id
+                  resolution: int # Escala de H3
+                  ):
     """Regresa el hexid (h3) del punto."""
     return h3.geo_to_h3(punto.y, punto.x, resolution)
 
-# %% ../nbs/api/00_etl.ipynb 49
-def agrega_en_hexagonos(puntos, resolution):
-    """Regresa un GeoDataFrame con las cuentas de puntos agregadas en hexágonos.
-
-       params:
-       puntos: GeoDataFrame: los puntos a agregar
-       resolution: int: la resolución en uber.h3
-    """
+# %% ../nbs/api/00_etl.ipynb 50
+def agrega_en_hexagonos(puntos:gpd.GeoDataFrame, # Los datos que vamos a pasar a hexágonos
+                       resolution:int # Escala de H3
+                       ):
+    """Regresa un GeoDataFrame con las cuentas de puntos agregadas en hexágonos."""
     puntos.loc[:,'hex_id'] = puntos.loc[:,'geometry'].apply(punto_to_hexid, args=[resolution])
     by_hex = puntos.groupby('hex_id').size().reset_index()
     # by_hex['geometry'] = by_hex['hex_id'].apply(lambda hex_id: Polygon(h3.h3_to_geo_boundary(hex_id)))
