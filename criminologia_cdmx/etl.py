@@ -22,8 +22,8 @@ import h3
 from shapely.geometry import Polygon
 
 # %% ../nbs/api/00_etl.ipynb 4
-DATA_PATH = "../../datos/"
-DOWNLOADS_PATH = "../../datos/descargas/"
+DATA_PATH = os.path.abspath("../../datos/")
+DOWNLOADS_PATH = os.path.abspath("../../datos/descargas/")
 
 # %% ../nbs/api/00_etl.ipynb 6
 def procesa_registros(records):
@@ -148,7 +148,8 @@ def agrega_ids_espaciales(carpetas, metodo='manzanas', tolerancia=500):
                     .drop(columns=['index_right']))
     elif metodo == 'manzanas':
         crs_original = carpetas.crs
-        manzanas = gpd.read_file("../../datos/descargas/manzanas_identificadores.gpkg")
+        manzanas_pth = os.path.join(DOWNLOADS_PATH, 'manzanas_identificadores.gpkg')
+        manzanas = gpd.read_file(manzanas_pth)
         manzanas['municipio_cvegeo'] = manzanas['CVE_ENT'] + manzanas['CVE_MUN']
         carpetas = (carpetas
                     .to_crs(manzanas.crs)
@@ -162,7 +163,7 @@ def agrega_ids_espaciales(carpetas, metodo='manzanas', tolerancia=500):
     return carpetas
 
 # %% ../nbs/api/00_etl.ipynb 32
-def agregar_categorias_carpetas(carpetas, archivo_categorias="../../datos/categorias_carpetas.csv"):
+def agregar_categorias_carpetas(carpetas, archivo_categorias=os.path.join(DATA_PATH, "categorias_carpetas.csv")):
     """Agrega una columna con categorías definidas por el usuario.
 
       Las categorías tienen que venir en un csv con columnas incidente y categoria que
@@ -179,7 +180,7 @@ def agregar_categorias_carpetas(carpetas, archivo_categorias="../../datos/catego
     return carpetas
 
 # %% ../nbs/api/00_etl.ipynb 35
-def agregar_categorias_victimas(carpetas, archivo_categorias="../../datos/categorias_victimas.csv"):
+def agregar_categorias_victimas(carpetas, archivo_categorias=os.path.join(DATA_PATH, "categorias_victimas.csv")):
     """Columnas con niveles definidos por el usuario
 
       Las categorías tienen que venir en un csv con columnas llamadas Nivel 1, Nivel 2 ...
