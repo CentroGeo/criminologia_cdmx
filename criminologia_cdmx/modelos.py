@@ -11,6 +11,8 @@ import math
 import random
 import string
 import copy
+import os
+from fastcore.basics import patch
 import numpy as np
 import pandas as pd
 import geopandas as gpd
@@ -22,28 +24,21 @@ import statsmodels.api as sm
 from scipy import stats
 import seaborn as sns
 import matplotlib.pyplot as plt
+from matplotlib.axes import Axes
 from .etl import *
 from .covariables import *
 
-# %% ../nbs/api/03_modelos.ipynb 5
-def variable_dependiente(datos, columna_y, valores_y, 
-                           fecha_inicio, fecha_fin, 
-                           agregacion='colonias',
-                           nombre_y=None):
+# %% ../nbs/api/03_modelos.ipynb 6
+def variable_dependiente(datos:gpd.GeoDataFrame, # carpetas/victimas con ids espaciales y categorías de usuario
+                         columna_y:str, # Nombre de la columna en donde vienen los incidentes de valor_y
+                         valores_y:str, # delitos o categorías a utilizar como Y
+                         fecha_inicio:str, # fecha inicial para agregar delitos "d-m-Y" 
+                         fecha_fin:str, # fecha final para agregar delitos "d-m-Y"
+                         agregacion:str='colonias', # colonias/cuadrantes/manzanas
+                         nombre_y:str=None # Nombre para la columna con la variable dependiente
+                         )->pd.DataFrame:
     """ Regresa un DataFrame con la variable independicente agregada entre fecha_inicio y fecha_fin
-        en las unidades requeridas.
-        
-        Args:
-            datos (DataFrame): carpetas/victimas con ids espaciales y categorías de usuario
-            columna_y (str): Nombre de la columna en donde vienen los incidentes de valor_y
-            valores_y (list): delitos o categorías a utilizar como Y
-            fecha_inicio (str): fecha inicial para agregar delitos "d-m-Y"
-            fecha_fin (str): fecha final para agregar delitos "d-m-Y"
-            agregacion (str): colonias/cuadrantes/manzanas. Eventualmente debe recibir 
-                              agregaciones arbitrarias (opcional)
-            nombre_y (str): Nombre para la columna con la variable dependiente 
-                           (opcional, si se omite se concatenan los nombres de valores_y).
-    """
+        en las unidades requeridas."""
     fecha_inicio = pd.to_datetime(fecha_inicio, dayfirst=True)
     fecha_fin = pd.to_datetime(fecha_fin, dayfirst=True)
     datos = datos.loc[datos['fecha_hechos'].between(fecha_inicio, fecha_fin)]
@@ -70,17 +65,18 @@ def variable_dependiente(datos, columna_y, valores_y,
     else:
         datos.name = " ".join(valores_y)
     if agregacion in ('colonias', 'cuadrantes'):
-        unidades = gpd.read_file("../../datos/criminologia_capas.gpkg", layer=layer)
+        pth_capas = os.path.abspath(os.path.join(DATA_PATH, 'criminologia_capas.gpkg'))
+        unidades = gpd.read_file(pth_capas, layer=layer)
     else:
+        pth_manzanas = descarga_manzanas()
         unidades = (gpd
-                    .read_file("../../datos/descargas/manzanas_identificadores.gpkg", layer="manzanas")
+                    .read_file(pth_manzanas, layer="manzanas")
                     .rename({"CVEGEO": columna_agrega}, axis=1))
         
-    
     datos = unidades[[columna_agrega]].merge(datos, on=columna_agrega, how='left').fillna(0)
     return datos   
 
-# %% ../nbs/api/03_modelos.ipynb 8
+# %% ../nbs/api/03_modelos.ipynb 9
 class CapaDeAnalisis(object):
     """ Clase para contener variable objetivo y covariables.
     
@@ -114,16 +110,20 @@ class CapaDeAnalisis(object):
                    
     """
     
-    def __init__(self, Y, covariables, agregacion='colonias'):
-        self.Y = Y
-        self.Y_nombre = Y.columns[-1] # Se asume que la última columna tiene la variable de interés
-        self.X = covariables
-        self.campo_id = self.__get_campo_id(agregacion)
-        self.X_nombres = [x for x in covariables.columns if x != self.campo_id]
-        self.agregacion = agregacion       
-        self.df = self.__merge_covars()
-        self.geo = self.__get_geo(agregacion)
-        self.w = self.__calcula_matriz_pesos()
+    def __init__(self,
+                 Y:pd.DataFrame, # la variable dependiente.
+                 covariables: pd.DataFrame, # las variables independientes
+                 agregacion:str='colonias' # colonias/cuadrantes
+                 ):
+        self.Y:pd.DataFrame = Y # la variable dependiente.
+        self.Y_nombre:str = Y.columns[-1] # Nombre de la columna con el delito a modelar. Se asume que la última columna tiene la variable de interés
+        self.X:pd.DataFrame = covariables # las variables independientes
+        self.campo_id:str = self.__get_campo_id(agregacion) # el nombre del campo común en X y Y para unirlos.
+        self.X_nombres:list = [x for x in covariables.columns if x != self.campo_id] # Lista de los nombres de columnas de las covariables.
+        self.agregacion:str = agregacion # colonias/cuadrantes
+        self.df:pd.DataFrame = self.__merge_covars() # la unión de los X con Y.
+        self.geo:gpd.GeoDataFrame = self.__get_geo(agregacion) # la unión de df con las geometrias que corresponden a `agregacion`
+        self.w:Queen = self.__calcula_matriz_pesos() # Matriz de vecindad para los datos válidos
         # TODO self_repr() una función que describa en texto lo que pasó (datos válidos, etc.)
         
     def __merge_covars(self):
@@ -162,98 +162,7 @@ class CapaDeAnalisis(object):
                 w = Queen.from_dataframe(self.geo)
         return w
     
-    def copy(self):
-        """Regresa una copia del objeto"""
-        return copy.deepcopy(self)
-    
-    def displot_Y(self, size=(12,6)):
-        """Regresa el histograma de la variable dependiente."""
-        f, ax = plt.subplots(1,figsize=size)
-        ax = sns.histplot(data=self.Y, x=self.Y_nombre, ax=ax)
-        ax.axvline(x=self.Y[self.Y_nombre].mean(), color='red')
-        ax.set_ylabel("Conteo")
-        return ax
-    
-    def pairplot_X(self, altura=10, ratio=1):
-        """Regresa un pairplot de las variables independientes."""
-        return sns.pairplot(self.X)
-    
-    def describe_Y(self):
-        """Regresa un DataFrame con estadísticas descriptivas de la variable dependiente."""
-        d = self.Y[self.Y_nombre].describe()
-        v = pd.Series({"Var":self.Y[self.Y_nombre].var()})
-        d = d.append(v)
-        d = pd.DataFrame(d)
-        d = d.reset_index()
-        d.columns = ['Estadístico', '']
-        d = d.set_index('Estadístico')
-        orden = ['count', 'mean','Var',  'std', 'min', '25%', '50%', '75%', 'max']
-        d = d.reindex(orden)
-        d = d.rename({'count': 'N', 'mean': 'Media', 
-                      'Var':'Varianza', 
-                      'std': 'Desviación estándar',
-                      'min': 'Mínimo',
-                      'max': 'Máximo'})
-        return d
-        
-    def retraso_x(self, columna):
-        """ Agrega una columna con el retraso espacial de la variable `columna`.
-        
-            La nueva columna se va a nombrar `columna`_lag.
-            
-            **NOTA:** Por lo pronto se usa la matriz de vecindad que calculada en 
-            `__calcula_matriz_pesos`.
-        """
-        self.w.transform = 'R'
-        rezago = lag_spatial(self.w, self.df[columna])
-        self.df[columna + '_lag'] = rezago
-        self.X_nombres.append(columna + '_lag')
-        return self
-    
-    def mapa_Y(self, agregacion, ax=None, 
-               size=(10,10), clasificacion='quantiles', 
-               cmap='YlOrRd', legend=True):
-        """ Regresa un ax con el mapa de la variable dependiente.
-        
-            Args:
-            agregacion (str): colonias/cuadrantes
-            ax (matplotlib.plot.ax): el eje en donde se hace el mapa (opcional, default None)
-            size ((int,int)): tamaño del mapa (opcional, si se pasa un eje se ignora)
-            clasificacion (str): esquema de clasificación demapclassify (opcional)
-            cmap (str): mapa de colores de matplotlib (opcional)
-            legend (bool): poner o no poner la leyenda (opcional)
-        """
-        capa = gpd.read_file("../../datos/criminologia_capas.gpkg", layer=agregacion)
-        capa = capa.merge(self.Y, on=self.campo_id)
-        if ax is None:
-            f, ax = plt.subplots(1,figsize=size)
-        ax = capa.plot(self.Y_nombre, scheme=clasificacion, ax=ax, cmap=cmap, legend=legend)
-        ax.set_axis_off()
-        ax.set_title(self.Y_nombre)
-        return ax
-    
-    def mapa_X(self, covariable, agregacion, ax=None, 
-               size=(10,10), clasificacion='quantiles', 
-               cmap='YlOrRd', legend=True):
-        """ Regresa un ax con el mapa de la variable dependiente.
-        
-            Args:
-            covariable (str): Nombre de la columna en X para hacer el mapa
-            agregacion (str): colonias/cuadrantes
-            ax (matplotlib.plot.ax): el eje en donde se hace el mapa (opcional, default None)
-            size ((int,int)): tamaño del mapa (opcional, si se pasa un eje se ignora)
-            clasificacion (str): esquema de clasificación demapclassify (opcional)
-            cmap (str): mapa de colores de matplotlib (opcional)
-            legend (bool): poner o no poner la leyenda (opcional)
-        """
-        capa = gpd.read_file("../../datos/criminologia_capas.gpkg", layer=agregacion)
-        capa = capa.merge(self.X, on=self.campo_id)
-        if ax is None:
-            f, ax = plt.subplots(1,figsize=size)
-        ax = capa.plot(covariable, scheme=clasificacion, ax=ax, cmap=cmap, legend=legend)
-        ax.set_axis_off()
-        ax.set_title(covariable)
-        return ax
+
         
     # TODO: 
     # agregar/quitar variables
@@ -263,7 +172,105 @@ class CapaDeAnalisis(object):
     # Implementar transformadores sobre las variables
     
 
-# %% ../nbs/api/03_modelos.ipynb 11
+# %% ../nbs/api/03_modelos.ipynb 12
+@patch
+def copia(self:CapaDeAnalisis):
+    """Regresa una copia del objeto"""
+    return copy.deepcopy(self)
+
+# %% ../nbs/api/03_modelos.ipynb 15
+@patch
+def displot_Y(self:CapaDeAnalisis, 
+              size:tuple=(12,6) # Tamaño de la gráfica
+            )->Axes:
+    """Regresa el histograma de la variable dependiente."""
+    f, ax = plt.subplots(1,figsize=size)
+    ax = sns.histplot(data=self.Y, x=self.Y_nombre, ax=ax)
+    ax.axvline(x=self.Y[self.Y_nombre].mean(), color='red')
+    ax.set_ylabel("Conteo")
+    return ax
+
+
+# %% ../nbs/api/03_modelos.ipynb 21
+@patch
+def describe_Y(self:CapaDeAnalisis)->pd.DataFrame:
+    """Regresa un DataFrame con estadísticas descriptivas de la variable dependiente."""
+    d = self.Y[self.Y_nombre].describe()
+    v = pd.Series({"Var":self.Y[self.Y_nombre].var()})
+    d = d.append(v)
+    d = pd.DataFrame(d)
+    d = d.reset_index()
+    d.columns = ['Estadístico', '']
+    d = d.set_index('Estadístico')
+    orden = ['count', 'mean','Var',  'std', 'min', '25%', '50%', '75%', 'max']
+    d = d.reindex(orden)
+    d = d.rename({'count': 'N', 'mean': 'Media', 
+                    'Var':'Varianza', 
+                    'std': 'Desviación estándar',
+                    'min': 'Mínimo',
+                    'max': 'Máximo'})
+    return d
+
+# %% ../nbs/api/03_modelos.ipynb 24
+@patch
+def retraso_x(self:CapaDeAnalisis, 
+             columna # Sobre qué columna de `CapaDeAnalisis.X` vamos a calcular el retraso
+    ) -> CapaDeAnalisis:
+    """ Agrega una columna con el retraso espacial de la variable `columna`.
+    
+        La nueva columna se va a nombrar `columna`_lag.
+        
+        **NOTA:** Por lo pronto se usa la matriz de vecindad que calculada en 
+        `__calcula_matriz_pesos`.
+    """
+    self.w.transform = 'R'
+    rezago = lag_spatial(self.w, self.df[columna])
+    self.df[columna + '_lag'] = rezago
+    self.X_nombres.append(columna + '_lag')
+    return self
+
+# %% ../nbs/api/03_modelos.ipynb 27
+@patch
+def mapa_Y(self:CapaDeAnalisis,
+           agregacion:str, # colonias/cuadrantes
+           ax:Axes=None, # el eje en donde se hace el mapa
+           size:tuple=(10,10), # tamaño del mapa (si se pasa un eje se ignora)
+           clasificacion:str='quantiles', # squema de clasificación de mapclassify 
+           cmap:str='YlOrRd', # mapa de colores de matplotlib 
+           legend:bool=True # poner o no poner la leyenda
+           ):
+    """ Regresa un ax con el mapa de la variable dependiente."""
+    capa = gpd.read_file("../../datos/criminologia_capas.gpkg", layer=agregacion)
+    capa = capa.merge(self.Y, on=self.campo_id)
+    if ax is None:
+        f, ax = plt.subplots(1,figsize=size)
+    ax = capa.plot(self.Y_nombre, scheme=clasificacion, ax=ax, cmap=cmap, legend=legend)
+    ax.set_axis_off()
+    ax.set_title(self.Y_nombre)
+    return ax
+
+# %% ../nbs/api/03_modelos.ipynb 30
+@patch
+def mapa_X(self:CapaDeAnalisis,
+           covariable:str, # Nombre de la columna en X para hacer el mapa
+           agregacion: str, # colonias/cuadrantes 
+           ax:Axes=None, # el eje en donde se hace el mapa  
+           size:tuple=(10,10), # tamaño del mapa 
+           clasificacion:str='quantiles', # esquema de clasificación demapclassify
+           cmap:str='YlOrRd', # mapa de colores de matplotlib
+           legend:bool=True # poner o no poner la leyenda
+           ):
+    """ Regresa un ax con el mapa de la variable dependiente."""
+    capa = gpd.read_file("../../datos/criminologia_capas.gpkg", layer=agregacion)
+    capa = capa.merge(self.X, on=self.campo_id)
+    if ax is None:
+        f, ax = plt.subplots(1,figsize=size)
+    ax = capa.plot(covariable, scheme=clasificacion, ax=ax, cmap=cmap, legend=legend)
+    ax.set_axis_off()
+    ax.set_title(covariable)
+    return ax
+
+# %% ../nbs/api/03_modelos.ipynb 33
 class ModeloGLM(object):
     """ Wrapper para modelos de Regresión GLM de statsmodels.
         
@@ -500,7 +507,7 @@ class ModeloGLM(object):
             ax.set_title(f"I de Moran {np.round(moran.I, 3)}, Significancia {moran.p_sim}")
         return ax
 
-# %% ../nbs/api/03_modelos.ipynb 14
+# %% ../nbs/api/03_modelos.ipynb 36
 class ComparaModelos(object):
     """ Clase para construir comparaciones de modelos.
         Construte dos DataFrames para visualizar rápidamente una comparación de los modelos:
