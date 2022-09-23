@@ -23,8 +23,15 @@ import h3
 from shapely.geometry import Polygon, Point
 
 # %% ../nbs/api/00_etl.ipynb 4
-DATA_PATH = os.path.abspath("../../datos/")
-DOWNLOADS_PATH = os.path.abspath("../../datos/descargas/")
+def __get_data_path():
+    " Regresa el path absoluto al direcorio de datos."
+    data_name = 'datos'
+    data_path = Path.cwd()
+    while data_path != data_path.parent and not (data_path/data_name).exists(): data_path = data_path.parent
+    if not (data_path/data_name).exists(): data_path = data_path
+    return data_path/data_name
+DATA_PATH = __get_data_path()
+DOWNLOADS_PATH = DATA_PATH/'descargas'
 
 # %% ../nbs/api/00_etl.ipynb 6
 def procesa_registros(records:pd.DataFrame # viene de leer datos de carpetas o víctimas
@@ -187,9 +194,10 @@ def agregar_categorias_carpetas(carpetas:gpd.GeoDataFrame, # Carpetas de investi
                 .drop(columns='incidente'))
     return carpetas
 
-# %% ../nbs/api/00_etl.ipynb 36
+# %% ../nbs/api/00_etl.ipynb 38
 def agregar_categorias_victimas(carpetas:gpd.GeoDataFrame, # Víctimas en Carpetas de investigación (p.ej. `get_victimas_desde_archivo`)
-                                archivo_categorias:os.path)-> gpd.GeoDataFrame:
+                                archivo_categorias:os.path# path al archivo con las categorías
+                                )-> gpd.GeoDataFrame:
     """Columnas con niveles definidos por el usuario
 
       Las categorías tienen que venir en un csv con columnas llamadas Nivel 1, Nivel 2 ...
@@ -205,7 +213,7 @@ def agregar_categorias_victimas(carpetas:gpd.GeoDataFrame, # Víctimas en Carpet
                 )
     return carpetas
 
-# %% ../nbs/api/00_etl.ipynb 39
+# %% ../nbs/api/00_etl.ipynb 43
 def exporta_datos_visualizador(carpetas:gpd.GeoDataFrame, # Datos de carpetas o victimas (p.ej. `get_victimas_desde_archivo`)
                                archivo_resultado:os.path, # A dónde exportamos el archivo
                                fecha_inicio:pd.DatetimeTZDtype=pd.to_datetime('01/01/2019'), # Dónde empezamos
@@ -227,7 +235,7 @@ def exporta_datos_visualizador(carpetas:gpd.GeoDataFrame, # Datos de carpetas o 
     carpetas = carpetas.loc[carpetas.fecha_hechos >= fecha_inicio]
     carpetas.to_csv(archivo_resultado)
 
-# %% ../nbs/api/00_etl.ipynb 42
+# %% ../nbs/api/00_etl.ipynb 46
 def serie_de_tiempo_categoria(carpetas:gpd.GeoDataFrame, # incidentes, deben traer la columna categoria (p.ej. 'agregar_categorias_carpetas')
                               fecha_inicio:pd.DatetimeTZDtype, # fecha del inicio de la serie
                               categoria, # nombre de la categoría a agregar (`agregar_categorias_carpetas`)
@@ -245,7 +253,7 @@ def serie_de_tiempo_categoria(carpetas:gpd.GeoDataFrame, # incidentes, deben tra
             )
     return serie
 
-# %% ../nbs/api/00_etl.ipynb 45
+# %% ../nbs/api/00_etl.ipynb 49
 def serie_tiempo_categorias_unidades(datos:gpd.GeoDataFrame, # víctimas/carpetas, deben tener agregadas las categorías de usuario
                                      fecha_inicio:pd.DatetimeTZDtype, # fecha del inicio de la serie 
                                      tipo:str='victimas', # carpetas/victimas
@@ -271,14 +279,14 @@ def serie_tiempo_categorias_unidades(datos:gpd.GeoDataFrame, # víctimas/carpeta
     serie = serie.reset_index().melt(id_vars=['fecha_hechos', *id_vars])
     return serie
 
-# %% ../nbs/api/00_etl.ipynb 48
+# %% ../nbs/api/00_etl.ipynb 52
 def punto_to_hexid(punto:Point, # Punto para obtener el hex_id
                   resolution: int # Escala de H3
                   ):
     """Regresa el hexid (h3) del punto."""
     return h3.geo_to_h3(punto.y, punto.x, resolution)
 
-# %% ../nbs/api/00_etl.ipynb 50
+# %% ../nbs/api/00_etl.ipynb 54
 def agrega_en_hexagonos(puntos:gpd.GeoDataFrame, # Los datos que vamos a pasar a hexágonos
                        resolution:int # Escala de H3
                        ):

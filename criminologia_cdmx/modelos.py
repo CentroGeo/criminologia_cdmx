@@ -146,7 +146,7 @@ class CapaDeAnalisis(object):
     
     def __get_geo(self, agregacion):
         """ Regresa el GeoDataframe correspondiente a la agregación."""
-        geo = gpd.read_file("../../datos/criminologia_capas.gpkg", layer=agregacion)
+        geo = gpd.read_file(DATA_PATH/'criminologia_capas.gpkg', layer=agregacion)
         geo = geo.merge(self.df, on=self.campo_id, how='inner')
         return geo
     
@@ -355,7 +355,7 @@ class ModeloGLM(object):
         resid_p = pd.DataFrame(resid_p, columns=["Residual Pearson"])
         resid_df = resid_df.join(resid_p)
         mapa_residuales = self.capa.Y.join(resid_df, how='right')
-        geos = gpd.read_file("../../datos/criminologia_capas.gpkg",
+        geos = gpd.read_file(DATA_PATH/'criminologia_capas.gpkg',
                              capa=self.capa.agregacion)
         mapa_residuales = geos.merge(mapa_residuales, on=self.capa.campo_id)
         self.gdf_residuales = mapa_residuales
