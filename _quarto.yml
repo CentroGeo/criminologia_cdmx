@@ -1,0 +1,38 @@
+ipynb-filters: [nbdev_filter]
+
+project:
+  type: website
+  output-dir: _docs
+  preview:
+    port: 3000
+    browser: false
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+    toc-depth: 4
+
+website:
+  title: "criminologia_cdmx"
+  site-url: "https://pages.github.CentroGeo.com./criminologia_cdmx/criminologia_cdmx/"
+  description: "Herramientas para análisis espacial de delitos en CDMX."
+  twitter-card: true
+  open-graph: true
+  reader-mode: true
+  repo-branch: master
+  repo-url: "https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/"
+  repo-actions: [issue]
+  navbar:
+    background: primary
+    search: true
+    right:
+      - icon: github
+        href: "https://github.CentroGeo.com/criminologia_cdmx/criminologia_cdmx/tree/master/"
+  sidebar:
+    style: "floating"
+
+metadata-files: 
+  - sidebar.yml
+  - custom.yml
