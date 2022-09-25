@@ -146,13 +146,15 @@ def agrega_ids_espaciales(carpetas: gpd.GeoDataFrame, # Datos de carpetas o vict
         carpetas = carpetas.drop(columns='colonia_cve')
     if 'colonia_cve' in carpetas.columns:
         carpetas = carpetas.drop(columns='colonia_cve')
+    if 'colonia_nombre' in carpetas.columns:
+        carpetas = carpetas.drop(columns='colonia_nombre')
     if 'cuadrante_id' in carpetas.columns:
         carpetas = carpetas.drop(columns='cuadrante_id')
     if 'municipio_cvegeo' in carpetas.columns:
         carpetas = carpetas.drop(columns='municipio_cvegeo')
     if metodo == 'poligonos':
         shapes = os.path.join(DATA_PATH, 'criminologia_capas.gpkg')
-        colonias = gpd.read_file(shapes, layer='colonias').drop(columns='colonia_geom_6362')
+        colonias = gpd.read_file(shapes, layer='colonias')
         cuadrantes = gpd.read_file(shapes, layer='cuadrantes')
         carpetas = (gpd.tools.sjoin(carpetas, colonias[['colonia_cve', 'colonia_nombre', 'municipio_cvegeo', 'geometry']])
                     .drop(columns=['index_right'])
@@ -161,12 +163,12 @@ def agrega_ids_espaciales(carpetas: gpd.GeoDataFrame, # Datos de carpetas o vict
                     .drop(columns=['index_right']))
     elif metodo == 'manzanas':
         crs_original = carpetas.crs
-        manzanas_pth = os.path.join(DOWNLOADS_PATH, 'manzanas_identificadores.gpkg')
+        manzanas_pth = descarga_manzanas()
         manzanas = gpd.read_file(manzanas_pth)
         manzanas['municipio_cvegeo'] = manzanas['CVE_ENT'] + manzanas['CVE_MUN']
         carpetas = (carpetas
                     .to_crs(manzanas.crs)
-                    .sjoin_nearest(manzanas[['CVEGEO', 'municipio_cvegeo', 'colonia_cve', 
+                    .sjoin_nearest(manzanas[['CVEGEO', 'municipio_cvegeo', 'colonia_cve', 'colonia_nombre', 
                                              'cuadrante_id', 'geometry']], max_distance=tolerancia)
                     .rename({'CVEGEO': 'manzana_cvegeo'}, axis=1)
                     .drop(columns='index_right')
