@@ -165,7 +165,7 @@ def agrega_ids_espaciales(carpetas: gpd.GeoDataFrame, # Datos de carpetas o vict
         crs_original = carpetas.crs
         manzanas_pth = descarga_manzanas()
         manzanas = gpd.read_file(manzanas_pth)
-        manzanas['municipio_cvegeo'] = manzanas['CVE_ENT'] + manzanas['CVE_MUN']
+        manzanas['municipio_cvegeo'] = manzanas['CVEGEO'].str.slice(5)
         carpetas = (carpetas
                     .to_crs(manzanas.crs)
                     .sjoin_nearest(manzanas[['CVEGEO', 'municipio_cvegeo', 'colonia_cve', 'colonia_nombre', 
