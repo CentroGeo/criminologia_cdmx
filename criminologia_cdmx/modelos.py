@@ -116,9 +116,9 @@ class CapaDeAnalisis(object):
                  agregacion:str='colonias' # colonias/cuadrantes
                  ):
         self.Y:pd.DataFrame = Y # la variable dependiente.
+        self.campo_id:str = self.__get_campo_id(agregacion) # el nombre del campo común en X y Y para unirlos.
         self.Y_nombre:str = Y.columns[-1] # Nombre de la columna con el delito a modelar. Se asume que la última columna tiene la variable de interés
         self.X:pd.DataFrame = covariables # las variables independientes
-        self.campo_id:str = self.__get_campo_id(agregacion) # el nombre del campo común en X y Y para unirlos.
         self.X_nombres:list = [x for x in covariables.columns if x != self.campo_id] # Lista de los nombres de columnas de las covariables.
         self.agregacion:str = agregacion # colonias/cuadrantes
         self.df:pd.DataFrame = self.__merge_covars() # la unión de los X con Y.
@@ -148,7 +148,7 @@ class CapaDeAnalisis(object):
     def __get_geo(self, agregacion):
         """ Regresa el GeoDataframe correspondiente a la agregación."""
         geo = gpd.read_file(DATA_PATH/'criminologia_capas.gpkg', layer=agregacion)
-        ge = geo.set_index(self.campo_id)
+        geo = geo.set_index(self.campo_id)
         geo = geo.join(self.df, how='inner')
         return geo
     
@@ -157,8 +157,9 @@ class CapaDeAnalisis(object):
         # TODO: aquí hay que contar los datos perdidos por islas
         with warnings.catch_warnings():
             warnings.simplefilter("ignore")
-            w = Queen.from_dataframe(self.geo)
+            w = Queen.from_dataframe(self.geo.reset_index(), idVariable=self.campo_id)
             if len(w.islands):
+                print(f"Las observaciones con {self.campo_id} {w.islands} son islas, las vamos a eliminar")
                 self.df.drop(w.islands, inplace=True)
                 self.geo.drop(w.islands, inplace=True)
                 w = Queen.from_dataframe(self.geo)
@@ -170,7 +171,6 @@ class CapaDeAnalisis(object):
     # agregar/quitar variables
     # checar que exista el campo_id en las dos bases
     # quitamos unas filas, hay que llevar registro de eso
-    # Calcular variables con retraso espacial
     # Implementar transformadores sobre las variables
     
 
@@ -199,7 +199,7 @@ def describe_Y(self:CapaDeAnalisis)->pd.DataFrame:
     """Regresa un DataFrame con estadísticas descriptivas de la variable dependiente."""
     d = self.Y[self.Y_nombre].describe()
     v = pd.Series({"Var":self.Y[self.Y_nombre].var()})
-    d = d.append(v)
+    d = pd.concat([d,v])
     d = pd.DataFrame(d)
     d = d.reset_index()
     d.columns = ['Estadístico', '']

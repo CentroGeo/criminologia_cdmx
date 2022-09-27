@@ -132,7 +132,7 @@ def agrega_uso_suelo(usos:pd.DataFrame, # `get_uso_de_suelo`
         columna_agrega = 'cuadrante_id'
     else:
         raise ValueError("unidades debe ser 'colonias' o 'cuadrantes'")
-    usos = usos.groupby(columna_agrega).sum()
+    usos = usos.groupby(columna_agrega).sum(numeric_only=True)
     usos['Intensidad'] = usos.sum(axis=1)
     usos['Entropía'] = (np.log(usos[['Industria', 'Comercio', 'Servicios']]
                                .div(usos['Intensidad'], axis=0))
