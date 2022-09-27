@@ -76,39 +76,9 @@ def variable_dependiente(datos:gpd.GeoDataFrame, # carpetas/victimas con ids esp
     datos = unidades[[columna_agrega]].merge(datos, on=columna_agrega, how='left').fillna(0)
     return datos   
 
-# %% ../nbs/api/03_modelos.ipynb 9
+# %% ../nbs/api/03_modelos.ipynb 10
 class CapaDeAnalisis(object):
-    """ Clase para contener variable objetivo y covariables.
-    
-        Args:
-            Y (DataFrame): debe tener dos columnas: el identificador de la unidad de análisis y 
-                           el valor de la variable dependiente 
-                           (las columnas deben venir en ese orden).
-            covariables (DataFrame): debe contener una columna con el identificador de la unidad 
-                                     de análisis (común a Y) y tantas como covariables.
-            agregación (str): colonias/cuadrantes.
-        Atributos:
-            Y (DataFrame): la variable dependiente.
-            Y_nombre (str): Nombre de la columna con el delito a modelar.
-            X (DataFrame): las variables independientes.
-            X_nombres (list): Lista de los nombres de columnas de las covariables.
-            agregacion (str): colonias/cuadrantes.
-            campo_id (str): el nombre del campo común en X y Y para unirlos.
-            df (DataFrame): la unión de los dos X y Y.
-            geo (GeoDataFrame): la unión de df con las geometrias que corresponden a `agregacion`
-            w (libpysal.weights.Queen): Matriz de vecindad para los datos válidos
-            
-        **NOTAS:** 
-            1) El DataFrame con los datos finales va a contener sólo las observaciones válidas
-            (sin nulos en Y o X), además, para poder hacer análisis espaciales, se eliminan los
-            polígonos isla. Este DataFrame se guarda en self.df y es el que se debe usar para 
-            cualquier análisis
-            
-            2) Por lo pronto la clase calcula automáticamente una matriz de vecindad para los
-            datos, en el futuro esto debe cambiar para permitir al usuario definir su propia matriz.
-                   
-                   
-    """
+    """ Clase para contener variable objetivo y covariables."""
     
     def __init__(self,
                  Y:pd.DataFrame, # la variable dependiente.
@@ -174,13 +144,13 @@ class CapaDeAnalisis(object):
     # Implementar transformadores sobre las variables
     
 
-# %% ../nbs/api/03_modelos.ipynb 12
+# %% ../nbs/api/03_modelos.ipynb 14
 @patch
 def copia(self:CapaDeAnalisis):
     """Regresa una copia del objeto"""
     return copy.deepcopy(self)
 
-# %% ../nbs/api/03_modelos.ipynb 15
+# %% ../nbs/api/03_modelos.ipynb 17
 @patch
 def displot_Y(self:CapaDeAnalisis, 
               size:tuple=(12,6) # Tamaño de la gráfica
@@ -193,7 +163,7 @@ def displot_Y(self:CapaDeAnalisis,
     return ax
 
 
-# %% ../nbs/api/03_modelos.ipynb 21
+# %% ../nbs/api/03_modelos.ipynb 23
 @patch
 def describe_Y(self:CapaDeAnalisis)->pd.DataFrame:
     """Regresa un DataFrame con estadísticas descriptivas de la variable dependiente."""
@@ -213,7 +183,7 @@ def describe_Y(self:CapaDeAnalisis)->pd.DataFrame:
                     'max': 'Máximo'})
     return d
 
-# %% ../nbs/api/03_modelos.ipynb 24
+# %% ../nbs/api/03_modelos.ipynb 26
 @patch
 def retraso_x(self:CapaDeAnalisis, 
              columna # Sobre qué columna de `CapaDeAnalisis.X` vamos a calcular el retraso
@@ -231,7 +201,7 @@ def retraso_x(self:CapaDeAnalisis,
     self.X_nombres.append(columna + '_lag')
     return self
 
-# %% ../nbs/api/03_modelos.ipynb 27
+# %% ../nbs/api/03_modelos.ipynb 29
 @patch
 def mapa_Y(self:CapaDeAnalisis,
            agregacion:str, # colonias/cuadrantes
@@ -251,7 +221,7 @@ def mapa_Y(self:CapaDeAnalisis,
     ax.set_title(self.Y_nombre)
     return ax
 
-# %% ../nbs/api/03_modelos.ipynb 30
+# %% ../nbs/api/03_modelos.ipynb 32
 @patch
 def mapa_X(self:CapaDeAnalisis,
            covariable:str, # Nombre de la columna en X para hacer el mapa
@@ -272,7 +242,7 @@ def mapa_X(self:CapaDeAnalisis,
     ax.set_title(covariable)
     return ax
 
-# %% ../nbs/api/03_modelos.ipynb 33
+# %% ../nbs/api/03_modelos.ipynb 35
 class ModeloGLM(object):
     """ Wrapper para modelos de Regresión GLM de statsmodels.
         
@@ -510,7 +480,7 @@ class ModeloGLM(object):
             ax.set_title(f"I de Moran {np.round(moran.I, 3)}, Significancia {moran.p_sim}")
         return ax
 
-# %% ../nbs/api/03_modelos.ipynb 36
+# %% ../nbs/api/03_modelos.ipynb 38
 class ComparaModelos(object):
     """ Clase para construir comparaciones de modelos.
         Construte dos DataFrames para visualizar rápidamente una comparación de los modelos:
