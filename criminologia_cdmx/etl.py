@@ -130,7 +130,7 @@ def descarga_manzanas()->os.path:
     if os.path.exists(absp):
         print("El archivo ya está descargado.")
     else:
-        url = "https://www.dropbox.com/s/a370kmtknhgca2y/manzanas_identificadores.gpkg?dl=1"
+        url = "https://www.dropbox.com/s/6p2m460pdwjhn3t/manzanas_identificadores.gpkg?dl=1"
         r = requests.get(url, allow_redirects=True)
         open(absp, 'wb').write(r.content)
     return absp
