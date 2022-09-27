@@ -77,7 +77,7 @@ def variable_dependiente(datos:gpd.GeoDataFrame, # carpetas/victimas con ids esp
     datos = unidades[[columna_agrega]].merge(datos, on=columna_agrega, how='left').fillna(0)
     return datos   
 
-# %% ../nbs/api/03_modelos.ipynb 10
+# %% ../nbs/api/03_modelos.ipynb 9
 class CapaDeAnalisis(object):
     """ Clase para contener variable objetivo y covariables."""
     
@@ -455,7 +455,7 @@ class ComparaModelos(object):
                  modelos:list, # Lista de modelos a comparar
                  columnas:list=None, # Lista de columnas que aparecen en la comparación de resultados 
                  redondeo:int=None # Decimales a usar en la comparaciónn
-        )-> ComparaModelos:
+        ):
         self.modelos = modelos
         self.comparacion = self.__une_resultados(columnas, redondeo)
         self.diagnosticos = self.__une_diagnosticos(redondeo)
