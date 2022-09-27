@@ -25,6 +25,7 @@ from scipy import stats
 import seaborn as sns
 import matplotlib.pyplot as plt
 from matplotlib.axes import Axes
+from matplotlib.figure import Figure
 from .etl import *
 from .covariables import *
 
@@ -449,22 +450,16 @@ def scatterpĺot_moran(self:ModeloGLM,
 
 # %% ../nbs/api/03_modelos.ipynb 64
 class ComparaModelos(object):
-    """ Clase para construir comparaciones de modelos.
-        Construte dos DataFrames para visualizar rápidamente una comparación de los modelos:
-        uno con los resultados (coeficientes, etc) y otro con los diagnósticos.
-        Args:
-            modelos (list): Lista de modelos a comparar
-            columnas (list): Lista de columnas que aparecen en la comparación de resultados 
-                             (opcional, default None)
-            redondeo: (int): Decimales a usar en la comparaciónn (opcional, default None)
-        Atributos:
-            modelos (list): Lista de modelos a comparar
-            comparacion (DataFrame): comparación de los resultados
-    """
-    def __init__(self, modelos, columnas=None, redondeo=None):
+    """ Clase para construir comparaciones de modelos."""
+    def __init__(self,
+                 modelos:list, # Lista de modelos a comparar
+                 columnas:list=None, # Lista de columnas que aparecen en la comparación de resultados 
+                 redondeo:int=None # Decimales a usar en la comparaciónn
+        )-> ComparaModelos:
         self.modelos = modelos
         self.comparacion = self.__une_resultados(columnas, redondeo)
         self.diagnosticos = self.__une_diagnosticos(redondeo)
+
     def __une_resultados(self, columnas, redondeo):
         if columnas is None:
             unidos = reduce(lambda left, right: 
@@ -508,114 +503,116 @@ class ComparaModelos(object):
             unidos = unidos.round(redondeo)
         return unidos
         
-    def graficas_de_ajuste(self, n_cols=2, size=(20,5)):
-        """ Gráficas de ajuste para todos los modelos.
-        
-            Args:
+
+# %% ../nbs/api/03_modelos.ipynb 71
+@patch
+def graficas_de_ajuste(self:ComparaModelos,
+                       n_cols:int=2, # Número de columnas en la figura
+                       size:tuple=(20,5) # Tamaño de la figura
+    )-> Figure:
+    """ Gráficas de ajuste para todos los modelos."""
+    n_modelos = len(self.modelos)
+    filas = math.ceil(n_modelos / n_cols)
+    f, axs = plt.subplots(filas, n_cols, figsize=size)
+    f.suptitle('Gráficas de ajuste', fontsize=16)
+    axs = axs.ravel()
+    for i, ax in enumerate(axs):
+        ax = self.modelos[i].grafica_de_ajuste(ax=ax)
+        ax.set_title(f"{self.modelos[i].nombre}")
+    return f
+
+
+# %% ../nbs/api/03_modelos.ipynb 74
+@patch
+def graficas_residuales(self:ComparaModelos,
+                        tipo:str='deviance', # deviance/pearson 
+                        n_cols:int=2, # Número de columnas en la figura. 
+                        size:tuple=(20,5) # Tamaño de la figura.
+    )->Figure:
+    """ Gráficas de residuales para todos los modelos."""
+    n_modelos = len(self.modelos)
+    filas = math.ceil(n_modelos / n_cols)
+    f, axs = plt.subplots(filas, n_cols, figsize=size)
+    f.suptitle('Gráficas de residuales', fontsize=16)        
+    axs = axs.ravel()
+    for i, ax in enumerate(axs):
+        ax = self.modelos[i].grafica_residuales(tipo=tipo, ax=ax)
+        ax.set_title(f"{self.modelos[i].nombre}")
+    return f
+
+# %% ../nbs/api/03_modelos.ipynb 77
+@patch
+def histogramas_deviance(self:ComparaModelos,
+                         n_cols:int=2, # Número de columnas en la figura.
+                         size:tuple=(20,5) # Tamaño de la figura.
+    )->Figure:
+    """ Histogramas de deviance para todos los modelos.
+    
+        Args:
             
-                n_cols (int): Número de columnas en la figura
-                size ((int, int)): Tamaño de la figura
-        """
-        n_modelos = len(self.modelos)
-        filas = math.ceil(n_modelos / n_cols)
-        f, axs = plt.subplots(filas, n_cols, figsize=size)
-        f.suptitle('Gráficas de ajuste', fontsize=16)
-        axs = axs.ravel()
-        for i, ax in enumerate(axs):
-            ax = self.modelos[i].grafica_de_ajuste(ax=ax)
-            ax.set_title(f"{self.modelos[i].nombre}")
-            
-    def graficas_residuales(self, tipo='deviance', n_cols=2, size=(20,5)):
-        """ Gráficas de residuales para todos los modelos.
-        
-        
-            Args:
-             
-                tipo (str): pearson/deviance tipo de residuales a graficar.
-                n_cols (int): Número de columnas en la figura.
-                size ((int, int)): Tamaño de la figura.
-        
-        """
-        n_modelos = len(self.modelos)
-        filas = math.ceil(n_modelos / n_cols)
-        f, axs = plt.subplots(filas, n_cols, figsize=size)
-        f.suptitle('Gráficas de residuales', fontsize=16)        
-        axs = axs.ravel()
-        for i, ax in enumerate(axs):
-            ax = self.modelos[i].grafica_residuales(tipo=tipo, ax=ax)
-            ax.set_title(f"{self.modelos[i].nombre}")
-            
-    def histogramas_deviance(self, n_cols=2, size=(20,5)):
-        """ Histogramas de deviance para todos los modelos.
-        
-            Args:
-             
-                n_cols (int): Número de columnas en la figura.
-                size ((int, int)): Tamaño de la figura.        
-        """
-        
-        n_modelos = len(self.modelos)
-        filas = math.ceil(n_modelos / n_cols)
-        f, axs = plt.subplots(filas, n_cols, figsize=size)
-        f.suptitle('Histogramas de Deviance', fontsize=16)        
-        axs = axs.ravel()
-        for i, ax in enumerate(axs):
-            ax = self.modelos[i].histograma_deviance(ax=ax)
-            ax.set_title(f"{self.modelos[i].nombre}")
-            
-    def mapas_residuales(self, tipo='deviance', n_cols=2, 
-                         size=(20,10), clasificacion='quantiles', 
-                         cmap='YlOrRd', legend=True):
-        """ Mapas de residuales para todos los modelos. 
-        
-        
-            Args:
-                
-                tipo (str): deviance/pearson el tipo de residual a mapear
-                n_cols (int): Número de columnas en la figura.
-                size ((int, int)): Tamaño de la figura.
-                clasificacion (str): esquema de clasificación (mapclassify).
-                cmap (str): mapa de colores (matplotlib).
-                legend (bool): desplegar o no la leyenda.
-        """
-        n_modelos = len(self.modelos)
-        filas = math.ceil(n_modelos / n_cols)
-        f, axs = plt.subplots(filas, n_cols, figsize=size)
-        f.suptitle(f'Mapas de residuales de {tipo}', fontsize=16)        
-        axs = axs.ravel()
-        for i, ax in enumerate(axs):
-            # TODO:size
-            ax = self.modelos[i].mapa_residuales(tipo=tipo, ax=ax, 
-                                                 clasificacion=clasificacion, 
-                                                 cmap=cmap, legend=legend)
-            ax.set_title(f"{self.modelos[i].nombre}")
-            
-    def scatterpĺots_moran(self, tipo="deviance", n_cols=2, size=(20,10)):
-        """ Graficas de moran para todos los modelos.
-        
-        
-            Args:
-                
-                tipo (str): deviance/pearson el tipo de residual a mapear
-                n_cols (int): Número de columnas en la figura.
-                size ((int, int)): Tamaño de la figura.
-        """
-        
-        n_modelos = len(self.modelos)
-        filas = math.ceil(n_modelos / n_cols)
-        f, axs = plt.subplots(filas, n_cols, figsize=size)
+            n_cols (int): Número de columnas en la figura.
+            size ((int, int)): Tamaño de la figura.        
+    """
+    
+    n_modelos = len(self.modelos)
+    filas = math.ceil(n_modelos / n_cols)
+    f, axs = plt.subplots(filas, n_cols, figsize=size)
+    f.suptitle('Histogramas de Deviance', fontsize=16)        
+    axs = axs.ravel()
+    for i, ax in enumerate(axs):
+        ax = self.modelos[i].histograma_deviance(ax=ax)
+        ax.set_title(f"{self.modelos[i].nombre}")
+    return f
+
+# %% ../nbs/api/03_modelos.ipynb 80
+@patch
+def mapas_residuales(self:ComparaModelos, 
+                     tipo:str='deviance', # deviance/pearson
+                     n_cols:int=2, # Número de columnas en la figura.
+                     size:tuple=(20,10), # Tamaño de la figura
+                     clasificacion:str='quantiles', # esquema de clasificación (mapclassify).
+                     cmap:str='YlOrRd', # mapa de colores (matplotlib).
+                     legend:bool=True # desplegar o no la leyenda
+    )->Figure:
+    """ Mapas de residuales para todos los modelos."""
+    n_modelos = len(self.modelos)
+    filas = math.ceil(n_modelos / n_cols)
+    f, axs = plt.subplots(filas, n_cols, figsize=size)
+    f.suptitle(f'Mapas de residuales de {tipo}', fontsize=16)        
+    axs = axs.ravel()
+    for i, ax in enumerate(axs):
+        # TODO:size
+        ax = self.modelos[i].mapa_residuales(tipo=tipo, ax=ax, 
+                                                clasificacion=clasificacion, 
+                                                cmap=cmap, legend=legend)
+        ax.set_title(f"{self.modelos[i].nombre}")
+    return f
+
+# %% ../nbs/api/03_modelos.ipynb 83
+@patch
+def scatterpĺots_moran(self:ComparaModelos, 
+                       tipo:str="deviance", # deviance/pearson
+                       n_cols:int=2, # Número de columnas en la figura.  
+                       size:tuple=(20,10) # Tamaño de la figura.
+    )->Figure:
+    """ Graficas de moran para todos los modelos."""
+    
+    n_modelos = len(self.modelos)
+    filas = math.ceil(n_modelos / n_cols)
+    f, axs = plt.subplots(filas, n_cols, figsize=size)
+    if tipo == "deviance":
+        titulo = 'Residuales de Deviance'
+    else:
+        titulo = 'Residuales de Pearson'
+    f.suptitle(titulo, fontsize=16)        
+    axs = axs.ravel()
+    for i, ax in enumerate(axs):
+        ax = self.modelos[i].scatterpĺot_moran(tipo="deviance", ax=ax)
         if tipo == "deviance":
-            titulo = 'Residuales de Deviance'
+            moran = self.modelos[i].moran_dev_residuales
         else:
-            titulo = 'Residuales de Pearson'
-        f.suptitle(titulo, fontsize=16)        
-        axs = axs.ravel()
-        for i, ax in enumerate(axs):
-            ax = self.modelos[i].scatterpĺot_moran(tipo="deviance", ax=ax)
-            if tipo == "deviance":
-                moran = self.modelos[i].moran_dev_residuales
-            else:
-                moran = self.modelos[i].moran_p_residuales
-            
-            ax.set_title(f"Modelo {self.modelos[i].nombre}: I de Moran {np.round(moran.I, 3)}, Significancia {moran.p_sim}")
-        plt.tight_layout()
+            moran = self.modelos[i].moran_p_residuales
+        
+        ax.set_title(f"Modelo {self.modelos[i].nombre}: I de Moran {np.round(moran.I, 3)}, Significancia {moran.p_sim}")
+    plt.tight_layout()
+    return f
