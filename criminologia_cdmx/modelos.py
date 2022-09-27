@@ -233,7 +233,7 @@ def mapa_X(self:CapaDeAnalisis,
            legend:bool=True # poner o no poner la leyenda
            ):
     """ Regresa un ax con el mapa de la variable dependiente."""
-    capa = gpd.read_file("../../datos/criminologia_capas.gpkg", layer=agregacion)
+    capa = gpd.read_file(DATA_PATH/"criminologia_capas.gpkg", layer=agregacion)
     capa = capa.merge(self.X, on=self.campo_id)
     if ax is None:
         f, ax = plt.subplots(1,figsize=size)
@@ -244,36 +244,20 @@ def mapa_X(self:CapaDeAnalisis,
 
 # %% ../nbs/api/03_modelos.ipynb 35
 class ModeloGLM(object):
-    """ Wrapper para modelos de Regresión GLM de statsmodels.
-        
-        La clase prepara y ajusta un modelo GLM usando la variable objetivo
-        definida en CapaDeAnalisis y **todas** las covariables.
-        
-        Args:
-            capa (CapaDeAnalisis): objeto con las variables del modelo.
-            familia (statsmodels.api.families.Family()) la distribución a usar en el modelo GLM.
-            nombre (str): si no es nulo, el nombre, si no, se asigna nombre al azar.
-            
-        Atributos:
-            capa (CapaDeAnalisis): objeto con las variables del modelo.
-            familia (statsmodels.api.families.Family()) la distribución a usar en el modelo GLM.
-            formula (str): la fórmula usada para ajustar el modelo.
-            df_resultado (DataFrame): los resultados como DataFrame.
-            df_diagnostico (DataFrame): los diagnósticos como DataFrame.
-            nombre (str): nombre que identifica al modelo.
-        Métodos:
-            fit(): Ajusta el modelo.
-            grafica_de_ajuste(): regresa la gráfica de ajuste.
-    """
-    def __init__(self, capa, familia, nombre=None):
+    """ Wrapper para modelos de Regresión GLM de statsmodels."""
+    def __init__(self,
+                 capa:CapaDeAnalisis, # objeto con las variables del modelo. 
+                 familia:sm.families.Family, # la distribución a usar en el modelo GLM.
+                 nombre:str=None # Nombre para el modelo (si es None, se elige al azar)
+        ):
         self.capa = capa
         self.familia = familia
         self.nombre = self.__get_nombre(nombre)
-        self.formula = self.__get_formula()
-        self.__modelo = self.__get_modelo()
+        self.formula:str = self.__get_formula() # la fórmula usada para ajustar el modelo.
+        self.modelo = self.__get_modelo()
         self.modelo_ajustado = None
-        self.df_resultado = None
-        self.df_diagnostico = None
+        self.df_resultado:pd.DataFrame = None # los resultados como DataFrame.
+        self.df_diagnostico:pd.DataFrame = None #  los diagnósticos como DataFrame.
         self.gdf_residuales = None
         self.moran_p_residuales = None
         self.moran_dev_residuales = None
@@ -328,9 +312,9 @@ class ModeloGLM(object):
         resid_df = resid_df.join(resid_p)
         mapa_residuales = self.capa.Y.join(resid_df, how='right')
         geos = (gpd.read_file(DATA_PATH/'criminologia_capas.gpkg',
-                             capa=self.capa.agregacion)
+                             layer=self.capa.agregacion)
                     .set_index(self.capa.campo_id))
-        mapa_residuales = geos.merge(mapa_residuales, on=self.capa.campo_id)
+        mapa_residuales = geos.join(mapa_residuales, how='right')
         self.gdf_residuales = mapa_residuales
         
     def __calcula_moran_residuales(self):
@@ -339,148 +323,131 @@ class ModeloGLM(object):
         moran_p = Moran(self.gdf_residuales['Residual Pearson'].values, self.capa.w)
         self.moran_p_residuales = moran_p
         
-    def fit(self):
-        """ Ajusta el modelo y llena los campos correspondientes.
-        
-            modelo_ajustado
-            df_resultado
-            df_diagnostico
-            gdf_residuales
-            moran_p_residuales
-            moran_dev_residuales
-        """
-        fm = self.__modelo.fit()
-        self.modelo_ajustado = fm
-        self.__resultados_a_df(fm)
-        self.__diagnostico_a_df(fm)
-        self.__residuales_gdf(fm)
-        self.__calcula_moran_residuales()
-        return fm
-    
-    def grafica_de_ajuste(self, size=(10,5), ax=None):
-        """ Regresa un ax con la gráfica de ajuste del modelo.
-        
-            Args:
-            
-                size ((int,int)): Tamaño de la figura (opcional default (10,5)) 
-                                  si ax !=None, se ignora
-                ax (matplotlib.axes): Eje en el que se grafica (opcional, default None)
-        """
-        if ax is None:
-            f, ax = plt.subplots(1,figsize=size)
-        y =  self.capa.df[self.capa.Y_nombre].values
-        ax = sns.regplot(x=self.modelo_ajustado.mu, y=y, ax=ax)
-        ax.set_title('Gráfica de Ajuste del Modelo')
-        ax.set_ylabel('Valores observados')
-        ax.set_xlabel('Valores ajustados')
-        return ax
-    
-    def grafica_residuales(self, tipo="deviance", size=(10,5), ax=None):
-        """ Regresa un ax con la gráfica de Dependencia de los Residuales.
-        
-            Args:
-            
-                size ((int,int)): Tamaño de la figura (opcional default (10,5)) 
-                                  si ax !=None, se ignora
-                ax (matplotlib.axes): Eje en el que se grafica (opcional, default None)       
-        """
-        observados = self.capa.df[self.capa.Y_nombre].values
-        if tipo == "deviance":
-            y = self.modelo_ajustado.resid_deviance
-            y_label = "Residual (Deviance)"
-        else:
-            y = self.modelo_ajustado.resid_pearson
-            y_label = "Residual (Pearson)"
-        if ax is None:
-            f, ax = plt.subplots(1,figsize=size)
-        ax = sns.scatterplot(x=observados, y=y, ax=ax)
-        ax.hlines(0, 0, observados.max(), colors='black')
-        ax.set_title('Gráfica de Dependencia de los Residuales')
-        ax.set_ylabel(y_label)
-        ax.set_xlabel('Valores ajustados')
-        return ax   
-    
-    def histograma_deviance(self, size=(10,5), ax=None):
-        """ Regresa un ax con el hitograma de deviance de los residuales.
-        
-            Args:
-            
-                size ((int,int)): Tamaño de la figura (opcional default (10,5)) 
-                                  si ax !=None, se ignora
-                ax (matplotlib.axes): Eje en el que se grafica (opcional, default None)
-        """
-        resid = self.modelo_ajustado.resid_deviance.copy()
-        resid_std = stats.zscore(resid)
-        resid_std = pd.DataFrame(resid_std, columns=["Desviación"])
-        if ax is None:
-            f, ax = plt.subplots(1,figsize=size)
-        ax = sns.histplot(data=resid_std, x="Desviación", ax=ax)
-        ax.set_title('Histograma de desviación estandarizada')
-        ax.set_ylabel('Conteo')
-        return ax
-    
-    def mapa_residuales(self, tipo="deviance", size=(10,10), ax=None,
-                        clasificacion='quantiles', 
-                        cmap='YlOrRd', legend=True):
-        """ Regresa un ax con el mapa de residuales (deviance/pearson)
-        
-            Args:
-            
-                agregacion (str): colonias/cuadrantes
-                ax (matplotlib.plot.ax): el eje en donde se hace el mapa (opcional, default None)
-                size ((int,int)): tamaño del mapa (opcional, si se pasa un eje se ignora)
-                clasificacion (str): esquema de clasificación demapclassify (opcional)
-                cmap (str): mapa de colores de matplotlib (opcional)
-                legend (bool): poner o no poner la leyenda (opcional)
-        
-        """
-        observados = self.capa.df[self.capa.Y_nombre].values
-        if tipo == "deviance":
-            y = self.modelo_ajustado.resid_deviance
-            y_label = "Residual Deviance"
-        else:
-            y = self.modelo_ajustado.resid_pearson
-            y_label = "Residual Pearson"
-        if ax is None:
-            f, ax = plt.subplots(1,figsize=size)
-        ax = self.gdf_residuales.plot(y_label, 
-                                      ax=ax, scheme=clasificacion, cmap=cmap, legend=legend)
-        ax.set_axis_off()
-        ax.set_title("Mapa de residuales")
-        return ax
-    
-    def scatterpĺot_moran(self, tipo="deviance", ax=None):
-        """ Regresa un ax con el diagrama de dispersión de Moran para los residuales.
-        
-            Args:
-            
-                tipo (str): deviance/pearson el tipo de residuales a graficar, 
-                            (opcional, default=deviance) .
-                size ((int,int)): Tamaño de la figura (opcional default (10,5)) 
-                                  si ax !=None, se ignora
-                ax (matplotlib.axes): Eje en el que se grafica (opcional, default None)        
-        """
-        if tipo == "deviance":
-            x_label = "Residual Deviance"
-            moran = self.moran_dev_residuales
-        elif tipo == "pearson":
-            x_label = "Residual Pearson"
-            moran = self.moran_p_residuales            
-        else:
-            raise ValueError("El tipo debe ser 'Residual Deviance' o 'Residual Pearson'")
-        if ax is None:
-            fig, ax = moran_scatterplot(moran, aspect_equal=True)
-            ax.set_ylabel("Retraso espacial")
-            ax.set_xlabel(x_label)
-            ax.set_title(f"I de Moran {np.round(moran.I, 3)}, Significancia {moran.p_sim}")
-        else:
-            moran_scatterplot(moran, aspect_equal=True, ax=ax)
-            ax.set_ylabel("Retraso espacial")
-            ax.set_xlabel(x_label)
-            ax.set_title(f"I de Moran {np.round(moran.I, 3)}, Significancia {moran.p_sim}")
-        return ax
 
-# %% ../nbs/api/03_modelos.ipynb 38
+
+# %% ../nbs/api/03_modelos.ipynb 41
+@patch    
+def fit(self:ModeloGLM):
+        """ Ajusta el modelo y llena los campos correspondientes."""
+        fm = self.modelo.fit()
+        self.modelo_ajustado = fm
+        self._ModeloGLM__resultados_a_df(fm)
+        self._ModeloGLM__diagnostico_a_df(fm)
+        self._ModeloGLM__residuales_gdf(fm)
+        self._ModeloGLM__calcula_moran_residuales()
+        return fm # La verdad creo que no es necesario regresar nada
+
+# %% ../nbs/api/03_modelos.ipynb 49
+@patch
+def grafica_de_ajuste(self:ModeloGLM, 
+                      size:tuple=(10,5), # Tamaño de la gráfica
+                      ax:Axes=None # Eje para dibujar la gráfica 
+    )-> Axes:
+    """ Regresa un ax con la gráfica de ajuste del modelo."""
+    if ax is None:
+        f, ax = plt.subplots(1,figsize=size)
+    y =  self.capa.df[self.capa.Y_nombre].values
+    ax = sns.regplot(x=self.modelo_ajustado.mu, y=y, ax=ax)
+    ax.set_title('Gráfica de Ajuste del Modelo')
+    ax.set_ylabel('Valores observados')
+    ax.set_xlabel('Valores ajustados')
+    return ax
+
+# %% ../nbs/api/03_modelos.ipynb 52
+@patch
+def grafica_residuales(self:ModeloGLM, 
+                       tipo:str="deviance", # deviance/pearson 
+                       size:tuple=(10,5), # Tamaño de la gráfica
+                       ax:Axes=None # Eje para dibujar la gráfica
+    )->Axes:
+    """ Regresa un ax con la gráfica de Dependencia de los Residuales."""
+    observados = self.capa.df[self.capa.Y_nombre].values
+    if tipo == "deviance":
+        y = self.modelo_ajustado.resid_deviance
+        y_label = "Residual (Deviance)"
+    else:
+        y = self.modelo_ajustado.resid_pearson
+        y_label = "Residual (Pearson)"
+    if ax is None:
+        f, ax = plt.subplots(1,figsize=size)
+    ax = sns.scatterplot(x=observados, y=y, ax=ax)
+    ax.hlines(0, 0, observados.max(), colors='black')
+    ax.set_title('Gráfica de Dependencia de los Residuales')
+    ax.set_ylabel(y_label)
+    ax.set_xlabel('Valores ajustados')
+    return ax  
+
+# %% ../nbs/api/03_modelos.ipynb 55
+@patch
+def histograma_deviance(self:ModeloGLM,
+                        size=(10,5), # Tamaño de la gráfica
+                        ax=None # Eje para dibujar la gráfica
+    )->Axes:
+    """ Regresa un ax con el hitograma de deviance de los residuales."""
+    resid = self.modelo_ajustado.resid_deviance.copy()
+    resid_std = stats.zscore(resid)
+    resid_std = pd.DataFrame(resid_std, columns=["Desviación"])
+    if ax is None:
+        f, ax = plt.subplots(1,figsize=size)
+    ax = sns.histplot(data=resid_std, x="Desviación", ax=ax)
+    ax.set_title('Histograma de desviación estandarizada')
+    ax.set_ylabel('Conteo')
+    return ax
+
+# %% ../nbs/api/03_modelos.ipynb 58
+@patch
+def mapa_residuales(self:ModeloGLM,
+                   tipo:str="deviance", # deviance/pearson 
+                   size:tuple=(10,10), # tamaño del mapa
+                   ax:Axes=None, # el eje en donde se hace el mapa
+                   clasificacion:str='quantiles', # esquema de clasificación de mapclassify
+                   cmap:str='YlOrRd', # mapa de colores de matplotlib 
+                   legend:bool=True # poner o no poner la leyenda
+    )-> Axes:
+    """ Regresa un ax con el mapa de residuales (deviance/pearson)."""
+    observados = self.capa.df[self.capa.Y_nombre].values
+    if tipo == "deviance":
+        y = self.modelo_ajustado.resid_deviance
+        y_label = "Residual Deviance"
+    else:
+        y = self.modelo_ajustado.resid_pearson
+        y_label = "Residual Pearson"
+    if ax is None:
+        f, ax = plt.subplots(1,figsize=size)
+    ax = self.gdf_residuales.plot(y_label, 
+                                    ax=ax, scheme=clasificacion, cmap=cmap, legend=legend)
+    ax.set_axis_off()
+    ax.set_title("Mapa de residuales")
+    return ax
+
+# %% ../nbs/api/03_modelos.ipynb 61
+@patch
+def scatterpĺot_moran(self:ModeloGLM, 
+                      tipo:str="deviance", # deviance/pearson
+                      ax=None # Eje en el que se grafica                
+    )->Axes:
+    """ Regresa un ax con el diagrama de dispersión de Moran para los residuales."""
+    if tipo == "deviance":
+        x_label = "Residual Deviance"
+        moran = self.moran_dev_residuales
+    elif tipo == "pearson":
+        x_label = "Residual Pearson"
+        moran = self.moran_p_residuales            
+    else:
+        raise ValueError("El tipo debe ser 'Residual Deviance' o 'Residual Pearson'")
+    if ax is None:
+        fig, ax = moran_scatterplot(moran, aspect_equal=True)
+        ax.set_ylabel("Retraso espacial")
+        ax.set_xlabel(x_label)
+        ax.set_title(f"I de Moran {np.round(moran.I, 3)}, Significancia {moran.p_sim}")
+    else:
+        moran_scatterplot(moran, aspect_equal=True, ax=ax)
+        ax.set_ylabel("Retraso espacial")
+        ax.set_xlabel(x_label)
+        ax.set_title(f"I de Moran {np.round(moran.I, 3)}, Significancia {moran.p_sim}")
+    return ax
+
+# %% ../nbs/api/03_modelos.ipynb 64
 class ComparaModelos(object):
     """ Clase para construir comparaciones de modelos.
         Construte dos DataFrames para visualizar rápidamente una comparación de los modelos:
