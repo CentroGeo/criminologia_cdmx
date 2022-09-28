@@ -101,28 +101,31 @@ def censo_a_tasas(censo: pd.DataFrame, # Puede venir de `agrega_en_unidades` o `
                   umbral_faltantes:float=0.5  # Porcentaje de datos faltantes en una manzana para considerarla en el análisis
     ):
     """ Convierte las variables del censo a tasas en la agregación seleccionada."""
+    datos = censo.copy() # No queremos modificar el original
     pob_col = 'POBTOT'
-    hog_col = 'TOTHOG'
     viv_col = 'VIVPAR_HAB'
-    vars_pob = [v for v in diccionario['Nombre del Campo'].unique() if v.startswith('P')]
-    vars_pob_no_tasa = ['POBTOT', 'PROM_HNV']
+    if (viv_col not in datos.columns) or (pob_col not in datos.columns):
+        raise ValueError('Las columnas  y VIVPAR_HAB tienen que venir en los datos.')
+    vars_pob = [v for v in datos.columns if v.startswith('P')]
+    # vars_pob = list(set(vars_pob).intersection(datos.columns)) # Para permitir que el usuario nos mande una selección
+    vars_pob_no_tasa = ['POBTOT', 'PROM_HNV','PROM_OCUP', 'PRO_OCUP_C']
     vars_pob = [v for v in vars_pob if (v not in vars_pob_no_tasa)]
     vars_viv_no_tasa = ['VIVPAR_HAB', 'PROM_OCUP', 'PRO_OCUP_C'] # No tiene sentido calcular tasas para estas variables
-    vars_viv = [v for v in diccionario['Nombre del Campo'].unique() 
-                if (v.startswith('V') and v not in vars_viv_no_tasa)]
-    censo[vars_pob] = censo[vars_pob].div(censo[pob_col], axis=0)
-    censo[vars_viv] = censo[vars_viv].div(censo[viv_col], axis=0)
-    censo = censo.dropna(thresh=umbral_faltantes*(len(vars_pob) + len(vars_viv)))
-    return censo
+    vars_viv = [v for v in datos.columns  if (v.startswith('V') and v not in vars_viv_no_tasa)]
+    vars_viv = list(set(vars_viv).intersection(datos.columns))
+    datos[vars_pob] = datos[vars_pob].div(datos[pob_col], axis=0)
+    datos[vars_viv] = datos[vars_viv].div(datos[viv_col], axis=0)
+    datos = datos.dropna(thresh=umbral_faltantes*(len(vars_pob) + len(vars_viv)))
+    return datos
 
-# %% ../nbs/api/02_covariables.ipynb 22
+# %% ../nbs/api/02_covariables.ipynb 23
 def get_uso_de_suelo() -> pd.DataFrame:
     """Regresa un DataFrame con las variables de uso de suelo a nivel manzana."""
     absp = os.path.abspath(os.path.join(DATA_PATH, 'usos_suelo.csv'))
     df = pd.read_csv(absp, dtype={'CVEGEO':str,'colonia_cve': 'Int64','cuadrante_id':str})
     return df
 
-# %% ../nbs/api/02_covariables.ipynb 25
+# %% ../nbs/api/02_covariables.ipynb 26
 def agrega_uso_suelo(usos:pd.DataFrame, # `get_uso_de_suelo`
                      unidades:str='colonias' # colonias/cuadrantes
     ):
@@ -140,7 +143,7 @@ def agrega_uso_suelo(usos:pd.DataFrame, # `get_uso_de_suelo`
                         .sum(axis=1) / np.log(3))
     return usos
 
-# %% ../nbs/api/02_covariables.ipynb 28
+# %% ../nbs/api/02_covariables.ipynb 29
 class IndicePCA(object):
     """ Clase para crear indices basados en PCA."""
     def __init__(self, 
@@ -154,7 +157,7 @@ class IndicePCA(object):
         
 
 
-# %% ../nbs/api/02_covariables.ipynb 30
+# %% ../nbs/api/02_covariables.ipynb 31
 @patch
 def calcula_indice(self:IndicePCA):
     """Calcula el índice y lo guarda en self.indice"""
