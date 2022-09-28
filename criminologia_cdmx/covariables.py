@@ -105,13 +105,14 @@ def censo_a_tasas(censo: pd.DataFrame, # Puede venir de `agrega_en_unidades` o `
     hog_col = 'TOTHOG'
     viv_col = 'VIVPAR_HAB'
     vars_pob = [v for v in diccionario['Nombre del Campo'].unique() if v.startswith('P')]
-    eliminar = ['POBTOT', 'PROM_HNV']
-    vars_pob = [v for v in vars_pob if (v not in eliminar)]
+    vars_pob_no_tasa = ['POBTOT', 'PROM_HNV']
+    vars_pob = [v for v in vars_pob if (v not in vars_pob_no_tasa)]
+    vars_viv_no_tasa = ['VIVPAR_HAB', 'PROM_OCUP', 'PRO_OCUP_C'] # No tiene sentido calcular tasas para estas variables
     vars_viv = [v for v in diccionario['Nombre del Campo'].unique() 
-                if (v.startswith('V') and v != 'VIVPAR_HAB')]
+                if (v.startswith('V') and v not in vars_viv_no_tasa)]
     censo[vars_pob] = censo[vars_pob].div(censo[pob_col], axis=0)
     censo[vars_viv] = censo[vars_viv].div(censo[viv_col], axis=0)
-    censo.dropna(thresh=umbral_faltantes*(len(vars_pob) + len(vars_viv)), inplace=True)
+    censo = censo.dropna(thresh=umbral_faltantes*(len(vars_pob) + len(vars_viv)))
     return censo
 
 # %% ../nbs/api/02_covariables.ipynb 22
